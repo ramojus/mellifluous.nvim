@@ -1,9 +1,3 @@
-<div align="center">
-
-# Meliora theme for Neovim
-
-</div>
-
 ![preview](assets/preview.png)
 
 Made with [lush](https://github.com/rktjmp/lush.nvim)
