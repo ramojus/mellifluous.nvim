@@ -42,8 +42,8 @@ M.get_theme = function()
     local colors = require 'meliora.color_variants.default'(bg)
 
     local highlights = require 'meliora.highlights'(colors)
-    local specs = {highlights}
-    specs = require 'meliora.plugins'(specs, highlights, colors)
+    local specs = require 'meliora.plugins'(highlights, colors)
+    table.insert(specs, highlights)
 
     return lush.merge(specs)
 end

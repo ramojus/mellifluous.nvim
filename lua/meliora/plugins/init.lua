@@ -1,5 +1,6 @@
-return function(specs, highlights, colors)
+return function(highlights, colors)
     local config = require 'meliora'.config
+    local specs = {}
 
     for plugin in pairs(config.plugins) do
         if (type(config.plugins[plugin]) == 'table' and config.plugins[plugin]['enabled'] == true)
