@@ -28,7 +28,8 @@ use {
 
 ## Configuration
 Here is the default config, change it as you like. Structure is inspired by [catppuccin](https://github.com/catppuccin/nvim) theme config.
-If you want to combine some styles like bold and italic, you can just write `'bold italic'` in the same qoutes, separated by space.
+
+If you want to mix some styles like bold and italic, write `'bold italic'`.
 ```lua
 require 'meliora'.setup({
     neutral = false, -- set this to `true` for neutral background and greys.
