@@ -6,8 +6,6 @@ end
 vim.opt.background = 'dark'
 vim.g.colors_name = 'meliora'
 
-package.loaded['meliora'] = nil
-
 -- reset colors
 if vim.g.colors_name then
     vim.cmd("hi clear")
