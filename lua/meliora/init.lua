@@ -39,6 +39,11 @@ end
 M.get_theme = function()
     local lush = require 'lush'
     local bg = require 'meliora.bg'
+
+    package.loaded['meliora.color_variants.default'] = nil
+    package.loaded['meliora.highlights'] = nil
+    package.loaded['meliora.plugins'] = nil
+
     local colors = require 'meliora.color_variants.default'(bg)
 
     local highlights = require 'meliora.highlights'(colors)
