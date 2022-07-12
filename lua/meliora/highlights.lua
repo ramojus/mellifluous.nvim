@@ -37,11 +37,11 @@ return function(colors)
             MsgSeparator { VertSplit }, -- Separator for scrolled messages, `msgsep` flag of 'display'
             MoreMsg      { fg = colors.orange }, -- |more-prompt|
             NonText      { Conceal }, -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
-            NormalFloat  { bg = colors.bg5 }, -- Normal text in floating windows.
+            NormalFloat  { bg = colors.bg4 }, -- Normal text in floating windows.
             NormalNC     { Normal }, -- normal text in non-current windows
             Pmenu        { bg = colors.bg4, fg = colors.fg3 }, -- Popup menu: Normal item.
             PmenuSel     { bg = colors.fg4 }, -- Popup menu: Selected item.
-            PmenuSbar    { bg = colors.bg5 }, -- Popup menu: Scrollbar.
+            PmenuSbar    { bg = colors.bg3 }, -- Popup menu: Scrollbar.
             PmenuThumb   { bg = colors.fg4 }, -- Popup menu: Thumb of the scrollbar.
             Question     { fg = colors.orange }, -- |hit-enter| prompt and yes/no questions
             QuickFixLine { Normal }, -- Current |quickfix| item in the quickfix window. Combined with |hl-CursorLine| when the cursor is there.

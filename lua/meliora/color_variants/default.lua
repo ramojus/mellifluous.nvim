@@ -27,7 +27,6 @@ local get = function(bg)
         bg2 = bg.li(3),
         bg3 = bg.li(6),
         bg4 = bg.li(8),
-        bg5 = bg.li(10),
 
         simple_red = hsl(05, 50, 69),
         simple_orange = hsl(35, 50, 69),
@@ -37,3 +36,4 @@ local get = function(bg)
 end
 
 return get
+

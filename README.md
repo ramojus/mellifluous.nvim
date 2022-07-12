@@ -1,3 +1,4 @@
+# Meliora theme for [Neovim](https://github.com/neovim/neovim)
 ![preview](assets/preview.png)
 
 Made with [lush](https://github.com/rktjmp/lush.nvim)
@@ -56,3 +57,9 @@ require 'meliora'.setup({
     }
 })
 ```
+
+## Author
+- [Ramojus Lapinskas](https://github.com/ramojus)
+
+## License
+[MIT](./LICENSE)
