@@ -22,7 +22,7 @@ return function(colors)
             EndOfBuffer  { bg = colors.bg, fg = colors.bg }, -- Filler lines (~) after the end of the buffer. By default, this is highlighted like |hl-NonText|.
             TermCursor   { Cursor }, -- Cursor in a focused terminal
             TermCursorNC { bg = colors.fg4 }, -- Cursor in an unfocused terminal
-            ErrorMsg     { fg = colors.simple_red }, -- Error messages on the command line
+            ErrorMsg     { fg = colors.basic_red }, -- Error messages on the command line
             VertSplit    { fg = colors.fg4 }, -- Column separating vertically split windows
             Folded       { bg = colors.bg3, fg = colors.fg3, gui = config.styles.folds }, -- Line used for closed folds
             FoldColumn   { Normal }, -- 'foldcolumn'
@@ -47,10 +47,10 @@ return function(colors)
             QuickFixLine { Normal }, -- Current |quickfix| item in the quickfix window. Combined with |hl-CursorLine| when the cursor is there.
             Search       { bg = colors.bg4, fg = colors.fg }, -- Last search pattern highlighting (see 'hlsearch'). Also used for similar items that need to stand out.
             SpecialKey   { fg = colors.orange }, -- Unprintable characters: text displayed differently from what it really is. But not 'listchars' whitespace. |hl-Whitespace|
-            SpellBad     { fg = colors.simple_red }, -- Word that is not recognized by the spellchecker. |spell| Combined with the highlighting used otherwise.
-            SpellCap     { fg = colors.simple_orange }, -- Word that should start with a capital. |spell| Combined with the highlighting used otherwise.
-            SpellLocal   { fg = colors.simple_orange }, -- Word that is recognized by the spellchecker as one that is used in another region. |spell| Combined with the highlighting used otherwise.
-            SpellRare    { fg = colors.simple_orange }, -- Word that is recognized by the spellchecker as one that is hardly ever used. |spell| Combined with the highlighting used otherwise.
+            SpellBad     { fg = colors.basic_red }, -- Word that is not recognized by the spellchecker. |spell| Combined with the highlighting used otherwise.
+            SpellCap     { fg = colors.basic_orange }, -- Word that should start with a capital. |spell| Combined with the highlighting used otherwise.
+            SpellLocal   { fg = colors.basic_orange }, -- Word that is recognized by the spellchecker as one that is used in another region. |spell| Combined with the highlighting used otherwise.
+            SpellRare    { fg = colors.basic_orange }, -- Word that is recognized by the spellchecker as one that is hardly ever used. |spell| Combined with the highlighting used otherwise.
             StatusLine   { bg = colors.bg4, fg = colors.fg2 }, -- Status line of current window
             StatusLineNC { bg = colors.bg3, fg = colors.fg3 }, -- Status lines of not-current windows. Note: If this is equal to "StatusLine" Vim will use "^^^" in the status line of the current window.
             TabLine      { bg = StatusLine.bg, fg = colors.fg3 }, -- Tab pages line, not active tab page label
@@ -59,7 +59,7 @@ return function(colors)
             Title        { fg = colors.orange }, -- Titles for output from ":set all", ":autocmd" etc.
             Visual       { bg = colors.bg4 }, -- Visual mode selection
             VisualNOS    { bg = colors.bg3 }, -- Visual mode selection when vim is "Not Owning the Selection".
-            WarningMsg   { fg = colors.simple_red }, -- Warning messages
+            WarningMsg   { fg = colors.basic_red }, -- Warning messages
             Whitespace   { fg = colors.fg4 }, -- "nbsp", "space", "tab" and "trail" in 'listchars'
             WinSeparator { VertSplit }, -- Separator between window splits. Inherts from |hl-VertSplit| by default, which it will replace eventually.
             WildMenu     { PmenuSel }, -- Current match in 'wildmenu' completion
@@ -74,7 +74,7 @@ return function(colors)
 
             Comment        { fg = colors.comment, gui = config.styles.comments }, -- Any comment
 
-            Constant       { fg = colors.magenta }, -- (*) Any constant
+            Constant       { fg = colors.purple }, -- (*) Any constant
             String         { fg = colors.yellow, gui = config.styles.strings }, --   A string constant: "this is a string"
             Character      { fg = String.fg.li(20) }, --   A character constant: 'c', '\n'
             Number         { Constant, gui = config.styles.numbers }, --   A number constant: 234, 0xff
@@ -88,7 +88,7 @@ return function(colors)
             Conditional    { fg = colors.red, gui = config.styles.conditionals }, --   if, then, else, endif, switch, etc.
             Repeat         { fg = colors.red, gui = config.styles.loops }, --   for, do, while, etc.
             Label          { fg = colors.red, gui = config.styles.keywords }, --   case, default, etc.
-            Operator       { fg = colors.alt_fg, gui = config.styles.operators }, --   "sizeof", "+", "*", etc.
+            Operator       { fg = colors.khaki, gui = config.styles.operators }, --   "sizeof", "+", "*", etc.
             Keyword        { fg = colors.orange }, --   any other keyword
             Exception      { fg = colors.orange }, --   try, catch, throw
 
@@ -98,7 +98,7 @@ return function(colors)
             Macro          { PreProc }, --   Same as Define
             PreCondit      { PreProc }, --   Preprocessor #if, #else, #endif, etc.
 
-            Type           { fg = colors.alt_fg, gui = config.styles.types }, -- (*) int, long, char, etc.
+            Type           { fg = colors.khaki, gui = config.styles.types }, -- (*) int, long, char, etc.
             StorageClass   { Type }, --   static, register, volatile, etc.
             Structure      { Type }, --   struct, union, enum, etc.
             Typedef        { Type }, --   A typedef
@@ -114,7 +114,7 @@ return function(colors)
             Bold { bold = config.bold },
             Italic { italic = config.italic },
             Ignore         { fg = colors.fg4 }, -- Left blank, hidden |hl-Ignore| (NOTE: May be invisible here in template)
-            Error          { fg = colors.simple_red }, -- Any erroneous construct
+            Error          { fg = colors.basic_red }, -- Any erroneous construct
             Todo           { fg = colors.red }, -- Anything that needs extra attention; mostly the keywords TODO FIXME and XXX
 
             -- These groups are for the native LSP client and diagnostic system. Some
@@ -132,10 +132,10 @@ return function(colors)
 
             -- See :h diagnostic-highlights, some groups may not be listed, submit a PR fix to lush-template!
             --
-            DiagnosticError            { fg = colors.simple_red } , -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
-            DiagnosticWarn             { fg = colors.simple_orange } , -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
-            DiagnosticInfo             { fg = colors.simple_blue } , -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
-            DiagnosticHint             { fg = colors.simple_magenta } , -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
+            DiagnosticError            { fg = colors.basic_red } , -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
+            DiagnosticWarn             { fg = colors.basic_orange } , -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
+            DiagnosticInfo             { fg = colors.basic_blue } , -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
+            DiagnosticHint             { fg = colors.basic_purple } , -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
             DiagnosticVirtualTextError { fg = DiagnosticError.fg, bg = colors.bg3 } , -- Used for "Error" diagnostic virtual text.
             DiagnosticVirtualTextWarn  { fg = DiagnosticWarn.fg, bg = colors.bg3 } ,  -- Used for "Warn" diagnostic virtual text.
             DiagnosticVirtualTextInfo  { fg = DiagnosticInfo.fg, bg = colors.bg3 } ,  -- Used for "Info" diagnostic virtual text.
@@ -214,7 +214,7 @@ return function(colors)
             TSLiteral            { fg = Character.fg } , -- Literal or verbatim text.
             TSURI                { fg = colors.fg3 } , -- URIs like hyperlinks or email addresses.
             TSMath               { fg = colors.orange } , -- Math environments like LaTeX's `$ ... $`
-            TSTextReference      { fg = colors.magenta } , -- Footnotes, text references, citations, etc.
+            TSTextReference      { fg = colors.purple } , -- Footnotes, text references, citations, etc.
             TSEnvironment        { fg = colors.orange } , -- Text environments of markup languages.
             TSEnvironmentName    { TSEnvironment } , -- Text/string indicating the type of text environment. Like the name of a `\begin` block in LaTeX.
             TSNote               { fg = colors.green } , -- Text representation of an informational note.
