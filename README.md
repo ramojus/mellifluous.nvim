@@ -21,9 +21,9 @@ use {
 ```
 
 ## Configuration
-Here is the default config, change it as you like. Structure is inspired by [catppuccin](https://github.com/catppuccin/nvim) theme config.
+Here is an example with the default config, change it as you like. Structure is inspired by [catppuccin](https://github.com/catppuccin/nvim) theme config.
 
-If you want to mix some styles like bold and italic, write `'bold italic'`.
+If you want to mix some styles, for example bold and italic, set style value to `'bold italic'`.
 ```lua
 require 'meliora'.setup({
     neutral = false, -- set this to `true` for neutral background and greys.
