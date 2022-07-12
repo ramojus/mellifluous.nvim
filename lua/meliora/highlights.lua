@@ -15,9 +15,9 @@ return function(colors)
             CursorColumn { bg = colors.bg2 }, -- Screen-column at the cursor, when 'cursorcolumn' is set.
             CursorLine   { bg = colors.bg2 }, -- Screen-line at the cursor, when 'cursorline' is set. Low-priority if foreground (ctermfg OR guifg) is not set.
             Directory    { fg = colors.blue }, -- Directory names (and other special names in listings)
-            DiffAdd      { fg = hsl(60, 36, 32) }, -- Diff mode: Added line |diff.txt|
-            DiffChange   { fg = hsl(30, 36, 32) }, -- Diff mode: Changed line |diff.txt|
-            DiffDelete   { fg = hsl(00, 36, 32) }, -- Diff mode: Deleted line |diff.txt|
+            DiffAdd      { bg = colors.green.mix(colors.bg, 70), fg = colors.green }, -- Diff mode: Added line |diff.txt|
+            DiffChange   { bg = colors.orange.mix(colors.bg, 70), fg = colors.orange }, -- Diff mode: Changed line |diff.txt|
+            DiffDelete   { bg = colors.red.mix(colors.bg, 70), fg = colors.red }, -- Diff mode: Deleted line |diff.txt|
             DiffText     { Normal }, -- Diff mode: Changed text within a changed line |diff.txt|
             EndOfBuffer  { bg = colors.bg, fg = colors.bg }, -- Filler lines (~) after the end of the buffer. By default, this is highlighted like |hl-NonText|.
             TermCursor   { Cursor }, -- Cursor in a focused terminal
