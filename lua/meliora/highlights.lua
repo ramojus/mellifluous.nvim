@@ -7,6 +7,7 @@ return function(colors)
     return lush(function()
         return {
             Normal       { bg = colors.bg, fg = colors.fg }, -- Normal text
+            NormalNC     { bg = (config.dim_inactive and colors.dark_bg) or Normal.bg }, -- normal text in non-current windows
             ColorColumn  { bg = colors.dark_bg }, -- Columns set with 'colorcolumn'
             Conceal      { fg = colors.fg4 }, -- Placeholder characters substituted for concealed text (see 'conceallevel')
             Cursor       { bg = colors.orange, fg = colors.bg }, -- Character under the cursor
@@ -19,11 +20,11 @@ return function(colors)
             DiffChange   { bg = colors.orange.mix(colors.bg, 70), fg = colors.orange }, -- Diff mode: Changed line |diff.txt|
             DiffDelete   { bg = colors.red.mix(colors.bg, 70), fg = colors.red }, -- Diff mode: Deleted line |diff.txt|
             DiffText     { Normal }, -- Diff mode: Changed text within a changed line |diff.txt|
-            EndOfBuffer  { bg = colors.bg, fg = colors.bg }, -- Filler lines (~) after the end of the buffer. By default, this is highlighted like |hl-NonText|.
+            EndOfBuffer  { fg = colors.bg }, -- Filler lines (~) after the end of the buffer. By default, this is highlighted like |hl-NonText|.
             TermCursor   { Cursor }, -- Cursor in a focused terminal
             TermCursorNC { bg = colors.fg4 }, -- Cursor in an unfocused terminal
             ErrorMsg     { fg = colors.basic_red }, -- Error messages on the command line
-            VertSplit    { fg = colors.fg4 }, -- Column separating vertically split windows
+            VertSplit    { fg = colors.fg4, bg = (config.dim_inactive and NormalNC.bg) or Normal.bg }, -- Column separating vertically split windows
             Folded       { bg = colors.bg3, fg = colors.fg3, gui = config.styles.folds }, -- Line used for closed folds
             FoldColumn   { Normal }, -- 'foldcolumn'
             LineNr       { fg = colors.fg4.li(10), bg = colors.dark_bg }, -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
@@ -38,7 +39,6 @@ return function(colors)
             MoreMsg      { fg = colors.orange }, -- |more-prompt|
             NonText      { Conceal }, -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
             NormalFloat  { bg = colors.bg4 }, -- Normal text in floating windows.
-            NormalNC     { Normal }, -- normal text in non-current windows
             Pmenu        { bg = colors.bg4, fg = colors.fg3 }, -- Popup menu: Normal item.
             PmenuSel     { bg = colors.fg4 }, -- Popup menu: Selected item.
             PmenuSbar    { bg = colors.bg3 }, -- Popup menu: Scrollbar.

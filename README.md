@@ -27,6 +27,7 @@ Here is an example with the default config, change it as you like. Structure is 
 If you want to mix some styles, for example bold and italic, set style value to `'bold italic'`.
 ```lua
 require 'meliora'.setup({
+    dim_inactive = false,
     neutral = false, -- set this to `true` for neutral background and greys.
     styles = {
         comments = 'italic',

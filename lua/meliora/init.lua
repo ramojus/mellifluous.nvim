@@ -2,6 +2,7 @@ local M = {}
 
 -- default config
 M.config = {
+    dim_inactive = false,
     neutral = false,
     styles = {
         comments = "italic",
