@@ -3,13 +3,13 @@ if vim.version().minor < 7 then
     return
 end
 
-vim.opt.background = 'dark'
-vim.g.colors_name = 'meliora'
-
 -- reset colors
 if vim.g.colors_name then
     vim.cmd("hi clear")
 end
+
+vim.opt.background = 'dark'
+vim.g.colors_name = 'meliora'
 
 -- include our theme file and pass it to lush to apply
 require('lush')(require('meliora').get_theme())
