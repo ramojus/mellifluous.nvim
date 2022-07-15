@@ -16,7 +16,7 @@ Install with any plugin manager, [lush](https://github.com/rktjmp/lush.nvim) is 
 Example with [packer.nvim](https://github.com/wbthomason/packer.nvim):
 ```lua
 use {
-    'meliora-theme/neovim'
+    'meliora-theme/neovim',
     requires = {'rktjmp/lush.nvim'}
 }
 ```
