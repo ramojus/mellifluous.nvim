@@ -3,7 +3,7 @@ return function(highlights, colors)
     local lush = require 'lush'
     local config = require 'meliora'.config
 
-    local root_fg = colors.bg
+    local root_fg = colors.dark_bg
     if config.plugins.nvim_tree.show_root == true then
         root_fg = colors.fg3
     end
