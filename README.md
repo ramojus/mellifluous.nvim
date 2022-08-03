@@ -58,6 +58,7 @@ require 'meliora'.setup({
     }
 })
 ```
+For light theme set `vim.opt.background` to `"light"`.
 
 ## Author
 - [Ramojus Lapinskas](https://github.com/ramojus)
