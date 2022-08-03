@@ -39,8 +39,8 @@ return function(colors)
             MoreMsg      { fg = colors.orange }, -- |more-prompt|
             NonText      { Conceal }, -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
             NormalFloat  { bg = colors.bg4 }, -- Normal text in floating windows.
-            Pmenu        { bg = colors.bg4, fg = colors.fg3 }, -- Popup menu: Normal item.
-            PmenuSel     { bg = colors.fg5 }, -- Popup menu: Selected item.
+            Pmenu        { bg = colors.bg4, fg = config.dark and colors.fg3 or colors.fg4 }, -- Popup menu: Normal item.
+            PmenuSel     { bg = config.dark and colors.fg5 or colors.dark_bg }, -- Popup menu: Selected item.
             PmenuSbar    { bg = colors.bg3 }, -- Popup menu: Scrollbar.
             PmenuThumb   { bg = colors.fg5 }, -- Popup menu: Thumb of the scrollbar.
             Question     { fg = colors.orange }, -- |hit-enter| prompt and yes/no questions

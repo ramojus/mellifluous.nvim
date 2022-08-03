@@ -1,7 +1,6 @@
 return function(highlights, colors)
     ---@diagnostic disable: undefined-global
     local lush = require 'lush'
-    -- error("cmp")
 
     return lush(function()
         return {
