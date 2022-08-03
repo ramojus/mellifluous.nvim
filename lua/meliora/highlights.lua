@@ -180,7 +180,7 @@ return function(colors)
             TSInclude            { Function, gui = 'NONE'} , -- File or module inclusion keywords: `#include` in C, `use` or `extern crate` in Rust.
             TSKeyword            { Keyword } , -- Keywords that don't fit into other categories.
             TSKeywordFunction    { fg = colors.red, gui = config.styles.keywords } , -- Keywords used to define a function: `function` in Lua, `def` and `lambda` in Python.
-            TSKeywordOperator    { fg = colors.blue, gui = config.styles.operators } , -- Unary and binary operators that are English words: `and`, `or` in Python; `sizeof` in C.
+            TSKeywordOperator    { fg = colors.orange, gui = config.styles.operators } , -- Unary and binary operators that are English words: `and`, `or` in Python; `sizeof` in C.
             TSKeywordReturn      { fg = colors.red, gui = config.styles.keywords } , -- Keywords like `return` and `yield`.
             TSLabel              { Label } , -- GOTO labels: `label:` in C, and `::label::` in Lua.
             TSMethod             { Function } , -- Method calls and definitions.
