@@ -39,8 +39,16 @@ end
 
 M.get_theme = function()
     local lush = require 'lush'
-    local bg = require 'meliora.bg'
-    local colors = require 'meliora.color_variants.default'(bg)
+    local colors
+    if vim.o.background == "dark" then
+        M.config.dark = true
+        local bg = require 'meliora.backgrounds.dark'
+        colors = require 'meliora.colors.dark'(bg)
+    else
+        M.config.dark = false
+        local bg = require 'meliora.backgrounds.light'
+        colors = require 'meliora.colors.light'(bg)
+    end
 
     local highlights = require 'meliora.highlights'(colors)
     local specs = require 'meliora.plugins'(highlights, colors)

@@ -9,7 +9,7 @@ return function(colors)
             Normal       { bg = colors.bg, fg = colors.fg }, -- Normal text
             NormalNC     { bg = (config.dim_inactive and colors.dark_bg) or Normal.bg }, -- normal text in non-current windows
             ColorColumn  { bg = colors.dark_bg }, -- Columns set with 'colorcolumn'
-            Conceal      { fg = colors.fg4 }, -- Placeholder characters substituted for concealed text (see 'conceallevel')
+            Conceal      { fg = colors.fg5 }, -- Placeholder characters substituted for concealed text (see 'conceallevel')
             Cursor       { bg = colors.orange, fg = colors.bg }, -- Character under the cursor
             lCursor      { Cursor }, -- Character under the cursor when |language-mapping| is used (see 'guicursor')
             CursorIM     { Cursor }, -- Like Cursor, but used when in IME mode |CursorIM|
@@ -22,12 +22,12 @@ return function(colors)
             DiffText     { Normal }, -- Diff mode: Changed text within a changed line |diff.txt|
             EndOfBuffer  { fg = colors.bg }, -- Filler lines (~) after the end of the buffer. By default, this is highlighted like |hl-NonText|.
             TermCursor   { Cursor }, -- Cursor in a focused terminal
-            TermCursorNC { bg = colors.fg4 }, -- Cursor in an unfocused terminal
+            TermCursorNC { bg = colors.fg5 }, -- Cursor in an unfocused terminal
             ErrorMsg     { fg = colors.basic_red }, -- Error messages on the command line
-            VertSplit    { fg = colors.fg4, bg = (config.dim_inactive and NormalNC.bg) or Normal.bg }, -- Column separating vertically split windows
+            VertSplit    { fg = colors.fg5, bg = (config.dim_inactive and NormalNC.bg) or Normal.bg }, -- Column separating vertically split windows
             Folded       { bg = colors.bg3, fg = colors.fg3, gui = config.styles.folds }, -- Line used for closed folds
             FoldColumn   { Normal }, -- 'foldcolumn'
-            LineNr       { fg = colors.fg4.li(10), bg = colors.dark_bg }, -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
+            LineNr       { fg = colors.fg4, bg = colors.dark_bg }, -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
             SignColumn   { LineNr }, -- Column where |signs| are displayed
             IncSearch    { bg = colors.orange, fg = colors.bg }, -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
             Substitute   { IncSearch }, -- |:substitute| replacement text highlighting
@@ -40,9 +40,9 @@ return function(colors)
             NonText      { Conceal }, -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
             NormalFloat  { bg = colors.bg4 }, -- Normal text in floating windows.
             Pmenu        { bg = colors.bg4, fg = colors.fg3 }, -- Popup menu: Normal item.
-            PmenuSel     { bg = colors.fg4 }, -- Popup menu: Selected item.
+            PmenuSel     { bg = colors.fg5 }, -- Popup menu: Selected item.
             PmenuSbar    { bg = colors.bg3 }, -- Popup menu: Scrollbar.
-            PmenuThumb   { bg = colors.fg4 }, -- Popup menu: Thumb of the scrollbar.
+            PmenuThumb   { bg = colors.fg5 }, -- Popup menu: Thumb of the scrollbar.
             Question     { fg = colors.orange }, -- |hit-enter| prompt and yes/no questions
             QuickFixLine { Normal }, -- Current |quickfix| item in the quickfix window. Combined with |hl-CursorLine| when the cursor is there.
             Search       { bg = colors.bg4, fg = colors.fg }, -- Last search pattern highlighting (see 'hlsearch'). Also used for similar items that need to stand out.
@@ -57,10 +57,10 @@ return function(colors)
             TabLineFill  { TabLine }, -- Tab pages line, where there are no labels
             TabLineSel   { bg = colors.bg2, fg = colors.fg2 }, -- Tab pages line, active tab page label
             Title        { fg = colors.orange }, -- Titles for output from ":set all", ":autocmd" etc.
-            Visual       { bg = colors.bg4 }, -- Visual mode selection
+            Visual       { bg = config.dark and colors.bg4 or colors.dark_bg2 }, -- Visual mode selection
             VisualNOS    { bg = colors.bg3 }, -- Visual mode selection when vim is "Not Owning the Selection".
             WarningMsg   { fg = colors.basic_red }, -- Warning messages
-            Whitespace   { fg = colors.fg4 }, -- "nbsp", "space", "tab" and "trail" in 'listchars'
+            Whitespace   { fg = colors.fg5 }, -- "nbsp", "space", "tab" and "trail" in 'listchars'
             WinSeparator { VertSplit }, -- Separator between window splits. Inherts from |hl-VertSplit| by default, which it will replace eventually.
             WildMenu     { PmenuSel }, -- Current match in 'wildmenu' completion
 
@@ -76,7 +76,7 @@ return function(colors)
 
             Constant       { fg = colors.purple }, -- (*) Any constant
             String         { fg = colors.yellow, gui = config.styles.strings }, --   A string constant: "this is a string"
-            Character      { fg = String.fg.li(20) }, --   A character constant: 'c', '\n'
+            Character      { fg = String.fg }, --   A character constant: 'c', '\n'
             Number         { Constant, gui = config.styles.numbers }, --   A number constant: 234, 0xff
             Boolean        { Constant, gui = config.styles.booleans }, --   A boolean constant: TRUE, false
             Float          { Constant, gui = config.styles.numbers }, --   A floating point constant: 2.3e10
@@ -88,7 +88,7 @@ return function(colors)
             Conditional    { fg = colors.red, gui = config.styles.conditionals }, --   if, then, else, endif, switch, etc.
             Repeat         { fg = colors.red, gui = config.styles.loops }, --   for, do, while, etc.
             Label          { fg = colors.red, gui = config.styles.keywords }, --   case, default, etc.
-            Operator       { fg = colors.khaki, gui = config.styles.operators }, --   "sizeof", "+", "*", etc.
+            Operator       { fg = config.dark and colors.khaki or colors.fg3, gui = config.styles.operators }, --   "sizeof", "+", "*", etc.
             Keyword        { fg = colors.orange }, --   any other keyword
             Exception      { fg = colors.orange }, --   try, catch, throw
 
@@ -113,7 +113,7 @@ return function(colors)
             Underlined     { gui = "underline", fg = colors.fg3 }, -- Text that stands out, HTML links
             Bold { bold = config.bold },
             Italic { italic = config.italic },
-            Ignore         { fg = colors.fg4 }, -- Left blank, hidden |hl-Ignore| (NOTE: May be invisible here in template)
+            Ignore         { fg = colors.fg5 }, -- Left blank, hidden |hl-Ignore| (NOTE: May be invisible here in template)
             Error          { fg = colors.basic_red }, -- Any erroneous construct
             Todo           { fg = colors.red }, -- Anything that needs extra attention; mostly the keywords TODO FIXME and XXX
 
@@ -127,7 +127,7 @@ return function(colors)
             LspReferenceRead            { LspReferenceText } , -- Used for highlighting "read" references
             LspReferenceWrite           { LspReferenceText } , -- Used for highlighting "write" references
             LspCodeLens                 { bg = colors.bg2 } , -- Used to color the virtual text of the codelens. See |nvim_buf_set_extmark()|.
-            LspCodeLensSeparator        { fg = colors.fg4 } , -- Used to color the seperator between two or more code lens.
+            LspCodeLensSeparator        { fg = colors.fg5 } , -- Used to color the seperator between two or more code lens.
             LspSignatureActiveParameter { bg = colors.bg4 } , -- Used to highlight the active parameter in the signature help. See |vim.lsp.handlers.signature_help()|.
 
             -- See :h diagnostic-highlights, some groups may not be listed, submit a PR fix to lush-template!

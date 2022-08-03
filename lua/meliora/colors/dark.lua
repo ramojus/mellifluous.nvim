@@ -21,7 +21,8 @@ local get = function(bg)
 
         fg2 = fg.da(16),
         fg3 = fg.da(32),
-        fg4 = fg.da(64),
+        fg4 = fg.da(48),
+        fg5 = fg.da(64),
 
         dark_bg = bg.da(12),
         bg2 = bg.li(3),
