@@ -23,9 +23,8 @@ use {
 ```
 
 ## Configuration
-Here is an example with the default config, change it as you like. Structure is inspired by [catppuccin](https://github.com/catppuccin/nvim) theme config.
+Here is an example with the default config, change it as you like. To minimise clutter, you can pass only the relevant (changed) parts to setup function instead of the whole config.
 
-If you want to mix some styles, for example bold and italic, set style value to `'bold italic'`.
 ```lua
 require 'meliora'.setup({
     dim_inactive = false,
@@ -56,9 +55,12 @@ require 'meliora'.setup({
             enabled = true,
             nvchad_like = true,
         },
+        startify = true,
     }
 })
 ```
+If you want to mix some styles, for example bold and italic, set style value to `'bold italic'`.
+
 For light theme set `vim.opt.background` to `"light"`.
 
 ## Contributing
