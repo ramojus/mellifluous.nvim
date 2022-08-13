@@ -3,7 +3,7 @@
 
 Made with [lush](https://github.com/rktjmp/lush.nvim)
 
-## Plugin support
+## Styled plugins
 - [Treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
 - [Native LSP](https://github.com/neovim/nvim-lspconfig)
 - [Telescope](https://github.com/nvim-telescope/telescope.nvim)
