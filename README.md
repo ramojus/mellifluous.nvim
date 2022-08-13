@@ -10,6 +10,7 @@ Made with [lush](https://github.com/rktjmp/lush.nvim)
 - [NvimTree](https://github.com/kyazdani42/nvim-tree.lua)
 - [Nvim-cmp](https://github.com/hrsh7th/nvim-cmp)
 - [Indent Blankline](https://github.com/lukas-reineke/indent-blankline.nvim)
+- [Startify](https://github.com/mhinz/vim-startify)
 
 ## Usage
 Install with any plugin manager, [lush](https://github.com/rktjmp/lush.nvim) is required.

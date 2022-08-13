@@ -30,6 +30,7 @@ M.config = {
             enabled = true,
             nvchad_like = true,
         },
+        startify = true,
     }
 }
 
