@@ -44,6 +44,13 @@ require 'meliora'.setup({
         types = 'NONE',
         operators = 'NONE',
     },
+    transparent_background = {
+        enabled = false,
+        floating_windows = false,
+        file_tree = true,
+        cursor_line = true,
+        status_line = false,
+    },
     plugins = {
         cmp = true,
         indent_blankline = true,
@@ -56,7 +63,7 @@ require 'meliora'.setup({
             nvchad_like = true,
         },
         startify = true,
-    }
+    },
 })
 ```
 If you want to mix some styles, for example bold and italic, set style value to `'bold italic'`.

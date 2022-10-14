@@ -6,7 +6,12 @@ return function(highlights, colors)
     return lush(function()
         if config.plugins.telescope.nvchad_like == true then
             return {
-                TelescopeNormal { fg = colors.fg3, bg = colors.bg2 },
+                TelescopeNormal {
+                                    fg = colors.fg3,
+                                    bg = (config.transparent_background.enabled
+                                        and config.transparent_background.floating_windows and 'NONE')
+                                        or colors.bg2
+                                    },
                 TelescopeBorder { fg = TelescopeNormal.bg },
                 TelescopeMatching { fg = colors.fg },
 

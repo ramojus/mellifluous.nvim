@@ -6,15 +6,27 @@ return function(colors)
 
     return lush(function()
         return {
-            Normal       { bg = colors.bg, fg = colors.fg }, -- Normal text
-            NormalNC     { bg = (config.dim_inactive and colors.dark_bg) or Normal.bg }, -- normal text in non-current windows
+            Normal       {
+                bg = (config.transparent_background.enabled and 'NONE')
+                    or colors.bg,
+                fg = colors.fg
+            }, -- Normal text
+            NormalNC     {
+                bg = (config.dim_inactive and colors.dark_bg)
+                    or (config.transparent_background and 'NONE')
+                    or Normal.bg
+            }, -- normal text in non-current windows
             ColorColumn  { bg = colors.dark_bg }, -- Columns set with 'colorcolumn'
             Conceal      { fg = colors.fg5 }, -- Placeholder characters substituted for concealed text (see 'conceallevel')
             Cursor       { bg = colors.orange, fg = colors.bg }, -- Character under the cursor
             lCursor      { Cursor }, -- Character under the cursor when |language-mapping| is used (see 'guicursor')
             CursorIM     { Cursor }, -- Like Cursor, but used when in IME mode |CursorIM|
             CursorColumn { bg = colors.bg2 }, -- Screen-column at the cursor, when 'cursorcolumn' is set.
-            CursorLine   { bg = colors.bg2 }, -- Screen-line at the cursor, when 'cursorline' is set. Low-priority if foreground (ctermfg OR guifg) is not set.
+            CursorLine   {
+                bg = (config.transparent_background.enabled
+                    and config.transparent_background.cursor_line and 'NONE')
+                    or colors.bg2
+            }, -- Screen-line at the cursor, when 'cursorline' is set. Low-priority if foreground (ctermfg OR guifg) is not set.
             Directory    { fg = colors.blue }, -- Directory names (and other special names in listings)
             DiffAdd      { bg = colors.green.mix(colors.bg, 70), fg = colors.green }, -- Diff mode: Added line |diff.txt|
             DiffChange   { bg = colors.orange.mix(colors.bg, 70), fg = colors.orange }, -- Diff mode: Changed line |diff.txt|
@@ -24,10 +36,19 @@ return function(colors)
             TermCursor   { Cursor }, -- Cursor in a focused terminal
             TermCursorNC { bg = colors.fg5 }, -- Cursor in an unfocused terminal
             ErrorMsg     { fg = colors.basic_red }, -- Error messages on the command line
-            VertSplit    { fg = colors.fg5, bg = (config.dim_inactive and NormalNC.bg) or Normal.bg }, -- Column separating vertically split windows
+            VertSplit    {
+                fg = colors.fg5,
+                bg = (config.dim_inactive and NormalNC.bg)
+                    or (config.transparent_background.enabled and 'NONE')
+                    or Normal.bg
+            }, -- Column separating vertically split windows
             Folded       { bg = colors.bg3, fg = colors.fg3, gui = config.styles.folds }, -- Line used for closed folds
             FoldColumn   { Normal }, -- 'foldcolumn'
-            LineNr       { fg = colors.fg4, bg = colors.dark_bg }, -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
+            LineNr       {
+                fg = colors.fg4,
+                bg = (config.transparent_background.enabled and 'NONE')
+                    or colors.dark_bg
+            }, -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
             SignColumn   { LineNr }, -- Column where |signs| are displayed
             IncSearch    { bg = colors.orange, fg = colors.bg }, -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
             Substitute   { IncSearch }, -- |:substitute| replacement text highlighting
@@ -38,7 +59,11 @@ return function(colors)
             MsgSeparator { VertSplit }, -- Separator for scrolled messages, `msgsep` flag of 'display'
             MoreMsg      { fg = colors.orange }, -- |more-prompt|
             NonText      { Conceal }, -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
-            NormalFloat  { bg = colors.bg4 }, -- Normal text in floating windows.
+            NormalFloat  {
+                bg = (config.transparent_background.enabled
+                    and config.transparent_background.floating_windows and 'NONE')
+                    or colors.bg4
+            }, -- Normal text in floating windows.
             Pmenu        { bg = colors.bg4, fg = config.dark and colors.fg3 or colors.fg4 }, -- Popup menu: Normal item.
             PmenuSel     { bg = config.dark and colors.fg5 or colors.dark_bg }, -- Popup menu: Selected item.
             PmenuSbar    { bg = colors.bg3 }, -- Popup menu: Scrollbar.
@@ -51,8 +76,18 @@ return function(colors)
             SpellCap     { fg = colors.basic_orange }, -- Word that should start with a capital. |spell| Combined with the highlighting used otherwise.
             SpellLocal   { fg = colors.basic_orange }, -- Word that is recognized by the spellchecker as one that is used in another region. |spell| Combined with the highlighting used otherwise.
             SpellRare    { fg = colors.basic_orange }, -- Word that is recognized by the spellchecker as one that is hardly ever used. |spell| Combined with the highlighting used otherwise.
-            StatusLine   { bg = colors.bg4, fg = colors.fg2 }, -- Status line of current window
-            StatusLineNC { bg = colors.bg3, fg = colors.fg3 }, -- Status lines of not-current windows. Note: If this is equal to "StatusLine" Vim will use "^^^" in the status line of the current window.
+            StatusLine   {
+                bg = (config.transparent_background.enabled
+                    and config.transparent_background.status_line and 'NONE')
+                    or colors.bg4,
+                fg = colors.fg2
+            }, -- Status line of current window
+            StatusLineNC {
+                bg = (config.transparent_background.enabled
+                    and config.transparent_background.status_line and 'NONE')
+                    or colors.bg3,
+                fg = colors.fg3
+            }, -- Status lines of not-current windows. Note: If this is equal to "StatusLine" Vim will use "^^^" in the status line of the current window.
             TabLine      { bg = StatusLine.bg, fg = colors.fg3 }, -- Tab pages line, not active tab page label
             TabLineFill  { TabLine }, -- Tab pages line, where there are no labels
             TabLineSel   { bg = colors.bg2, fg = colors.fg2 }, -- Tab pages line, active tab page label

@@ -19,6 +19,13 @@ M.config = {
         types = "NONE",
         operators = "NONE",
     },
+    transparent_background = {
+        enabled = false,
+        floating_windows = false,
+        file_tree = true,
+        cursor_line = true,
+        status_line = false,
+    },
     plugins = {
         cmp = true,
         indent_blankline = true,
@@ -31,7 +38,7 @@ M.config = {
             nvchad_like = true,
         },
         startify = true,
-    }
+    },
 }
 
 function M.setup(config)

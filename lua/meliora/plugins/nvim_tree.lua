@@ -17,7 +17,11 @@ return function(highlights, colors)
             NvimTreeGitNew          { fg = colors.green },
             NvimTreeGitRenamed      { fg = colors.basic_orange },
             NvimTreeGitStaged       { fg = colors.basic_purple },
-            NvimTreeNormal          { bg = colors.dark_bg, fg = colors.fg2 },
+            NvimTreeNormal          {
+                                        bg = (config.transparent_background.enabled
+                                            and config.transparent_background.file_tree and 'NONE')
+                                            or colors.dark_bg, fg = colors.fg2
+                                    },
             NvimTreeNormalNC        { NvimTreeNormal },
             NvimTreePopup           { NvimTreeNormal },
             NvimTreeSignColumn      { NvimTreeNormal },
