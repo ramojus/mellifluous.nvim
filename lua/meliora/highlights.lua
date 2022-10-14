@@ -171,10 +171,10 @@ return function(colors)
             DiagnosticWarn             { fg = colors.basic_orange } , -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
             DiagnosticInfo             { fg = colors.basic_blue } , -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
             DiagnosticHint             { fg = colors.basic_purple } , -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
-            DiagnosticVirtualTextError { fg = DiagnosticError.fg, bg = colors.bg3 } , -- Used for "Error" diagnostic virtual text.
-            DiagnosticVirtualTextWarn  { fg = DiagnosticWarn.fg, bg = colors.bg3 } ,  -- Used for "Warn" diagnostic virtual text.
-            DiagnosticVirtualTextInfo  { fg = DiagnosticInfo.fg, bg = colors.bg3 } ,  -- Used for "Info" diagnostic virtual text.
-            DiagnosticVirtualTextHint  { fg = DiagnosticHint.fg, bg = colors.bg3 } ,  -- Used for "Hint" diagnostic virtual text.
+            DiagnosticVirtualTextError { fg = DiagnosticError.fg, bg = (config.transparent_background.enabled and 'NONE') or colors.bg3 } , -- Used for "Error" diagnostic virtual text.
+            DiagnosticVirtualTextWarn  { fg = DiagnosticWarn.fg, bg = (config.transparent_background.enabled and 'NONE') or colors.bg3 } ,  -- Used for "Warn" diagnostic virtual text.
+            DiagnosticVirtualTextInfo  { fg = DiagnosticInfo.fg, bg = (config.transparent_background.enabled and 'NONE') or colors.bg3 } ,  -- Used for "Info" diagnostic virtual text.
+            DiagnosticVirtualTextHint  { fg = DiagnosticHint.fg, bg = (config.transparent_background.enabled and 'NONE') or colors.bg3 } ,  -- Used for "Hint" diagnostic virtual text.
             DiagnosticUnderlineError   { gui = "underline" } , -- Used to underline "Error" diagnostics.
             DiagnosticUnderlineWarn    { gui = "underline" } , -- Used to underline "Warn" diagnostics.
             DiagnosticUnderlineInfo    { gui = "underline" } , -- Used to underline "Info" diagnostics.
