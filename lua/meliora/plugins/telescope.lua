@@ -9,7 +9,7 @@ return function(highlights, colors)
                 TelescopeNormal {
                                     fg = colors.fg3,
                                     bg = (config.transparent_background.enabled
-                                        and config.transparent_background.floating_windows and 'NONE')
+                                        and config.transparent_background.telescope and 'NONE')
                                         or highlights.NormalFloat.bg
                                     },
                 TelescopeBorder { fg = TelescopeNormal.bg },

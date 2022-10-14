@@ -22,6 +22,7 @@ M.config = {
     transparent_background = {
         enabled = false,
         floating_windows = false,
+        telescope = true,
         file_tree = true,
         cursor_line = true,
         status_line = false,
