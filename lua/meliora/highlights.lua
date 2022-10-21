@@ -141,7 +141,7 @@ return function(colors)
             Special        { fg = colors.orange }, -- (*) Any special symbol
             SpecialChar    { Special }, --   Special character in a constant
             Tag            { Special }, --   You can use CTRL-] on this
-            Delimiter      { Special }, --   Character that needs attention
+            Delimiter      { Operator }, --   Character that needs attention
             SpecialComment { Special }, --   Special things inside a comment (e.g. '\n')
             Debug          { Special }, --   Debugging statements
 
