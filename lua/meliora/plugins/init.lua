@@ -9,5 +9,7 @@ return function(highlights, colors)
         end
     end
 
+    table.insert(specs, require('meliora.plugins.treesitter')(highlights, colors))
+
     return specs
 end

@@ -1,5 +1,5 @@
-if vim.version().minor < 7 then
-    vim.notify_once("meliora.nvim: you must use neovim 0.7 or higher")
+if vim.version().minor < 8 then
+    vim.notify_once("meliora: only neovim 8.0 or higher is supported for working nvim-treesitter highlights")
     return
 end
 
