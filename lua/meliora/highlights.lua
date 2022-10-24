@@ -53,7 +53,7 @@ return function(colors)
             IncSearch    { bg = colors.orange, fg = colors.bg }, -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
             Substitute   { IncSearch }, -- |:substitute| replacement text highlighting
             CursorLineNr { bg = CursorLine.bg, fg = LineNr.fg }, -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
-            MatchParen   { bg = colors.comment, fg = colors.fg }, -- Character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
+            MatchParen   { bg = colors.bg4, fg = colors.red }, -- Character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
             ModeMsg      { fg = colors.fg3 }, -- 'showmode' message (e.g., "-- INSERT -- ")
             MsgArea      { Normal }, -- Area for messages and cmdline
             MsgSeparator { VertSplit }, -- Separator for scrolled messages, `msgsep` flag of 'display'
