@@ -28,10 +28,10 @@ return function(colors)
                     or colors.bg2
             }, -- Screen-line at the cursor, when 'cursorline' is set. Low-priority if foreground (ctermfg OR guifg) is not set.
             Directory    { fg = colors.blue }, -- Directory names (and other special names in listings)
-            DiffAdd      { bg = colors.green.mix(colors.bg, 70), fg = colors.green }, -- Diff mode: Added line |diff.txt|
-            DiffChange   { bg = colors.orange.mix(colors.bg, 70), fg = colors.orange }, -- Diff mode: Changed line |diff.txt|
-            DiffDelete   { bg = colors.red.mix(colors.bg, 70), fg = colors.red }, -- Diff mode: Deleted line |diff.txt|
-            DiffText     { Normal }, -- Diff mode: Changed text within a changed line |diff.txt|
+            DiffAdd      { bg = colors.green.mix(colors.bg, 85).saturate(12)}, -- Diff mode: Added line |diff.txt|
+            DiffChange   { bg = colors.orange.mix(colors.bg, 90).saturate(12) }, -- Diff mode: Changed line |diff.txt|
+            DiffDelete   { bg = colors.red.mix(colors.bg, 85).saturate(12)}, -- Diff mode: Deleted line |diff.txt|
+            DiffText     { bg = colors.orange.mix(colors.bg, 78).saturate(12) }, -- Diff mode: Changed text within a changed line |diff.txt|
             EndOfBuffer  { fg = colors.bg }, -- Filler lines (~) after the end of the buffer. By default, this is highlighted like |hl-NonText|.
             TermCursor   { Cursor }, -- Cursor in a focused terminal
             TermCursorNC { bg = colors.fg5 }, -- Cursor in an unfocused terminal
