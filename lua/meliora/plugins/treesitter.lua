@@ -53,7 +53,7 @@ return function(highlights, colors)
             sym("@tag")                 { highlights.Keyword } , -- Tags like HTML tag names.
             sym("@tag.attribute")       { highlights.Function, gui = 'NONE' } , -- HTML tag attributes.
             sym("@tag.delimiter")       { highlights.Operator, gui = 'NONE' } , -- Tag delimiters like `<` `>` `/`.
-            sym("@text")                { highlights.Normal } , -- Non-structured text. Like text in a markup language.
+            sym("@text")                { bg = 'NONE' } , -- Non-structured text. Like text in a markup language.
             sym("@text.strong")         { gui = "bold" } , -- Text to be represented in bold.
             sym("@text.emphasis")       { gui = "italic" } , -- Text to be represented with emphasis.
             sym("@text.underline")      { gui = "underline" } , -- Text to be represented with an underline.
