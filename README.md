@@ -1,7 +1,10 @@
 # Meliora colorscheme for [Neovim](https://github.com/neovim/neovim)
 Inspired by early mornings after rainy nights.
 
-![preview](assets/preview.png)
+![preview](assets/code.png)
+![preview](assets/telescope.png)
+![preview](assets/startify.png)
+![preview](assets/light_code.png)
 
 Made with [lush](https://github.com/rktjmp/lush.nvim)
 
