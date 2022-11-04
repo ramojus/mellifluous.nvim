@@ -1,4 +1,6 @@
-# Meliora theme for [Neovim](https://github.com/neovim/neovim)
+# Meliora colorscheme for [Neovim](https://github.com/neovim/neovim)
+Inspired by early mornings after rainy nights.
+
 ![preview](assets/preview.png)
 
 Made with [lush](https://github.com/rktjmp/lush.nvim)
@@ -73,9 +75,6 @@ For light theme set `vim.opt.background` to `"light"`.
 
 ## Contributing
 Any PRs or issues regarding highlight fixes/improvements or new plugins are very welcome.
-
-## Author
-- [Ramojus Lapinskas](https://github.com/ramojus)
 
 ## License
 [MIT](./LICENSE)
