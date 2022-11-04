@@ -75,8 +75,15 @@ If you want to mix some styles, for example bold and italic, set style value to 
 
 For light theme set `vim.opt.background` to `"light"`.
 
-## Contributing
-Any PRs or issues regarding highlight fixes/improvements or new plugins are very welcome.
+## Ports
+- [Helix (with slightly outdated color palette)](https://github.com/helix-editor/helix/wiki/Themes#meliora)
+
+## Inspiration
+Mostly inspired by these great themes:
+- [Mountain and Mountaineer](https://github.com/mountain-theme/mountain)
+- [Alduin](https://github.com/alessandroyorba/alduin)
+- [Melange](https://github.com/savq/melange)
+- [Sema](https://github.com/arzg/sema)
 
 ## License
 [MIT](./LICENSE)
