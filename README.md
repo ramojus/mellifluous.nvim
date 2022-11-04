@@ -33,7 +33,6 @@ Here is an example with the default config, change it as you like. To minimise c
 ```lua
 require 'meliora'.setup({
     dim_inactive = false,
-    neutral = false, -- set this to `true` for neutral background and greys.
     styles = {
         comments = 'italic',
         conditionals = 'NONE',
