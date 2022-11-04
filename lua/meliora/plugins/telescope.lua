@@ -10,7 +10,7 @@ return function(highlights, colors)
                                     fg = colors.fg3,
                                     bg = (config.transparent_background.enabled
                                         and config.transparent_background.telescope and 'NONE')
-                                        or highlights.NormalFloat.bg
+                                        or colors.bg2
                                     },
                 TelescopeBorder { fg = TelescopeNormal.bg },
                 TelescopeMatching { fg = colors.fg },
@@ -25,11 +25,11 @@ return function(highlights, colors)
 
                 TelescopePreviewNormal { bg = TelescopeNormal.bg },
                 TelescopePreviewBorder { fg = TelescopePreviewNormal.bg, bg = TelescopePreviewNormal.bg },
-                TelescopePreviewLine { bg = colors.bg5 },
+                TelescopePreviewLine { bg = (config.dark and colors.bg5) or colors.dark_bg },
                 TelescopePreviewTitle { fg = colors.fg3 },
 
                 TelescopeSelectionCaret { fg = TelescopeNormal.bg },
-                TelescopeSelection { bg = colors.bg5 },
+                TelescopeSelection { bg = (config.dark and colors.bg5) or colors.dark_bg },
             }
         else
             return {
