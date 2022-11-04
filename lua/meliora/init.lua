@@ -3,7 +3,7 @@ local M = {}
 -- default config
 M.config = {
     dim_inactive = false,
-    neutral = false,
+    neutral = true,
     styles = {
         comments = "italic",
         conditionals = "NONE",
