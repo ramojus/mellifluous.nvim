@@ -13,8 +13,8 @@ return function(highlights, colors)
             sym("@comment")             { highlights.Comment } , -- Line comments and block comments.
             sym("@conditional")         { highlights.Conditional } , -- Keywords related to conditionals: `if`, `when`, `cond`, etc.
             sym("@constant")            { highlights.Constant } , -- Constants identifiers. These might not be semantically constant. E.g. uppercase variables in Python.
-            sym("@const.builtin")       { highlights.Constant } , -- Built-in constant values: `nil` in Lua.
-            sym("@const.macro")         { highlights.Constant } , -- Constants defined by macros: `NULL` in C.
+            sym("@constant.builtin")    { highlights.Constant } , -- Built-in constant values: `nil` in Lua.
+            sym("@constant.macro")      { highlights.Constant } , -- Constants defined by macros: `NULL` in C.
             sym("@constructor")         { highlights.Function } , -- Constructor calls and definitions: `{}` in Lua, and Java constructors.
             sym("@debug")               { fg = colors.orange } , -- Debugging statements.
             sym("@define")              { highlights.PreProc } , -- Preprocessor #define statements.
@@ -23,8 +23,8 @@ return function(highlights, colors)
             sym("@field")               { fg = colors.fg, gui = config.styles.properties } , -- Object and struct fields.
             sym("@float")               { highlights.Float } , -- Floating-point number literals.
             sym("@function")            { highlights.Function } , -- Function calls and definitions.
-            sym("@func.builtin")        { highlights.Function } , -- Built-in functions: `print` in Lua.
-            sym("@func.macro")          { highlights.Function } , -- Macro defined functions (calls and definitions): each `macro_rules` in Rust.
+            sym("@function.builtin")    { highlights.Function } , -- Built-in functions: `print` in Lua.
+            sym("@function.macro")      { highlights.Function } , -- Macro defined functions (calls and definitions): each `macro_rules` in Rust.
             sym("@include")             { highlights.Function, gui = 'NONE'} , -- File or module inclusion keywords: `#include` in C, `use` or `extern crate` in Rust.
             sym("@keyword")             { highlights.Keyword } , -- Keywords that don't fit into other categories.
             sym("@keyword.function")    { fg = colors.red, gui = config.styles.keywords } , -- Keywords used to define a function: `function` in Lua, `def` and `lambda` in Python.
@@ -40,9 +40,9 @@ return function(highlights, colors)
             sym("@parameter.reference") { sym("@parameter") } , -- References to parameters of a function.
             sym("@preProc")             { highlights.PreProc } , -- Preprocessor #if, #else, #endif, etc.
             sym("@property")            { sym("@field") } , -- Same as `TSField`.
-            sym("@punct.delimiter")     { highlights.Operator, gui = 'NONE' } , -- Punctuation delimiters: Periods, commas, semicolons, etc.
-            sym("@punct.bracket")       { highlights.Operator, gui =  'NONE' } , -- Brackets, braces, parentheses, etc.
-            sym("@punct.special")       { highlights.Operator, gui =  'NONE' } , -- Special punctuation that doesn't fit into the previous categories.
+            sym("@punctuation.delimiter") { highlights.Operator, gui = 'NONE' } , -- Punctuation delimiters: Periods, commas, semicolons, etc.
+            sym("@punctuation.bracket") { highlights.Operator, gui =  'NONE' } , -- Brackets, braces, parentheses, etc.
+            sym("@punctuation.special") { highlights.Operator, gui =  'NONE' } , -- Special punctuation that doesn't fit into the previous categories.
             sym("@repeat")              { highlights.Repeat } , -- Keywords related to loops: `for`, `while`, etc.
             sym("@storage.class")       { highlights.StorageClass } , -- Keywords that affect how a variable is stored: `static`, `comptime`, `extern`, etc.
             sym("@string")              { highlights.String } , -- String literals.
