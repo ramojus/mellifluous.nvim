@@ -4,6 +4,7 @@ local M = {}
 M.config = {
     dim_inactive = false,
     neutral = true,
+    variant = "mountain",
     styles = {
         comments = "italic",
         conditionals = "NONE",
@@ -48,10 +49,16 @@ end
 
 M.get_theme = function()
     local lush = require 'lush'
+    local hsl = lush.hsl
     local colors
-    if vim.o.background == "dark" then
+    if M.config.variant == "mountain" then
+        M.config.dark = true
+        local bg = hsl("#0f0f0f")
+        colors = require 'meliora.colors.mountain'(bg)
+    elseif vim.o.background == "dark" then
         M.config.dark = true
         local bg = require 'meliora.backgrounds.dark'
+        -- colors = require 'meliora.colors.dark'(hsl("#0f0f0f"))
         colors = require 'meliora.colors.dark'(bg)
     else
         M.config.dark = false
