@@ -11,5 +11,5 @@ end
 vim.g.colors_name = 'meliora'
 
 -- include our theme file and pass it to lush to apply
-require('lush')(require('meliora').get_theme())
+require('lush')(require('meliora').load())
 

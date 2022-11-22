@@ -47,7 +47,7 @@ function M.setup(config)
     M.config = vim.tbl_deep_extend("force", M.config, config or {})
 end
 
-M.get_theme = function()
+M.load = function()
     local lush = require 'lush'
     local hsl = lush.hsl
     local colors
@@ -58,7 +58,6 @@ M.get_theme = function()
     elseif vim.o.background == "dark" then
         M.config.dark = true
         local bg = require 'meliora.backgrounds.dark'
-        -- colors = require 'meliora.colors.dark'(hsl("#0f0f0f"))
         colors = require 'meliora.colors.dark'(bg)
     else
         M.config.dark = false
@@ -66,11 +65,14 @@ M.get_theme = function()
         colors = require 'meliora.colors.light'(bg)
     end
 
+    require 'meliora.cli'(M.config)
+
     local highlights = require 'meliora.highlights'(colors)
     local specs = require 'meliora.plugins'(highlights, colors)
     table.insert(specs, highlights)
 
     return lush.merge(specs)
 end
+
 
 return M
