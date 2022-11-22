@@ -13,10 +13,10 @@ return function(highlights, colors)
             NvimTreeGitDeleted      { fg = colors.red },
             NvimTreeGitDirty        { fg = colors.orange },
             NvimTreeGitIgnored      { fg = highlights.Ignore.fg },
-            NvimTreeGitMerge        { fg = colors.blue },
-            NvimTreeGitNew          { fg = colors.green },
-            NvimTreeGitRenamed      { fg = colors.basic_orange },
-            NvimTreeGitStaged       { fg = colors.basic_purple },
+            NvimTreeGitMerge        { fg = colors.purple },
+            NvimTreeGitNew          { fg = colors.blue },
+            NvimTreeGitRenamed      { fg = colors.orange },
+            NvimTreeGitStaged       { fg = colors.green },
             NvimTreeNormal          {
                                         bg = (config.transparent_background.enabled
                                             and config.transparent_background.file_tree and 'NONE')

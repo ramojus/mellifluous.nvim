@@ -6,7 +6,7 @@ return function(highlights, colors)
     return lush(function(injected_functions)
         local sym = injected_functions.sym
         return {
-            sym("@attribute")           { fg = colors.orange } , -- Annotations that can be attached to the code to denote some kind of meta information. e.g. C++/Dart attributes.
+            sym("@attribute")           { fg = colors.other_keywords } , -- Annotations that can be attached to the code to denote some kind of meta information. e.g. C++/Dart attributes.
             sym("@boolean")             { highlights.Boolean } , -- Boolean literals: `True` and `False` in Python.
             sym("@character")           { highlights.Character } , -- Character literals: `'a'` in C.
             sym("@character.special")   { highlights.Character } , -- Special characters.
@@ -16,7 +16,7 @@ return function(highlights, colors)
             sym("@constant.builtin")    { highlights.Constant } , -- Built-in constant values: `nil` in Lua.
             sym("@constant.macro")      { highlights.Constant } , -- Constants defined by macros: `NULL` in C.
             sym("@constructor")         { highlights.Function } , -- Constructor calls and definitions: `{}` in Lua, and Java constructors.
-            sym("@debug")               { fg = colors.orange } , -- Debugging statements.
+            sym("@debug")               { fg = colors.other_keywords } , -- Debugging statements.
             sym("@define")              { highlights.PreProc } , -- Preprocessor #define statements.
             sym("@error")               { highlights.Error } , -- Syntax/parser errors. This might highlight large sections of code while the user is typing still incomplete code, use a sensible highlight.
             sym("@exception")           { highlights.Exception, gui = config.styles.keywords } , -- Exception related keywords: `try`, `except`, `finally` in Python.
@@ -27,9 +27,9 @@ return function(highlights, colors)
             sym("@function.macro")      { highlights.Function } , -- Macro defined functions (calls and definitions): each `macro_rules` in Rust.
             sym("@include")             { highlights.Function, gui = 'NONE'} , -- File or module inclusion keywords: `#include` in C, `use` or `extern crate` in Rust.
             sym("@keyword")             { highlights.Keyword } , -- Keywords that don't fit into other categories.
-            sym("@keyword.function")    { fg = colors.red, gui = config.styles.keywords } , -- Keywords used to define a function: `function` in Lua, `def` and `lambda` in Python.
-            sym("@keyword.operator")    { fg = colors.orange, gui = config.styles.operators } , -- Unary and binary operators that are English words: `and`, `or` in Python; `sizeof` in C.
-            sym("@keyword.return")      { fg = colors.red, gui = config.styles.keywords } , -- Keywords like `return` and `yield`.
+            sym("@keyword.function")    { fg = colors.main_keywords, gui = config.styles.keywords } , -- Keywords used to define a function: `function` in Lua, `def` and `lambda` in Python.
+            sym("@keyword.operator")    { fg = colors.other_keywords, gui = config.styles.operators } , -- Unary and binary operators that are English words: `and`, `or` in Python; `sizeof` in C.
+            sym("@keyword.return")      { fg = colors.main_keywords, gui = config.styles.keywords } , -- Keywords like `return` and `yield`.
             sym("@label")               { highlights.Label } , -- GOTO labels: `label:` in C, and `::label::` in Lua.
             sym("@method")              { highlights.Function } , -- Method calls and definitions.
             sym("@namespace")           { highlights.Type, gui = 'NONE'} , -- Identifiers referring to modules and namespaces.
@@ -58,20 +58,20 @@ return function(highlights, colors)
             sym("@text.emphasis")       { gui = "italic" } , -- Text to be represented with emphasis.
             sym("@text.underline")      { gui = "underline" } , -- Text to be represented with an underline.
             sym("@text.strike")         { gui = "strikethrough" } , -- Strikethrough text.
-            sym("@text.title")          { fg = colors.orange } , -- Text that is part of a title.
+            sym("@text.title")          { fg = colors.other_keywords } , -- Text that is part of a title.
             sym("@text.literal")        { highlights.Character } , -- Literal or verbatim text.
             sym("@text.uri")            { fg = colors.fg3 } , -- URIs like hyperlinks or email addresses.
-            sym("@math")                { fg = colors.orange } , -- Math environments like LaTeX's `$ ... $`
-            sym("@text.reference")      { fg = colors.purple } , -- Footnotes, text references, citations, etc.
-            sym("@environment")         { fg = colors.orange } , -- Text environments of markup languages.
+            sym("@math")                { fg = colors.other_keywords } , -- Math environments like LaTeX's `$ ... $`
+            sym("@text.reference")      { fg = colors.constants } , -- Footnotes, text references, citations, etc.
+            sym("@environment")         { fg = colors.other_keywords } , -- Text environments of markup languages.
             sym("@environment.name")    { sym("@environment") } , -- Text/string indicating the type of text environment. Like the name of a `\begin` block in LaTeX.
-            sym("@note")                { fg = colors.green } , -- Text representation of an informational note.
+            sym("@note")                { fg = colors.special_comments } , -- Text representation of an informational note.
             sym("@warning")             { fg = colors.orange } , -- Text representation of a warning note.
             sym("@danger")              { fg = colors.red } , -- Text representation of a danger note.
             sym("@type")                { highlights.Type } , -- Type (and class) definitions and annotations.
             sym("@type.builtin")        { highlights.Type } , -- Built-in types: `i32` in Rust.
             sym("@variable")            { highlights.Identifier } , -- Variable names that don't fit into other categories.
-            sym("@variable.builtin")    { fg = colors.orange } , -- Variable names defined by the language: `this` or `self` in Javascript.
+            sym("@variable.builtin")    { fg = colors.other_keywords } , -- Variable names defined by the language: `this` or `self` in Javascript.
         }
     end)
 end

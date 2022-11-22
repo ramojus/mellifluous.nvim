@@ -18,7 +18,7 @@ return function(colors)
             }, -- normal text in non-current windows
             ColorColumn  { bg = colors.dark_bg }, -- Columns set with 'colorcolumn'
             Conceal      { fg = colors.fg5 }, -- Placeholder characters substituted for concealed text (see 'conceallevel')
-            Cursor       { bg = colors.orange, fg = colors.bg }, -- Character under the cursor
+            Cursor       { bg = colors.other_keywords, fg = colors.bg }, -- Character under the cursor
             lCursor      { Cursor }, -- Character under the cursor when |language-mapping| is used (see 'guicursor')
             CursorIM     { Cursor }, -- Like Cursor, but used when in IME mode |CursorIM|
             CursorColumn { bg = colors.bg2 }, -- Screen-column at the cursor, when 'cursorcolumn' is set.
@@ -27,7 +27,7 @@ return function(colors)
                     and config.transparent_background.cursor_line and 'NONE')
                     or colors.bg2
             }, -- Screen-line at the cursor, when 'cursorline' is set. Low-priority if foreground (ctermfg OR guifg) is not set.
-            Directory    { fg = colors.blue }, -- Directory names (and other special names in listings)
+            Directory    { fg = colors.functions }, -- Directory names (and other special names in listings)
             DiffAdd      { bg = colors.green.mix(colors.bg, 85).saturate(12)}, -- Diff mode: Added line |diff.txt|
             DiffChange   { bg = colors.orange.mix(colors.bg, 90).saturate(12) }, -- Diff mode: Changed line |diff.txt|
             DiffDelete   { bg = colors.red.mix(colors.bg, 85).saturate(12)}, -- Diff mode: Deleted line |diff.txt|
@@ -35,7 +35,7 @@ return function(colors)
             EndOfBuffer  { fg = colors.bg }, -- Filler lines (~) after the end of the buffer. By default, this is highlighted like |hl-NonText|.
             TermCursor   { Cursor }, -- Cursor in a focused terminal
             TermCursorNC { bg = colors.fg5 }, -- Cursor in an unfocused terminal
-            ErrorMsg     { fg = colors.basic_red }, -- Error messages on the command line
+            ErrorMsg     { fg = colors.red }, -- Error messages on the command line
             VertSplit    {
                 fg = colors.fg5,
                 bg = (config.dim_inactive and NormalNC.bg)
@@ -50,14 +50,14 @@ return function(colors)
                     or colors.dark_bg
             }, -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
             SignColumn   { LineNr }, -- Column where |signs| are displayed
-            IncSearch    { bg = colors.orange, fg = colors.bg }, -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
+            IncSearch    { bg = colors.other_keywords, fg = colors.bg }, -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
             Substitute   { IncSearch }, -- |:substitute| replacement text highlighting
             CursorLineNr { bg = CursorLine.bg, fg = LineNr.fg }, -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
-            MatchParen   { bg = colors.bg4, fg = colors.red }, -- Character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
+            MatchParen   { bg = colors.bg4, fg = colors.main_keywords }, -- Character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
             ModeMsg      { fg = colors.fg3 }, -- 'showmode' message (e.g., "-- INSERT -- ")
             MsgArea      { Normal }, -- Area for messages and cmdline
             MsgSeparator { VertSplit }, -- Separator for scrolled messages, `msgsep` flag of 'display'
-            MoreMsg      { fg = colors.orange }, -- |more-prompt|
+            MoreMsg      { fg = colors.other_keywords }, -- |more-prompt|
             NonText      { Conceal }, -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
             NormalFloat  {
                 bg = (config.transparent_background.enabled
@@ -68,14 +68,14 @@ return function(colors)
             PmenuSel     { bg = config.dark and colors.fg5 or colors.dark_bg }, -- Popup menu: Selected item.
             PmenuSbar    { bg = colors.bg3 }, -- Popup menu: Scrollbar.
             PmenuThumb   { bg = colors.fg5 }, -- Popup menu: Thumb of the scrollbar.
-            Question     { fg = colors.orange }, -- |hit-enter| prompt and yes/no questions
+            Question     { fg = colors.other_keywords }, -- |hit-enter| prompt and yes/no questions
             QuickFixLine { Normal }, -- Current |quickfix| item in the quickfix window. Combined with |hl-CursorLine| when the cursor is there.
             Search       { bg = colors.bg4, fg = colors.fg }, -- Last search pattern highlighting (see 'hlsearch'). Also used for similar items that need to stand out.
-            SpecialKey   { fg = colors.orange }, -- Unprintable characters: text displayed differently from what it really is. But not 'listchars' whitespace. |hl-Whitespace|
-            SpellBad     { fg = colors.basic_red }, -- Word that is not recognized by the spellchecker. |spell| Combined with the highlighting used otherwise.
-            SpellCap     { fg = colors.basic_orange }, -- Word that should start with a capital. |spell| Combined with the highlighting used otherwise.
-            SpellLocal   { fg = colors.basic_orange }, -- Word that is recognized by the spellchecker as one that is used in another region. |spell| Combined with the highlighting used otherwise.
-            SpellRare    { fg = colors.basic_orange }, -- Word that is recognized by the spellchecker as one that is hardly ever used. |spell| Combined with the highlighting used otherwise.
+            SpecialKey   { fg = colors.other_keywords }, -- Unprintable characters: text displayed differently from what it really is. But not 'listchars' whitespace. |hl-Whitespace|
+            SpellBad     { fg = colors.red }, -- Word that is not recognized by the spellchecker. |spell| Combined with the highlighting used otherwise.
+            SpellCap     { fg = colors.orange }, -- Word that should start with a capital. |spell| Combined with the highlighting used otherwise.
+            SpellLocal   { fg = colors.orange }, -- Word that is recognized by the spellchecker as one that is used in another region. |spell| Combined with the highlighting used otherwise.
+            SpellRare    { fg = colors.orange }, -- Word that is recognized by the spellchecker as one that is hardly ever used. |spell| Combined with the highlighting used otherwise.
             StatusLine   {
                 bg = (config.transparent_background.enabled
                     and config.transparent_background.status_line and 'NONE')
@@ -91,10 +91,10 @@ return function(colors)
             TabLine      { bg = StatusLine.bg, fg = colors.fg3 }, -- Tab pages line, not active tab page label
             TabLineFill  { TabLine }, -- Tab pages line, where there are no labels
             TabLineSel   { bg = colors.bg2, fg = colors.fg2 }, -- Tab pages line, active tab page label
-            Title        { fg = colors.orange }, -- Titles for output from ":set all", ":autocmd" etc.
+            Title        { fg = colors.other_keywords }, -- Titles for output from ":set all", ":autocmd" etc.
             Visual       { bg = config.dark and colors.bg4 or colors.dark_bg2 }, -- Visual mode selection
             VisualNOS    { bg = colors.bg3 }, -- Visual mode selection when vim is "Not Owning the Selection".
-            WarningMsg   { fg = colors.basic_red }, -- Warning messages
+            WarningMsg   { fg = colors.red }, -- Warning messages
             Whitespace   { fg = colors.fg5 }, -- "nbsp", "space", "tab" and "trail" in 'listchars'
             WinSeparator { VertSplit }, -- Separator between window splits. Inherts from |hl-VertSplit| by default, which it will replace eventually.
             WildMenu     { PmenuSel }, -- Current match in 'wildmenu' completion
@@ -107,38 +107,38 @@ return function(colors)
             --
             -- Uncomment and edit if you want more specific syntax highlighting.
 
-            Comment        { fg = colors.comment, gui = config.styles.comments }, -- Any comment
+            Comment        { fg = colors.comments, gui = config.styles.comments }, -- Any comment
 
-            Constant       { fg = colors.purple }, -- (*) Any constant
-            String         { fg = colors.yellow, gui = config.styles.strings }, --   A string constant: "this is a string"
+            Constant       { fg = colors.constants }, -- (*) Any constant
+            String         { fg = colors.strings, gui = config.styles.strings }, --   A string constant: "this is a string"
             Character      { fg = String.fg }, --   A character constant: 'c', '\n'
             Number         { Constant, gui = config.styles.numbers }, --   A number constant: 234, 0xff
             Boolean        { Constant, gui = config.styles.booleans }, --   A boolean constant: TRUE, false
             Float          { Constant, gui = config.styles.numbers }, --   A floating point constant: 2.3e10
 
             Identifier     { fg = colors.fg, gui = config.styles.variables }, -- (*) Any variable name
-            Function       { fg = colors.blue, gui = config.styles.functions }, --   Function name (also: methods for classes)
+            Function       { fg = colors.functions, gui = config.styles.functions }, --   Function name (also: methods for classes)
 
-            Statement      { fg = colors.orange }, -- (*) Any statement
-            Conditional    { fg = colors.red, gui = config.styles.conditionals }, --   if, then, else, endif, switch, etc.
-            Repeat         { fg = colors.red, gui = config.styles.loops }, --   for, do, while, etc.
-            Label          { fg = colors.red, gui = config.styles.keywords }, --   case, default, etc.
-            Operator       { fg = config.dark and colors.khaki or colors.fg3, gui = config.styles.operators }, --   "sizeof", "+", "*", etc.
-            Keyword        { fg = colors.orange }, --   any other keyword
-            Exception      { fg = colors.orange }, --   try, catch, throw
+            Statement      { fg = colors.other_keywords }, -- (*) Any statement
+            Conditional    { fg = colors.main_keywords, gui = config.styles.conditionals }, --   if, then, else, endif, switch, etc.
+            Repeat         { fg = colors.main_keywords, gui = config.styles.loops }, --   for, do, while, etc.
+            Label          { fg = colors.main_keywords, gui = config.styles.keywords }, --   case, default, etc.
+            Operator       { fg = config.dark and colors.operators or colors.fg3, gui = config.styles.operators }, --   "sizeof", "+", "*", etc.
+            Keyword        { fg = colors.other_keywords }, --   any other keyword
+            Exception      { fg = colors.other_keywords }, --   try, catch, throw
 
-            PreProc        { fg = colors.blue }, -- (*) Generic Preprocessor
+            PreProc        { fg = colors.functions }, -- (*) Generic Preprocessor
             Include        { PreProc }, --   Preprocessor #include
             Define         { PreProc }, --   Preprocessor #define
             Macro          { PreProc }, --   Same as Define
             PreCondit      { PreProc }, --   Preprocessor #if, #else, #endif, etc.
 
-            Type           { fg = colors.khaki, gui = config.styles.types }, -- (*) int, long, char, etc.
+            Type           { fg = colors.types, gui = config.styles.types }, -- (*) int, long, char, etc.
             StorageClass   { Type }, --   static, register, volatile, etc.
             Structure      { Type }, --   struct, union, enum, etc.
             Typedef        { Type }, --   A typedef
 
-            Special        { fg = colors.orange }, -- (*) Any special symbol
+            Special        { fg = colors.other_keywords }, -- (*) Any special symbol
             SpecialChar    { Special }, --   Special character in a constant
             Tag            { Special }, --   You can use CTRL-] on this
             Delimiter      { Operator }, --   Character that needs attention
@@ -149,8 +149,8 @@ return function(colors)
             Bold { bold = config.bold },
             Italic { italic = config.italic },
             Ignore         { fg = colors.fg5 }, -- Left blank, hidden |hl-Ignore| (NOTE: May be invisible here in template)
-            Error          { fg = colors.basic_red }, -- Any erroneous construct
-            Todo           { fg = colors.red }, -- Anything that needs extra attention; mostly the keywords TODO FIXME and XXX
+            Error          { fg = colors.red }, -- Any erroneous construct
+            Todo           { fg = colors.main_keywords }, -- Anything that needs extra attention; mostly the keywords TODO FIXME and XXX
 
             -- These groups are for the native LSP client and diagnostic system. Some
             -- other LSP clients may use these groups, or use their own. Consult your
@@ -167,10 +167,10 @@ return function(colors)
 
             -- See :h diagnostic-highlights, some groups may not be listed, submit a PR fix to lush-template!
             --
-            DiagnosticError            { fg = colors.basic_red } , -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
-            DiagnosticWarn             { fg = colors.basic_orange } , -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
-            DiagnosticInfo             { fg = colors.basic_blue } , -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
-            DiagnosticHint             { fg = colors.basic_purple } , -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
+            DiagnosticError            { fg = colors.red } , -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
+            DiagnosticWarn             { fg = colors.orange } , -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
+            DiagnosticInfo             { fg = colors.blue } , -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
+            DiagnosticHint             { fg = colors.purple } , -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
             DiagnosticVirtualTextError { fg = DiagnosticError.fg, bg = (config.transparent_background.enabled and 'NONE') or colors.bg3 } , -- Used for "Error" diagnostic virtual text.
             DiagnosticVirtualTextWarn  { fg = DiagnosticWarn.fg, bg = (config.transparent_background.enabled and 'NONE') or colors.bg3 } ,  -- Used for "Warn" diagnostic virtual text.
             DiagnosticVirtualTextInfo  { fg = DiagnosticInfo.fg, bg = (config.transparent_background.enabled and 'NONE') or colors.bg3 } ,  -- Used for "Info" diagnostic virtual text.
