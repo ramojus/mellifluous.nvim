@@ -89,7 +89,7 @@ require 'meliora'.setup({
 Set style value to `'style1 style2'`, for bold and italic it would be `'bold italic'`.
 
 ### Setting light theme
-Set `vim.opt.background` to `"light"`. This will only work on color sets that have light theme.
+Set `vim.opt.background` to `'light'`. This will only work on color sets that have light theme.
 
 ### Available color sets
 - `mellifluous`
@@ -99,12 +99,14 @@ Set `vim.opt.background` to `"light"`. This will only work on color sets that ha
 ## CLI options
 Type `:Meliora <TAB>` and see the available options.
 
-Lets you change colors and transparency on the fly!
+Options include:
+- Toggling transparency.
+- Changing color set.
 
-## Ports
+## Mellifluous ports
 - [Helix (with slightly outdated color palette)](https://github.com/helix-editor/helix/wiki/Themes#meliora)
 
-## Inspiration
+## Mellifluous inspiration
 Mellifluous color set is mostly inspired by these great themes:
 - [Mountain and Mountaineer](https://github.com/mountain-theme/mountain)
 - [Alduin](https://github.com/alessandroyorba/alduin)
