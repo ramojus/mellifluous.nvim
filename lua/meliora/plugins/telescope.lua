@@ -2,15 +2,15 @@ return function(highlights, colors)
     ---@diagnostic disable: undefined-global
     local lush = require 'lush'
     local config = require 'meliora'.config
+    local is_background_transparent = config.transparent_background.enabled
+        and config.transparent_background.telescope
 
     return lush(function()
-        if config.plugins.telescope.nvchad_like == true then
+        if config.plugins.telescope.nvchad_like == true and not is_background_transparent then
             return {
                 TelescopeNormal {
                                     fg = colors.fg3,
-                                    bg = (config.transparent_background.enabled
-                                        and config.transparent_background.telescope and 'NONE')
-                                        or colors.bg2
+                                    bg = colors.bg2
                                     },
                 TelescopeBorder { fg = TelescopeNormal.bg },
                 TelescopeMatching { fg = colors.fg },
