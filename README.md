@@ -1,10 +1,7 @@
-# Meliora colorscheme for [Neovim](https://github.com/neovim/neovim)
-Inspired by early mornings after rainy nights.
+# Meliora colors for [Neovim](https://github.com/neovim/neovim)
+Different colorschemes (called color sets) that use the same code thus style and settings for highlighting stuff in opinionated way.
 
-![preview](assets/code.png)
-![preview](assets/telescope.png)
-![preview](assets/startify.png)
-![preview](assets/light_code.png)
+All of the color sets are either neutral or warm.
 
 Made with [lush](https://github.com/rktjmp/lush.nvim)
 
@@ -22,17 +19,33 @@ Install with any plugin manager, [lush](https://github.com/rktjmp/lush.nvim) is 
 Example with [packer.nvim](https://github.com/wbthomason/packer.nvim):
 ```lua
 use {
-    'meliora-theme/neovim',
+    'ramojus/meliora.nvim',
     requires = {'rktjmp/lush.nvim'}
 }
 ```
 
+## Color sets
+### Mellifluous
+Original meliora color set. For me it has that early (slightly sunny) morning after rainy night when you have slept well vibe.
+
+![preview](assets/code.png)
+![preview](assets/telescope.png)
+![preview](assets/startify.png)
+![preview](assets/light_code.png)
+
+### Alduin
+WIP
+
+### Mountain
+WIP
+
 ## Configuration
-Here is an example with the default config, change it as you like. To minimise clutter, you can pass only the relevant (changed) parts to setup function instead of the whole config.
+Here is an example with the default config, change it as you like. If you like the defaults, there is no need to call `setup`.
 
 ```lua
 require 'meliora'.setup({
     dim_inactive = false,
+    color_set = 'mellifluous',
     styles = {
         comments = 'italic',
         conditionals = 'NONE',
@@ -71,15 +84,27 @@ require 'meliora'.setup({
     },
 })
 ```
-If you want to mix some styles, for example bold and italic, set style value to `'bold italic'`.
 
-For light theme set `vim.opt.background` to `"light"`.
+### Mixing styles
+Set style value to `'style1 style2'`, for bold and italic it would be `'bold italic'`.
+
+### Setting light theme
+Set `vim.opt.background` to `"light"`. This will only work on color sets that have light theme.
+
+### Available color sets
+- `mellifluous`
+- [`alduin`](https://github.com/alessandroyorba/alduin). Dark only
+- [`mountain`](https://github.com/mountain-theme/mountain). Dark only 
+
+## CLI
+Type '`:Meliora <TAB>`' and see available options.
+It lets you change colors and transparency on the fly!
 
 ## Ports
 - [Helix (with slightly outdated color palette)](https://github.com/helix-editor/helix/wiki/Themes#meliora)
 
 ## Inspiration
-Mostly inspired by these great themes:
+Mellifluous color set is mostly inspired by these great themes:
 - [Mountain and Mountaineer](https://github.com/mountain-theme/mountain)
 - [Alduin](https://github.com/alessandroyorba/alduin)
 - [Melange](https://github.com/savq/melange)
