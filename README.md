@@ -3,7 +3,22 @@ Different colorschemes (called color sets) that use the same code thus style and
 
 All of the color sets are either neutral or warm.
 
-Made with [lush](https://github.com/rktjmp/lush.nvim)
+Made with [lush](https://github.com/rktjmp/lush.nvim).
+
+## Color sets
+### Mellifluous
+Original meliora color set. For me it has that early (slightly sunny) morning after rainy night when you have slept well vibe.
+
+![preview](assets/code.png)
+![preview](assets/telescope.png)
+![preview](assets/startify.png)
+![preview](assets/light_code.png)
+
+### Alduin
+Screenshots are WIP
+
+### Mountain
+Screenshots are WIP
 
 ## Styled plugins
 - [Treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
@@ -23,21 +38,6 @@ use {
     requires = {'rktjmp/lush.nvim'}
 }
 ```
-
-## Color sets
-### Mellifluous
-Original meliora color set. For me it has that early (slightly sunny) morning after rainy night when you have slept well vibe.
-
-![preview](assets/code.png)
-![preview](assets/telescope.png)
-![preview](assets/startify.png)
-![preview](assets/light_code.png)
-
-### Alduin
-WIP
-
-### Mountain
-WIP
 
 ## Configuration
 Here is an example with the default config, change it as you like. If you like the defaults, there is no need to call `setup`.
@@ -96,9 +96,10 @@ Set `vim.opt.background` to `"light"`. This will only work on color sets that ha
 - [`alduin`](https://github.com/alessandroyorba/alduin). Dark only
 - [`mountain`](https://github.com/mountain-theme/mountain). Dark only 
 
-## CLI
-Type '`:Meliora <TAB>`' and see available options.
-It lets you change colors and transparency on the fly!
+## CLI options
+Type '`:Meliora <TAB>`' and see the available options.
+
+Lets you change colors and transparency on the fly!
 
 ## Ports
 - [Helix (with slightly outdated color palette)](https://github.com/helix-editor/helix/wiki/Themes#meliora)
