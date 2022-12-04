@@ -6,7 +6,7 @@ local set = function(current_config)
         alduin = 4
     }
 
-    vim.api.nvim_create_user_command("Meliora", function(input)
+    vim.api.nvim_create_user_command('Meliora', function(input)
         if options[input.args] == options.toggle_transparency then
             require 'meliora'.setup({
                 transparent_background = {
@@ -22,7 +22,7 @@ local set = function(current_config)
             return
         end
 
-        vim.cmd("colorscheme meliora")
+        vim.cmd('colorscheme meliora')
     end, {
         nargs = 1,
         complete = function(line)

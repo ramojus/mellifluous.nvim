@@ -4,14 +4,14 @@ local hsl = lush.hsl
 local get = function(bg)
     local fg = bg.li(80)
 
-    local red = hsl("#AC8A8C")
-    local dark_red = hsl("#AC8A8C")
-    local orange = hsl("#C6A679")
-    local yellow = hsl("#ACA98A")
-    local blue = hsl("#8F8AAC")
-    local cyan = hsl("#8AABAC")
-    local green = hsl("#8AAC8B")
-    local magenta = hsl("#ac8aac")
+    local red = hsl('#AC8A8C')
+    local dark_red = hsl('#AC8A8C')
+    local orange = hsl('#C6A679')
+    local yellow = hsl('#ACA98A')
+    local blue = hsl('#8F8AAC')
+    local cyan = hsl('#8AABAC')
+    local green = hsl('#8AAC8B')
+    local magenta = hsl('#ac8aac')
 
     return {
         main_keywords = magenta,

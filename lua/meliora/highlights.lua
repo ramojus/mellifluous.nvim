@@ -48,17 +48,17 @@ return function(colors)
                 fg = colors.fg4,
                 bg = (config.transparent_background.enabled and 'NONE')
                     or colors.dark_bg
-            }, -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
+            }, -- Line number for ':number' and ':#' commands, and when 'number' or 'relativenumber' option is set.
             SignColumn   { LineNr }, -- Column where |signs| are displayed
-            IncSearch    { bg = colors.other_keywords, fg = colors.bg }, -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
+            IncSearch    { bg = colors.other_keywords, fg = colors.bg }, -- 'incsearch' highlighting; also used for the text replaced with ':s///c'
             Substitute   { IncSearch }, -- |:substitute| replacement text highlighting
             CursorLineNr { bg = CursorLine.bg, fg = LineNr.fg }, -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
             MatchParen   { bg = colors.bg4, fg = colors.main_keywords }, -- Character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
-            ModeMsg      { fg = colors.fg3 }, -- 'showmode' message (e.g., "-- INSERT -- ")
+            ModeMsg      { fg = colors.fg3 }, -- 'showmode' message (e.g., '-- INSERT -- ')
             MsgArea      { Normal }, -- Area for messages and cmdline
             MsgSeparator { VertSplit }, -- Separator for scrolled messages, `msgsep` flag of 'display'
             MoreMsg      { fg = colors.other_keywords }, -- |more-prompt|
-            NonText      { Conceal }, -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
+            NonText      { Conceal }, -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., '>' displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
             NormalFloat  {
                 bg = (config.transparent_background.enabled
                     and config.transparent_background.floating_windows and 'NONE')
@@ -87,15 +87,15 @@ return function(colors)
                     and config.transparent_background.status_line and 'NONE')
                     or colors.bg3,
                 fg = colors.fg3
-            }, -- Status lines of not-current windows. Note: If this is equal to "StatusLine" Vim will use "^^^" in the status line of the current window.
+            }, -- Status lines of not-current windows. Note: If this is equal to 'StatusLine' Vim will use '^^^' in the status line of the current window.
             TabLine      { bg = StatusLine.bg, fg = colors.fg3 }, -- Tab pages line, not active tab page label
             TabLineFill  { TabLine }, -- Tab pages line, where there are no labels
             TabLineSel   { bg = colors.bg2, fg = colors.fg2 }, -- Tab pages line, active tab page label
-            Title        { fg = colors.other_keywords }, -- Titles for output from ":set all", ":autocmd" etc.
+            Title        { fg = colors.other_keywords }, -- Titles for output from ':set all', ':autocmd' etc.
             Visual       { bg = config.dark and colors.bg4 or colors.dark_bg2 }, -- Visual mode selection
-            VisualNOS    { bg = colors.bg3 }, -- Visual mode selection when vim is "Not Owning the Selection".
+            VisualNOS    { bg = colors.bg3 }, -- Visual mode selection when vim is 'Not Owning the Selection'.
             WarningMsg   { fg = colors.red }, -- Warning messages
-            Whitespace   { fg = colors.fg5 }, -- "nbsp", "space", "tab" and "trail" in 'listchars'
+            Whitespace   { fg = colors.fg5 }, -- 'nbsp', 'space', 'tab' and 'trail' in 'listchars'
             WinSeparator { VertSplit }, -- Separator between window splits. Inherts from |hl-VertSplit| by default, which it will replace eventually.
             WildMenu     { PmenuSel }, -- Current match in 'wildmenu' completion
 
@@ -110,7 +110,7 @@ return function(colors)
             Comment        { fg = colors.comments, gui = config.styles.comments }, -- Any comment
 
             Constant       { fg = colors.constants }, -- (*) Any constant
-            String         { fg = colors.strings, gui = config.styles.strings }, --   A string constant: "this is a string"
+            String         { fg = colors.strings, gui = config.styles.strings }, --   A string constant: 'this is a string'
             Character      { fg = String.fg }, --   A character constant: 'c', '\n'
             Number         { Constant, gui = config.styles.numbers }, --   A number constant: 234, 0xff
             Boolean        { Constant, gui = config.styles.booleans }, --   A boolean constant: TRUE, false
@@ -123,7 +123,7 @@ return function(colors)
             Conditional    { fg = colors.main_keywords, gui = config.styles.conditionals }, --   if, then, else, endif, switch, etc.
             Repeat         { fg = colors.main_keywords, gui = config.styles.loops }, --   for, do, while, etc.
             Label          { fg = colors.main_keywords, gui = config.styles.keywords }, --   case, default, etc.
-            Operator       { fg = config.dark and colors.operators or colors.fg3, gui = config.styles.operators }, --   "sizeof", "+", "*", etc.
+            Operator       { fg = config.dark and colors.operators or colors.fg3, gui = config.styles.operators }, --   'sizeof', '+', '*', etc.
             Keyword        { fg = colors.other_keywords }, --   any other keyword
             Exception      { fg = colors.other_keywords }, --   try, catch, throw
 
@@ -145,7 +145,7 @@ return function(colors)
             SpecialComment { Special }, --   Special things inside a comment (e.g. '\n')
             Debug          { Special }, --   Debugging statements
 
-            Underlined     { gui = "underline", fg = colors.fg3 }, -- Text that stands out, HTML links
+            Underlined     { gui = 'underline', fg = colors.fg3 }, -- Text that stands out, HTML links
             Bold { bold = config.bold },
             Italic { italic = config.italic },
             Ignore         { fg = colors.fg5 }, -- Left blank, hidden |hl-Ignore| (NOTE: May be invisible here in template)
@@ -158,9 +158,9 @@ return function(colors)
 
             -- See :h lsp-highlight, some groups may not be listed, submit a PR fix to lush-template!
             --
-            LspReferenceText            { bg = colors.bg3 } , -- Used for highlighting "text" references
-            LspReferenceRead            { LspReferenceText } , -- Used for highlighting "read" references
-            LspReferenceWrite           { LspReferenceText } , -- Used for highlighting "write" references
+            LspReferenceText            { bg = colors.bg3 } , -- Used for highlighting 'text' references
+            LspReferenceRead            { LspReferenceText } , -- Used for highlighting 'read' references
+            LspReferenceWrite           { LspReferenceText } , -- Used for highlighting 'write' references
             LspCodeLens                 { bg = colors.bg2 } , -- Used to color the virtual text of the codelens. See |nvim_buf_set_extmark()|.
             LspCodeLensSeparator        { fg = colors.fg5 } , -- Used to color the seperator between two or more code lens.
             LspSignatureActiveParameter { bg = colors.bg4 } , -- Used to highlight the active parameter in the signature help. See |vim.lsp.handlers.signature_help()|.
@@ -171,22 +171,22 @@ return function(colors)
             DiagnosticWarn             { fg = colors.orange } , -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
             DiagnosticInfo             { fg = colors.blue } , -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
             DiagnosticHint             { fg = colors.purple } , -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
-            DiagnosticVirtualTextError { fg = DiagnosticError.fg, bg = (config.transparent_background.enabled and 'NONE') or colors.bg3 } , -- Used for "Error" diagnostic virtual text.
-            DiagnosticVirtualTextWarn  { fg = DiagnosticWarn.fg, bg = (config.transparent_background.enabled and 'NONE') or colors.bg3 } ,  -- Used for "Warn" diagnostic virtual text.
-            DiagnosticVirtualTextInfo  { fg = DiagnosticInfo.fg, bg = (config.transparent_background.enabled and 'NONE') or colors.bg3 } ,  -- Used for "Info" diagnostic virtual text.
-            DiagnosticVirtualTextHint  { fg = DiagnosticHint.fg, bg = (config.transparent_background.enabled and 'NONE') or colors.bg3 } ,  -- Used for "Hint" diagnostic virtual text.
-            DiagnosticUnderlineError   { gui = "underline" } , -- Used to underline "Error" diagnostics.
-            DiagnosticUnderlineWarn    { gui = "underline" } , -- Used to underline "Warn" diagnostics.
-            DiagnosticUnderlineInfo    { gui = "underline" } , -- Used to underline "Info" diagnostics.
-            DiagnosticUnderlineHint    { gui = "underline" } , -- Used to underline "Hint" diagnostics.
-            -- DiagnosticFloatingError    { } , -- Used to color "Error" diagnostic messages in diagnostics float. See |vim.diagnostic.open_float()|
-            -- DiagnosticFloatingWarn     { } , -- Used to color "Warn" diagnostic messages in diagnostics float.
-            -- DiagnosticFloatingInfo     { } , -- Used to color "Info" diagnostic messages in diagnostics float.
-            -- DiagnosticFloatingHint     { } , -- Used to color "Hint" diagnostic messages in diagnostics float.
-            DiagnosticSignError        { fg = DiagnosticError.fg, bg = LineNr.bg } , -- Used for "Error" signs in sign column.
-            DiagnosticSignWarn         { fg = DiagnosticWarn.fg, bg = LineNr.bg } , -- Used for "Warn" signs in sign column.
-            DiagnosticSignInfo         { fg = DiagnosticInfo.fg, bg = LineNr.bg } , -- Used for "Info" signs in sign column.
-            DiagnosticSignHint         { fg = DiagnosticHint.fg, bg = LineNr.bg } , -- Used for "Hint" signs in sign column.
+            DiagnosticVirtualTextError { fg = DiagnosticError.fg, bg = (config.transparent_background.enabled and 'NONE') or colors.bg3 } , -- Used for 'Error' diagnostic virtual text.
+            DiagnosticVirtualTextWarn  { fg = DiagnosticWarn.fg, bg = (config.transparent_background.enabled and 'NONE') or colors.bg3 } ,  -- Used for 'Warn' diagnostic virtual text.
+            DiagnosticVirtualTextInfo  { fg = DiagnosticInfo.fg, bg = (config.transparent_background.enabled and 'NONE') or colors.bg3 } ,  -- Used for 'Info' diagnostic virtual text.
+            DiagnosticVirtualTextHint  { fg = DiagnosticHint.fg, bg = (config.transparent_background.enabled and 'NONE') or colors.bg3 } ,  -- Used for 'Hint' diagnostic virtual text.
+            DiagnosticUnderlineError   { gui = 'underline' } , -- Used to underline 'Error' diagnostics.
+            DiagnosticUnderlineWarn    { gui = 'underline' } , -- Used to underline 'Warn' diagnostics.
+            DiagnosticUnderlineInfo    { gui = 'underline' } , -- Used to underline 'Info' diagnostics.
+            DiagnosticUnderlineHint    { gui = 'underline' } , -- Used to underline 'Hint' diagnostics.
+            -- DiagnosticFloatingError    { } , -- Used to color 'Error' diagnostic messages in diagnostics float. See |vim.diagnostic.open_float()|
+            -- DiagnosticFloatingWarn     { } , -- Used to color 'Warn' diagnostic messages in diagnostics float.
+            -- DiagnosticFloatingInfo     { } , -- Used to color 'Info' diagnostic messages in diagnostics float.
+            -- DiagnosticFloatingHint     { } , -- Used to color 'Hint' diagnostic messages in diagnostics float.
+            DiagnosticSignError        { fg = DiagnosticError.fg, bg = LineNr.bg } , -- Used for 'Error' signs in sign column.
+            DiagnosticSignWarn         { fg = DiagnosticWarn.fg, bg = LineNr.bg } , -- Used for 'Warn' signs in sign column.
+            DiagnosticSignInfo         { fg = DiagnosticInfo.fg, bg = LineNr.bg } , -- Used for 'Info' signs in sign column.
+            DiagnosticSignHint         { fg = DiagnosticHint.fg, bg = LineNr.bg } , -- Used for 'Hint' signs in sign column.
         }
     end)
 end
