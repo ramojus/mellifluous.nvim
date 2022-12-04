@@ -7,7 +7,7 @@ Made with [lush](https://github.com/rktjmp/lush.nvim).
 
 ## Color sets
 ### Mellifluous
-Original meliora color set. For me it has that early (slightly sunny) morning after rainy night when you have slept well vibe.
+Default and original meliora color set. For me it has that early (slightly sunny) morning after rainy night when you have slept well vibe.
 
 ![preview](assets/code.png)
 ![preview](assets/telescope.png)
