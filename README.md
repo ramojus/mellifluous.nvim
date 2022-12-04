@@ -97,7 +97,7 @@ Set `vim.opt.background` to `"light"`. This will only work on color sets that ha
 - [`mountain`](https://github.com/mountain-theme/mountain). Dark only 
 
 ## CLI options
-Type '`:Meliora <TAB>`' and see the available options.
+Type `:Meliora <TAB>` and see the available options.
 
 Lets you change colors and transparency on the fly!
 
