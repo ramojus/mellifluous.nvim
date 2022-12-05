@@ -103,9 +103,11 @@ Options include:
 - Toggling transparency.
 - Changing color set.
 
-## Roadmap
+## TODO
 - [ ] Add color set specific options.
-- [ ] Add more themes (oxocarbon, fleet).
+- [ ] Add more color sets (possibly oxocarbon and fleet, but I intend to keep the number of color sets minimal).
+- [ ] Add contributing guidelines (for now, if you want to contribute a theme, it's better to first make an issue and bugfixes are always welcome).
+- [ ] Don't break people's configs
 
 ## Mellifluous ports
 - [Helix (with slightly outdated color palette)](https://github.com/helix-editor/helix/wiki/Themes#meliora)
