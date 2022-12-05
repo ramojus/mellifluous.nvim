@@ -48,7 +48,7 @@ function M.get_colors_dark(bg)
         bg5 = bg.li(10),
 
         red = red, -- errors, deletes, bad spellings
-        orange = orange, -- warnings, changes, other (strange) spellings
+        orange = soft_orange, -- warnings, changes, other (strange) spellings
         green = green, -- staged, additions
         blue = grey, -- information, new files
         purple = cyan, -- hints, merge
