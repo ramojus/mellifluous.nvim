@@ -1,14 +1,21 @@
 local lush = require('lush')
 local hsl = lush.hsl
+local config = require('meliora').config
 
 local M = {}
 
 function M.get_bg_dark()
-    return hsl(0, 0, 10)
+    if config.neutral then
+        return hsl(0, 0, 10)
+    end
+    return hsl(24, 10, 10)
 end
 
 function M.get_bg_light()
-    return hsl(0, 0, 90)
+    if config.neutral then
+        return hsl(0, 0, 90)
+    end
+    return hsl(24, 10, 90)
 end
 
 function M.get_colors_dark(bg)
