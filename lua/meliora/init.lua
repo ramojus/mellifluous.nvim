@@ -61,6 +61,7 @@ M.load = function()
     M.config.dark = is_bg_dark
 
     require 'meliora.cli'(M.config)
+    require 'meliora.terminal'(colors)
 
     local highlights = require 'meliora.highlights'(colors)
     local specs = require 'meliora.plugins'(highlights, colors)
