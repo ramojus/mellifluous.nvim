@@ -1,7 +1,13 @@
 local lush = require('lush')
 local hsl = lush.hsl
 
-local get = function(bg)
+local M = {}
+
+function M.get_bg_dark()
+    return hsl('#0f0f0f')
+end
+
+function M.get_colors_dark(bg)
     local fg = bg.li(80)
 
     local red = hsl('#AC8A8C')
@@ -45,5 +51,5 @@ local get = function(bg)
     }
 end
 
-return get
+return M
 

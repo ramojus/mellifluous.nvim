@@ -103,6 +103,10 @@ Options include:
 - Toggling transparency.
 - Changing color set.
 
+## Roadmap
+- [ ] Add color set specific options.
+- [ ] Add more themes (oxocarbon, fleet).
+
 ## Mellifluous ports
 - [Helix (with slightly outdated color palette)](https://github.com/helix-editor/helix/wiki/Themes#meliora)
 

@@ -57,34 +57,10 @@ end
 
 M.load = function()
     local lush = require 'lush'
-    local hsl = lush.hsl
-    local colors
+    local colors, is_bg_dark = require 'meliora.color_sets'.get_colors(M.config.color_set)
+    M.config.dark = is_bg_dark
 
-    if M.config.color_set == 'mountain' then
-        M.config.dark = true
-        local bg = hsl('#0f0f0f')
-        colors = require 'meliora.colors.mountain'(bg)
-
-    elseif M.config.color_set == 'alduin' then
-        M.config.dark = true
-        local bg = hsl('#1c1c1c')
-        colors = require 'meliora.colors.alduin'(bg)
-
-    elseif M.config.color_set == 'mellifluous' then
-        if vim.o.background == 'dark' then
-            M.config.dark = true
-            local bg = require 'meliora.backgrounds.dark'
-            colors = require 'meliora.colors.dark'(bg)
-        else
-            M.config.dark = false
-            local bg = require 'meliora.backgrounds.light'
-            colors = require 'meliora.colors.light'(bg)
-        end
-    else
-        Return_error("unrecognised color_set name: '" .. M.config.color_set .. "'")
-    end
-
-    require 'meliora.cli' (M.config)
+    require 'meliora.cli'(M.config)
 
     local highlights = require 'meliora.highlights'(colors)
     local specs = require 'meliora.plugins'(highlights, colors)
