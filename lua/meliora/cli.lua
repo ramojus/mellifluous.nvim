@@ -1,10 +1,9 @@
 local set = function(current_config)
     local options = {
-        toggle_transparency = 1,
-        mellifluous = 2,
-        mountain = 3,
-        alduin = 4
+        toggle_transparency = 100,
     }
+    local color_sets = require 'meliora.color_sets.init'.get_color_sets_table()
+    options = vim.tbl_deep_extend('force', options, color_sets)
 
     vim.api.nvim_create_user_command('Meliora', function(input)
         if options[input.args] == options.toggle_transparency then
@@ -13,7 +12,7 @@ local set = function(current_config)
                     enabled = not current_config.transparent_background.enabled
                 }
             })
-        elseif options[input.args] then
+        elseif color_sets[input.args] then
             require 'meliora'.setup({
                 color_set = input.args
             })
