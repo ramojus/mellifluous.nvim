@@ -1,7 +1,7 @@
 # Meliora colors for [Neovim](https://github.com/neovim/neovim)
-Different colorschemes (called color sets) that use the same code thus style and settings for highlighting stuff in opinionated way.
+Collection of colorschemes (here called color sets) that use the same code thus style and settings for highlighting things in opinionated way.
 
-All of the color sets are either neutral or warm.
+As a rule, all of the color sets used here are either neutral or warm.
 
 Made with [lush](https://github.com/rktjmp/lush.nvim).
 
@@ -14,10 +14,13 @@ Default and original meliora color set. For me it has that early (slightly sunny
 ![preview](assets/startify.png)
 ![preview](assets/light_code.png)
 
-### Alduin
+---
+Following color sets are not original, but as of writing this, original versions don't have support [treesitter](https://github.com/nvim-treesitter/nvim-treesitter), [native LSP](https://github.com/neovim/nvim-lspconfig) and other popular neovim plugins.
+
+### Alduin ([Original](https://github.com/alessandroyorba/alduin))
 Screenshots are WIP
 
-### Mountain
+### Mountain ([Original](https://github.com/mountain-theme/mountain))
 Screenshots are WIP
 
 ## Styled plugins
@@ -93,8 +96,8 @@ Set `vim.opt.background` to `'light'`. This will only work on color sets that ha
 
 ### Available color sets
 - `mellifluous`
-- [`alduin`](https://github.com/alessandroyorba/alduin). Dark only
-- [`mountain`](https://github.com/mountain-theme/mountain). Dark only 
+- `alduin`. Dark only
+- `mountain`. Dark only
 
 ## CLI options
 Type `:Meliora <TAB>` and see the available options.
