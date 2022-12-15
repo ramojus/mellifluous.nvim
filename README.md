@@ -23,7 +23,7 @@ When installing, [lush](https://github.com/rktjmp/lush.nvim) is required.
 Example with [packer.nvim](https://github.com/wbthomason/packer.nvim):
 ```lua
 use {
-    'ramojus/meliora.nvim',
+    'ramojus/mellifluous.nvim',
     requires = {'rktjmp/lush.nvim'}
 }
 ```
@@ -32,7 +32,7 @@ use {
 Here is an example with the default config, change it as you like. If you like the defaults, there is no need to call `setup`.
 
 ```lua
-require 'meliora'.setup({
+require 'mellifluous'.setup({
     dim_inactive = false,
     color_set = 'mellifluous',
     styles = {
@@ -99,7 +99,7 @@ Available color sets:
 default config:
 
 ```lua
-require 'meliora'.setup({
+require 'mellifluous'.setup({
     mellifluous = {
       neutral = true, -- set this to false and bg_contrast to 'medium' for original mellifluous (then it was called meliora theme)
       bg_contrast = 'medium' -- options: 'soft', 'medium', 'hard'
@@ -108,7 +108,7 @@ require 'meliora'.setup({
 ```
 
 ## CLI options
-Type `:Meliora <TAB>` and see the available options.
+Type `:Mellifluous <TAB>` and see the available options.
 
 Options include:
 - Toggling transparency.
