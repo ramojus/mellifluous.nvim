@@ -1,27 +1,13 @@
-# Meliora colors for [Neovim](https://github.com/neovim/neovim)
-Collection of colorschemes (here called color sets) that use the same code thus style and settings for highlighting things in opinionated way.
-
-As a rule, all of the color sets used here are either neutral or warm.
+# Mellifluous colorscheme for [Neovim](https://github.com/neovim/neovim)
+My own colorscheme. Smooth and productive, with stronger highlights on important keywords. Filled with honey.
 
 Made with [lush](https://github.com/rktjmp/lush.nvim).
 
-## Color sets
-### Mellifluous
-Default and original meliora color set. For me it has that early (slightly sunny) morning after rainy night when you have slept well vibe.
-
+## Preview
 ![preview](assets/code.png)
 ![preview](assets/telescope.png)
 ![preview](assets/startify.png)
 ![preview](assets/light_code.png)
-
----
-Following color sets are not original, but as of writing this, original versions don't have support [treesitter](https://github.com/nvim-treesitter/nvim-treesitter), [native LSP](https://github.com/neovim/nvim-lspconfig) and other popular neovim plugins.
-
-### Alduin ([Original](https://github.com/alessandroyorba/alduin))
-Screenshots are WIP
-
-### Mountain ([Original](https://github.com/mountain-theme/mountain))
-Screenshots are WIP
 
 ## Styled plugins
 - [Treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
@@ -33,7 +19,7 @@ Screenshots are WIP
 - [Startify](https://github.com/mhinz/vim-startify)
 
 ## Usage
-Install with any plugin manager, [lush](https://github.com/rktjmp/lush.nvim) is required.
+When installing, [lush](https://github.com/rktjmp/lush.nvim) is required.
 Example with [packer.nvim](https://github.com/wbthomason/packer.nvim):
 ```lua
 use {
@@ -94,10 +80,32 @@ Set style value to `'style1 style2'`, for bold and italic it would be `'bold ita
 ### Setting light theme
 Set `vim.opt.background` to `'light'`. This will only work on color sets that have light theme.
 
-### Available color sets
+### Color sets
+Color sets are like different colorschemes, but they use the same highlight rules, so in this case, I find it more accurate to call them color sets.
+
+I added alduin and mountain color sets (both non-original) mostly for nostalgia, these are my two most favorite colorschemes after mellifluous and I've been using each of them for about a year before creating mellifluous.
+
+Non-original color sets are made to match their original version as closely as possible with the same highlight rules as mellifluous.
+
+These color sets don't get loaded, unless you specify them in a `color_set` option, so there is no performance impact.
+
+Available color sets:
 - `mellifluous`
-- `alduin`. Dark only
-- `mountain`. Dark only
+- `alduin`. Dark only. [link to original](https://github.com/alessandroyorba/alduin)
+- `mountain`. Dark only. [link to original](https://github.com/mountain-theme/mountain)
+
+#### Color set specific config options
+##### Mellifluous
+default config:
+
+```lua
+require 'meliora'.setup({
+    mellifluous = {
+      neutral = true, -- set this to false and bg_contrast to 'medium' for original mellifluous (then it was called meliora theme)
+      bg_contrast = 'medium' -- options: 'soft', 'medium', 'hard'
+    }
+})
+```
 
 ## CLI options
 Type `:Meliora <TAB>` and see the available options.
@@ -107,10 +115,9 @@ Options include:
 - Changing color set.
 
 ## TODO
-- [ ] Add color set specific options.
-- [ ] Add more color sets (possibly oxocarbon and fleet, but I intend to keep the number of color sets minimal).
-- [ ] Add contributing guidelines (for now, if you want to contribute a theme, it's better to first make an issue and bugfixes are always welcome).
-- [ ] Don't break people's configs
+- [x] Add color set specific options.
+- [ ] Add guidelines for how to create your own theme with the same highlight rules.
+- [ ] Support more plugins (contributions are welcome).
 
 ## Mellifluous ports
 - [Helix (with slightly outdated color palette)](https://github.com/helix-editor/helix/wiki/Themes#meliora)
