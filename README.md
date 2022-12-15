@@ -116,6 +116,7 @@ Options include:
 
 ## TODO
 - [x] Add color set specific options.
+- [ ] Add vim help docs
 - [ ] Add guidelines for how to create your own theme with the same highlight rules.
 - [ ] Support more plugins (contributions are welcome).
 
