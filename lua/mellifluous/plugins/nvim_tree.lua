@@ -1,7 +1,7 @@
 return function(highlights, colors)
     ---@diagnostic disable: undefined-global
     local lush = require 'lush'
-    local config = require 'meliora'.config
+    local config = require 'mellifluous'.config
 
     local root_fg = colors.dark_bg
     if config.plugins.nvim_tree.show_root == true then

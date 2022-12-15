@@ -1,7 +1,7 @@
 return function(highlights, colors)
     ---@diagnostic disable: undefined-global
     local lush = require 'lush'
-    local config = require 'meliora'.config
+    local config = require 'mellifluous'.config
 
     return lush(function(injected_functions)
         local sym = injected_functions.sym

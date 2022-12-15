@@ -2,7 +2,7 @@ return function(colors)
     ---@diagnostic disable: undefined-global
     local lush = require 'lush'
     local hsl = lush.hsl
-    local config = require 'meliora'.config
+    local config = require 'mellifluous'.config
 
     return lush(function()
         return {

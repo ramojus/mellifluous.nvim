@@ -1,90 +1,9 @@
-function Return_error(msg)
-    error('Meliora: ' .. msg)
-end
-
-function Print_error(msg)
-    print('Error: Meliora: ' .. msg)
-end
-
 local M = {}
 
-M.config = {
-    color_set = 'mellifluous',
-    plugins = {
-        cmp = true,
-        indent_blankline = true,
-        nvim_tree = {
-            enabled = true,
-            show_root = false,
-        },
-        telescope = {
-            enabled = true,
-            nvchad_like = true,
-        },
-        startify = true,
-    },
-    dim_inactive = false,
-    styles = {
-        comments = 'italic',
-        conditionals = 'NONE',
-        folds = 'NONE',
-        loops = 'NONE',
-        functions = 'NONE',
-        keywords = 'NONE',
-        strings = 'NONE',
-        variables = 'NONE',
-        numbers = 'NONE',
-        booleans = 'NONE',
-        properties = 'NONE',
-        types = 'NONE',
-        operators = 'NONE',
-    },
-    transparent_background = {
-        enabled = false,
-        floating_windows = false,
-        telescope = true,
-        file_tree = true,
-        cursor_line = true,
-        status_line = false,
-    },
-}
-
-local are_color_set_defaults_merged = false
-
-local function merge_color_set_defaults()
-    if not are_color_set_defaults_merged then
-        local color_set = require('meliora.color_sets.' .. M.config.color_set)
-
-        if color_set.get_config then
-            M.config[M.config.color_set] = vim.tbl_deep_extend(
-                'force',
-                M.config[M.config.color_set] or {},
-                color_set.get_config()
-            )
-        end
-        are_color_set_defaults_merged = true
-    end
-end
-
+-- kept for compatibility with older configs.
 function M.setup(user_config)
-    merge_color_set_defaults()
-    M.config = vim.tbl_deep_extend('force', M.config, user_config or {})
-end
-
-M.load = function()
-    merge_color_set_defaults()
-    local lush = require 'lush'
-    local colors, is_bg_dark = require 'meliora.color_sets'.get_colors(M.config.color_set)
-    M.config.dark = is_bg_dark
-
-    require 'meliora.cli'(M.config)
-    require 'meliora.terminal'(colors)
-
-    local highlights = require 'meliora.highlights'(colors)
-    local specs = require 'meliora.plugins'(highlights, colors)
-    table.insert(specs, highlights)
-
-    return lush.merge(specs)
+    require 'mellifluous'.setup(user_config)
 end
 
 return M
+

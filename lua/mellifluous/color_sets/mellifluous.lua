@@ -6,7 +6,7 @@ local M = {}
 local color_set_name = 'mellifluous'
 
 local function get_is_neutral(mellifluous_config)
-    local config = require('meliora').config
+    local config = require('mellifluous').config
     -- for compatibility with configs from before color set specific config was supported
     if config.neutral ~= nil then
         return config.neutral
@@ -15,7 +15,7 @@ local function get_is_neutral(mellifluous_config)
 end
 
 function M.get_bg_dark()
-    local mellifluous_config = require('meliora').config[color_set_name]
+    local mellifluous_config = require('mellifluous').config[color_set_name]
     local is_neutral = get_is_neutral(mellifluous_config)
 
     local brightness = 10
@@ -32,7 +32,7 @@ function M.get_bg_dark()
 end
 
 function M.get_bg_light()
-    local mellifluous_config = require('meliora').config[color_set_name]
+    local mellifluous_config = require('mellifluous').config[color_set_name]
     local is_neutral = get_is_neutral(mellifluous_config)
 
     local brightness = 90
@@ -152,7 +152,7 @@ end
 
 function M.get_config()
     return {
-        neutral = true, -- set this to false and bg_contrast to 'medium' for original mellifluous (then it was called meliora theme)
+        neutral = true, -- set this to false and bg_contrast to 'medium' for original mellifluous (then it was called mellifluous theme)
         bg_contrast = 'medium' -- options: 'soft', 'medium', 'hard'
     }
 end

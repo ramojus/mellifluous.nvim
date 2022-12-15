@@ -1,5 +1,5 @@
 
-return function(highlights, colors)
+return function(_, colors)
     ---@diagnostic disable: undefined-global
     local lush = require 'lush'
 

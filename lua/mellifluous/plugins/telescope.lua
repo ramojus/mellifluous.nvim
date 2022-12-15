@@ -1,7 +1,7 @@
 return function(highlights, colors)
     ---@diagnostic disable: undefined-global
     local lush = require 'lush'
-    local config = require 'meliora'.config
+    local config = require 'mellifluous'.config
     local is_background_transparent = config.transparent_background.enabled
         and config.transparent_background.telescope
 

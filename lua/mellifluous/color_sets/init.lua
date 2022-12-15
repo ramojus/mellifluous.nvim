@@ -37,7 +37,7 @@ end
 
 function M.get_colors(color_set_name)
     if M.get_color_sets_table()[color_set_name] then
-        local color_set_functions = require('meliora.color_sets.' .. color_set_name)
+        local color_set_functions = require('mellifluous.color_sets.' .. color_set_name)
         return get_colors(color_set_functions, nil)
     end
     Return_error("Color set '" .. color_set_name .. "' not found")
