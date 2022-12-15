@@ -8,11 +8,22 @@ end
 
 local M = {}
 
--- default config
 M.config = {
-    dim_inactive = false,
-    neutral = true,
     color_set = 'mellifluous',
+    plugins = {
+        cmp = true,
+        indent_blankline = true,
+        nvim_tree = {
+            enabled = true,
+            show_root = false,
+        },
+        telescope = {
+            enabled = true,
+            nvchad_like = true,
+        },
+        startify = true,
+    },
+    dim_inactive = false,
     styles = {
         comments = 'italic',
         conditionals = 'NONE',
@@ -36,26 +47,32 @@ M.config = {
         cursor_line = true,
         status_line = false,
     },
-    plugins = {
-        cmp = true,
-        indent_blankline = true,
-        nvim_tree = {
-            enabled = true,
-            show_root = false,
-        },
-        telescope = {
-            enabled = true,
-            nvchad_like = true,
-        },
-        startify = true,
-    },
 }
 
-function M.setup(config)
-    M.config = vim.tbl_deep_extend('force', M.config, config or {})
+local are_color_set_defaults_merged = false
+
+local function merge_color_set_defaults()
+    if not are_color_set_defaults_merged then
+        local color_set = require('meliora.color_sets.' .. M.config.color_set)
+
+        if color_set.get_config then
+            M.config[M.config.color_set] = vim.tbl_deep_extend(
+                'force',
+                M.config[M.config.color_set] or {},
+                color_set.get_config()
+            )
+        end
+        are_color_set_defaults_merged = true
+    end
+end
+
+function M.setup(user_config)
+    merge_color_set_defaults()
+    M.config = vim.tbl_deep_extend('force', M.config, user_config or {})
 end
 
 M.load = function()
+    merge_color_set_defaults()
     local lush = require 'lush'
     local colors, is_bg_dark = require 'meliora.color_sets'.get_colors(M.config.color_set)
     M.config.dark = is_bg_dark

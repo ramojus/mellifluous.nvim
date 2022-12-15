@@ -1,21 +1,51 @@
 local lush = require('lush')
 local hsl = lush.hsl
-local config = require('meliora').config
 
 local M = {}
 
-function M.get_bg_dark()
-    if config.neutral then
-        return hsl(0, 0, 10)
+local color_set_name = 'mellifluous'
+
+local function get_is_neutral(mellifluous_config)
+    local config = require('meliora').config
+    -- for compatibility with configs from before color set specific config was supported
+    if config.neutral ~= nil then
+        return config.neutral
     end
-    return hsl(24, 10, 10)
+    return mellifluous_config.neutral
+end
+
+function M.get_bg_dark()
+    local mellifluous_config = require('meliora').config[color_set_name]
+    local is_neutral = get_is_neutral(mellifluous_config)
+
+    local brightness = 10
+    if mellifluous_config.bg_contrast == 'hard' then
+        brightness = 8
+    elseif mellifluous_config.bg_contrast == 'soft' then
+        brightness = 12
+    end
+
+    if is_neutral then
+        return hsl(0, 0, brightness)
+    end
+    return hsl(24, 10, brightness)
 end
 
 function M.get_bg_light()
-    if config.neutral then
-        return hsl(0, 0, 90)
+    local mellifluous_config = require('meliora').config[color_set_name]
+    local is_neutral = get_is_neutral(mellifluous_config)
+
+    local brightness = 90
+    if mellifluous_config.bg_contrast == 'hard' then
+        brightness = 94
+    elseif mellifluous_config.bg_contrast == 'soft' then
+        brightness = 86
     end
-    return hsl(24, 10, 90)
+
+    if is_neutral then
+        return hsl(0, 0, brightness)
+    end
+    return hsl(24, 10, brightness)
 end
 
 function M.get_colors_dark(bg)
@@ -117,6 +147,13 @@ function M.get_colors_light(bg)
         green = green, -- staged, additions
         blue = basic_blue, -- information, new files
         purple = basic_purple, -- hints, merge
+    }
+end
+
+function M.get_config()
+    return {
+        neutral = true, -- set this to false and bg_contrast to 'medium' for original mellifluous (then it was called meliora theme)
+        bg_contrast = 'medium' -- options: 'soft', 'medium', 'hard'
     }
 end
 
