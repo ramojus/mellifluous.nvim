@@ -1,7 +1,7 @@
-# Mellifluous colorscheme for [Neovim](https://github.com/neovim/neovim)
-My own colorscheme. Smooth and productive, with stronger highlights on important keywords. Filled with honey.
+# Mellifluous
+A colorscheme for [Neovim](https://github.com/neovim/neovim). Smooth and productive, with stronger highlights on important keywords. Filled with honey.
 
-Made with [lush](https://github.com/rktjmp/lush.nvim).
+Made with [lush.nvim](https://github.com/rktjmp/lush.nvim).
 
 ## Preview
 ![preview](assets/code.png)
@@ -94,8 +94,8 @@ Available color sets:
 - `alduin`. Dark only. [link to original](https://github.com/alessandroyorba/alduin)
 - `mountain`. Dark only. [link to original](https://github.com/mountain-theme/mountain)
 
-#### Color set specific config options
-##### Mellifluous
+### Color set specific config options
+#### Mellifluous
 default config:
 
 ```lua
