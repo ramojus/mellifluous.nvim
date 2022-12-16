@@ -4,10 +4,10 @@ A colorscheme for [Neovim](https://github.com/neovim/neovim). Pleasant and produ
 Made with [lush.nvim](https://github.com/rktjmp/lush.nvim).
 
 ## Preview
-![preview](assets/code.png)
-![preview](assets/telescope.png)
-![preview](assets/startify.png)
-![preview](assets/light_code.png)
+![code](https://user-images.githubusercontent.com/41536253/208069537-610cd1a9-0ceb-4a3d-ab85-b031c020f0b7.png)
+![telescope](https://user-images.githubusercontent.com/41536253/208069563-9a4ea865-14fa-40ff-ba93-c2f5916b876e.png)
+![startify](https://user-images.githubusercontent.com/41536253/208069572-82b68641-d674-4e79-8f26-22ac06320730.png)
+![light_code](https://user-images.githubusercontent.com/41536253/208069584-773d2825-1bf1-44e3-b514-b09ea063ba32.png)
 
 ## Styled plugins
 - [Treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
