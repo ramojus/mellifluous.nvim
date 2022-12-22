@@ -17,6 +17,7 @@ Made with [lush.nvim](https://github.com/rktjmp/lush.nvim).
 - [Nvim-cmp](https://github.com/hrsh7th/nvim-cmp)
 - [Indent Blankline](https://github.com/lukas-reineke/indent-blankline.nvim)
 - [Startify](https://github.com/mhinz/vim-startify)
+- [Gitsigns](https://github.com/lewis6991/gitsigns.nvim)
 
 ## Usage
 When installing, [lush](https://github.com/rktjmp/lush.nvim) is required.
@@ -60,6 +61,7 @@ require 'mellifluous'.setup({
     },
     plugins = {
         cmp = true,
+        gitsigns = true
         indent_blankline = true,
         nvim_tree = {
             enabled = true,

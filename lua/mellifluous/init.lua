@@ -22,6 +22,7 @@ M.config = {
             nvchad_like = true,
         },
         startify = true,
+        gitsigns = true,
     },
     dim_inactive = false,
     styles = {
