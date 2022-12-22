@@ -7,9 +7,9 @@ return function(highlights, colors)
     return lush(function()
         if config.dark then
             return {
-                GitSignsAdd { fg = colors.green.lightness(40), bg = bg },
-                GitSignsChange { fg = colors.orange, bg = bg },
-                GitSignsDelete { fg = colors.red, bg = bg },
+                GitSignsAdd { fg = colors.green.lightness(30), bg = bg },
+                GitSignsChange { fg = colors.orange.lightness(40), bg = bg },
+                GitSignsDelete { fg = colors.red.lightness(40), bg = bg },
             }
         else
             return {
