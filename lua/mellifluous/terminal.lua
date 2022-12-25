@@ -8,7 +8,7 @@ return function(colors)
     vim.g.terminal_color_5 = colors.purple.hex
     vim.g.terminal_color_6 = (colors.cyan and colors.cyan.hex)
                                 or colors.blue.hex
-    vim.g.terminal_color_7 = colors.fg.hex
+    vim.g.terminal_color_7 = colors.fg4.hex
 
     local li_value = 16
     vim.g.terminal_color_8 = colors.bg2.hex
@@ -20,5 +20,5 @@ return function(colors)
     vim.g.terminal_color_13 = colors.purple.li(li_value).hex
     vim.g.terminal_color_14 = (colors.cyan and colors.cyan.li(li_value).hex)
                                 or colors.blue.li(li_value).hex
-    vim.g.terminal_color_15 = colors.fg2
+    vim.g.terminal_color_15 = colors.fg2.hex
 end
