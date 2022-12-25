@@ -64,6 +64,7 @@ return function(colors)
                     and config.transparent_background.floating_windows and 'NONE')
                     or colors.bg3
             }, -- Normal text in floating windows.
+            FloatBorder  { bg = NormalFloat.bg, fg = NormalFloat.bg },
             Pmenu        { bg = colors.bg4, fg = config.dark and colors.fg3 or colors.fg4 }, -- Popup menu: Normal item.
             PmenuSel     { bg = config.dark and colors.fg5 or colors.dark_bg }, -- Popup menu: Selected item.
             PmenuSbar    { bg = colors.bg3 }, -- Popup menu: Scrollbar.
