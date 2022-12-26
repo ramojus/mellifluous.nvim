@@ -20,13 +20,17 @@ Made with [lush.nvim](https://github.com/rktjmp/lush.nvim).
 - [Gitsigns](https://github.com/lewis6991/gitsigns.nvim)
 
 ## Usage
-When installing, [lush](https://github.com/rktjmp/lush.nvim) is required.
+When installing, [lush](https://github.com/rktjmp/lush.nvim) is required (for now).
 Example with [packer.nvim](https://github.com/wbthomason/packer.nvim):
 ```lua
-use {
+use({
     'ramojus/mellifluous.nvim',
-    requires = {'rktjmp/lush.nvim'}
-}
+    requires = { 'rktjmp/lush.nvim' },
+    config = function()
+        require'mellifluous'.setup({ --[[...]] }) -- optional, see configuration section.
+        vim.cmd('colorscheme mellifluous')
+    end,
+})
 ```
 
 ## Configuration
