@@ -124,14 +124,14 @@ Options include:
 
 ## TODO
 - [x] Add color set specific options.
-- [ ] Add vimdocs
+- [x] Add vimdocs
 - [ ] Add guidelines for how to create your own theme with the same highlight rules.
 - [ ] Support more plugins (contributions are welcome).
 
-## Mellifluous ports
+## Ports
 - [Helix (with slightly outdated color palette)](https://github.com/helix-editor/helix/wiki/Themes#meliora)
 
-## Mellifluous inspiration
+## Inspiration
 - [Mountain and Mountaineer](https://github.com/mountain-theme/mountain)
 - [Alduin](https://github.com/alessandroyorba/alduin)
 - [Melange](https://github.com/savq/melange)
