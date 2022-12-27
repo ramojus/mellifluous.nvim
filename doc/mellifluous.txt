@@ -3,36 +3,14 @@
 ==============================================================================
 Table of Contents                              *mellifluous-table-of-contents*
 
-1. Mellifluous                                       |mellifluous-mellifluous|
-  - Preview                                              |mellifluous-preview|
   - Styled plugins                                |mellifluous-styled-plugins|
   - Usage                                                  |mellifluous-usage|
   - Configuration                                  |mellifluous-configuration|
   - CLI options                                      |mellifluous-cli-options|
   - TODO                                                    |mellifluous-todo|
-  - Mellifluous ports                          |mellifluous-mellifluous-ports|
-  - Mellifluous inspiration              |mellifluous-mellifluous-inspiration|
+  - Ports                                                  |mellifluous-ports|
+  - Inspiration                                      |mellifluous-inspiration|
   - License                                              |mellifluous-license|
-
-==============================================================================
-1. Mellifluous                                       *mellifluous-mellifluous*
-
-A colorscheme for Neovim <https://github.com/neovim/neovim>. Pleasant and
-productive, with stronger highlights on important keywords. Filled with honey.
-
-Made with lush.nvim <https://github.com/rktjmp/lush.nvim>.
-
-PREVIEW                                                  *mellifluous-preview*
-
-<img
-src='https://user-images.githubusercontent.com/41536253/208069537-610cd1a9-0ceb-4a3d-ab85-b031c020f0b7.png'
-title=''/> <img
-src='https://user-images.githubusercontent.com/41536253/208069563-9a4ea865-14fa-40ff-ba93-c2f5916b876e.png'
-title=''/> <img
-src='https://user-images.githubusercontent.com/41536253/208069572-82b68641-d674-4e79-8f26-22ac06320730.png'
-title=''/> <img
-src='https://user-images.githubusercontent.com/41536253/208069584-773d2825-1bf1-44e3-b514-b09ea063ba32.png'
-title=''/>
 
 STYLED PLUGINS                                    *mellifluous-styled-plugins*
 
@@ -170,18 +148,18 @@ TODO                                                        *mellifluous-todo*
 
 
 - ☒ Add color set specific options.
-- ☐ Add vimdocs
+- ☒ Add vimdocs
 - ☐ Add guidelines for how to create your own theme with the same highlight rules.
 - ☐ Support more plugins (contributions are welcome).
 
 
-MELLIFLUOUS PORTS                              *mellifluous-mellifluous-ports*
+PORTS                                                      *mellifluous-ports*
 
 
 - Helix (with slightly outdated color palette) <https://github.com/helix-editor/helix/wiki/Themes#meliora>
 
 
-MELLIFLUOUS INSPIRATION                  *mellifluous-mellifluous-inspiration*
+INSPIRATION                                          *mellifluous-inspiration*
 
 
 - Mountain and Mountaineer <https://github.com/mountain-theme/mountain>
