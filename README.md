@@ -1,3 +1,4 @@
+<!-- panvimdoc-ignore-start -->
 # Mellifluous
 A colorscheme for [Neovim](https://github.com/neovim/neovim). Pleasant and productive, with stronger highlights on important keywords. Filled with honey.
 
@@ -9,6 +10,7 @@ Made with [lush.nvim](https://github.com/rktjmp/lush.nvim).
 ![startify](https://user-images.githubusercontent.com/41536253/208069572-82b68641-d674-4e79-8f26-22ac06320730.png)
 ![light_code](https://user-images.githubusercontent.com/41536253/208069584-773d2825-1bf1-44e3-b514-b09ea063ba32.png)
 
+<!-- panvimdoc-ignore-end -->
 ## Styled plugins
 - [Treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
 - [Native LSP](https://github.com/neovim/nvim-lspconfig)
