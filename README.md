@@ -137,5 +137,7 @@ Options include:
 - [Melange](https://github.com/savq/melange)
 - [Sema](https://github.com/arzg/sema)
 
+<!-- panvimdoc-ignore-start -->
 ## License
 [MIT](./LICENSE)
+<!-- panvimdoc-ignore-end -->
