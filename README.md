@@ -122,7 +122,7 @@ Options include:
 
 ## TODO
 - [x] Add color set specific options.
-- [ ] Add vim help docs
+- [ ] Add vimdocs
 - [ ] Add guidelines for how to create your own theme with the same highlight rules.
 - [ ] Support more plugins (contributions are welcome).
 
@@ -130,7 +130,6 @@ Options include:
 - [Helix (with slightly outdated color palette)](https://github.com/helix-editor/helix/wiki/Themes#meliora)
 
 ## Mellifluous inspiration
-Mellifluous color set is mostly inspired by these great themes:
 - [Mountain and Mountaineer](https://github.com/mountain-theme/mountain)
 - [Alduin](https://github.com/alessandroyorba/alduin)
 - [Melange](https://github.com/savq/melange)
