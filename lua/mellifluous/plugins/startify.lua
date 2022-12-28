@@ -1,7 +1,7 @@
 
 return function(_, colors)
     ---@diagnostic disable: undefined-global
-    local lush = require 'lush'
+    local lush = require('lush')
 
     return lush(function()
         return {

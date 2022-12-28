@@ -75,15 +75,15 @@ end
 
 M.load = function()
     merge_color_set_defaults()
-    local lush = require 'lush'
-    local colors, is_bg_dark = require 'mellifluous.color_sets'.get_colors(M.config.color_set)
+    local lush = require('lush')
+    local colors, is_bg_dark = require('mellifluous.color_sets').get_colors(M.config.color_set)
     M.config.dark = is_bg_dark
 
-    require 'mellifluous.cli'(M.config)
-    require 'mellifluous.terminal'(colors)
+    require('mellifluous.cli')(M.config)
+    require('mellifluous.terminal')(colors)
 
-    local highlights = require 'mellifluous.highlights'(colors)
-    local specs = require 'mellifluous.plugins'(highlights, colors)
+    local highlights = require('mellifluous.highlights')(colors)
+    local specs = require('mellifluous.plugins')(highlights, colors)
     table.insert(specs, highlights)
 
     return lush.merge(specs)

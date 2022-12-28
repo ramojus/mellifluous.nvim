@@ -1,5 +1,5 @@
 return function(highlights, colors)
-    local config = require 'mellifluous'.config
+    local config = require('mellifluous').config
     local specs = {}
 
     for plugin in pairs(config.plugins) do
@@ -9,7 +9,7 @@ return function(highlights, colors)
         end
     end
 
-    table.insert(specs, require 'mellifluous.plugins.treesitter'(highlights, colors))
+    table.insert(specs, require('mellifluous.plugins.treesitter')(highlights, colors))
 
     return specs
 end

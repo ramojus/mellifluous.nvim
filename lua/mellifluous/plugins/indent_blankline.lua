@@ -1,7 +1,7 @@
 return function(highlights, colors)
     ---@diagnostic disable: undefined-global
-    local lush = require 'lush'
-    local config = require 'mellifluous'.config
+    local lush = require('lush')
+    local config = require('mellifluous').config
 
     return lush(function()
         return {
