@@ -3,7 +3,8 @@ function Return_error(msg)
 end
 
 function Print_error(msg)
-    print('Error: mellifluous: ' .. msg)
+    vim.notify('Error: mellifluous: ' .. msg)
+    vim.notify('')
 end
 
 local M = {}
