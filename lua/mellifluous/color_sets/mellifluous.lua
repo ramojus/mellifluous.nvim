@@ -64,7 +64,6 @@ function M.get_colors_dark(bg)
 
     local basic_red = hsl(05, 50, 69)
     local basic_orange = hsl(35, 50, 69)
-    local basic_blue = hsl(215, 30, 69)
     local basic_purple = hsl(270, 30, 69)
 
     return {
@@ -94,7 +93,7 @@ function M.get_colors_dark(bg)
         red = basic_red, -- errors, deletes, bad spellings
         orange = basic_orange, -- warnings, changes, other (strange) spellings
         green = green, -- staged, additions
-        blue = basic_blue, -- information, new files
+        blue = blue, -- information, new files
         purple = basic_purple, -- hints, merge
     }
 end
