@@ -26,7 +26,7 @@ return function(highlights, colors)
             NvimTreePopup           { NvimTreeNormal },
             NvimTreeSignColumn      { NvimTreeNormal },
             NvimTreeVertSplit       { bg = NvimTreeNormal.bg, fg = (config.dark and colors.bg3) or colors.dark_bg2 },
-            NvimTreeWinSeperator    { NvimTreeVertSplit },
+            NvimTreeWinSeparator    { NvimTreeVertSplit },
             NvimTreeIndentMarker    { fg = highlights.Directory.fg },
             NvimTreeEndOfBuffer     { bg = nvimTreeNormal.bg, fg = highlights.EndOfBuffer.fg },
             NvimTreeFolderIcon      { fg = highlights.Directory.fg },
