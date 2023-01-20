@@ -7,7 +7,7 @@ return function(_, colors)
         return {
             StartifyBracket { fg = colors.fg4 },
             StartifyNumber { fg = colors.fg },
-            StartifyPath { fg = colors.fg3 },
+            StartifyPath { fg = colors.blue },
             StartifySlash { StartifyPath },
         }
     end)
