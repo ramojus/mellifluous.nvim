@@ -2,6 +2,7 @@ return function(highlights, colors)
     ---@diagnostic disable: undefined-global
     local lush = require('lush')
     local config = require('mellifluous').config
+    local change_color = require('mellifluous.utils.change_color')
 
     return lush(function(injected_functions)
         local sym = injected_functions.sym
@@ -60,7 +61,7 @@ return function(highlights, colors)
             sym('@text.strike')         { gui = 'strikethrough' } , -- Strikethrough text.
             sym('@text.title')          { fg = colors.other_keywords } , -- Text that is part of a title.
             sym('@text.literal')        { highlights.Character } , -- Literal or verbatim text.
-            sym('@text.uri')            { fg = colors.fg3 } , -- URIs like hyperlinks or email addresses.
+            sym('@text.uri')            { fg = change_color.get_lower_contrast(colors.blue, 20).desaturate(30) } , -- URIs like hyperlinks or email addresses.
             sym('@math')                { fg = colors.other_keywords } , -- Math environments like LaTeX's `$ ... $`
             sym('@text.reference')      { fg = colors.constants } , -- Footnotes, text references, citations, etc.
             sym('@environment')         { fg = colors.other_keywords } , -- Text environments of markup languages.
