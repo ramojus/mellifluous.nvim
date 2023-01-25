@@ -86,8 +86,8 @@ return function(colors)
             StatusLineNC {
                 bg = (config.transparent_background.enabled
                     and config.transparent_background.status_line and 'NONE')
-                    or colors.bg3,
-                fg = colors.fg3
+                    or colors.bg2,
+                fg = colors.fg4
             }, -- Status lines of not-current windows. Note: If this is equal to 'StatusLine' Vim will use '^^^' in the status line of the current window.
             TabLine      { bg = StatusLine.bg, fg = colors.fg3 }, -- Tab pages line, not active tab page label
             TabLineFill  { TabLine }, -- Tab pages line, where there are no labels
