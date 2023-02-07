@@ -74,6 +74,7 @@ function M.setup(user_config)
 end
 
 M.load = function()
+    vim.opt.termguicolors = true
     merge_color_set_defaults()
     local lush = require('lush')
     local colors, is_bg_dark = require('mellifluous.color_sets').get_colors(M.config.color_set)
