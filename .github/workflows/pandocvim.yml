@@ -9,7 +9,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: panvimdoc
-        uses: kdheepak/panvimdoc@main
+        uses: ramojus/panvimdoc@main
         with:
           vimdoc: mellifluous
           description: Pleasant and productive colorscheme
