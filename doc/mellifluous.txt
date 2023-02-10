@@ -3,15 +3,20 @@
 ==============================================================================
 Table of Contents                              *mellifluous-table-of-contents*
 
-  - Styled plugins                                |mellifluous-styled-plugins|
-  - Usage                                                  |mellifluous-usage|
-  - Configuration                                  |mellifluous-configuration|
-  - CLI options                                      |mellifluous-cli-options|
-  - TODO                                                    |mellifluous-todo|
-  - Ports                                                  |mellifluous-ports|
-  - Inspiration                                      |mellifluous-inspiration|
+1. Styled plugins                                 |mellifluous-styled-plugins|
+2. Usage                                                   |mellifluous-usage|
+3. Configuration                                   |mellifluous-configuration|
+  - Mixing styles                                  |mellifluous-mixing-styles|
+  - Setting light theme                      |mellifluous-setting-light-theme|
+  - Color sets                                        |mellifluous-color-sets|
+  - Color set specific config options|mellifluous-color-set-specific-config-options|
+4. CLI options                                       |mellifluous-cli-options|
+5. TODO                                                     |mellifluous-todo|
+6. Ports                                                   |mellifluous-ports|
+7. Inspiration                                       |mellifluous-inspiration|
 
-STYLED PLUGINS                                    *mellifluous-styled-plugins*
+==============================================================================
+1. Styled plugins                                 *mellifluous-styled-plugins*
 
 
 - Treesitter <https://github.com/nvim-treesitter/nvim-treesitter>
@@ -24,12 +29,13 @@ STYLED PLUGINS                                    *mellifluous-styled-plugins*
 - Gitsigns <https://github.com/lewis6991/gitsigns.nvim>
 
 
-USAGE                                                      *mellifluous-usage*
+==============================================================================
+2. Usage                                                   *mellifluous-usage*
 
 When installing, lush <https://github.com/rktjmp/lush.nvim> is required (for
 now). Example with packer.nvim <https://github.com/wbthomason/packer.nvim>:
 
->
+>lua
     use({
         'ramojus/mellifluous.nvim',
         requires = { 'rktjmp/lush.nvim' },
@@ -41,12 +47,13 @@ now). Example with packer.nvim <https://github.com/wbthomason/packer.nvim>:
 <
 
 
-CONFIGURATION                                      *mellifluous-configuration*
+==============================================================================
+3. Configuration                                   *mellifluous-configuration*
 
 Here is an example with the default config, change it as you like. If you like
 the defaults, there is no need to call `setup`.
 
->
+>lua
     require 'mellifluous'.setup({
         dim_inactive = false,
         color_set = 'mellifluous',
@@ -91,17 +98,17 @@ the defaults, there is no need to call `setup`.
 <
 
 
-MIXING STYLES ~
+MIXING STYLES                                      *mellifluous-mixing-styles*
 
 Set style value to `'style1 style2'`, for bold and italic it would be `'bold
 italic'`.
 
-SETTING LIGHT THEME ~
+SETTING LIGHT THEME                          *mellifluous-setting-light-theme*
 
 Set `vim.opt.background` to `'light'`. This will only work on color sets that
 have light theme.
 
-COLOR SETS ~
+COLOR SETS                                            *mellifluous-color-sets*
 
 Color sets are like different colorschemes, but they use the same highlight
 rules, so in this case, I find it more accurate to call them color sets.
@@ -120,14 +127,13 @@ Available color sets: - `mellifluous` - `alduin`. Dark only. link to original
 <https://github.com/alessandroyorba/alduin> - `mountain`. Dark only. link to
 original <https://github.com/mountain-theme/mountain>
 
-COLOR SET SPECIFIC CONFIG OPTIONS ~
+COLOR SET SPECIFIC CONFIG OPTIONS*mellifluous-color-set-specific-config-options*
 
-                                                     *mellifluous-Mellifluous*
+MELLIFLUOUS ~
 
-Mellifluous                            default config:
+default config:
 
-
->
+>lua
     require 'mellifluous'.setup({
         mellifluous = {
           neutral = true, -- set this to false and bg_contrast to 'medium' for original mellifluous (then it was called meliora theme)
@@ -137,13 +143,15 @@ Mellifluous                            default config:
 <
 
 
-CLI OPTIONS                                          *mellifluous-cli-options*
+==============================================================================
+4. CLI options                                       *mellifluous-cli-options*
 
 Type `:Mellifluous <TAB>` and see the available options.
 
 Options include: - Toggling transparency. - Changing color set.
 
-TODO                                                        *mellifluous-todo*
+==============================================================================
+5. TODO                                                     *mellifluous-todo*
 
 
 - ☒ Add color set specific options.
@@ -152,13 +160,15 @@ TODO                                                        *mellifluous-todo*
 - ☐ Support more plugins (contributions are welcome).
 
 
-PORTS                                                      *mellifluous-ports*
+==============================================================================
+6. Ports                                                   *mellifluous-ports*
 
 
 - Helix (with slightly outdated color palette) <https://github.com/helix-editor/helix/wiki/Themes#meliora>
 
 
-INSPIRATION                                          *mellifluous-inspiration*
+==============================================================================
+7. Inspiration                                       *mellifluous-inspiration*
 
 
 - Mountain and Mountaineer <https://github.com/mountain-theme/mountain>
