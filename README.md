@@ -1,6 +1,6 @@
 <!-- panvimdoc-ignore-start -->
 # Mellifluous
-A colorscheme for [Neovim](https://github.com/neovim/neovim). Pleasant and productive, with stronger highlights on important keywords. Filled with honey.
+A colorscheme for [Neovim](https://github.com/neovim/neovim). Pleasant and productive, with stronger highlights on important keywords.
 
 Made with [lush.nvim](https://github.com/rktjmp/lush.nvim).
 
