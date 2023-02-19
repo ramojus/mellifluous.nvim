@@ -3,15 +3,20 @@
 ==============================================================================
 Table of Contents                              *mellifluous-table-of-contents*
 
-  - Styled plugins                            |mellifluous-nil-styled-plugins|
-  - Usage                                              |mellifluous-nil-usage|
-  - Configuration                              |mellifluous-nil-configuration|
-  - CLI options                                  |mellifluous-nil-cli-options|
-  - TODO                                                |mellifluous-nil-todo|
-  - Ports                                              |mellifluous-nil-ports|
-  - Inspiration                                  |mellifluous-nil-inspiration|
+1. Styled plugins                                 |mellifluous-styled-plugins|
+2. Usage                                                   |mellifluous-usage|
+3. Configuration                                   |mellifluous-configuration|
+  - Mixing styles                    |mellifluous-configuration-mixing-styles|
+  - Setting light theme        |mellifluous-configuration-setting-light-theme|
+  - Color sets                          |mellifluous-configuration-color-sets|
+  - Color set specific config options|mellifluous-configuration-color-set-specific-config-options|
+4. CLI options                                       |mellifluous-cli-options|
+5. TODO                                                     |mellifluous-todo|
+6. Ports                                                   |mellifluous-ports|
+7. Inspiration                                       |mellifluous-inspiration|
 
-STYLED PLUGINS                                *mellifluous-nil-styled-plugins*
+==============================================================================
+1. Styled plugins                                 *mellifluous-styled-plugins*
 
 
 - Treesitter <https://github.com/nvim-treesitter/nvim-treesitter>
@@ -24,7 +29,8 @@ STYLED PLUGINS                                *mellifluous-nil-styled-plugins*
 - Gitsigns <https://github.com/lewis6991/gitsigns.nvim>
 
 
-USAGE                                                  *mellifluous-nil-usage*
+==============================================================================
+2. Usage                                                   *mellifluous-usage*
 
 When installing, lush <https://github.com/rktjmp/lush.nvim> is required (for
 now). Example with packer.nvim <https://github.com/wbthomason/packer.nvim>:
@@ -41,7 +47,8 @@ now). Example with packer.nvim <https://github.com/wbthomason/packer.nvim>:
 <
 
 
-CONFIGURATION                                  *mellifluous-nil-configuration*
+==============================================================================
+3. Configuration                                   *mellifluous-configuration*
 
 Here is an example with the default config, change it as you like. If you like
 the defaults, there is no need to call `setup`.
@@ -91,19 +98,19 @@ the defaults, there is no need to call `setup`.
 <
 
 
-MIXING STYLES ~
+MIXING STYLES                        *mellifluous-configuration-mixing-styles*
 
 Set style value to `'style1 style2'`, for bold and italic it would be `'bold
 italic'`.
 
 
-SETTING LIGHT THEME ~
+SETTING LIGHT THEME            *mellifluous-configuration-setting-light-theme*
 
 Set `vim.opt.background` to `'light'`. This will only work on color sets that
 have light theme.
 
 
-COLOR SETS ~
+COLOR SETS                              *mellifluous-configuration-color-sets*
 
 Color sets are like different colorschemes, but they use the same highlight
 rules, so in this case, I find it more accurate to call them color sets.
@@ -123,10 +130,10 @@ Available color sets: - `mellifluous` - `alduin`. Dark only. link to original
 original <https://github.com/mountain-theme/mountain>
 
 
-COLOR SET SPECIFIC CONFIG OPTIONS ~
+COLOR SET SPECIFIC CONFIG OPTIONS*mellifluous-configuration-color-set-specific-config-options*
 
 
-                                                     *mellifluous-Mellifluous*
+MELLIFLUOUS ~
 
 default config:
 
@@ -140,14 +147,16 @@ default config:
 <
 
 
-CLI OPTIONS                                      *mellifluous-nil-cli-options*
+==============================================================================
+4. CLI options                                       *mellifluous-cli-options*
 
 Type `:Mellifluous <TAB>` and see the available options.
 
 Options include: - Toggling transparency. - Changing color set.
 
 
-TODO                                                    *mellifluous-nil-todo*
+==============================================================================
+5. TODO                                                     *mellifluous-todo*
 
 
 - ☒ Add color set specific options.
@@ -156,13 +165,15 @@ TODO                                                    *mellifluous-nil-todo*
 - ☐ Support more plugins (contributions are welcome).
 
 
-PORTS                                                  *mellifluous-nil-ports*
+==============================================================================
+6. Ports                                                   *mellifluous-ports*
 
 
 - Helix (with slightly outdated color palette) <https://github.com/helix-editor/helix/wiki/Themes#meliora>
 
 
-INSPIRATION                                      *mellifluous-nil-inspiration*
+==============================================================================
+7. Inspiration                                       *mellifluous-inspiration*
 
 
 - Mountain and Mountaineer <https://github.com/mountain-theme/mountain>
