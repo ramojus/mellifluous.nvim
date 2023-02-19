@@ -14,7 +14,7 @@ jobs:
           vimdoc: mellifluous
           description: Pleasant and productive colorscheme
           treesitter: true
-          shiftheadinglevelsby: -1
+          shiftheadinglevelby: -1
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: "chore(ci): auto generate docs"
