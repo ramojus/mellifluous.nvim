@@ -70,7 +70,9 @@ return function(colors)
             }, -- Normal text in floating windows.
             FloatBorder  {
                 bg = NormalFloat.bg,
-                fg = (config.flat_background.floating_windows and colors.fg4)
+                fg = ((config.transparent_background.floating_windows
+                        or config.flat_background.floating_windows)
+                            and colors.fg4)
                     or NormalFloat.bg
             },
             Pmenu        { bg = colors.bg4, fg = config.dark and colors.fg3 or colors.fg4 }, -- Popup menu: Normal item.
