@@ -6,7 +6,9 @@ return function(highlights, colors)
         and config.transparent_background.telescope
 
     return lush(function()
-        if config.plugins.telescope.nvchad_like == true and not is_background_transparent then
+        if config.plugins.telescope.nvchad_like == true
+                and not is_background_transparent
+                and not config.flat_background.floating_windows then
             return {
                 TelescopeNormal {
                                     fg = colors.fg3,

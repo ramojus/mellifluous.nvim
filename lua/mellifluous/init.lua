@@ -49,6 +49,12 @@ M.config = {
         cursor_line = true,
         status_line = false,
     },
+    flat_background = {
+        line_numbers = false,
+        floating_windows = false,
+        file_tree = false,
+        cursor_line_number = false,
+    },
 }
 
 local are_color_set_defaults_merged = false

@@ -47,12 +47,17 @@ return function(colors)
             LineNr       {
                 fg = colors.fg4,
                 bg = (config.transparent_background.enabled and 'NONE')
+                    or (config.flat_background.line_numbers and Normal.bg)
                     or colors.dark_bg
             }, -- Line number for ':number' and ':#' commands, and when 'number' or 'relativenumber' option is set.
             SignColumn   { LineNr }, -- Column where |signs| are displayed
             IncSearch    { bg = colors.other_keywords, fg = colors.bg }, -- 'incsearch' highlighting; also used for the text replaced with ':s///c'
             Substitute   { IncSearch }, -- |:substitute| replacement text highlighting
-            CursorLineNr { bg = CursorLine.bg, fg = LineNr.fg }, -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
+            CursorLineNr {
+                bg = (config.flat_background.cursor_line_number and LineNr.bg)
+                    or CursorLine.bg,
+                fg = LineNr.fg
+            }, -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
             MatchParen   { bg = colors.bg4, fg = colors.main_keywords }, -- Character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
             ModeMsg      { fg = colors.fg3 }, -- 'showmode' message (e.g., '-- INSERT -- ')
             MsgArea      { Normal }, -- Area for messages and cmdline
@@ -62,9 +67,14 @@ return function(colors)
             NormalFloat  {
                 bg = (config.transparent_background.enabled
                     and config.transparent_background.floating_windows and 'NONE')
+                    or (config.flat_background.floating_windows and Normal.bg)
                     or colors.bg3
             }, -- Normal text in floating windows.
-            FloatBorder  { bg = NormalFloat.bg, fg = NormalFloat.bg },
+            FloatBorder  {
+                bg = NormalFloat.bg,
+                fg = (config.flat_background.floating_windows and colors.fg4)
+                    or NormalFloat.bg
+            },
             Pmenu        { bg = colors.bg4, fg = config.dark and colors.fg3 or colors.fg4 }, -- Popup menu: Normal item.
             PmenuSel     { bg = config.dark and colors.fg5 or colors.dark_bg }, -- Popup menu: Selected item.
             PmenuSbar    { bg = colors.bg3 }, -- Popup menu: Scrollbar.
