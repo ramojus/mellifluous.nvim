@@ -57,6 +57,22 @@ M.config = {
     },
 }
 
+local function disable_disabled()
+    for _, v in pairs(M.config) do
+        if type(v) ~= "table"
+                or v.enabled == nil
+                or v.enabled then
+            goto continue
+        end
+
+        for i, _ in pairs(v) do
+            v[i] = false
+        end
+
+        ::continue::
+    end
+end
+
 local are_color_set_defaults_merged = false
 
 local function merge_color_set_defaults()
@@ -82,6 +98,7 @@ end
 M.load = function()
     vim.opt.termguicolors = true
     merge_color_set_defaults()
+    disable_disabled()
     local lush = require('lush')
     local colors, is_bg_dark = require('mellifluous.color_sets').get_colors(M.config.color_set)
     M.config.dark = is_bg_dark

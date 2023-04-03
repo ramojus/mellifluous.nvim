@@ -18,8 +18,7 @@ return function(highlights, colors)
             NvimTreeGitRenamed      { fg = colors.orange },
             NvimTreeGitStaged       { fg = colors.green },
             NvimTreeNormal          {
-                                        bg = (config.transparent_background.enabled
-                                                and config.transparent_background.file_tree and 'NONE')
+                                        bg = (config.transparent_background.file_tree and 'NONE')
                                             or (config.flat_background.file_tree and highlights.Normal.bg)
                                             or colors.dark_bg,
                                         fg = colors.fg2

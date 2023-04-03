@@ -2,12 +2,10 @@ return function(highlights, colors)
     ---@diagnostic disable: undefined-global
     local lush = require('lush')
     local config = require('mellifluous').config
-    local is_background_transparent = config.transparent_background.enabled
-        and config.transparent_background.telescope
 
     return lush(function()
         if config.plugins.telescope.nvchad_like == true
-                and not is_background_transparent
+                and not config.transparent_background.telescope
                 and not config.flat_background.floating_windows then
             return {
                 TelescopeNormal {

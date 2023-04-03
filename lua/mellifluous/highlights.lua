@@ -23,8 +23,7 @@ return function(colors)
             CursorIM     { Cursor }, -- Like Cursor, but used when in IME mode |CursorIM|
             CursorColumn { bg = colors.bg2 }, -- Screen-column at the cursor, when 'cursorcolumn' is set.
             CursorLine   {
-                bg = (config.transparent_background.enabled
-                    and config.transparent_background.cursor_line and 'NONE')
+                bg = (config.transparent_background.cursor_line and 'NONE')
                     or colors.bg2
             }, -- Screen-line at the cursor, when 'cursorline' is set. Low-priority if foreground (ctermfg OR guifg) is not set.
             Directory    { fg = colors.functions }, -- Directory names (and other special names in listings)
@@ -65,8 +64,7 @@ return function(colors)
             MoreMsg      { fg = colors.other_keywords }, -- |more-prompt|
             NonText      { Conceal }, -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., '>' displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
             NormalFloat  {
-                bg = (config.transparent_background.enabled
-                    and config.transparent_background.floating_windows and 'NONE')
+                bg = (config.transparent_background.floating_windows and 'NONE')
                     or (config.flat_background.floating_windows and Normal.bg)
                     or colors.bg3
             }, -- Normal text in floating windows.
@@ -88,14 +86,12 @@ return function(colors)
             SpellLocal   { fg = colors.orange }, -- Word that is recognized by the spellchecker as one that is used in another region. |spell| Combined with the highlighting used otherwise.
             SpellRare    { fg = colors.orange }, -- Word that is recognized by the spellchecker as one that is hardly ever used. |spell| Combined with the highlighting used otherwise.
             StatusLine   {
-                bg = (config.transparent_background.enabled
-                    and config.transparent_background.status_line and 'NONE')
+                bg = (config.transparent_background.status_line and 'NONE')
                     or colors.bg4,
                 fg = colors.fg2
             }, -- Status line of current window
             StatusLineNC {
-                bg = (config.transparent_background.enabled
-                    and config.transparent_background.status_line and 'NONE')
+                bg = (config.transparent_background.status_line and 'NONE')
                     or colors.bg2,
                 fg = colors.fg4
             }, -- Status lines of not-current windows. Note: If this is equal to 'StatusLine' Vim will use '^^^' in the status line of the current window.
