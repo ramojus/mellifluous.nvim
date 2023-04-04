@@ -5,7 +5,7 @@ return function(highlights, colors)
     local bg = highlights.SignColumn.bg
 
     return lush(function()
-        if config.dark then
+        if config.is_bg_dark then
             return {
                 GitSignsAdd { fg = colors.green.lightness(30), bg = bg },
                 GitSignsChange { fg = colors.orange.lightness(40), bg = bg },

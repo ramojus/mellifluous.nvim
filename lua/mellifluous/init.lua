@@ -76,18 +76,22 @@ end
 local are_color_set_defaults_merged = false
 
 local function merge_color_set_defaults()
-    if not are_color_set_defaults_merged then
-        local color_set = require('mellifluous.color_sets.' .. M.config.color_set)
-
-        if color_set.get_config then
-            M.config[M.config.color_set] = vim.tbl_deep_extend(
-                'force',
-                M.config[M.config.color_set] or {},
-                color_set.get_config()
-            )
-        end
-        are_color_set_defaults_merged = true
+    if are_color_set_defaults_merged then
+        return
     end
+    are_color_set_defaults_merged = true
+
+    local color_set = require('mellifluous.color_sets.' .. M.config.color_set)
+
+    if not color_set.get_config then
+        return
+    end
+
+    M.config[M.config.color_set] = vim.tbl_deep_extend(
+        'force',
+        M.config[M.config.color_set] or {},
+        color_set.get_config()
+    )
 end
 
 function M.setup(user_config)
@@ -101,7 +105,7 @@ M.load = function()
     disable_disabled()
     local lush = require('lush')
     local colors, is_bg_dark = require('mellifluous.color_sets').get_colors(M.config.color_set)
-    M.config.dark = is_bg_dark
+    M.config.is_bg_dark = is_bg_dark
 
     require('mellifluous.cli')(M.config)
     require('mellifluous.terminal')(colors)

@@ -75,8 +75,8 @@ return function(colors)
                             and colors.fg4)
                     or NormalFloat.bg
             },
-            Pmenu        { bg = colors.bg4, fg = config.dark and colors.fg3 or colors.fg4 }, -- Popup menu: Normal item.
-            PmenuSel     { bg = config.dark and colors.fg5 or colors.dark_bg }, -- Popup menu: Selected item.
+            Pmenu        { bg = colors.bg4, fg = config.is_bg_dark and colors.fg3 or colors.fg4 }, -- Popup menu: Normal item.
+            PmenuSel     { bg = config.is_bg_dark and colors.fg5 or colors.dark_bg }, -- Popup menu: Selected item.
             PmenuSbar    { bg = colors.bg3 }, -- Popup menu: Scrollbar.
             PmenuThumb   { bg = colors.fg5 }, -- Popup menu: Thumb of the scrollbar.
             Question     { fg = colors.other_keywords }, -- |hit-enter| prompt and yes/no questions
@@ -101,7 +101,7 @@ return function(colors)
             TabLineFill  { TabLine }, -- Tab pages line, where there are no labels
             TabLineSel   { bg = colors.bg2, fg = colors.fg2 }, -- Tab pages line, active tab page label
             Title        { fg = colors.other_keywords }, -- Titles for output from ':set all', ':autocmd' etc.
-            Visual       { bg = config.dark and colors.bg4 or colors.dark_bg2 }, -- Visual mode selection
+            Visual       { bg = config.is_bg_dark and colors.bg4 or colors.dark_bg2 }, -- Visual mode selection
             VisualNOS    { bg = colors.bg3 }, -- Visual mode selection when vim is 'Not Owning the Selection'.
             WarningMsg   { fg = colors.red }, -- Warning messages
             Whitespace   { fg = colors.fg5 }, -- 'nbsp', 'space', 'tab' and 'trail' in 'listchars'
@@ -132,7 +132,7 @@ return function(colors)
             Conditional    { fg = colors.main_keywords, gui = config.styles.conditionals }, --   if, then, else, endif, switch, etc.
             Repeat         { fg = colors.main_keywords, gui = config.styles.loops }, --   for, do, while, etc.
             Label          { fg = colors.main_keywords, gui = config.styles.keywords }, --   case, default, etc.
-            Operator       { fg = config.dark and colors.operators or colors.fg3, gui = config.styles.operators }, --   'sizeof', '+', '*', etc.
+            Operator       { fg = config.is_bg_dark and colors.operators or colors.fg3, gui = config.styles.operators }, --   'sizeof', '+', '*', etc.
             Keyword        { fg = colors.other_keywords }, --   any other keyword
             Exception      { fg = colors.other_keywords }, --   try, catch, throw
 

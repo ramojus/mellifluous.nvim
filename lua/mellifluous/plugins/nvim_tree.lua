@@ -33,9 +33,9 @@ return function(highlights, colors)
                                                 and NvimTreeNormal.bg) -- no separator if LineNr bg differs from this bg
                                             or (config.flat_background.line_numbers
                                                 and config.flat_background.file_tree
-                                                and (config.dark and colors.bg4)
+                                                and (config.is_bg_dark and colors.bg4)
                                                     or colors.bg3) -- stronger separator if both bg are flat
-                                            or (config.dark and colors.bg3)
+                                            or (config.is_bg_dark and colors.bg3)
                                             or colors.dark_bg2
                                     },
             NvimTreeIndentMarker    { fg = highlights.Directory.fg },

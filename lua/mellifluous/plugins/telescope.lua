@@ -25,11 +25,11 @@ return function(highlights, colors)
 
                 TelescopePreviewNormal { bg = TelescopeNormal.bg },
                 TelescopePreviewBorder { fg = TelescopePreviewNormal.bg, bg = TelescopePreviewNormal.bg },
-                TelescopePreviewLine { bg = (config.dark and colors.bg5) or colors.dark_bg },
+                TelescopePreviewLine { bg = (config.is_bg_dark and colors.bg5) or colors.dark_bg },
                 TelescopePreviewTitle { fg = colors.fg3 },
 
                 TelescopeSelectionCaret { fg = TelescopeNormal.bg },
-                TelescopeSelection { bg = (config.dark and colors.bg5) or colors.dark_bg },
+                TelescopeSelection { bg = (config.is_bg_dark and colors.bg5) or colors.dark_bg },
             }
         else
             return {
