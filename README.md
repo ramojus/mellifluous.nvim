@@ -59,7 +59,7 @@ require 'mellifluous'.setup({
     },
     transparent_background = {
         enabled = false,
-        floating_windows = false,
+        floating_windows = true,
         telescope = true,
         file_tree = true,
         cursor_line = true,
