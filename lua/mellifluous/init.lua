@@ -81,7 +81,7 @@ local function merge_color_set_defaults()
     end
     are_color_set_defaults_merged = true
 
-    local color_set = require('mellifluous.color_sets.' .. M.config.color_set)
+    local color_set = require('mellifluous.colors.sets.' .. M.config.color_set)
 
     if not color_set.get_config then
         return
@@ -104,7 +104,7 @@ M.load = function()
     merge_color_set_defaults()
     disable_disabled()
     local lush = require('lush')
-    local colors, is_bg_dark = require('mellifluous.color_sets').get_colors(M.config.color_set)
+    local colors, is_bg_dark = require('mellifluous.colors').get_colors(M.config.color_set)
     M.config.is_bg_dark = is_bg_dark
 
     require('mellifluous.cli')(M.config)

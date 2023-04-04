@@ -78,17 +78,7 @@ function M.get_colors_dark(bg)
         special_comments = green,
 
         fg = fg,
-        fg2 = fg.da(16),
-        fg3 = fg.da(32),
-        fg4 = fg.da(48),
-        fg5 = fg.da(64),
-
-        dark_bg = bg.da(12),
         bg = bg,
-        bg2 = bg.li(3),
-        bg3 = bg.li(6),
-        bg4 = bg.li(8),
-        bg5 = bg.li(10),
 
         red = basic_red, -- errors, deletes, bad spellings
         orange = basic_orange, -- warnings, changes, other (strange) spellings
@@ -129,17 +119,7 @@ function M.get_colors_light(bg)
         special_comments = green,
 
         fg = fg,
-        fg2 = fg.li(16),
-        fg3 = fg.li(32),
-        fg4 = fg.li(48),
-        fg5 = fg.li(64),
-
-        dark_bg2 = bg.da(10),
-        dark_bg = bg.da(3),
         bg = bg,
-        bg2 = bg.li(32),
-        bg3 = bg.li(64),
-        bg4 = bg.li(88),
 
         red = basic_red, -- errors, deletes, bad spellings
         orange = basic_orange, -- warnings, changes, other (strange) spellings

@@ -8,7 +8,6 @@ function M.get_bg_dark()
 end
 
 function M.get_colors_dark(bg)
-    local fg_basic = bg.li(80)
     local fg = hsl('#dfdfaf')
 
     local orange = hsl('#af875f')
@@ -32,20 +31,11 @@ function M.get_colors_dark(bg)
         functions = dark_red,
         constants = dark_orange,
         special_comments = green,
-
-        fg = fg,
-        fg2 = fg_basic.da(16),
-        fg3 = fg_basic.da(32),
-        fg4 = fg_basic.da(55),
-        fg5 = fg_basic.da(64),
         comments = green,
 
-        dark_bg = bg.da(12),
+        fg = fg,
+        shades_fg = bg.li(80),
         bg = bg,
-        bg2 = bg.li(3),
-        bg3 = bg.li(6),
-        bg4 = bg.li(8),
-        bg5 = bg.li(10),
 
         red = red, -- errors, deletes, bad spellings
         orange = soft_orange, -- warnings, changes, other (strange) spellings

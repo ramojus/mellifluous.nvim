@@ -28,20 +28,10 @@ function M.get_colors_dark(bg)
         functions = blue,
         constants = orange,
         special_comments = green,
-
-        fg = fg,
-        fg2 = fg.da(16),
-        fg3 = fg.da(32),
-        fg4 = fg.da(55),
-        fg5 = fg.da(64),
         comments = fg.da(60),
 
-        dark_bg = bg.da(12),
+        fg = fg,
         bg = bg,
-        bg2 = bg.li(3),
-        bg3 = bg.li(6),
-        bg4 = bg.li(8),
-        bg5 = bg.li(10),
 
         red = red, -- errors, deletes, bad spellings
         orange = orange, -- warnings, changes, other (strange) spellings

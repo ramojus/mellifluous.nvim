@@ -2,7 +2,7 @@ local set = function(current_config)
     local options = {
         toggle_transparency = 100,
     }
-    local color_sets = require('mellifluous.color_sets.init').get_color_sets_table()
+    local color_sets = require('mellifluous.colors').get_color_sets_table()
     options = vim.tbl_deep_extend('force', options, color_sets)
 
     vim.api.nvim_create_user_command('Mellifluous', function(input)
