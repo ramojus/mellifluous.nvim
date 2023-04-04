@@ -54,7 +54,7 @@ return function(colors)
             Substitute   { IncSearch }, -- |:substitute| replacement text highlighting
             CursorLineNr {
                 bg = (config.flat_background.cursor_line_number and LineNr.bg)
-                    or CursorLine.bg,
+                    or CursorLine.bg.da(12),
                 fg = LineNr.fg
             }, -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
             MatchParen   { bg = colors.bg4, fg = colors.main_keywords }, -- Character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
