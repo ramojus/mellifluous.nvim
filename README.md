@@ -97,16 +97,15 @@ Set `vim.opt.background` to `'light'`. This will only work on color sets that ha
 ### Color sets
 Color sets are like different colorschemes, but they use the same highlight rules, so in this case, I find it more accurate to call them color sets.
 
-I added alduin and mountain color sets (both non-original) mostly for nostalgia, these are my two most favorite colorschemes after mellifluous and I've been using each of them for about a year before creating mellifluous.
-
 Non-original color sets are made to match their original version as closely as possible with the same highlight rules as mellifluous.
 
 These color sets don't get loaded, unless you specify them in a `color_set` option, so there is no performance impact.
 
 Available color sets:
-- `mellifluous`
-- `alduin`. Dark only. [link to original](https://github.com/alessandroyorba/alduin)
-- `mountain`. Dark only. [link to original](https://github.com/mountain-theme/mountain)
+- `mellifluous`. Dark and light, original.
+- `alduin`. Dark, [link to original](https://github.com/alessandroyorba/alduin).
+- `mountain`. Dark, [link to original](https://github.com/mountain-theme/mountain).
+- `tender`. Dark, [link to original](https://github.com/jacoborus/tender.vim).
 
 ### Color set specific config options
 #### Mellifluous

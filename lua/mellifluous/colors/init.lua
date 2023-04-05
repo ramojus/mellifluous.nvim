@@ -5,6 +5,7 @@ function M.get_color_sets_table()
         mellifluous = 1,
         alduin = 2,
         mountain = 3,
+        tender = 4,
     }
 end
 
