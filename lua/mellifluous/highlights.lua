@@ -54,6 +54,7 @@ return function(colors)
             Substitute   { IncSearch }, -- |:substitute| replacement text highlighting
             CursorLineNr {
                 bg = (config.flat_background.cursor_line_number and LineNr.bg)
+                     or (config.transparent_background.enabled and 'NONE')
                     or CursorLine.bg.da(12),
                 fg = LineNr.fg
             }, -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
