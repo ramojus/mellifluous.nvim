@@ -3,6 +3,7 @@ return function(colors)
     local lush = require('lush')
     local hsl = lush.hsl
     local config = require('mellifluous').config
+    local change_color = require('mellifluous.utils.change_color')
 
     return lush(function()
         return {
@@ -64,6 +65,7 @@ return function(colors)
             MsgSeparator { VertSplit }, -- Separator for scrolled messages, `msgsep` flag of 'display'
             MoreMsg      { fg = colors.other_keywords }, -- |more-prompt|
             NonText      { Conceal }, -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., '>' displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
+            Title        { fg = colors.other_keywords }, -- Titles for output from ':set all', ':autocmd' etc.
             NormalFloat  {
                 bg = (config.transparent_background.floating_windows and 'NONE')
                     or (config.flat_background.floating_windows and Normal.bg)
@@ -76,6 +78,8 @@ return function(colors)
                             and colors.fg4)
                     or NormalFloat.bg
             },
+            FloatTitle   { bg = NormalFloat.bg, fg = colors.comments },
+            FloatShadow  { bg = colors.dark_bg },
             Pmenu        { bg = colors.bg4, fg = config.is_bg_dark and colors.fg3 or colors.fg4 }, -- Popup menu: Normal item.
             PmenuSel     { bg = config.is_bg_dark and colors.fg5 or colors.dark_bg }, -- Popup menu: Selected item.
             PmenuSbar    { bg = colors.bg3 }, -- Popup menu: Scrollbar.
@@ -101,7 +105,6 @@ return function(colors)
             TabLine      { bg = StatusLine.bg, fg = colors.fg3 }, -- Tab pages line, not active tab page label
             TabLineFill  { TabLine }, -- Tab pages line, where there are no labels
             TabLineSel   { bg = colors.bg2, fg = colors.fg2 }, -- Tab pages line, active tab page label
-            Title        { fg = colors.other_keywords }, -- Titles for output from ':set all', ':autocmd' etc.
             Visual       { bg = config.is_bg_dark and colors.bg4 or colors.dark_bg2 }, -- Visual mode selection
             VisualNOS    { bg = colors.bg3 }, -- Visual mode selection when vim is 'Not Owning the Selection'.
             WarningMsg   { fg = colors.red }, -- Warning messages
