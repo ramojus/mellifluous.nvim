@@ -48,8 +48,8 @@ now). Example with packer.nvim <https://github.com/wbthomason/packer.nvim>:
 ==============================================================================
 3. Configuration                                   *mellifluous-configuration*
 
-Here is an example with the default config, change it as you like. If you like
-the defaults, there is no need to call `setup`.
+Here is an example with the default config. This is optional, and only relevant
+parts of the config can be included.
 
 >lua
     require 'mellifluous'.setup({
@@ -148,7 +148,7 @@ Default config:
 
 OVERRIDING COLORS OF A COLOR SET ~
 
-Syntax and highlight groups whose colors can be overridden:
+The following snipet shows where and which colors can be overridden:
 
 >lua
     require 'mellifluous'.setup({
