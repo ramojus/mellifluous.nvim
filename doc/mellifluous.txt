@@ -9,7 +9,6 @@ Table of Contents                              *mellifluous-table-of-contents*
   - Mixing styles                    |mellifluous-configuration-mixing-styles|
   - Setting light theme        |mellifluous-configuration-setting-light-theme|
   - Color sets                          |mellifluous-configuration-color-sets|
-  - Color set specific config options|mellifluous-configuration-color-set-specific-config-options|
 4. CLI options                                       |mellifluous-cli-options|
 5. TODO                                                     |mellifluous-todo|
 6. Ports                                                   |mellifluous-ports|
@@ -17,7 +16,6 @@ Table of Contents                              *mellifluous-table-of-contents*
 
 ==============================================================================
 1. Styled plugins                                 *mellifluous-styled-plugins*
-
 
 - Treesitter <https://github.com/nvim-treesitter/nvim-treesitter>
 - Native LSP <https://github.com/neovim/nvim-lspconfig>
@@ -134,18 +132,72 @@ Dark, link to original <https://github.com/alessandroyorba/alduin>. -
 original <https://github.com/jacoborus/tender.vim>.
 
 
-COLOR SET SPECIFIC CONFIG OPTIONS*mellifluous-configuration-color-set-specific-config-options*
+MELLIFLUOUS COLOR SET CONFIGURATION ~
 
-
-MELLIFLUOUS ~
-
-default config:
+Default config:
 
 >lua
     require 'mellifluous'.setup({
         mellifluous = {
-          neutral = true, -- set this to false and bg_contrast to 'medium' for original mellifluous (then it was called meliora theme)
-          bg_contrast = 'medium' -- options: 'soft', 'medium', 'hard'
+            neutral = true, -- set this to false and bg_contrast to 'medium' for original mellifluous (then it was called meliora theme)
+            bg_contrast = 'medium' -- options: 'soft', 'medium', 'hard'
+        }
+    })
+<
+
+
+OVERRIDING COLORS OF A COLOR SET ~
+
+Syntax and highlight groups whose colors can be overridden:
+
+>lua
+    require 'mellifluous'.setup({
+        <color_set_name> = { -- name any of the defined color sets
+            color_overrides = {
+                dark = { -- dark variant of the color set
+                    bg = nil, -- used for shades, on some color sets fg will be derived from this
+                    fg = nil, -- used for shades if shades_fg is undefined
+                    shades_fg = nil, -- used for shades (dimmed foregrounds)
+    
+                    main_keywords = nil,
+                    other_keywords = nil,
+                    types = nil,
+                    operators = nil,
+                    strings = nil,
+                    functions = nil,
+                    constants = nil,
+                    comments = nil,
+                    special_comments = nil,
+    
+                    red = nil, -- errors, deletes, bad spellings
+                    orange = nil, -- warnings, changes, unusual spellings
+                    green = nil, -- staged, additions
+                    blue = nil, -- information, new files
+                    purple = nil, -- hints, merge
+    
+                    -- for better terminal highlights
+                    yellow = nil,
+                    cyan = nil,
+                },
+                light = { -- light variant of the color set
+                    -- same fields as in dark variant
+                },
+            }
+        }
+    })
+<
+
+For example, to override a color for the main keywords group in the dark
+version of the mellifluous color set, one could do the following:
+
+>lua
+    require 'mellifluous'.setup({
+        mellifluous = {
+            color_overrides = {
+                dark = {
+                    main_keywords = '#e0e066'
+                }
+            }
         }
     })
 <
@@ -162,23 +214,17 @@ Options include: - Toggling transparency. - Changing color set.
 ==============================================================================
 5. TODO                                                     *mellifluous-todo*
 
-
-- ☒ Add color set specific options.
-- ☒ Add vimdocs
-- ☐ Add guidelines for how to create your own theme with the same highlight rules.
 - ☐ Support more plugins (contributions are welcome).
 
 
 ==============================================================================
 6. Ports                                                   *mellifluous-ports*
 
-
 - Helix (with slightly outdated color palette) <https://github.com/helix-editor/helix/wiki/Themes#meliora>
 
 
 ==============================================================================
 7. Inspiration                                       *mellifluous-inspiration*
-
 
 - Mountain and Mountaineer <https://github.com/mountain-theme/mountain>
 - Alduin <https://github.com/alessandroyorba/alduin>
