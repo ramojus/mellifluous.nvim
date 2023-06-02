@@ -101,10 +101,13 @@ end
 
 M.load = function()
     vim.opt.termguicolors = true
+
     merge_color_set_defaults()
     disable_disabled()
+
     local lush = require('lush')
     local colors, is_bg_dark = require('mellifluous.colors').get_colors(M.config.color_set)
+
     M.config.is_bg_dark = is_bg_dark
 
     require('mellifluous.cli')(M.config)
@@ -112,6 +115,7 @@ M.load = function()
 
     local highlights = require('mellifluous.highlights')(colors)
     local specs = require('mellifluous.plugins')(highlights, colors)
+
     table.insert(specs, highlights)
 
     return lush.merge(specs)

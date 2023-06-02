@@ -107,15 +107,68 @@ Available color sets:
 - `mountain`. Dark, [link to original](https://github.com/mountain-theme/mountain).
 - `tender`. Dark, [link to original](https://github.com/jacoborus/tender.vim).
 
-### Color set specific config options
-#### Mellifluous
-default config:
+#### Mellifluous color set configuration
+Default config:
 
 ```lua
 require 'mellifluous'.setup({
     mellifluous = {
-      neutral = true, -- set this to false and bg_contrast to 'medium' for original mellifluous (then it was called meliora theme)
-      bg_contrast = 'medium' -- options: 'soft', 'medium', 'hard'
+        neutral = true, -- set this to false and bg_contrast to 'medium' for original mellifluous (then it was called meliora theme)
+        bg_contrast = 'medium' -- options: 'soft', 'medium', 'hard'
+    }
+})
+```
+
+#### Overriding colors of a color set
+Syntax and highlight groups whose colors can be overridden:
+
+```lua
+require 'mellifluous'.setup({
+    <color_set_name> = { -- name any of the defined color sets
+        color_overrides = {
+            dark = { -- dark variant of the color set
+                bg = nil, -- used for shades, on some color sets fg will be derived from this
+                fg = nil, -- used for shades if shades_fg is undefined
+                shades_fg = nil, -- used for shades (dimmed foregrounds)
+
+                main_keywords = nil,
+                other_keywords = nil,
+                types = nil,
+                operators = nil,
+                strings = nil,
+                functions = nil,
+                constants = nil,
+                comments = nil,
+                special_comments = nil,
+
+                red = nil, -- errors, deletes, bad spellings
+                orange = nil, -- warnings, changes, unusual spellings
+                green = nil, -- staged, additions
+                blue = nil, -- information, new files
+                purple = nil, -- hints, merge
+
+                -- for better terminal highlights
+                yellow = nil,
+                cyan = nil,
+            },
+            light = { -- light variant of the color set
+                -- same fields as in dark variant
+            },
+        }
+    }
+})
+```
+
+For example, to override a color for the main keywords group in the dark version of the mellifluous color set, one could do the following:
+
+```lua
+require 'mellifluous'.setup({
+    mellifluous = {
+        color_overrides = {
+            dark = {
+                main_keywords = '#e0e066'
+            }
+        }
     }
 })
 ```
@@ -128,9 +181,6 @@ Options include:
 - Changing color set.
 
 ## TODO
-- [x] Add color set specific options.
-- [x] Add vimdocs
-- [ ] Add guidelines for how to create your own theme with the same highlight rules.
 - [ ] Support more plugins (contributions are welcome).
 
 ## Ports
