@@ -117,7 +117,7 @@ have light theme.
 COLOR SETS                              *mellifluous-configuration-color-sets*
 
 Color sets are like different colorschemes, but they use the same highlight
-rules, so in this case, I find it more accurate to call them color sets.
+rules.
 
 Non-original color sets are made to match their original version as closely as
 possible with the same highlight rules as mellifluous.
