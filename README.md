@@ -5,15 +5,15 @@ A colorscheme for [Neovim](https://github.com/neovim/neovim). Pleasant and produ
 Made with [lush.nvim](https://github.com/rktjmp/lush.nvim).
 
 ## Features
-- [**Multiple color sets**](#color-sets): Mellifluous offers several different color sets, including the default mellifluous, as well as sets inspired by mountain, alduin, and tender themes. Each color set presents a unique visual theme while adhering to the same set of productive highlight rules.
+- [**Multiple color sets**](#color-sets): Mellifluous offers several color sets, including the default mellifluous, as well as sets inspired by mountain, alduin, and tender themes. Each color set presents a unique visual theme while adhering to the same set of productive highlight rules.
 
 - **Layered backgrounds**: Distinct shades of the background color are applied to various UI components. This allows for easy differentiation between the importance of the components. By employing this approach, the colorscheme minimizes the use of borders, embracing a minimalistic design philosophy.
 
 - [**Color overrides**](#overriding-colors-of-a-color-set): Each color set supports the customization of specific colors to further customize the theme's appearance. Syntax elements such as keywords, types, operators, and strings can be assigned unique colors to suit individual preferences.
 
-- [**Customizable syntax styling**](#configuration): Syntax elements can be easily styled by specifying styles like italic, bold, or underline.
+- [**Customizable syntax styling**](#configuration): The style of syntax elements can be easily changed by specifying styles like italic, bold, or underline.
 
-- [**Styled plugins**](#styled-plugins): Defined styles for lsp, treesitter and more, for cohesive coding experience.
+- [**Styled plugins**](#styled-plugins): Plugins like lsp, treesitter and more will seamlessly integrate with the colorscheme.
 
 - [**Background Transparency**](#configuration): The colorscheme offers the option to enable or disable transparency for various UI components, such as floating windows, file tree, and cursor line.
 
@@ -50,7 +50,7 @@ use({
 ```
 
 ## Configuration
-Here is an example with the default config, change it as you like. If you like the defaults, there is no need to call `setup`.
+Here is an example with the default config. This is optional, and only relevant parts of the config can be included.
 
 ```lua
 require 'mellifluous'.setup({
@@ -134,7 +134,7 @@ require 'mellifluous'.setup({
 ```
 
 #### Overriding colors of a color set
-Syntax and highlight groups whose colors can be overridden:
+The following snipet shows where and which colors can be overridden:
 
 ```lua
 require 'mellifluous'.setup({
