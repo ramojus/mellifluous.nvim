@@ -5,15 +5,15 @@ A colorscheme for [Neovim](https://github.com/neovim/neovim). Pleasant and produ
 Made with [lush.nvim](https://github.com/rktjmp/lush.nvim).
 
 ## Features
-- [**Multiple color sets**](#color-sets): Mellifluous offers several color sets, including the default mellifluous, as well as sets inspired by mountain, alduin, and tender themes. Each color set presents a unique visual theme while adhering to the same set of productive highlight rules.
+- [**Multiple color sets**](#color-sets): Mellifluous offers several color sets, including the default mellifluous, as well as sets inspired by mountain, alduin, and tender themes. Each color set presents a unique visual theme while following the same set of productive highlight rules.
 
-- **Layered backgrounds**: Distinct shades of the background color are applied to various UI components. This allows for easy differentiation between the importance of the components. By employing this approach, the colorscheme minimizes the use of borders, embracing a minimalistic design philosophy.
+- **Layered backgrounds**: Distinct shades of the background color are applied to various UI components. This allows for easy differentiation between the importance of the components. By taking this approach, the colorscheme minimizes the use of borders, embracing a minimalistic design philosophy.
 
-- [**Color overrides**](#overriding-colors-of-a-color-set): Each color set supports the customization of specific colors to further customize the theme's appearance. Syntax elements such as keywords, types, operators, and strings can be assigned unique colors to suit individual preferences.
+- [**Color overrides**](#overriding-colors-of-a-color-set): Each color set supports the customization of specific colors.
 
-- [**Customizable syntax styling**](#configuration): The style of syntax elements can be easily changed by specifying styles like italic, bold, or underline.
+- [**Customizable syntax styling**](#configuration): The style of syntax elements can be changed by specifying styles like italic, bold, or underline.
 
-- [**Styled plugins**](#styled-plugins): Plugins like lsp, treesitter and more will seamlessly integrate with the colorscheme.
+- [**Styled plugins**](#styled-plugins): Plugins like lsp, treesitter, nvim-cmp and more will follow the colorscheme's design.
 
 - [**Background Transparency**](#configuration): The colorscheme offers the option to enable or disable transparency for various UI components, such as floating windows, file tree, and cursor line.
 
@@ -36,7 +36,7 @@ Made with [lush.nvim](https://github.com/rktjmp/lush.nvim).
 - [Gitsigns](https://github.com/lewis6991/gitsigns.nvim)
 
 ## Usage
-When installing, [lush](https://github.com/rktjmp/lush.nvim) is required (for now).
+When installing, [lush](https://github.com/rktjmp/lush.nvim) is required.
 Example with [packer.nvim](https://github.com/wbthomason/packer.nvim):
 ```lua
 use({
@@ -109,8 +109,6 @@ Set style value to `'style1 style2'`, for bold and italic it would be `'bold ita
 Set `vim.opt.background` to `'light'`. This will only work on color sets that have light theme.
 
 ### Color sets
-Color sets are like different colorschemes, but they use the same highlight rules.
-
 Non-original color sets are made to match their original version as closely as possible with the same highlight rules as mellifluous.
 
 These color sets don't get loaded, unless you specify them in a `color_set` option, so there is no performance impact.
