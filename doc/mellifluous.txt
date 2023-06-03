@@ -30,8 +30,8 @@ Table of Contents                              *mellifluous-table-of-contents*
 ==============================================================================
 2. Usage                                                   *mellifluous-usage*
 
-When installing, lush <https://github.com/rktjmp/lush.nvim> is required (for
-now). Example with packer.nvim <https://github.com/wbthomason/packer.nvim>:
+When installing, lush <https://github.com/rktjmp/lush.nvim> is required.
+Example with packer.nvim <https://github.com/wbthomason/packer.nvim>:
 
 >lua
     use({
@@ -115,9 +115,6 @@ have light theme.
 
 
 COLOR SETS                              *mellifluous-configuration-color-sets*
-
-Color sets are like different colorschemes, but they use the same highlight
-rules.
 
 Non-original color sets are made to match their original version as closely as
 possible with the same highlight rules as mellifluous.
