@@ -4,6 +4,8 @@ return function(colors)
     local hsl = lush.hsl
     local config = require('mellifluous').config
     local change_color = require('mellifluous.utils.change_color')
+    local shader = require'mellifluous.colors.shader'
+    local shade_recipes = shader.get_shade_recipes(config.is_bg_dark)
 
     return lush(function()
         return {
@@ -56,7 +58,7 @@ return function(colors)
             CursorLineNr {
                 bg = (config.flat_background.cursor_line_number and LineNr.bg)
                      or (config.transparent_background.enabled and 'NONE')
-                    or CursorLine.bg.da(12),
+                    or shader.apply_shade(shade_recipes.dark_bg, CursorLine.bg),
                 fg = LineNr.fg
             }, -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
             MatchParen   { bg = colors.bg4, fg = colors.main_keywords }, -- Character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
