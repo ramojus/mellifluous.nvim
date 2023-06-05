@@ -10,6 +10,7 @@ return function(highlights, colors)
     end
 
     table.insert(specs, require('mellifluous.plugins.treesitter')(highlights, colors))
+    table.insert(specs, require('mellifluous.plugins.semantic_tokens')(highlights, colors))
 
     return specs
 end
