@@ -16,6 +16,7 @@ return function(highlights, colors)
             sym('@lsp.type.operator')               { highlights.Operator },
             sym('@lsp.type.parameter')              { fg = colors.fg },
             sym('@lsp.type.property')               { fg = colors.fg },
+            sym('@lsp.type.variable')               { },
             sym('@lsp.typemod.variable.constant')   { highlights.Constant },
             sym('@lsp.typemod.keyword.controlFlow') { fg = colors.main_keywords },
         }
