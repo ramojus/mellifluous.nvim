@@ -163,7 +163,7 @@ return function(colors)
             Italic { italic = config.italic },
             Ignore         { fg = colors.fg5 }, -- Left blank, hidden |hl-Ignore| (NOTE: May be invisible here in template)
             Error          { fg = colors.red }, -- Any erroneous construct
-            Todo           { fg = colors.main_keywords }, -- Anything that needs extra attention; mostly the keywords TODO FIXME and XXX
+            Todo           { bg = colors.strings, fg = colors.bg }, -- Anything that needs extra attention; mostly the keywords TODO FIXME and XXX
 
             -- These groups are for the native LSP client and diagnostic system. Some
             -- other LSP clients may use these groups, or use their own. Consult your

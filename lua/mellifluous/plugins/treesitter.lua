@@ -62,6 +62,7 @@ return function(highlights, colors)
             sym('@text.title')          { fg = colors.other_keywords } , -- Text that is part of a title.
             sym('@text.literal')        { highlights.Character } , -- Literal or verbatim text.
             sym('@text.uri')            { fg = change_color.get_lower_contrast(colors.blue, 20).desaturate(30) } , -- URIs like hyperlinks or email addresses.
+            sym('@text.todo')           { highlights.Todo },
             sym('@math')                { fg = colors.other_keywords } , -- Math environments like LaTeX's `$ ... $`
             sym('@text.reference')      { fg = colors.constants } , -- Footnotes, text references, citations, etc.
             sym('@environment')         { fg = colors.other_keywords } , -- Text environments of markup languages.
