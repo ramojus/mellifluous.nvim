@@ -6,8 +6,8 @@ return function(highlights, colors)
         return {
             CmpDocumentationBorder { highlights.VertSplit },
             CmpItemAbbrDefault { fg = highlights.Pmenu.fg, blend = highlights.Pmenu.blend },
-            CmpItemAbbrMatchDefault { fg = colors.fg },
-            CmpItemAbbrMatchFuzzyDefault { fg = colors.fg },
+            CmpItemAbbrMatchDefault { fg = colors.fg.hex },
+            CmpItemAbbrMatchFuzzyDefault { fg = colors.fg.hex },
             CmpItemKindDefault { highlights.Type, gui = 'NONE' },
             CmpItemKindClassDefault { highlights.Type, gui = 'NONE' },
             CmpItemKindColorDefault { highlights.Label },
@@ -34,7 +34,7 @@ return function(highlights, colors)
             CmpItemKindUnitDefault { CmpItemKindStructDefault },
             CmpItemKindValueDefault { CmpItemKindConstantDefault },
             CmpItemKindVariableDefault { highlights.Identifier, gui = 'NONE' },
-            CmpItemMenu { fg = colors.fg3 },
+            CmpItemMenu { fg = colors.fg3.hex },
             CmpScrollThumb { highlights.PmenuThumb },
         }
     end)

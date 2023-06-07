@@ -5,9 +5,9 @@ return function(_, colors)
 
     return lush(function()
         return {
-            StartifyBracket { fg = colors.fg4 },
-            StartifyNumber { fg = colors.fg },
-            StartifyPath { fg = colors.blue },
+            StartifyBracket { fg = colors.fg4.hex },
+            StartifyNumber { fg = colors.fg.hex },
+            StartifyPath { fg = colors.blue.hex },
             StartifySlash { StartifyPath },
         }
     end)

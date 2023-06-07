@@ -12,13 +12,13 @@ return function(colors)
 
     local li_value = 16
     vim.g.terminal_color_8 = colors.bg2.hex
-    vim.g.terminal_color_9 = colors.red.li(li_value).hex
-    vim.g.terminal_color_10 = colors.green.li(li_value).hex
-    vim.g.terminal_color_11 = (colors.yellow and colors.yellow.li(li_value).hex)
-                                or colors.strings.li(li_value).hex
-    vim.g.terminal_color_12 = colors.blue.li(li_value).hex
-    vim.g.terminal_color_13 = colors.purple.li(li_value).hex
-    vim.g.terminal_color_14 = (colors.cyan and colors.cyan.li(li_value).hex)
-                                or colors.blue.li(li_value).hex
+    vim.g.terminal_color_9 = colors.red:lightened(li_value).hex
+    vim.g.terminal_color_10 = colors.green:lightened(li_value).hex
+    vim.g.terminal_color_11 = (colors.yellow and colors.yellow:lightened(li_value).hex)
+                                or colors.strings:lightened(li_value).hex
+    vim.g.terminal_color_12 = colors.blue:lightened(li_value).hex
+    vim.g.terminal_color_13 = colors.purple:lightened(li_value).hex
+    vim.g.terminal_color_14 = (colors.cyan and colors.cyan:lightened(li_value).hex)
+                                or colors.blue:lightened(li_value).hex
     vim.g.terminal_color_15 = colors.fg2.hex
 end

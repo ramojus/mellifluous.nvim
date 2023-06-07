@@ -10,15 +10,15 @@ return function(highlights, colors)
             sym('@lsp.type.comment')                { }, -- let treesitter handle those
             sym('@lsp.type.enum')                   { highlights.Type },
             sym('@lsp.type.enumMember')             { highlights.Constant },
-            sym('@lsp.type.escapeSequence')         { fg = colors.fg3 },
+            sym('@lsp.type.escapeSequence')         { fg = colors.fg3.hex },
             sym('@lsp.type.formatSpecifier')        { highlights.Operator },
             sym('@lsp.type.namespace')              { highlights.Type },
             sym('@lsp.type.operator')               { highlights.Operator },
-            sym('@lsp.type.parameter')              { fg = colors.fg },
-            sym('@lsp.type.property')               { fg = colors.fg },
+            sym('@lsp.type.parameter')              { fg = colors.fg.hex },
+            sym('@lsp.type.property')               { fg = colors.fg.hex },
             sym('@lsp.type.variable')               { },
             sym('@lsp.typemod.variable.constant')   { highlights.Constant },
-            sym('@lsp.typemod.keyword.controlFlow') { fg = colors.main_keywords },
+            sym('@lsp.typemod.keyword.controlFlow') { fg = colors.main_keywords.hex },
         }
     end)
 end

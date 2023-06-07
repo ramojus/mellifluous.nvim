@@ -1,5 +1,4 @@
-local lush = require('lush')
-local hsl = lush.hsl
+local color = require('mellifluous.color')
 
 local M = {}
 
@@ -18,53 +17,53 @@ function M.get_bg_dark()
     local mellifluous_config = require('mellifluous').config[color_set_name]
     local is_neutral = get_is_neutral(mellifluous_config)
 
-    local brightness = 10
+    local brightness = 11.5
     if mellifluous_config.bg_contrast == 'hard' then
-        brightness = 8
+        brightness = brightness - 2
     elseif mellifluous_config.bg_contrast == 'soft' then
-        brightness = 12
+        brightness = brightness + 2
     end
 
     if is_neutral then
-        return hsl(0, 0, brightness)
+        return color.new_from_hsl({ h = 0, s = 0, l = brightness })
     end
-    return hsl(24, 10, brightness)
+    return color.new_from_hsl({ h = 24, s = 10, l = brightness })
 end
 
 function M.get_bg_light()
     local mellifluous_config = require('mellifluous').config[color_set_name]
     local is_neutral = get_is_neutral(mellifluous_config)
 
-    local brightness = 90
+    local brightness = 91.5
     if mellifluous_config.bg_contrast == 'hard' then
-        brightness = 94
+        brightness = brightness + 2
     elseif mellifluous_config.bg_contrast == 'soft' then
-        brightness = 86
+        brightness = brightness - 2
     end
 
     if is_neutral then
-        return hsl(0, 0, brightness)
+        return color.new_from_hsl({ h = 0, s = 0, l = brightness })
     end
-    return hsl(24, 10, brightness)
+    return color.new_from_hsl({ h = 24, s = 10, l = brightness })
 end
 
 function M.get_colors_dark(bg)
-    local fg = bg.li(80)
+    local fg = bg:lightened(80)
 
-    local red = hsl(0, 44, 70)
-    local orange = hsl(30, 40, 67)
-    local khaki = hsl(28, 20, 67)
-    local yellow = hsl(40, 30, 67)
+    local red = color.new_from_hsl({ h = 19, s = 43, l = 68 })
+    local orange = color.new_from_hsl({ h = 67, s = 36, l = 72 })
+    local khaki = color.new_from_hsl({ h = 64, s = 18, l = 71 })
+    local yellow = color.new_from_hsl({ h = 84, s = 31, l = 74 })
 
-    local blue = hsl(255, 18, 65)
-    local purple = hsl(309, 18, 65)
-    local green = hsl(60, 18, 65)
+    local blue = color.new_from_hsl({ h = 297, s = 24, l = 64 })
+    local purple = color.new_from_hsl({ h = 331, s = 18, l = 66 })
+    local green = color.new_from_hsl({ h = 107, s = 27, l = 73 })
 
-    local dark_green = hsl(60, 24, 36)
+    local dark_green = color.new_from_hsl({ h = 108, s = 54, l = 47 })
 
-    local basic_red = hsl(05, 50, 69)
-    local basic_orange = hsl(35, 50, 69)
-    local basic_purple = hsl(270, 30, 69)
+    local basic_red = color.new_from_hsl({ h = 26, s = 46, l = 68 })
+    local basic_purple = color.new_from_hsl({ h = 307, s = 36, l = 67 })
+    local basic_orange = color.new_from_hsl({ h = 77, s = 43, l = 76 })
 
     return {
         main_keywords = red,
@@ -76,36 +75,34 @@ function M.get_colors_dark(bg)
         constants = purple,
         comments = dark_green,
         special_comments = green,
-
         fg = fg,
         bg = bg,
-
-        red = basic_red, -- errors, deletes, bad spellings
+        red = basic_red,       -- errors, deletes, bad spellings
         orange = basic_orange, -- warnings, changes, other (strange) spellings
-        green = green, -- staged, additions
-        blue = blue, -- information, new files
+        green = green,         -- staged, additions
+        blue = blue,           -- information, new files
         purple = basic_purple, -- hints, merge
     }
 end
 
 function M.get_colors_light(bg)
-    local fg = bg.da(80)
+    local fg = bg:darkened(80)
 
-    local red = hsl(0, 52, 44)
-    local orange = hsl(30, 56, 41)
-    local khaki = hsl(28, 32, 41)
-    local yellow = hsl(40, 56, 41)
+    local red = color.new_from_hsl({ h = 24, s = 75, l = 43 })
+    local orange = color.new_from_hsl({ h = 63, s = 80, l = 50 })
+    local khaki = color.new_from_hsl({ h = 62, s = 52, l = 47 })
+    local yellow = color.new_from_hsl({ h = 81, s = 84, l = 55 })
 
-    local blue = hsl(255, 32, 39)
-    local purple = hsl(309, 32, 39)
-    local green = hsl(60, 32, 24)
+    local blue = color.new_from_hsl({ h = 293, s = 43, l = 35 })
+    local purple = color.new_from_hsl({ h = 333, s = 52, l = 40 })
+    local green = color.new_from_hsl({ h = 109, s = 84, l = 40 })
 
-    local dark_green = hsl(60, 16, 48)
+    local dark_green = color.new_from_hsl({ h = 108, s = 40, l = 58 })
 
-    local basic_red = hsl(05, 50, 39)
-    local basic_orange = hsl(35, 50, 39)
-    local basic_blue = hsl(215, 30, 39)
-    local basic_purple = hsl(270, 30, 39)
+    local basic_red = color.new_from_hsl({ h = 28, s = 64, l = 39 })
+    local basic_orange = color.new_from_hsl({ h = 73, s = 76, l = 49 })
+    local basic_blue = color.new_from_hsl({ h = 258, s = 36, l = 40 })
+    local basic_purple = color.new_from_hsl({ h = 305, s = 42, l = 37 })
 
     return {
         main_keywords = red,
@@ -117,24 +114,21 @@ function M.get_colors_light(bg)
         constants = purple,
         comments = dark_green,
         special_comments = green,
-
         fg = fg,
         bg = bg,
-
-        red = basic_red, -- errors, deletes, bad spellings
+        red = basic_red,       -- errors, deletes, bad spellings
         orange = basic_orange, -- warnings, changes, other (strange) spellings
-        green = green, -- staged, additions
-        blue = basic_blue, -- information, new files
+        green = green,         -- staged, additions
+        blue = basic_blue,     -- information, new files
         purple = basic_purple, -- hints, merge
     }
 end
 
 function M.get_config()
     return {
-        neutral = true, -- set this to false and bg_contrast to 'medium' for original mellifluous (then it was called mellifluous theme)
+        neutral = true,        -- set this to false and bg_contrast to 'medium' for original mellifluous (then it was called mellifluous theme)
         bg_contrast = 'medium' -- options: 'soft', 'medium', 'hard'
     }
 end
 
 return M
-

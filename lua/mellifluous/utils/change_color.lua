@@ -1,19 +1,19 @@
 local M = {}
 
-local config = require('mellifluous').config
-
 function M.get_lower_contrast(color, amount)
+    local config = require('mellifluous').config
     if config.is_bg_dark then
-        return color.da(amount)
+        return color:darkened(amount)
     end
-    return color.li(amount)
+    return color:lightened(amount)
 end
 
 function M.get_higher_contrast(color, amount)
+    local config = require('mellifluous').config
     if config.is_bg_dark then
-        return color.li(amount)
+        return color:lightened(amount)
     end
-    return color.da(amount)
+    return color:darkened(amount)
 end
 
 return M

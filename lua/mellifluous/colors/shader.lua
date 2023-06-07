@@ -7,8 +7,8 @@ function M.get_shade_recipes(is_bg_dark)
             fg3 = { target = 'fg', action = 'da', val = 32 },
             fg4 = { target = 'fg', action = 'da', val = 48 },
             fg5 = { target = 'fg', action = 'da', val = 64 },
-            dark_bg = { target = 'bg', action = 'da', val = 12 },
-            bg2 = { target = 'bg', action = 'li', val = 3 },
+            dark_bg = { target = 'bg', action = 'da', val = 2.5 },
+            bg2 = { target = 'bg', action = 'li', val = 4 },
             bg3 = { target = 'bg', action = 'li', val = 6 },
             bg4 = { target = 'bg', action = 'li', val = 8 },
             bg5 = { target = 'bg', action = 'li', val = 10 },
@@ -19,20 +19,27 @@ function M.get_shade_recipes(is_bg_dark)
             fg3 = { target = 'fg', action = 'li', val = 32 },
             fg4 = { target = 'fg', action = 'li', val = 48 },
             fg5 = { target = 'fg', action = 'li', val = 64 },
-            dark_bg2 = { target = 'bg', action = 'da', val = 10 },
-            dark_bg = { target = 'bg', action = 'da', val = 3 },
-            bg2 = { target = 'bg', action = 'li', val = 32 },
-            bg3 = { target = 'bg', action = 'li', val = 64 },
-            bg4 = { target = 'bg', action = 'li', val = 88 },
+            dark_bg2 = { target = 'bg', action = 'da', val = 8 },
+            dark_bg = { target = 'bg', action = 'da', val = 2.5 },
+            bg2 = { target = 'bg', action = 'li', val = 4 },
+            bg3 = { target = 'bg', action = 'li', val = 6 },
+            bg4 = { target = 'bg', action = 'li', val = 8 },
         }
     end
 end
 
 function M.apply_shade(recipe, target_color)
-    if recipe.action == 'li' then
-        return target_color.li(recipe.val)
+    local color
+    if type(target_color) == 'string' then -- hex
+        color = require'mellifluous.color'.new(target_color)
     else
-        return target_color.da(recipe.val)
+        color = target_color
+    end
+
+    if recipe.action == 'li' then
+        return color:lightened(recipe.val)
+    else
+        return color:darkened(recipe.val)
     end
 end
 

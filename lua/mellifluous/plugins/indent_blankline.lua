@@ -5,8 +5,8 @@ return function(highlights, colors)
 
     return lush(function()
         return {
-            IndentBlanklineChar { fg = (config.is_bg_dark and colors.bg4) or colors.dark_bg2 },
-            IndentBlanklineContextChar { fg = colors.fg5 },
+            IndentBlanklineChar { fg = (config.is_bg_dark and colors.bg4.hex) or colors.dark_bg2.hex },
+            IndentBlanklineContextChar { fg = colors.fg5.hex },
             IndentBlanklineSpaceChar { highlights.Whitespace },
         }
     end)
