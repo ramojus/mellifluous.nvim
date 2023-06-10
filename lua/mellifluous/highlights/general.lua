@@ -2,9 +2,8 @@ local M = {}
 
 function M.set(hl, colors)
     local config = require('mellifluous').config
-    local change_color = require('mellifluous.utils.change_color')
-    local shader = require('mellifluous.colors.shader')
-    local shade_recipes = shader.get_shade_recipes(config.is_bg_dark)
+    local shader = require('mellifluous.utils.shader')
+    local shade_recipes = require('mellifluous.colors.shades').get_recipes(config.is_bg_dark)
 
     hl.set('Normal', {
         bg = (config.transparent_background.enabled and 'NONE')
@@ -25,16 +24,16 @@ function M.set(hl, colors)
     hl.set('CursorLine', {
         bg = (config.transparent_background.cursor_line and 'NONE')
             or colors.bg2.hex
-    })                                                                                                    -- Screen-line at the cursor, when 'cursorline' is set. Low-priority if foreground (ctermfg OR guifg) is not set.
-    hl.set('Directory', { fg = colors.functions.hex })                                                    -- Directory names (and other special names in listings)
-    hl.set('DiffAdd', { bg = change_color.get_lower_contrast(colors.green, 45):desaturated(30).hex })     -- Diff mode: Added line |diff.txt|
-    hl.set('DiffDelete', { bg = change_color.get_lower_contrast(colors.red, 45):desaturated(35).hex })    -- Diff mode: Deleted line |diff.txt|
-    hl.set('DiffChange', { bg = change_color.get_lower_contrast(colors.orange, 50):desaturated(70).hex }) -- Diff mode: Changed line |diff.txt|
-    hl.set('DiffText', { bg = change_color.get_lower_contrast(colors.orange, 40):desaturated(40).hex })   -- Diff mode: Changed text within a changed line |diff.txt|
-    hl.set('EndOfBuffer', { fg = colors.bg.hex })                                                         -- Filler lines (~) after the end of the buffer. By default, this is highlighted like |hl-NonText|.
-    hl.set('TermCursor', { link = 'Cursor' })                                                             -- Cursor in a focused terminal
-    hl.set('TermCursorNC', { bg = colors.fg5.hex })                                                       -- Cursor in an unfocused terminal
-    hl.set('ErrorMsg', { fg = colors.red.hex })                                                           -- Error messages on the command line
+    })                                                                                              -- Screen-line at the cursor, when 'cursorline' is set. Low-priority if foreground (ctermfg OR guifg) is not set.
+    hl.set('Directory', { fg = colors.functions.hex })                                              -- Directory names (and other special names in listings)
+    hl.set('DiffAdd', { bg = shader.get_lower_contrast(colors.green, 45):desaturated(30).hex })     -- Diff mode: Added line |diff.txt|
+    hl.set('DiffDelete', { bg = shader.get_lower_contrast(colors.red, 45):desaturated(35).hex })    -- Diff mode: Deleted line |diff.txt|
+    hl.set('DiffChange', { bg = shader.get_lower_contrast(colors.orange, 50):desaturated(70).hex }) -- Diff mode: Changed line |diff.txt|
+    hl.set('DiffText', { bg = shader.get_lower_contrast(colors.orange, 40):desaturated(40).hex })   -- Diff mode: Changed text within a changed line |diff.txt|
+    hl.set('EndOfBuffer', { fg = colors.bg.hex })                                                   -- Filler lines (~) after the end of the buffer. By default, this is highlighted like |hl-NonText|.
+    hl.set('TermCursor', { link = 'Cursor' })                                                       -- Cursor in a focused terminal
+    hl.set('TermCursorNC', { bg = colors.fg5.hex })                                                 -- Cursor in an unfocused terminal
+    hl.set('ErrorMsg', { fg = colors.red.hex })                                                     -- Error messages on the command line
     hl.set('VertSplit', {
         fg = colors.fg5.hex,
         bg = (config.dim_inactive and hl.get('NormalNC').bg)
@@ -55,7 +54,7 @@ function M.set(hl, colors)
     hl.set('CursorLineNr', {
         bg = (config.flat_background.cursor_line_number and hl.get('LineNr').bg)
             or (config.transparent_background.enabled and 'NONE')
-            or shader.apply_shade(shade_recipes.dark_bg, hl.get('CursorLine').bg).hex,
+            or shader.get_shade(shade_recipes.dark_bg, hl.get('CursorLine').bg).hex,
         fg = hl.get('LineNr').fg
     })                                                                           -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
     hl.set('MatchParen', { bg = colors.bg4.hex, fg = colors.main_keywords.hex }) -- Character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
@@ -110,6 +109,7 @@ function M.set(hl, colors)
     hl.set('Whitespace', { fg = colors.fg5.hex })                                          -- 'nbsp', 'space', 'tab' and 'trail' in 'listchars'
     hl.set('WinSeparator', { link = 'VertSplit' })                                         -- Separator between window splits. Inherts from |hl-VertSplit| by default, which it will replace eventually.
     hl.set('WildMenu', { link = 'PmenuSel' })                                              -- Current match in 'wildmenu' completion
+
     -- Common vim syntax groups used for all kinds of code and markup.
     -- Commented-out groups should chain up to their preferred (*) group
     -- by default.
@@ -157,10 +157,10 @@ function M.set(hl, colors)
     hl.set('Ignore', { fg = colors.fg5.hex })                       -- Left blank, hidden |hl-Ignore| (NOTE: May be invisible here in template)
     hl.set('Error', { fg = colors.red.hex })                        -- Any erroneous construct
     hl.set('Todo', { bg = colors.strings.hex, fg = colors.bg.hex }) -- Anything that needs extra attention; mostly the keywords TODO FIXME and XXX
+
     -- These groups are for the native LSP client and diagnostic system. Some
     -- other LSP clients may use these groups, or use their own. Consult your
     -- LSP client's documentation.
-
     hl.set('LspReferenceText', { bg = colors.bg3.hex })            -- Used for highlighting 'text' references
     hl.set('LspReferenceRead', { link = 'LspReferenceText' })      -- Used for highlighting 'read' references
     hl.set('LspReferenceWrite', { link = 'LspReferenceText' })     -- Used for highlighting 'write' references

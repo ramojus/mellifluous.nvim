@@ -48,7 +48,7 @@ function M.get_bg_light()
 end
 
 function M.get_colors_dark(bg)
-    local fg = bg:lightened(80)
+    local fg = bg:lightened(75)
 
     local red = color.new_from_hsl({ h = 19, s = 43, l = 68 })
     local orange = color.new_from_hsl({ h = 67, s = 36, l = 72 })

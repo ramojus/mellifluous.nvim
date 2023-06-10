@@ -15,21 +15,9 @@ local function tbl_extend_non_nil(base_table, overlay_table)
     end
 end
 
-local function convert_overrides_to_lush(color_overrides)
-    for key, color in pairs(color_overrides) do
-        if color then
-            if type(color) == "string" then
-                color_overrides[key] = require('lush').hsl(color)
-            end
-        end
-    end
-end
-
 local function get_color_overrides(is_bg_dark, color_set_name)
     local color_overrides = vim.tbl_get(require('mellifluous').config[color_set_name],
-        'color_overrides', is_bg_dark and 'dark' or 'light')
-
-    convert_overrides_to_lush(color_overrides)
+        'color_overrides', is_bg_dark and 'dark' or 'light') or {}
 
     return color_overrides
 end
@@ -70,7 +58,9 @@ function M.get_colors(color_set_name)
     end
 
     tbl_extend_non_nil(colors, color_overrides)
-    colors = require 'mellifluous.colors.shader'.shade(colors, is_bg_dark)
+
+    local shade_recipes = require'mellifluous.colors.shades'.get_recipes(is_bg_dark)
+    colors = require 'mellifluous.utils.shader'.add_shades(shade_recipes, colors)
 
     return colors, is_bg_dark
 end

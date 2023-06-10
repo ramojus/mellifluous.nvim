@@ -2,7 +2,7 @@ local M = {}
 
 function M.set(hl, colors)
     local config = require('mellifluous').config
-    local change_color = require('mellifluous.utils.change_color')
+    local shader = require('mellifluous.utils.shader')
 
     hl.set('@attribute', { fg = colors.other_keywords.hex })                                         -- Annotations that can be attached to the code to denote some kind of meta information. e.g. C++/Dart attributes.
     hl.set('@boolean', { link = 'Boolean' })                                                         -- Boolean literals: `True` and `False` in Python.
@@ -57,7 +57,7 @@ function M.set(hl, colors)
     hl.set('@text.strike', { style = { strikethrough = true } })                                     -- Strikethrough text.
     hl.set('@text.title', { fg = colors.other_keywords.hex })                                        -- Text that is part of a title.
     hl.set('@text.literal', { link = 'Character' })                                                  -- Literal or verbatim text.
-    hl.set('@text.uri', { fg = change_color.get_lower_contrast(colors.blue, 15).hex })               -- URIs like hyperlinks or email addresses.
+    hl.set('@text.uri', { fg = shader.get_lower_contrast(colors.blue, 15).hex })               -- URIs like hyperlinks or email addresses.
     hl.set('@text.todo', { link = 'Todo' })
     hl.set('@math', { fg = colors.other_keywords.hex })                                              -- Math environments like LaTeX's `$ ... $`
     hl.set('@text.reference', { fg = colors.constants.hex })                                         -- Footnotes, text references, citations, etc.
