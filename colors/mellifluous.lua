@@ -3,13 +3,11 @@ if vim.version().minor < 8 then
     return
 end
 
--- reset colors
 if vim.g.colors_name then
     vim.cmd('hi clear')
 end
 
 vim.g.colors_name = 'mellifluous'
 
--- include our theme file and pass it to lush to apply
-require('lush')(require('mellifluous').load())
+require('mellifluous').apply()
 

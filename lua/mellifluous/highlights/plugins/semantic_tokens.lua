@@ -1,0 +1,18 @@
+local M = {}
+
+function M.set(hl, colors)
+	hl.set('@lsp.type.comment', { }) -- let treesitter handle those
+	hl.set('@lsp.type.enum', { link = 'Type' })
+	hl.set('@lsp.type.enumMember', { link = 'Constant' })
+	hl.set('@lsp.type.escapeSequence', { fg = colors.fg3.hex })
+	hl.set('@lsp.type.formatSpecifier', { link = 'Operator' })
+	hl.set('@lsp.type.namespace', { link = 'Type' })
+	hl.set('@lsp.type.operator', { link = 'Operator' })
+	hl.set('@lsp.type.parameter', { fg = colors.fg.hex })
+	hl.set('@lsp.type.property', { fg = colors.fg.hex })
+	hl.set('@lsp.type.variable', { })
+	hl.set('@lsp.typemod.variable.constant', { link = 'Constant' })
+	hl.set('@lsp.typemod.keyword.controlFlow', { fg = colors.main_keywords.hex })
+end
+
+return M

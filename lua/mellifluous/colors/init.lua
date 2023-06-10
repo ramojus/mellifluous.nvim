@@ -25,22 +25,9 @@ local function convert_overrides_to_lush(color_overrides)
     end
 end
 
--- returns value of last field or `nil` if one of the fields is not accessible
-local function access_tbl_value_safe(table, fields)
-    local current_table_or_value = table
-    for _, field in pairs(fields) do
-        if not current_table_or_value then
-            return nil
-        end
-        current_table_or_value = current_table_or_value[field]
-    end
-    return current_table_or_value
-end
-
 local function get_color_overrides(is_bg_dark, color_set_name)
-    local color_overrides = access_tbl_value_safe(
-        require('mellifluous').config[color_set_name],
-        {'color_overrides', is_bg_dark and 'dark' or 'light'}) or {}
+    local color_overrides = vim.tbl_get(require('mellifluous').config[color_set_name],
+        'color_overrides', is_bg_dark and 'dark' or 'light')
 
     convert_overrides_to_lush(color_overrides)
 
@@ -83,7 +70,7 @@ function M.get_colors(color_set_name)
     end
 
     tbl_extend_non_nil(colors, color_overrides)
-    colors = require'mellifluous.colors.shader'.shade(colors, is_bg_dark)
+    colors = require 'mellifluous.colors.shader'.shade(colors, is_bg_dark)
 
     return colors, is_bg_dark
 end

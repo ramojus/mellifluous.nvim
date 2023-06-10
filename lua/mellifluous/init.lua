@@ -27,19 +27,19 @@ M.config = {
     },
     dim_inactive = false,
     styles = {
-        comments = 'italic',
-        conditionals = 'NONE',
-        folds = 'NONE',
-        loops = 'NONE',
-        functions = 'NONE',
-        keywords = 'NONE',
-        strings = 'NONE',
-        variables = 'NONE',
-        numbers = 'NONE',
-        booleans = 'NONE',
-        properties = 'NONE',
-        types = 'NONE',
-        operators = 'NONE',
+        comments = { italic = true },
+        conditionals = {},
+        folds = {},
+        loops = {},
+        functions = {},
+        keywords = {},
+        strings = {},
+        variables = {},
+        numbers = {},
+        booleans = {},
+        properties = {},
+        types = {},
+        operators = {},
     },
     transparent_background = {
         enabled = false,
@@ -99,26 +99,29 @@ function M.setup(user_config)
     M.config = vim.tbl_deep_extend('force', M.config, user_config or {})
 end
 
-M.load = function()
-    vim.opt.termguicolors = true
-
+function M.load()
     merge_color_set_defaults()
     disable_disabled()
 
-    local lush = require('lush')
     local colors, is_bg_dark = require('mellifluous.colors').get_colors(M.config.color_set)
+    local highlighter = require('mellifluous.utils.highlighter')
 
     M.config.is_bg_dark = is_bg_dark
 
-    require('mellifluous.cli')(M.config)
-    require('mellifluous.terminal')(colors)
+    require('mellifluous.highlights').set(highlighter, colors)
 
-    local highlights = require('mellifluous.highlights')(colors)
-    local specs = require('mellifluous.plugins')(highlights, colors)
+    return highlighter, colors
+end
 
-    table.insert(specs, highlights)
+function M.apply()
+    vim.opt.termguicolors = true
 
-    return lush.merge(specs)
+    local highlighter, colors = M.load()
+
+    highlighter.apply_all()
+
+    require('mellifluous.cli').create(M.config)
+    require('mellifluous.terminal').apply(colors)
 end
 
 return M

@@ -1,4 +1,6 @@
-return function(colors)
+local M = {}
+
+function M.apply(colors)
     vim.g.terminal_color_0 = colors.bg.hex
     vim.g.terminal_color_1 = colors.red.hex
     vim.g.terminal_color_2 = colors.green.hex
@@ -22,3 +24,5 @@ return function(colors)
                                 or colors.blue:lightened(li_value).hex
     vim.g.terminal_color_15 = colors.fg2.hex
 end
+
+return M

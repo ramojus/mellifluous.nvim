@@ -1,4 +1,6 @@
-local set = function(current_config)
+local M = {}
+
+function M.create(current_config)
     local options = {
         toggle_transparency = 100,
     }
@@ -30,4 +32,4 @@ local set = function(current_config)
     })
 end
 
-return set
+return M
