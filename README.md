@@ -2,7 +2,6 @@
 # Mellifluous
 A colorscheme for [Neovim](https://github.com/neovim/neovim). Pleasant and productive, with stronger highlights on important keywords.
 
-Made with [lush.nvim](https://github.com/rktjmp/lush.nvim).
 
 ## Features
 - [**Multiple color sets**](#color-sets): Mellifluous offers several color sets, including the default mellifluous, as well as sets inspired by mountain, alduin, and tender themes. Each color set presents a unique visual theme while following the same set of productive highlight rules.
