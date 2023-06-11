@@ -81,6 +81,13 @@ function M.color_set_to_hsl(colors)
     end
 end
 
+function M.ensure_correct_type(color)
+    if not color.hex then
+        return M.new(color)
+    end
+    return color
+end
+
 function M.new(hex)
     local color = { hex = hex }
     setmetatable(color, { __index = color_meta })
