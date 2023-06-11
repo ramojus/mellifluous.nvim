@@ -174,19 +174,19 @@ function M.set(hl, colors)
     hl.set('DiagnosticHint', { fg = colors.purple.hex })           -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
     hl.set('DiagnosticVirtualTextError', {
         fg = hl.get('DiagnosticError').fg,
-        bg = (config.transparent_background.enabled and 'NONE') or colors.bg3.hex
+        bg = (config.transparent_background.enabled and 'NONE') or colors.bg:with_overlay(hl.get('DiagnosticError').fg, 15).hex
     }) -- Used for 'Error' diagnostic virtual text.
     hl.set('DiagnosticVirtualTextWarn', {
         fg = hl.get('DiagnosticWarn').fg,
-        bg = (config.transparent_background.enabled and 'NONE') or colors.bg3.hex
+        bg = (config.transparent_background.enabled and 'NONE') or colors.bg:with_overlay(hl.get('DiagnosticWarn').fg, 15).hex
     }) -- Used for 'Warn' diagnostic virtual text.
     hl.set('DiagnosticVirtualTextInfo', {
         fg = hl.get('DiagnosticInfo').fg,
-        bg = (config.transparent_background.enabled and 'NONE') or colors.bg3.hex
+        bg = (config.transparent_background.enabled and 'NONE') or colors.bg:with_overlay(hl.get('DiagnosticInfo').fg, 15).hex
     }) -- Used for 'Info' diagnostic virtual text.
     hl.set('DiagnosticVirtualTextHint', {
         fg = hl.get('DiagnosticHint').fg,
-        bg = (config.transparent_background.enabled and 'NONE') or colors.bg3.hex
+        bg = (config.transparent_background.enabled and 'NONE') or colors.bg:with_overlay(hl.get('DiagnosticHint').fg, 15).hex
     })                                                       -- Used for 'Hint' diagnostic virtual text.
     hl.set('DiagnosticUnderlineError', { underline = true }) -- Used to underline 'Error' diagnostics.
     hl.set('DiagnosticUnderlineWarn', { underline = true })  -- Used to underline 'Warn' diagnostics.
