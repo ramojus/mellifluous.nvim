@@ -16,8 +16,15 @@ local function tbl_extend_non_nil(base_table, overlay_table)
 end
 
 local function get_color_overrides(is_bg_dark, color_set_name)
-    local color_overrides = vim.tbl_get(require('mellifluous').config[color_set_name],
+    local color_overrides = vim.tbl_get(require('mellifluous').config, color_set_name,
         'color_overrides', is_bg_dark and 'dark' or 'light') or {}
+
+    for key, color in pairs(color_overrides) do
+        if color.hex then -- overrides were already converted to mellifluous.color
+            break
+        end
+        color_overrides[key] = require('mellifluous.color').new(color)
+    end
 
     return color_overrides
 end
