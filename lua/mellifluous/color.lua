@@ -29,9 +29,6 @@ local function okhsl_to_hex(okhsl)
     return hex
 end
 
-
-local color_meta = { hex = '' }
-
 local function clip(val, from, to)
     if val > to then
         return to
@@ -39,6 +36,22 @@ local function clip(val, from, to)
         return from
     end
     return val
+end
+
+local color_meta = {}
+
+function color_meta:with_overlay(overlay_color, transparency)
+    local overlay_rgb = oklab_utils.hex2rgb(overlay_color.hex or overlay_color)
+    local rgb = oklab_utils.hex2rgb(self.hex)
+
+    transparency = transparency / 100
+
+    local result_rgb = {}
+    for key, _ in pairs(rgb) do
+        result_rgb[key] = rgb[key] + (overlay_rgb[key] - rgb[key]) * transparency
+    end
+
+    return M.new(oklab_utils.rgb2hex(result_rgb))
 end
 
 function color_meta:lightened(val)
