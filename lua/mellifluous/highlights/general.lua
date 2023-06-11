@@ -24,16 +24,16 @@ function M.set(hl, colors)
     hl.set('CursorLine', {
         bg = (config.transparent_background.cursor_line and 'NONE')
             or colors.bg2.hex
-    })                                                                                              -- Screen-line at the cursor, when 'cursorline' is set. Low-priority if foreground (ctermfg OR guifg) is not set.
-    hl.set('Directory', { fg = colors.functions.hex })                                              -- Directory names (and other special names in listings)
-    hl.set('DiffAdd', { bg = shader.get_lower_contrast(colors.green, 45):desaturated(30).hex })     -- Diff mode: Added line |diff.txt|
-    hl.set('DiffDelete', { bg = shader.get_lower_contrast(colors.red, 45):desaturated(35).hex })    -- Diff mode: Deleted line |diff.txt|
-    hl.set('DiffChange', { bg = shader.get_lower_contrast(colors.orange, 50):desaturated(70).hex }) -- Diff mode: Changed line |diff.txt|
-    hl.set('DiffText', { bg = shader.get_lower_contrast(colors.orange, 40):desaturated(40).hex })   -- Diff mode: Changed text within a changed line |diff.txt|
-    hl.set('EndOfBuffer', { fg = colors.bg.hex })                                                   -- Filler lines (~) after the end of the buffer. By default, this is highlighted like |hl-NonText|.
-    hl.set('TermCursor', { link = 'Cursor' })                                                       -- Cursor in a focused terminal
-    hl.set('TermCursorNC', { bg = colors.fg5.hex })                                                 -- Cursor in an unfocused terminal
-    hl.set('ErrorMsg', { fg = colors.red.hex })                                                     -- Error messages on the command line
+    })                                                                       -- Screen-line at the cursor, when 'cursorline' is set. Low-priority if foreground (ctermfg OR guifg) is not set.
+    hl.set('Directory', { fg = colors.functions.hex })                       -- Directory names (and other special names in listings)
+    hl.set('DiffAdd', { bg = colors.bg:with_overlay(colors.green, 15):saturated(20).hex })     -- Diff mode: Added line |diff.txt|
+    hl.set('DiffDelete', { bg = colors.bg:with_overlay(colors.red, 15):saturated(20).hex })    -- Diff mode: Deleted line |diff.txt|
+    hl.set('DiffChange', { bg = colors.bg:with_overlay(colors.orange, 15):saturated(20).hex }) -- Diff mode: Changed line |diff.txt|
+    hl.set('DiffText', { bg = colors.bg:with_overlay(colors.orange, 30):saturated(20).hex })   -- Diff mode: Changed text within a changed line |diff.txt|
+    hl.set('EndOfBuffer', { fg = colors.bg.hex })                            -- Filler lines (~) after the end of the buffer. By default, this is highlighted like |hl-NonText|.
+    hl.set('TermCursor', { link = 'Cursor' })                                -- Cursor in a focused terminal
+    hl.set('TermCursorNC', { bg = colors.fg5.hex })                          -- Cursor in an unfocused terminal
+    hl.set('ErrorMsg', { fg = colors.red.hex })                              -- Error messages on the command line
     hl.set('VertSplit', {
         fg = colors.fg5.hex,
         bg = (config.dim_inactive and hl.get('NormalNC').bg)
@@ -174,19 +174,23 @@ function M.set(hl, colors)
     hl.set('DiagnosticHint', { fg = colors.purple.hex })           -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
     hl.set('DiagnosticVirtualTextError', {
         fg = hl.get('DiagnosticError').fg,
-        bg = (config.transparent_background.enabled and 'NONE') or colors.bg:with_overlay(hl.get('DiagnosticError').fg, 15).hex
+        bg = (config.transparent_background.enabled and 'NONE') or
+        colors.bg:with_overlay(hl.get('DiagnosticError').fg, 15).hex
     }) -- Used for 'Error' diagnostic virtual text.
     hl.set('DiagnosticVirtualTextWarn', {
         fg = hl.get('DiagnosticWarn').fg,
-        bg = (config.transparent_background.enabled and 'NONE') or colors.bg:with_overlay(hl.get('DiagnosticWarn').fg, 15).hex
+        bg = (config.transparent_background.enabled and 'NONE') or
+        colors.bg:with_overlay(hl.get('DiagnosticWarn').fg, 15).hex
     }) -- Used for 'Warn' diagnostic virtual text.
     hl.set('DiagnosticVirtualTextInfo', {
         fg = hl.get('DiagnosticInfo').fg,
-        bg = (config.transparent_background.enabled and 'NONE') or colors.bg:with_overlay(hl.get('DiagnosticInfo').fg, 15).hex
+        bg = (config.transparent_background.enabled and 'NONE') or
+        colors.bg:with_overlay(hl.get('DiagnosticInfo').fg, 15).hex
     }) -- Used for 'Info' diagnostic virtual text.
     hl.set('DiagnosticVirtualTextHint', {
         fg = hl.get('DiagnosticHint').fg,
-        bg = (config.transparent_background.enabled and 'NONE') or colors.bg:with_overlay(hl.get('DiagnosticHint').fg, 15).hex
+        bg = (config.transparent_background.enabled and 'NONE') or
+        colors.bg:with_overlay(hl.get('DiagnosticHint').fg, 15).hex
     })                                                       -- Used for 'Hint' diagnostic virtual text.
     hl.set('DiagnosticUnderlineError', { underline = true }) -- Used to underline 'Error' diagnostics.
     hl.set('DiagnosticUnderlineWarn', { underline = true })  -- Used to underline 'Warn' diagnostics.
