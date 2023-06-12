@@ -4,9 +4,8 @@
 Table of Contents                              *mellifluous-table-of-contents*
 
 1. Styled plugins                                 |mellifluous-styled-plugins|
-2. Usage                                                   |mellifluous-usage|
+2. Installation and usage                 |mellifluous-installation-and-usage|
 3. Configuration                                   |mellifluous-configuration|
-  - Mixing styles                    |mellifluous-configuration-mixing-styles|
   - Setting light theme        |mellifluous-configuration-setting-light-theme|
   - Color sets                          |mellifluous-configuration-color-sets|
 4. CLI options                                       |mellifluous-cli-options|
@@ -28,15 +27,13 @@ Table of Contents                              *mellifluous-table-of-contents*
 
 
 ==============================================================================
-2. Usage                                                   *mellifluous-usage*
+2. Installation and usage                 *mellifluous-installation-and-usage*
 
-When installing, lush <https://github.com/rktjmp/lush.nvim> is required.
 Example with packer.nvim <https://github.com/wbthomason/packer.nvim>:
 
 >lua
     use({
         'ramojus/mellifluous.nvim',
-        requires = { 'rktjmp/lush.nvim' },
         config = function()
             require'mellifluous'.setup({ --[[...]] }) -- optional, see configuration section.
             vim.cmd('colorscheme mellifluous')
@@ -55,20 +52,20 @@ parts of the config can be included.
     require 'mellifluous'.setup({
         dim_inactive = false,
         color_set = 'mellifluous',
-        styles = {
-            comments = 'italic',
-            conditionals = 'NONE',
-            folds = 'NONE',
-            loops = 'NONE',
-            functions = 'NONE',
-            keywords = 'NONE',
-            strings = 'NONE',
-            variables = 'NONE',
-            numbers = 'NONE',
-            booleans = 'NONE',
-            properties = 'NONE',
-            types = 'NONE',
-            operators = 'NONE',
+        styles = { -- see :h attr-list for options. set {} for NONE, { option = true } for option
+            comments = { italic = true },
+            conditionals = {},
+            folds = {},
+            loops = {},
+            functions = {},
+            keywords = {},
+            strings = {},
+            variables = {},
+            numbers = {},
+            booleans = {},
+            properties = {},
+            types = {},
+            operators = {},
         },
         transparent_background = {
             enabled = false,
@@ -100,12 +97,6 @@ parts of the config can be included.
         },
     })
 <
-
-
-MIXING STYLES                        *mellifluous-configuration-mixing-styles*
-
-Set style value to `'style1 style2'`, for bold and italic it would be `'bold
-italic'`.
 
 
 SETTING LIGHT THEME            *mellifluous-configuration-setting-light-theme*
