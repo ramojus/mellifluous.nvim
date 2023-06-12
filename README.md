@@ -34,13 +34,11 @@ A colorscheme for [Neovim](https://github.com/neovim/neovim). Pleasant and produ
 - [Startify](https://github.com/mhinz/vim-startify)
 - [Gitsigns](https://github.com/lewis6991/gitsigns.nvim)
 
-## Usage
-When installing, [lush](https://github.com/rktjmp/lush.nvim) is required.
+## Installation and usage
 Example with [packer.nvim](https://github.com/wbthomason/packer.nvim):
 ```lua
 use({
     'ramojus/mellifluous.nvim',
-    requires = { 'rktjmp/lush.nvim' },
     config = function()
         require'mellifluous'.setup({ --[[...]] }) -- optional, see configuration section.
         vim.cmd('colorscheme mellifluous')
