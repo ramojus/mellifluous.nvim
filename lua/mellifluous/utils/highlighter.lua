@@ -2,6 +2,14 @@ local M = {}
 
 local highlights = {}
 
+local function get_hex(color)
+    if color then
+        return color.hex or color
+    else
+        return nil
+    end
+end
+
 function M.set(name, attributes)
     if attributes.style then
         for style_name, val in pairs(attributes.style) do
@@ -9,6 +17,9 @@ function M.set(name, attributes)
         end
     end
     attributes.style = nil
+    attributes.fg = get_hex(attributes.fg)
+    attributes.bg = get_hex(attributes.bg)
+
     highlights[name] = attributes
 end
 
