@@ -53,20 +53,20 @@ Here is an example with the default config. This is optional, and only relevant 
 require 'mellifluous'.setup({
     dim_inactive = false,
     color_set = 'mellifluous',
-    styles = {
-        comments = 'italic',
-        conditionals = 'NONE',
-        folds = 'NONE',
-        loops = 'NONE',
-        functions = 'NONE',
-        keywords = 'NONE',
-        strings = 'NONE',
-        variables = 'NONE',
-        numbers = 'NONE',
-        booleans = 'NONE',
-        properties = 'NONE',
-        types = 'NONE',
-        operators = 'NONE',
+    styles = { -- see :h attr-list for options. set {} for NONE, { option = true } for option
+        comments = { italic = true },
+        conditionals = {},
+        folds = {},
+        loops = {},
+        functions = {},
+        keywords = {},
+        strings = {},
+        variables = {},
+        numbers = {},
+        booleans = {},
+        properties = {},
+        types = {},
+        operators = {},
     },
     transparent_background = {
         enabled = false,
@@ -98,9 +98,6 @@ require 'mellifluous'.setup({
     },
 })
 ```
-
-### Mixing styles
-Set style value to `'style1 style2'`, for bold and italic it would be `'bold italic'`.
 
 ### Setting light theme
 Set `vim.opt.background` to `'light'`. This will only work on color sets that have light theme.
