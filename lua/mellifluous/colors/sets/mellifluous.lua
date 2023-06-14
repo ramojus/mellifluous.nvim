@@ -51,18 +51,14 @@ function M.get_colors_dark(bg)
 
     local red = color.new_from_hsl({ h = 19, s = 43, l = 68 })
     local orange = color.new_from_hsl({ h = 67, s = 36, l = 72 })
-    local khaki = color.new_from_hsl({ h = 64, s = 18, l = 71 })
-    local yellow = color.new_from_hsl({ h = 84, s = 31, l = 74 })
+    local khaki = color.new_from_hsl({ h = 64, s = 18, l = 72 })
+    local yellow = color.new_from_hsl({ h = 84, s = 31, l = 72 })
 
-    local blue = color.new_from_hsl({ h = 297, s = 24, l = 64 })
-    local purple = color.new_from_hsl({ h = 331, s = 18, l = 66 })
-    local green = color.new_from_hsl({ h = 107, s = 27, l = 73 })
+    local blue = color.new_from_hsl({ h = 297, s = 24, l = 68 })
+    local purple = color.new_from_hsl({ h = 331, s = 18, l = 68 })
+    local green = color.new_from_hsl({ h = 108, s = 27, l = 72 })
 
     local dark_green = color.new_from_hsl({ h = 108, s = 54, l = 47 })
-
-    local basic_red = color.new_from_hsl({ h = 26, s = 46, l = 68 })
-    local basic_purple = color.new_from_hsl({ h = 307, s = 36, l = 67 })
-    local basic_orange = color.new_from_hsl({ h = 77, s = 43, l = 76 })
 
     return {
         main_keywords = red,
@@ -76,32 +72,27 @@ function M.get_colors_dark(bg)
         special_comments = green,
         fg = fg,
         bg = bg,
-        red = basic_red,       -- errors, deletes, bad spellings
-        orange = basic_orange, -- warnings, changes, other (strange) spellings
-        green = green,         -- staged, additions
-        blue = blue,           -- information, new files
-        purple = basic_purple, -- hints, merge
+        red = red:with_lightness(68),       -- errors, deletes, bad spellings
+        orange = orange:with_lightness(68), -- warnings, changes, other (strange) spellings
+        green = green:with_lightness(68),   -- staged, additions
+        blue = blue:with_lightness(68),     -- information, new files
+        purple = purple:with_lightness(68), -- hints, merge
     }
 end
 
 function M.get_colors_light(bg)
     local fg = bg:darkened(80)
 
-    local red = color.new_from_hsl({ h = 24, s = 75, l = 43 })
-    local orange = color.new_from_hsl({ h = 63, s = 80, l = 50 })
-    local khaki = color.new_from_hsl({ h = 62, s = 52, l = 47 })
-    local yellow = color.new_from_hsl({ h = 81, s = 84, l = 55 })
+    local red = color.new_from_hsl({ h = 19, s = 80, l = 45 })
+    local orange = color.new_from_hsl({ h = 67, s = 85, l = 50 })
+    local khaki = color.new_from_hsl({ h = 64, s = 50, l = 50 })
+    local yellow = color.new_from_hsl({ h = 84, s = 85, l = 53 })
 
-    local blue = color.new_from_hsl({ h = 293, s = 43, l = 35 })
-    local purple = color.new_from_hsl({ h = 333, s = 52, l = 40 })
-    local green = color.new_from_hsl({ h = 109, s = 84, l = 40 })
+    local blue = color.new_from_hsl({ h = 297, s = 50, l = 35 })
+    local purple = color.new_from_hsl({ h = 331, s = 60, l = 40 })
+    local green = color.new_from_hsl({ h = 108, s = 84, l = 40 })
 
-    local dark_green = color.new_from_hsl({ h = 108, s = 40, l = 58 })
-
-    local basic_red = color.new_from_hsl({ h = 28, s = 64, l = 39 })
-    local basic_orange = color.new_from_hsl({ h = 73, s = 76, l = 49 })
-    local basic_blue = color.new_from_hsl({ h = 258, s = 36, l = 40 })
-    local basic_purple = color.new_from_hsl({ h = 305, s = 42, l = 37 })
+    local dark_green = color.new_from_hsl({ h = 108, s = 60, l = 60 })
 
     return {
         main_keywords = red,
@@ -115,11 +106,11 @@ function M.get_colors_light(bg)
         special_comments = green,
         fg = fg,
         bg = bg,
-        red = basic_red,       -- errors, deletes, bad spellings
-        orange = basic_orange, -- warnings, changes, other (strange) spellings
-        green = green,         -- staged, additions
-        blue = basic_blue,     -- information, new files
-        purple = basic_purple, -- hints, merge
+        red = red:with_lightness(45),       -- errors, deletes, bad spellings
+        orange = orange:with_lightness(45), -- warnings, changes, other (strange) spellings
+        green = green:with_lightness(45),         -- staged, additions
+        blue = blue:with_lightness(45),     -- information, new files
+        purple = purple:with_lightness(45), -- hints, merge
     }
 end
 
