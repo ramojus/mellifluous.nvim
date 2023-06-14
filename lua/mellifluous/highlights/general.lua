@@ -174,22 +174,22 @@ function M.set(hl, colors)
     hl.set('DiagnosticVirtualTextError', {
         fg = hl.get('DiagnosticError').fg,
         bg = (Config.transparent_background.enabled and 'NONE') or
-            colors.bg:with_overlay(hl.get('DiagnosticError').fg, 15)
+            colors.bg:with_overlay(hl.get('DiagnosticError').fg, 12)
     }) -- Used for 'Error' diagnostic virtual text.
     hl.set('DiagnosticVirtualTextWarn', {
         fg = hl.get('DiagnosticWarn').fg,
         bg = (Config.transparent_background.enabled and 'NONE') or
-            colors.bg:with_overlay(hl.get('DiagnosticWarn').fg, 15)
+            colors.bg:with_overlay(hl.get('DiagnosticWarn').fg, 12)
     }) -- Used for 'Warn' diagnostic virtual text.
     hl.set('DiagnosticVirtualTextInfo', {
         fg = hl.get('DiagnosticInfo').fg,
         bg = (Config.transparent_background.enabled and 'NONE') or
-            colors.bg:with_overlay(hl.get('DiagnosticInfo').fg, 15)
+            colors.bg:with_overlay(hl.get('DiagnosticInfo').fg, 12)
     }) -- Used for 'Info' diagnostic virtual text.
     hl.set('DiagnosticVirtualTextHint', {
         fg = hl.get('DiagnosticHint').fg,
         bg = (Config.transparent_background.enabled and 'NONE') or
-            colors.bg:with_overlay(hl.get('DiagnosticHint').fg, 15)
+            colors.bg:with_overlay(hl.get('DiagnosticHint').fg, 12)
     })                                                       -- Used for 'Hint' diagnostic virtual text.
     hl.set('DiagnosticUnderlineError', { underline = true }) -- Used to underline 'Error' diagnostics.
     hl.set('DiagnosticUnderlineWarn', { underline = true })  -- Used to underline 'Warn' diagnostics.
