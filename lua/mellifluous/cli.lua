@@ -1,6 +1,6 @@
 local M = {}
 
-function M.create(current_config)
+function M.create()
     local options = {
         toggle_transparency = 100,
     }
@@ -11,7 +11,7 @@ function M.create(current_config)
         if options[input.args] == options.toggle_transparency then
             require('mellifluous').setup({
                 transparent_background = {
-                    enabled = not current_config.transparent_background.enabled
+                    enabled = not Config.transparent_background.enabled
                 }
             })
         elseif color_sets[input.args] then

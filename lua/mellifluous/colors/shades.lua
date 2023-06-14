@@ -1,7 +1,7 @@
 local M = {}
 
-function M.get_recipes(is_bg_dark)
-    if is_bg_dark then
+function M.get_recipes()
+    if Config.is_bg_dark then
         return {
             fg2 = { target = 'fg', action = 'da', val = 16 },
             fg3 = { target = 'fg', action = 'da', val = 32 },

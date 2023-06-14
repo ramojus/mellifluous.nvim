@@ -16,7 +16,7 @@ local function tbl_extend_non_nil(base_table, overlay_table)
 end
 
 local function get_color_overrides(is_bg_dark, color_set_name)
-    local color_overrides = vim.tbl_get(require('mellifluous').config, color_set_name,
+    local color_overrides = vim.tbl_get(Config, color_set_name,
         'color_overrides', is_bg_dark and 'dark' or 'light') or {}
 
     for key, color in pairs(color_overrides) do
@@ -29,7 +29,7 @@ local function get_color_overrides(is_bg_dark, color_set_name)
     return color_overrides
 end
 
-local function get_is_bg_dark(color_set_name)
+function M.get_is_bg_dark(color_set_name)
     local color_set_functions = require('mellifluous.colors.sets.' .. color_set_name)
     local is_light_set_available = color_set_functions.get_bg_light ~= nil
         and color_set_functions.get_colors_light ~= nil
@@ -47,18 +47,16 @@ local function get_is_bg_dark(color_set_name)
     end
 end
 
-function M.get_colors(color_set_name)
-    if not M.get_color_sets_table()[color_set_name] then
-        Return_error("Color set '" .. color_set_name .. "' not found")
+function M.get_colors()
+    if not M.get_color_sets_table()[Config.color_set] then
+        Return_error("Color set '" .. Config.color_set .. "' not found")
     end
 
-    local is_bg_dark = get_is_bg_dark(color_set_name)
+    local color_overrides = get_color_overrides(Config.is_bg_dark, Config.color_set)
 
-    local color_overrides = get_color_overrides(is_bg_dark, color_set_name)
-
-    local color_set_functions = require('mellifluous.colors.sets.' .. color_set_name)
+    local color_set_functions = require('mellifluous.colors.sets.' .. Config.color_set)
     local colors
-    if is_bg_dark then
+    if Config.is_bg_dark then
         colors = color_set_functions.get_colors_dark(color_overrides.bg or color_set_functions.get_bg_dark())
     else
         colors = color_set_functions.get_colors_light(color_overrides.bg or color_set_functions.get_bg_light())
@@ -66,10 +64,10 @@ function M.get_colors(color_set_name)
 
     tbl_extend_non_nil(colors, color_overrides)
 
-    local shade_recipes = require'mellifluous.colors.shades'.get_recipes(is_bg_dark)
+    local shade_recipes = require'mellifluous.colors.shades'.get_recipes()
     colors = require 'mellifluous.utils.shader'.add_shades(shade_recipes, colors)
 
-    return colors, is_bg_dark
+    return colors
 end
 
 return M

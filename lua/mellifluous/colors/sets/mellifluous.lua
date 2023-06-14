@@ -5,16 +5,15 @@ local M = {}
 local color_set_name = 'mellifluous'
 
 local function get_is_neutral(mellifluous_config)
-    local config = require('mellifluous').config
     -- for compatibility with configs from before color set specific config was supported
-    if config.neutral ~= nil then
-        return config.neutral
+    if Config.neutral ~= nil then
+        return Config.neutral
     end
     return mellifluous_config.neutral
 end
 
 function M.get_bg_dark()
-    local mellifluous_config = require('mellifluous').config[color_set_name]
+    local mellifluous_config = Config[color_set_name]
     local is_neutral = get_is_neutral(mellifluous_config)
 
     local brightness = 11.5
@@ -31,7 +30,7 @@ function M.get_bg_dark()
 end
 
 function M.get_bg_light()
-    local mellifluous_config = require('mellifluous').config[color_set_name]
+    local mellifluous_config = Config[color_set_name]
     local is_neutral = get_is_neutral(mellifluous_config)
 
     local brightness = 91.5

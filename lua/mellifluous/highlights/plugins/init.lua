@@ -1,11 +1,9 @@
 local M = {}
 
 function M.set(hl, colors)
-    local config = require('mellifluous').config
-
-    for plugin in pairs(config.plugins) do
-        if (type(config.plugins[plugin]) == 'table' and config.plugins[plugin].enabled == true)
-                or (type(config.plugins[plugin]) == 'boolean' and config.plugins[plugin] == true) then
+    for plugin in pairs(Config.plugins) do
+        if (type(Config.plugins[plugin]) == 'table' and Config.plugins[plugin].enabled == true)
+            or (type(Config.plugins[plugin]) == 'boolean' and Config.plugins[plugin] == true) then
             require('mellifluous.highlights.plugins.' .. plugin).set(hl, colors)
         end
     end
