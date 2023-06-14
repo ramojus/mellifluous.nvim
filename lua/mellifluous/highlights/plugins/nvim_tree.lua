@@ -7,12 +7,12 @@ function M.set(hl, colors)
     end
 
     hl.set('NvimTreeGitDeleted', { fg = colors.red })
-    hl.set('NvimTreeGitDirty', { fg = colors.orange })
+    hl.set('NvimTreeGitDirty', { fg = colors.ui_orange })
     hl.set('NvimTreeGitIgnored', { fg = hl.get('Ignore').fg })
-    hl.set('NvimTreeGitMerge', { fg = colors.purple })
-    hl.set('NvimTreeGitNew', { fg = colors.blue })
-    hl.set('NvimTreeGitRenamed', { fg = colors.orange })
-    hl.set('NvimTreeGitStaged', { fg = colors.green })
+    hl.set('NvimTreeGitMerge', { fg = colors.ui_purple })
+    hl.set('NvimTreeGitNew', { fg = colors.ui_blue })
+    hl.set('NvimTreeGitRenamed', { fg = colors.ui_orange })
+    hl.set('NvimTreeGitStaged', { fg = colors.ui_green })
     hl.set('NvimTreeNormal', {
         bg = (Config.transparent_background.file_tree and 'NONE')
             or (Config.flat_background.file_tree and hl.get('Normal').bg)

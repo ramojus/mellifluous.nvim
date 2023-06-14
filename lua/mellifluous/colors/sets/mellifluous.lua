@@ -72,11 +72,11 @@ function M.get_colors_dark(bg)
         special_comments = green,
         fg = fg,
         bg = bg,
-        red = red:with_lightness(68),       -- errors, deletes, bad spellings
-        orange = orange:with_lightness(68), -- warnings, changes, other (strange) spellings
-        green = green:with_lightness(68),   -- staged, additions
-        blue = blue:with_lightness(68),     -- information, new files
-        purple = purple:with_lightness(68), -- hints, merge
+        red = red,       -- errors, deletes, bad spellings
+        orange = orange, -- warnings, changes, other (strange) spellings
+        green = green,   -- staged, additions
+        blue = blue,     -- information, new files
+        purple = purple, -- hints, merge
     }
 end
 
@@ -106,12 +106,16 @@ function M.get_colors_light(bg)
         special_comments = green,
         fg = fg,
         bg = bg,
-        red = red:with_lightness(45),       -- errors, deletes, bad spellings
-        orange = orange:with_lightness(45), -- warnings, changes, other (strange) spellings
-        green = green:with_lightness(45),         -- staged, additions
-        blue = blue:with_lightness(45),     -- information, new files
-        purple = purple:with_lightness(45), -- hints, merge
+        red = red,       -- errors, deletes, bad spellings
+        orange = orange, -- warnings, changes, other (strange) spellings
+        green = green,   -- staged, additions
+        blue = blue,     -- information, new files
+        purple = purple, -- hints, merge
     }
+end
+
+function M.get_ui_color_base_lightness(is_bg_dark)
+    return is_bg_dark and 60 or 50
 end
 
 function M.get_config()

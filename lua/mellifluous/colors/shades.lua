@@ -1,8 +1,17 @@
 local M = {}
 
 function M.get_recipes()
+    local shared_recipes = {
+        ui_red = { target = 'red', action = 'with_li', val = 'ui' },
+        ui_orange = { target = 'orange', action = 'with_li', val = 'ui' },
+        ui_green = { target = 'green', action = 'with_li', val = 'ui' },
+        ui_blue = { target = 'blue', action = 'with_li', val = 'ui' },
+        ui_purple = { target = 'purple', action = 'with_li', val = 'ui' },
+    }
+    local recipes = {}
+
     if Config.is_bg_dark then
-        return {
+        recipes = {
             fg2 = { target = 'fg', action = 'da', val = 16 },
             fg3 = { target = 'fg', action = 'da', val = 32 },
             fg4 = { target = 'fg', action = 'da', val = 48 },
@@ -14,7 +23,7 @@ function M.get_recipes()
             bg5 = { target = 'bg', action = 'li', val = 10 },
         }
     else
-        return {
+        recipes = {
             fg2 = { target = 'fg', action = 'li', val = 16 },
             fg3 = { target = 'fg', action = 'li', val = 32 },
             fg4 = { target = 'fg', action = 'li', val = 48 },
@@ -26,7 +35,9 @@ function M.get_recipes()
             bg4 = { target = 'bg', action = 'li', val = 8 },
         }
     end
+
+    recipes = vim.tbl_extend('force', recipes, shared_recipes)
+    return recipes
 end
 
 return M
-

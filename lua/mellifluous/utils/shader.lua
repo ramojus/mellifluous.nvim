@@ -8,20 +8,25 @@ function M.get_shade(recipe, target_color)
         color = target_color
     end
 
+    local val = recipe.val == 'ui' and Config.ui_color_base_lightness or recipe.val
+
     if recipe.action == 'li' then
-        return color:lightened(recipe.val)
+        return color:lightened(val)
+    elseif recipe.action == 'da' then
+        return color:darkened(val)
+    elseif recipe.action == 'with_li' then
+        return color:with_lightness(val)
     else
-        return color:darkened(recipe.val)
+        Return_error("unknwon shade recipe action: " .. recipe.action)
     end
 end
 
 function M.add_shades(shade_recipes, colors)
     local fg = colors.shades_fg or colors.fg
-    local bg = colors.bg
     local shaded_colors = {}
 
     for shaded_color_name, recipe in pairs(shade_recipes) do
-        local target_color = recipe.target == 'fg' and fg or bg
+        local target_color = recipe.target == 'fg' and fg or colors[recipe.target]
         shaded_colors[shaded_color_name] = M.get_shade(recipe, target_color)
     end
 

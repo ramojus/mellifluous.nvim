@@ -47,6 +47,10 @@ function M.get_is_bg_dark(color_set_name)
     end
 end
 
+function M.get_ui_color_base_lightness(color_set_name, is_bg_dark)
+    return require('mellifluous.colors.sets.' .. color_set_name).get_ui_color_base_lightness(is_bg_dark)
+end
+
 function M.get_colors()
     if not M.get_color_sets_table()[Config.color_set] then
         Return_error("Color set '" .. Config.color_set .. "' not found")

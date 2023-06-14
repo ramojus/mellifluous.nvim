@@ -25,10 +25,10 @@ function M.set(hl, colors)
             or colors.bg2
     })                                                                       -- Screen-line at the cursor, when 'cursorline' is set. Low-priority if foreground (ctermfg OR guifg) is not set.
     hl.set('Directory', { fg = colors.functions })                       -- Directory names (and other special names in listings)
-    hl.set('DiffAdd', { bg = colors.bg:with_overlay(colors.green, 15):saturated(20) })     -- Diff mode: Added line |diff.txt|
-    hl.set('DiffDelete', { bg = colors.bg:with_overlay(colors.red, 15):saturated(20) })    -- Diff mode: Deleted line |diff.txt|
-    hl.set('DiffChange', { bg = colors.bg:with_overlay(colors.orange, 15):saturated(20) }) -- Diff mode: Changed line |diff.txt|
-    hl.set('DiffText', { bg = colors.bg:with_overlay(colors.orange, 30):saturated(20) })   -- Diff mode: Changed text within a changed line |diff.txt|
+    hl.set('DiffAdd', { bg = colors.bg:with_overlay(colors.ui_green, 15):saturated(20) })     -- Diff mode: Added line |diff.txt|
+    hl.set('DiffDelete', { bg = colors.bg:with_overlay(colors.ui_red, 15):saturated(20) })    -- Diff mode: Deleted line |diff.txt|
+    hl.set('DiffChange', { bg = colors.bg:with_overlay(colors.ui_orange, 15):saturated(20) }) -- Diff mode: Changed line |diff.txt|
+    hl.set('DiffText', { bg = colors.bg:with_overlay(colors.ui_orange, 30):saturated(20) })   -- Diff mode: Changed text within a changed line |diff.txt|
     hl.set('EndOfBuffer', { fg = colors.bg })                            -- Filler lines (~) after the end of the buffer. By default, this is highlighted like |hl-NonText|.
     hl.set('TermCursor', { link = 'Cursor' })                                -- Cursor in a focused terminal
     hl.set('TermCursorNC', { bg = colors.fg5 })                          -- Cursor in an unfocused terminal
@@ -167,10 +167,10 @@ function M.set(hl, colors)
     hl.set('LspCodeLensSeparator', { fg = colors.fg5 })        -- Used to color the seperator between two or more code lens.
     hl.set('LspSignatureActiveParameter', { bg = colors.bg4 }) -- Used to highlight the active parameter in the signature help. See |vim.lsp.handlers.signature_help()|.
     ---
-    hl.set('DiagnosticError', { fg = colors.red })             -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
-    hl.set('DiagnosticWarn', { fg = colors.orange })           -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
-    hl.set('DiagnosticInfo', { fg = colors.blue })             -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
-    hl.set('DiagnosticHint', { fg = colors.purple })           -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
+    hl.set('DiagnosticError', { fg = colors.ui_red })             -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
+    hl.set('DiagnosticWarn', { fg = colors.ui_orange })           -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
+    hl.set('DiagnosticInfo', { fg = colors.ui_blue })             -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
+    hl.set('DiagnosticHint', { fg = colors.ui_purple })           -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
     hl.set('DiagnosticVirtualTextError', {
         fg = hl.get('DiagnosticError').fg,
         bg = (Config.transparent_background.enabled and 'NONE') or

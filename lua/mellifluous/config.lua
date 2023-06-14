@@ -87,6 +87,14 @@ local function merge_color_set_defaults()
     )
 end
 
+local function process_color_set()
+    config.is_bg_dark = require('mellifluous.colors').get_is_bg_dark(config.color_set)
+    config.ui_color_base_lightness = require('mellifluous.colors')
+        .get_ui_color_base_lightness(config.color_set, config.is_bg_dark)
+
+    merge_color_set_defaults()
+end
+
 -- https://www.lua.org/pil/13.4.5.html
 local function read_only(table)
     local proxy = {}
@@ -105,16 +113,8 @@ function M.setup(user_config)
     config = vim.tbl_deep_extend('force', config, user_config or {})
 end
 
-function M.get_color_set_name()
-    return config.color_set
-end
-
-function M.set_is_bg_dark(is_bg_dark)
-    config.is_bg_dark = is_bg_dark
-end
-
 function M.prepare_global()
-    merge_color_set_defaults()
+    process_color_set()
     disable_disabled()
 
     Config = read_only(config)

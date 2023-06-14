@@ -44,5 +44,9 @@ function M.get_colors_dark(bg)
     }
 end
 
+function M.get_ui_color_base_lightness()
+    return 55
+end
+
 return M
 
