@@ -2,6 +2,7 @@
 # Mellifluous
 A colorscheme for [Neovim](https://github.com/neovim/neovim). Pleasant and productive, with stronger highlights on important keywords.
 
+![preview](https://github.com/ramojus/mellifluous.nvim/assets/41536253/a4b01a46-6ec9-408a-9c2f-08995c53155a)
 
 ## Features
 - [**Multiple color sets**](#color-sets): Mellifluous offers several color sets, including the default mellifluous, as well as sets inspired by mountain, alduin, and tender themes. Each color set presents a unique visual theme while following the same set of productive highlight rules.
@@ -15,13 +16,6 @@ A colorscheme for [Neovim](https://github.com/neovim/neovim). Pleasant and produ
 - [**Styled plugins**](#styled-plugins): Plugins like lsp, treesitter, nvim-cmp and more will follow the colorscheme's design.
 
 - [**Background Transparency**](#configuration): The colorscheme offers the option to enable or disable transparency for various UI components, such as floating windows, file tree, and cursor line.
-
-
-## Preview
-![code](https://user-images.githubusercontent.com/41536253/208069537-610cd1a9-0ceb-4a3d-ab85-b031c020f0b7.png)
-![telescope](https://user-images.githubusercontent.com/41536253/208069563-9a4ea865-14fa-40ff-ba93-c2f5916b876e.png)
-![startify](https://user-images.githubusercontent.com/41536253/208069572-82b68641-d674-4e79-8f26-22ac06320730.png)
-![light_code](https://user-images.githubusercontent.com/41536253/208069584-773d2825-1bf1-44e3-b514-b09ea063ba32.png)
 
 <!-- panvimdoc-ignore-end -->
 ## Styled plugins
