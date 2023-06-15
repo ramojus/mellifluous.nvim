@@ -58,6 +58,8 @@ function M.set(hl, colors)
     hl.set('@text.literal', { link = 'Character' })                                              -- Literal or verbatim text.
     hl.set('@text.uri', { fg = shader.get_lower_contrast(colors.blue, 15) })                     -- URIs like hyperlinks or email addresses.
     hl.set('@text.todo', { link = 'Todo' })
+    hl.set('@text.danger', { bg = colors.bg:with_overlay(colors.ui_orange, 20), fg = colors.ui_orange })
+    hl.set('@text.warning', { bg = colors.bg:with_overlay(colors.ui_red, 20), fg = colors.ui_red })
     hl.set('@math', { fg = colors.other_keywords })                                              -- Math environments like LaTeX's `$ ... $`
     hl.set('@text.reference', { fg = colors.constants })                                         -- Footnotes, text references, citations, etc.
     hl.set('@environment', { fg = colors.other_keywords })                                       -- Text environments of markup languages.

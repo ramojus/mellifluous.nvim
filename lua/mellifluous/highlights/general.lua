@@ -155,7 +155,7 @@ function M.set(hl, colors)
     hl.set('Italic', { italic = Config.italic })
     hl.set('Ignore', { fg = colors.fg5 })                       -- Left blank, hidden |hl-Ignore| (NOTE: May be invisible here in template)
     hl.set('Error', { fg = colors.red })                        -- Any erroneous construct
-    hl.set('Todo', { bg = colors.strings, fg = colors.bg }) -- Anything that needs extra attention; mostly the keywords TODO FIXME and XXX
+    hl.set('Todo', { bg = colors.bg:with_overlay(colors.ui_green, 20), fg = colors.ui_green }) -- Anything that needs extra attention; mostly the keywords TODO FIXME and XXX
 
     -- These groups are for the native LSP client and diagnostic system. Some
     -- other LSP clients may use these groups, or use their own. Consult your
