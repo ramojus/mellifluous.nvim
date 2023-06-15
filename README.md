@@ -139,7 +139,6 @@ require 'mellifluous'.setup({
                 functions = nil,
                 constants = nil,
                 comments = nil,
-                special_comments = nil,
 
                 red = nil, -- errors, deletes, bad spellings
                 orange = nil, -- warnings, changes, unusual spellings

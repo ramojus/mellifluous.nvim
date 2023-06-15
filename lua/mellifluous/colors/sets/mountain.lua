@@ -26,7 +26,6 @@ function M.get_colors_dark(bg)
         strings = green,
         functions = blue,
         constants = orange,
-        special_comments = green,
         comments = fg:darkened(50),
 
         fg = fg,

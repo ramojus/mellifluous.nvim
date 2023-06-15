@@ -29,7 +29,6 @@ function M.get_colors_dark(bg)
         strings = strings,
         functions = dark_red,
         constants = dark_orange,
-        special_comments = green,
         comments = green,
 
         fg = fg,

@@ -69,7 +69,6 @@ function M.get_colors_dark(bg)
         functions = blue,
         constants = purple,
         comments = dark_green,
-        special_comments = green,
         fg = fg,
         bg = bg,
         red = red,       -- errors, deletes, bad spellings
@@ -103,7 +102,6 @@ function M.get_colors_light(bg)
         functions = blue,
         constants = purple,
         comments = dark_green,
-        special_comments = green,
         fg = fg,
         bg = bg,
         red = red,       -- errors, deletes, bad spellings
