@@ -52,6 +52,7 @@ function M.set(hl, colors)
     hl.set('Substitute', { link = 'IncSearch' })                                -- |:substitute| replacement text highlighting
     hl.set('CursorLineNr', {
         bg = (Config.flat_background.cursor_line_number and hl.get('LineNr').bg)
+            or (Config.flat_background.line_numbers and hl.get('CursorLine').bg)
             or (Config.transparent_background.enabled and 'NONE')
             or shader.get_shade(shade_recipes.dark_bg, hl.get('CursorLine').bg),
         fg = hl.get('LineNr').fg
