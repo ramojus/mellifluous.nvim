@@ -28,7 +28,7 @@ function M.set(hl, colors)
                 and hl.get('NvimTreeNormal').bg) -- no separator if LineNr bg differs from this bg
             or (Config.flat_background.line_numbers and Config.flat_background.file_tree
                     and (Config.is_bg_dark and colors.bg4)
-                        or colors.bg3) -- stronger separator if both bg are flat
+                        or colors.dark_bg2) -- stronger separator if both bg are flat
             or (Config.is_bg_dark and colors.bg3)
             or colors.dark_bg2
     })
