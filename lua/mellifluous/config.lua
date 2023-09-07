@@ -11,6 +11,9 @@ local config = {
             enabled = true,
             show_root = false,
         },
+        neo_tree = {
+            enabled = true,
+        },
         telescope = {
             enabled = true,
             nvchad_like = true,
@@ -52,9 +55,7 @@ local config = {
 
 local function disable_disabled()
     for _, v in pairs(config) do
-        if type(v) ~= "table"
-            or v.enabled == nil
-            or v.enabled then
+        if type(v) ~= 'table' or v.enabled == nil or v.enabled then
             goto continue
         end
 
@@ -80,17 +81,13 @@ local function merge_color_set_defaults()
         return
     end
 
-    config[config.color_set] = vim.tbl_deep_extend(
-        'force',
-        config[config.color_set] or {},
-        color_set.get_config()
-    )
+    config[config.color_set] = vim.tbl_deep_extend('force', config[config.color_set] or {}, color_set.get_config())
 end
 
 local function process_color_set()
     config.is_bg_dark = require('mellifluous.colors').get_is_bg_dark(config.color_set)
-    config.ui_color_base_lightness = require('mellifluous.colors')
-        .get_ui_color_base_lightness(config.color_set, config.is_bg_dark)
+    config.ui_color_base_lightness =
+        require('mellifluous.colors').get_ui_color_base_lightness(config.color_set, config.is_bg_dark)
 
     merge_color_set_defaults()
 end
@@ -101,8 +98,8 @@ local function read_only(table)
     local metatable = {
         __index = table,
         __newindex = function()
-            Return_error("Attempt to update readonly config")
-        end
+            Return_error('Attempt to update readonly config')
+        end,
     }
     setmetatable(proxy, metatable)
     return proxy
