@@ -23,6 +23,7 @@ While this colorscheme offers most of what other popular neovim colorschemes off
 - [Native LSP](https://github.com/neovim/nvim-lspconfig)
 - [Telescope](https://github.com/nvim-telescope/telescope.nvim)
 - [NvimTree](https://github.com/kyazdani42/nvim-tree.lua)
+- [Neo-Tree](https://github.com/nvim-neo-tree/neo-tree.nvim)
 - [Nvim-cmp](https://github.com/hrsh7th/nvim-cmp)
 - [Indent Blankline](https://github.com/lukas-reineke/indent-blankline.nvim)
 - [Startify](https://github.com/mhinz/vim-startify)
@@ -83,6 +84,9 @@ require 'mellifluous'.setup({
         nvim_tree = {
             enabled = true,
             show_root = false,
+        },
+        neo_tree = {
+            enabled = true,
         },
         telescope = {
             enabled = true,
