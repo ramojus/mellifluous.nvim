@@ -84,7 +84,7 @@ parts of the config can be included.
         },
         plugins = {
             cmp = true,
-            gitsigns = true
+            gitsigns = true,
             indent_blankline = true,
             nvim_tree = {
                 enabled = true,
