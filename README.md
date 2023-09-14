@@ -1,4 +1,6 @@
-<!-- panvimdoc-ignore-start --> # Mellifluous A colorscheme for [Neovim](https://github.com/neovim/neovim). Pleasant and productive, with stronger highlights on important keywords.
+<!-- panvimdoc-ignore-start -->
+# Mellifluous
+A colorscheme for [Neovim](https://github.com/neovim/neovim). Pleasant and productive, with stronger highlights on important keywords.
 ![preview](https://github.com/ramojus/mellifluous.nvim/assets/41536253/a4b01a46-6ec9-408a-9c2f-08995c53155a)
 
 ## Unique features
