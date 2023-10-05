@@ -3,16 +3,14 @@
 A colorscheme for [Neovim](https://github.com/neovim/neovim). Pleasant and productive, with stronger highlights on important keywords.
 ![preview](https://github.com/ramojus/mellifluous.nvim/assets/41536253/a4b01a46-6ec9-408a-9c2f-08995c53155a)
 
-## Unique features
-While this colorscheme offers most of what other popular neovim colorschemes offer, here is what's unique about it:
+## Highlighted features
+- [**Multiple color sets**](#color-sets): Each color set presents a unique visual theme while adhering to the same set of productive highlight rules. Every color set [can be customised](#overriding-colors-of-a-color-set).
 
-- [**Multiple color sets**](#color-sets): Each color set presents a unique visual theme while adhering to the same set of productive highlight rules.
+- **Layered backgrounds**: Most UI elements have backgrounds with different shades of the background color and have no borders. This allows for easy differentiation between the relative importance of the elements and keeps the colorscheme looking minimal.
 
-- **Layered backgrounds**: The majority of UI elements have distinct shades of the background color. This allows for easy differentiation between the relative importance of the elements. This strategy also let's the colorscheme minimize the use of borders and embrace a minimalistic design philosophy.
+- [**Oklab color space**](https://bottosson.github.io/posts/oklab/): To truly achieve perceptually uniform variations of colors, all color modifications are done in this color space; thanks to [mini.colors](https://github.com/echasnovski/mini.colors) project for the code and idea.
 
-- [**Oklab color space**](https://bottosson.github.io/posts/oklab/): To truly achieve perceptually uniform variations of colors, all color modifications are done in this color space. (Code for that is shamelessly stolen from [mini.colors](https://github.com/echasnovski/mini.colors))
-
-- **Small number of colors**: Following the "less is more" philosophy, color sets use a small number of colors to provide distraction-free coding experience.
+- **Small number of colors**: Color sets use a small number of colors to provide distraction-free coding experience.
 
 - **Stronger highlights on important keywords**: Keywords related to control flow have stronger highlights, making it easier to quickly understand the code.
 
