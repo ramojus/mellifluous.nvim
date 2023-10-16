@@ -135,7 +135,7 @@ function M.set(hl, colors)
         style = Config.styles.operators or {}
     })                                                                           --   'sizeof', '+', '*', etc.
     hl.set('Keyword', { fg = colors.other_keywords })                        --   any other keyword
-    hl.set('Exception', { fg = colors.other_keywords })                      --   try, catch, throw
+    hl.set('Exception', { fg = colors.main_keywords })                      --   try, catch, throw
     hl.set('PreProc', { fg = colors.functions })                             -- (*) Generic Preprocessor
     hl.set('Include', { link = 'PreProc' })                                      --   Preprocessor #include
     hl.set('Define', { link = 'PreProc' })                                       --   Preprocessor #define
