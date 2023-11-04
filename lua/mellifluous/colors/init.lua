@@ -16,7 +16,8 @@ local function tbl_extend_non_nil(base_table, overlay_table)
 end
 
 local function get_color_overrides(is_bg_dark, color_set_name)
-    local color_overrides = vim.tbl_get(Config, color_set_name,
+    local config = require('mellifluous.config').config
+    local color_overrides = vim.tbl_get(config, color_set_name,
         'color_overrides', is_bg_dark and 'dark' or 'light') or {}
 
     for key, color in pairs(color_overrides) do
@@ -43,7 +44,7 @@ function M.get_is_bg_dark(color_set_name)
     elseif is_light_set_available then
         return false
     else
-        Return_error("Required color set is either incomplete or missing")
+        require('mellifluous').return_error("Required color set is either incomplete or missing")
     end
 end
 
@@ -52,15 +53,16 @@ function M.get_ui_color_base_lightness(color_set_name, is_bg_dark)
 end
 
 function M.get_colors()
-    if not M.get_color_sets_table()[Config.color_set] then
-        Return_error("Color set '" .. Config.color_set .. "' not found")
+    local config = require('mellifluous.config').config
+    if not M.get_color_sets_table()[config.color_set] then
+        require('mellifluous').return_error("Color set '" .. config.color_set .. "' not found")
     end
 
-    local color_overrides = get_color_overrides(Config.is_bg_dark, Config.color_set)
+    local color_overrides = get_color_overrides(config.is_bg_dark, config.color_set)
 
-    local color_set_functions = require('mellifluous.colors.sets.' .. Config.color_set)
+    local color_set_functions = require('mellifluous.colors.sets.' .. config.color_set)
     local colors
-    if Config.is_bg_dark then
+    if config.is_bg_dark then
         colors = color_set_functions.get_colors_dark(color_overrides.bg or color_set_functions.get_bg_dark())
     else
         colors = color_set_functions.get_colors_light(color_overrides.bg or color_set_functions.get_bg_light())

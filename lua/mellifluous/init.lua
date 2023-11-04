@@ -1,20 +1,20 @@
-function Return_error(msg)
+local M = {}
+
+function M.return_error(msg)
     error('mellifluous: ' .. msg)
 end
 
-function Print_error(msg)
+function M.print_error(msg)
     vim.notify('Error: mellifluous: ' .. msg)
     vim.notify('')
 end
-
-local M = {}
 
 function M.setup(user_config)
     require('mellifluous.config').setup(user_config)
 end
 
 function M.load()
-    require('mellifluous.config').prepare_global()
+    require('mellifluous.config').prepare()
 
     local colors = require('mellifluous.colors').get_colors()
     local highlighter = require('mellifluous.utils.highlighter')

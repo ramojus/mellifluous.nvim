@@ -1,6 +1,8 @@
 local M = {}
 
 function M.get_recipes()
+    local config = require('mellifluous.config').config
+
     local shared_recipes = {
         ui_red = { target = 'red', action = 'with_li', val = 'ui' },
         ui_orange = { target = 'orange', action = 'with_li', val = 'ui' },
@@ -10,7 +12,7 @@ function M.get_recipes()
     }
     local recipes = {}
 
-    if Config.is_bg_dark then
+    if config.is_bg_dark then
         recipes = {
             fg2 = { target = 'fg', action = 'da', val = 16 },
             fg3 = { target = 'fg', action = 'da', val = 32 },

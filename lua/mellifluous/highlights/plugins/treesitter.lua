@@ -2,6 +2,7 @@ local M = {}
 
 function M.set(hl, colors)
     local shader = require('mellifluous.utils.shader')
+    local config = require('mellifluous.config').config
 
     hl.set('@attribute', { fg = colors.other_keywords })                                                   -- Annotations that can be attached to the code to denote some kind of meta information. e.g. C++/Dart attributes.
     hl.set('@boolean', { link = 'Boolean' })                                                               -- Boolean literals: `True` and `False` in Python.
@@ -16,17 +17,17 @@ function M.set(hl, colors)
     hl.set('@debug', { fg = colors.other_keywords })                                                       -- Debugging statements.
     hl.set('@define', { link = 'PreProc' })                                                                -- Preprocessor #define statements.
     hl.set('@error', { link = 'Error' })                                                                   -- Syntax/parser errors. This might highlight large sections of code while the user is typing still incomplete code, use a sensible highlight.
-    hl.set('@exception', { link = 'Exception', style = Config.styles.keywords })                           -- Exception related keywords: `try`, `except`, `finally` in Python.
-    hl.set('@field', { fg = colors.fg, style = Config.styles.properties })                                 -- Object and struct fields.
+    hl.set('@exception', { link = 'Exception', style = config.styles.keywords })                           -- Exception related keywords: `try`, `except`, `finally` in Python.
+    hl.set('@field', { fg = colors.fg, style = config.styles.properties })                                 -- Object and struct fields.
     hl.set('@float', { link = 'Float' })                                                                   -- Floating-point number literals.
     hl.set('@function', { link = 'Function' })                                                             -- Function calls and definitions.
     hl.set('@function.builtin', { link = 'Function' })                                                     -- Built-in functions: `print` in Lua.
     hl.set('@function.macro', { link = 'Function' })                                                       -- Macro defined functions (calls and definitions): each `macro_rules` in Rust.
     hl.set('@include', { link = 'Function', style = {} })                                                  -- File or module inclusion keywords: `#include` in C, `use` or `extern crate` in Rust.
     hl.set('@keyword', { link = 'Keyword' })                                                               -- Keywords that don't fit into other categories.
-    hl.set('@keyword.function', { fg = colors.main_keywords, style = Config.styles.keywords })             -- Keywords used to define a function: `function` in Lua, `def` and `lambda` in Python.
-    hl.set('@keyword.operator', { fg = colors.other_keywords, style = Config.styles.operators })           -- Unary and binary operators that are English words: `and`, `or` in Python; `sizeof` in C.
-    hl.set('@keyword.return', { fg = colors.main_keywords, style = Config.styles.keywords })               -- Keywords like `return` and `yield`.
+    hl.set('@keyword.function', { fg = colors.main_keywords, style = config.styles.keywords })             -- Keywords used to define a function: `function` in Lua, `def` and `lambda` in Python.
+    hl.set('@keyword.operator', { fg = colors.other_keywords, style = config.styles.operators })           -- Unary and binary operators that are English words: `and`, `or` in Python; `sizeof` in C.
+    hl.set('@keyword.return', { fg = colors.main_keywords, style = config.styles.keywords })               -- Keywords like `return` and `yield`.
     hl.set('@label', { link = 'Label' })                                                                   -- GOTO labels: `label:` in C, and `::label::` in Lua.
     hl.set('@method', { link = 'Function' })                                                               -- Method calls and definitions.
     hl.set('@namespace', { link = 'Type', style = {} })                                                    -- Identifiers referring to modules and namespaces.
@@ -42,9 +43,9 @@ function M.set(hl, colors)
     hl.set('@repeat', { link = 'Repeat' })                                                                 -- Keywords related to loops: `for`, `while`, etc.
     hl.set('@storage.class', { link = 'StorageClass' })                                                    -- Keywords that affect how a variable is stored: `static`, `comptime`, `extern`, etc.
     hl.set('@string', { link = 'String' })                                                                 -- String literals.
-    hl.set('@string.regex', { link = 'Character', style = Config.styles.strings })                         -- Regular expression literals.
-    hl.set('@string.escape', { link = 'Character', style = Config.styles.strings })                        -- Escape characters within a string: `\n`, `\t`, etc.
-    hl.set('@string.special', { link = 'Character', style = Config.styles.strings })                       -- Strings with special meaning that don't fit into the previous categories.
+    hl.set('@string.regex', { link = 'Character', style = config.styles.strings })                         -- Regular expression literals.
+    hl.set('@string.escape', { link = 'Character', style = config.styles.strings })                        -- Escape characters within a string: `\n`, `\t`, etc.
+    hl.set('@string.special', { link = 'Character', style = config.styles.strings })                       -- Strings with special meaning that don't fit into the previous categories.
     hl.set('@symbol', { link = 'Character' })                                                              -- Identifiers referring to symbols or atoms.
     hl.set('@tag', { link = 'Keyword' })                                                                   -- Tags like HTML tag names.
     hl.set('@tag.attribute', { link = 'Function', style = {} })                                            -- HTML tag attributes.

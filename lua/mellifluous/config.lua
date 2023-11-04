@@ -1,7 +1,5 @@
 local M = {}
 
-Config = {}
-
 local config = {
     color_set = 'mellifluous',
     plugins = {
@@ -98,7 +96,7 @@ local function read_only(table)
     local metatable = {
         __index = table,
         __newindex = function()
-            Return_error('Attempt to update readonly config')
+            require('mellifluous').return_error('Attempt to update readonly config')
         end,
     }
     setmetatable(proxy, metatable)
@@ -110,11 +108,11 @@ function M.setup(user_config)
     config = vim.tbl_deep_extend('force', config, user_config or {})
 end
 
-function M.prepare_global()
+function M.prepare()
     process_color_set()
     disable_disabled()
 
-    Config = read_only(config)
+    M.config = read_only(config)
 end
 
 return M

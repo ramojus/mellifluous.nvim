@@ -3,15 +3,16 @@ local M = {}
 function M.set(hl, colors)
     local shader = require('mellifluous.utils.shader')
     local shade_recipes = require('mellifluous.colors.shades').get_recipes()
+    local config = require('mellifluous.config').config
 
     hl.set('Normal', {
-        bg = (Config.transparent_background.enabled and 'NONE')
+        bg = (config.transparent_background.enabled and 'NONE')
             or colors.bg,
         fg = colors.fg
     }) -- Normal text
     hl.set('NormalNC', {
-        bg = (Config.dim_inactive and colors.dark_bg)
-            or (Config.transparent_background and 'NONE')
+        bg = (config.dim_inactive and colors.dark_bg)
+            or (config.transparent_background and 'NONE')
             or hl.get('Normal').bg
     })                                                                       -- normal text in non-current windows
     hl.set('ColorColumn', { bg = colors.dark_bg })                       -- Columns set with 'colorcolumn'
@@ -21,7 +22,7 @@ function M.set(hl, colors)
     hl.set('CursorIM', { link = 'Cursor' })                                  -- Like Cursor, but used when in IME mode |CursorIM|
     hl.set('CursorColumn', { bg = colors.bg2 })                          -- Screen-column at the cursor, when 'cursorcolumn' is set.
     hl.set('CursorLine', {
-        bg = (Config.transparent_background.cursor_line and 'NONE')
+        bg = (config.transparent_background.cursor_line and 'NONE')
             or colors.bg2
     })                                                                       -- Screen-line at the cursor, when 'cursorline' is set. Low-priority if foreground (ctermfg OR guifg) is not set.
     hl.set('Directory', { fg = colors.functions })                       -- Directory names (and other special names in listings)
@@ -35,25 +36,25 @@ function M.set(hl, colors)
     hl.set('ErrorMsg', { fg = colors.red })                              -- Error messages on the command line
     hl.set('VertSplit', {
         fg = colors.fg5,
-        bg = (Config.dim_inactive and hl.get('NormalNC').bg)
-            or (Config.transparent_background.enabled and 'NONE')
+        bg = (config.dim_inactive and hl.get('NormalNC').bg)
+            or (config.transparent_background.enabled and 'NONE')
             or hl.get('Normal').bg
     })                                                                                                -- Column separating vertically split windows
-    hl.set('Folded', { bg = colors.bg3, fg = colors.fg3, style = Config.styles.folds or {} }) -- Line used for closed folds
+    hl.set('Folded', { bg = colors.bg3, fg = colors.fg3, style = config.styles.folds or {} }) -- Line used for closed folds
     hl.set('FoldColumn', { link = 'Normal' })                                                         -- 'foldcolumn'
     hl.set('LineNr', {
         fg = colors.fg4,
-        bg = (Config.transparent_background.enabled and 'NONE')
-            or (Config.flat_background.line_numbers and hl.get('Normal').bg)
+        bg = (config.transparent_background.enabled and 'NONE')
+            or (config.flat_background.line_numbers and hl.get('Normal').bg)
             or colors.dark_bg
     })                                                                          -- Line number for ':number' and ':#' commands, and when 'number' or 'relativenumber' option is set.
     hl.set('SignColumn', { link = 'LineNr' })                                   -- Column where |signs| are displayed
     hl.set('IncSearch', { bg = colors.other_keywords, fg = colors.bg }) -- 'incsearch' highlighting; also used for the text replaced with ':s///c'
     hl.set('Substitute', { link = 'IncSearch' })                                -- |:substitute| replacement text highlighting
     hl.set('CursorLineNr', {
-        bg = (Config.flat_background.cursor_line_number and hl.get('LineNr').bg)
-            or (Config.flat_background.line_numbers and hl.get('CursorLine').bg)
-            or (Config.transparent_background.enabled and 'NONE')
+        bg = (config.flat_background.cursor_line_number and hl.get('LineNr').bg)
+            or (config.flat_background.line_numbers and hl.get('CursorLine').bg)
+            or (config.transparent_background.enabled and 'NONE')
             or shader.get_shade(shade_recipes.dark_bg, hl.get('CursorLine').bg),
         fg = hl.get('LineNr').fg
     })                                                                           -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
@@ -65,21 +66,21 @@ function M.set(hl, colors)
     hl.set('NonText', { link = 'Conceal' })                                      -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., '>' displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
     hl.set('Title', { fg = colors.other_keywords })                          -- Titles for output from ':set all', ':autocmd' etc.
     hl.set('NormalFloat', {
-        bg = (Config.transparent_background.floating_windows and 'NONE')
-            or (Config.flat_background.floating_windows and hl.get('Normal').bg)
+        bg = (config.transparent_background.floating_windows and 'NONE')
+            or (config.flat_background.floating_windows and hl.get('Normal').bg)
             or colors.bg3
     }) -- Normal text in floating windows.
     hl.set('FloatBorder', {
         bg = hl.get('NormalFloat').bg,
-        fg = ((Config.transparent_background.floating_windows
-            or Config.flat_background.floating_windows)
+        fg = ((config.transparent_background.floating_windows
+            or config.flat_background.floating_windows)
             and colors.fg4)
             or hl.get('NormalFloat').bg
     })
     hl.set('FloatTitle', { bg = hl.get('NormalFloat').bg, fg = colors.comments })
     hl.set('FloatShadow', { bg = colors.dark_bg })
-    hl.set('Pmenu', { bg = colors.bg4, fg = Config.is_bg_dark and colors.fg3 or colors.fg4 }) -- Popup menu: Normal item.
-    hl.set('PmenuSel', { bg = Config.is_bg_dark and colors.fg5 or colors.dark_bg })               -- Popup menu: Selected item.
+    hl.set('Pmenu', { bg = colors.bg4, fg = config.is_bg_dark and colors.fg3 or colors.fg4 }) -- Popup menu: Normal item.
+    hl.set('PmenuSel', { bg = config.is_bg_dark and colors.fg5 or colors.dark_bg })               -- Popup menu: Selected item.
     hl.set('PmenuSbar', { bg = colors.bg3 })                                                          -- Popup menu: Scrollbar.
     hl.set('PmenuThumb', { bg = colors.fg5 })                                                         -- Popup menu: Thumb of the scrollbar.
     hl.set('Question', { fg = colors.other_keywords })                                                -- |hit-enter| prompt and yes/no questions
@@ -91,19 +92,19 @@ function M.set(hl, colors)
     hl.set('SpellLocal', { fg = colors.orange })                                                      -- Word that is recognized by the spellchecker as one that is used in another region. |spell| Combined with the highlighting used otherwise.
     hl.set('SpellRare', { fg = colors.orange })                                                       -- Word that is recognized by the spellchecker as one that is hardly ever used. |spell| Combined with the highlighting used otherwise.
     hl.set('StatusLine', {
-        bg = (Config.transparent_background.status_line and 'NONE')
+        bg = (config.transparent_background.status_line and 'NONE')
             or colors.bg4,
         fg = colors.fg2
     }) -- Status line of current window
     hl.set('StatusLineNC', {
-        bg = (Config.transparent_background.status_line and 'NONE')
+        bg = (config.transparent_background.status_line and 'NONE')
             or colors.bg2,
         fg = colors.fg4
     })                                                                                     -- Status lines of not-current windows. Note: If this is equal to 'StatusLine' Vim will use '^^^' in the status line of the current window.
     hl.set('TabLine', { bg = hl.get('StatusLine').bg, fg = colors.fg3 })               -- Tab pages line, not active tab page label
     hl.set('TabLineFill', { link = 'TabLine' })                                            -- Tab pages line, where there are no labels
     hl.set('TabLineSel', { bg = colors.bg2, fg = colors.fg2 })                     -- Tab pages line, active tab page label
-    hl.set('Visual', { bg = Config.is_bg_dark and colors.bg4 or colors.dark_bg2 }) -- Visual mode selection
+    hl.set('Visual', { bg = config.is_bg_dark and colors.bg4 or colors.dark_bg2 }) -- Visual mode selection
     hl.set('VisualNOS', { bg = colors.bg3 })                                           -- Visual mode selection when vim is 'Not Owning the Selection'.
     hl.set('WarningMsg', { fg = colors.red })                                          -- Warning messages
     hl.set('Whitespace', { fg = colors.fg5 })                                          -- 'nbsp', 'space', 'tab' and 'trail' in 'listchars'
@@ -117,22 +118,22 @@ function M.set(hl, colors)
     -- See :h group-name
     --
     -- Uncomment and edit if you want more specific syntax highlighting.
-    hl.set('Comment', { fg = colors.comments, style = Config.styles.comments or {} })              -- Any comment
+    hl.set('Comment', { fg = colors.comments, style = config.styles.comments or {} })              -- Any comment
     hl.set('Constant', { fg = colors.constants })                                                  -- (*) Any constant
-    hl.set('String', { fg = colors.strings, style = Config.styles.strings or {} })                 --   A string constant: 'this is a string'
+    hl.set('String', { fg = colors.strings, style = config.styles.strings or {} })                 --   A string constant: 'this is a string'
     hl.set('Character', { fg = hl.get('String').fg })                                                  --   A character constant: 'c', '\n'
-    hl.set('Number', { link = 'Constant', style = Config.styles.numbers or {} })                       --   A number constant: 234, 0xff
-    hl.set('Boolean', { link = 'Constant', style = Config.styles.booleans or {} })                     --   A boolean constant: TRUE, false
-    hl.set('Float', { link = 'Constant', style = Config.styles.numbers or {} })                        --   A floating point constant: 2.3e10
-    hl.set('Identifier', { fg = colors.fg, style = Config.styles.variables or {} })                -- (*) Any variable name
-    hl.set('Function', { fg = colors.functions, style = Config.styles.functions or {} })           --   Function name (also: methods for classes)
+    hl.set('Number', { link = 'Constant', style = config.styles.numbers or {} })                       --   A number constant: 234, 0xff
+    hl.set('Boolean', { link = 'Constant', style = config.styles.booleans or {} })                     --   A boolean constant: TRUE, false
+    hl.set('Float', { link = 'Constant', style = config.styles.numbers or {} })                        --   A floating point constant: 2.3e10
+    hl.set('Identifier', { fg = colors.fg, style = config.styles.variables or {} })                -- (*) Any variable name
+    hl.set('Function', { fg = colors.functions, style = config.styles.functions or {} })           --   Function name (also: methods for classes)
     hl.set('Statement', { fg = colors.other_keywords })                                            -- (*) Any statement
-    hl.set('Conditional', { fg = colors.main_keywords, style = Config.styles.conditionals or {} }) --   if, then, else, endif, switch, etc.
-    hl.set('Repeat', { fg = colors.main_keywords, style = Config.styles.loops or {} })             --   for, do, while, etc.
-    hl.set('Label', { fg = colors.main_keywords, style = Config.styles.keywords or {} })           --   case, default, etc.
+    hl.set('Conditional', { fg = colors.main_keywords, style = config.styles.conditionals or {} }) --   if, then, else, endif, switch, etc.
+    hl.set('Repeat', { fg = colors.main_keywords, style = config.styles.loops or {} })             --   for, do, while, etc.
+    hl.set('Label', { fg = colors.main_keywords, style = config.styles.keywords or {} })           --   case, default, etc.
     hl.set('Operator', {
-        fg = Config.is_bg_dark and colors.operators or colors.fg3,
-        style = Config.styles.operators or {}
+        fg = config.is_bg_dark and colors.operators or colors.fg3,
+        style = config.styles.operators or {}
     })                                                                           --   'sizeof', '+', '*', etc.
     hl.set('Keyword', { fg = colors.other_keywords })                        --   any other keyword
     hl.set('Exception', { fg = colors.main_keywords })                      --   try, catch, throw
@@ -141,7 +142,7 @@ function M.set(hl, colors)
     hl.set('Define', { link = 'PreProc' })                                       --   Preprocessor #define
     hl.set('Macro', { link = 'PreProc' })                                        --   Same as Define
     hl.set('PreCondit', { link = 'PreProc' })                                    --   Preprocessor #if, #else, #endif, etc.
-    hl.set('Type', { fg = colors.types, style = Config.styles.types or {} }) -- (*) int, long, char, etc.
+    hl.set('Type', { fg = colors.types, style = config.styles.types or {} }) -- (*) int, long, char, etc.
     hl.set('StorageClass', { link = 'Type' })                                    --   static, register, volatile, etc.
     hl.set('Structure', { link = 'Type' })                                       --   struct, union, enum, etc.
     hl.set('Typedef', { link = 'Type' })                                         --   A typedef
@@ -152,8 +153,8 @@ function M.set(hl, colors)
     hl.set('SpecialComment', { link = 'Special' })                               --   Special things inside a comment (e.g. '\n')
     hl.set('Debug', { link = 'Special' })                                        --   Debugging statements
     hl.set('Underlined', { underline = true, fg = colors.fg3 })              -- Text that stands out, HTML links
-    hl.set('Bold', { bold = Config.bold })
-    hl.set('Italic', { italic = Config.italic })
+    hl.set('Bold', { bold = config.bold })
+    hl.set('Italic', { italic = config.italic })
     hl.set('Ignore', { fg = colors.fg5 })                       -- Left blank, hidden |hl-Ignore| (NOTE: May be invisible here in template)
     hl.set('Error', { fg = colors.red })                        -- Any erroneous construct
     hl.set('Todo', { bg = colors.bg:with_overlay(colors.ui_green, 20), fg = colors.ui_green }) -- Anything that needs extra attention; mostly the keywords TODO FIXME and XXX
@@ -174,22 +175,22 @@ function M.set(hl, colors)
     hl.set('DiagnosticHint', { fg = colors.ui_purple })           -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
     hl.set('DiagnosticVirtualTextError', {
         fg = hl.get('DiagnosticError').fg,
-        bg = (Config.transparent_background.enabled and 'NONE') or
+        bg = (config.transparent_background.enabled and 'NONE') or
             colors.bg:with_overlay(hl.get('DiagnosticError').fg, 12)
     }) -- Used for 'Error' diagnostic virtual text.
     hl.set('DiagnosticVirtualTextWarn', {
         fg = hl.get('DiagnosticWarn').fg,
-        bg = (Config.transparent_background.enabled and 'NONE') or
+        bg = (config.transparent_background.enabled and 'NONE') or
             colors.bg:with_overlay(hl.get('DiagnosticWarn').fg, 12)
     }) -- Used for 'Warn' diagnostic virtual text.
     hl.set('DiagnosticVirtualTextInfo', {
         fg = hl.get('DiagnosticInfo').fg,
-        bg = (Config.transparent_background.enabled and 'NONE') or
+        bg = (config.transparent_background.enabled and 'NONE') or
             colors.bg:with_overlay(hl.get('DiagnosticInfo').fg, 12)
     }) -- Used for 'Info' diagnostic virtual text.
     hl.set('DiagnosticVirtualTextHint', {
         fg = hl.get('DiagnosticHint').fg,
-        bg = (Config.transparent_background.enabled and 'NONE') or
+        bg = (config.transparent_background.enabled and 'NONE') or
             colors.bg:with_overlay(hl.get('DiagnosticHint').fg, 12)
     })                                                       -- Used for 'Hint' diagnostic virtual text.
     hl.set('DiagnosticUnderlineError', { underline = true }) -- Used to underline 'Error' diagnostics.

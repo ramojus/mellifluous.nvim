@@ -1,6 +1,7 @@
 local M = {}
 
 function M.get_shade(recipe, target_color)
+    local config = require('mellifluous.config').config
     local color
     if type(target_color) == 'string' then -- hex
         color = require'mellifluous.color'.new(target_color)
@@ -8,7 +9,7 @@ function M.get_shade(recipe, target_color)
         color = target_color
     end
 
-    local val = recipe.val == 'ui' and Config.ui_color_base_lightness or recipe.val
+    local val = recipe.val == 'ui' and config.ui_color_base_lightness or recipe.val
 
     if recipe.action == 'li' then
         return color:lightened(val)
@@ -17,7 +18,7 @@ function M.get_shade(recipe, target_color)
     elseif recipe.action == 'with_li' then
         return color:with_lightness(val)
     else
-        Return_error("unknwon shade recipe action: " .. recipe.action)
+        require('mellifluous').return_error("unknwon shade recipe action: " .. recipe.action)
     end
 end
 
@@ -34,18 +35,20 @@ function M.add_shades(shade_recipes, colors)
 end
 
 function M.get_lower_contrast(color, amount)
+    local config = require('mellifluous.config').config
     color = require('mellifluous.color').ensure_correct_type(color)
 
-    if Config.is_bg_dark then
+    if config.is_bg_dark then
         return color:darkened(amount)
     end
     return color:lightened(amount)
 end
 
 function M.get_higher_contrast(color, amount)
+    local config = require('mellifluous.config').config
     color = require('mellifluous.color').ensure_correct_type(color)
 
-    if Config.is_bg_dark then
+    if config.is_bg_dark then
         return color:lightened(amount)
     end
     return color:darkened(amount)
