@@ -130,7 +130,7 @@ function M.set(hl, colors)
     hl.set('Statement', { fg = colors.other_keywords })                                            -- (*) Any statement
     hl.set('Conditional', { fg = colors.main_keywords, style = config.styles.conditionals or {} }) --   if, then, else, endif, switch, etc.
     hl.set('Repeat', { fg = colors.main_keywords, style = config.styles.loops or {} })             --   for, do, while, etc.
-    hl.set('Label', { fg = colors.main_keywords, style = config.styles.keywords or {} })           --   case, default, etc.
+    hl.set('Label', { fg = colors.comments })
     hl.set('Operator', {
         fg = config.is_bg_dark and colors.operators or colors.fg3,
         style = config.styles.operators or {}
