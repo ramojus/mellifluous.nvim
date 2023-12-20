@@ -29,6 +29,7 @@ function M.set(hl, colors)
     hl.set('@keyword.operator', { fg = colors.other_keywords, style = config.styles.operators })           -- Unary and binary operators that are English words: `and`, `or` in Python; `sizeof` in C.
     hl.set('@keyword.return', { fg = colors.main_keywords, style = config.styles.keywords })               -- Keywords like `return` and `yield`.
     hl.set('@label', { link = 'Label' })                                                                   -- GOTO labels: `label:` in C, and `::label::` in Lua.
+    hl.set('@label.markdown', { fg = colors.comments })                                                    -- Code block language
     hl.set('@method', { link = 'Function' })                                                               -- Method calls and definitions.
     hl.set('@namespace', { link = 'Type', style = {} })                                                    -- Identifiers referring to modules and namespaces.
     hl.set('@number', { link = 'Number' })                                                                 -- Numeric literals that don't fit into other categories.
