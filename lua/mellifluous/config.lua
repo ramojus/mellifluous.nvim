@@ -115,4 +115,15 @@ function M.prepare()
     M.config = read_only(config)
 end
 
+function M.set_highlight_overrides(highlighter, colors)
+    if M.config.highlight_overrides then
+        M.config.highlight_overrides(highlighter, colors)
+    end
+
+    local color_set_highlight_overrides = vim.tbl_get(M.config, M.config.color_set, 'highlight_overrides') or nil
+    if color_set_highlight_overrides then
+        color_set_highlight_overrides(highlighter, colors)
+    end
+end
+
 return M
