@@ -184,10 +184,10 @@ require 'mellifluous'.setup({
 })
 ```
 
-For further instructions, refer to [Overriding highlights](#overriding-highlights) section
+For further instructions, refer to [overriding highlights](#overriding-highlights) section
 
 ##### Extra colors
-In addition to the colors listed in [Available colors](available-colors) section, some color sets may have more colors available (`cyan` and/or `yellow`). To check your color set, refer to [the source code for color sets](lua/mellifluous/colors/sets/) and see if `get_colors_*` functions return any extra (optional) colors.
+In addition to the colors listed in [available colors](#available-colors) section, some color sets may have more colors available (`cyan` and/or `yellow`). To check your color set, refer to [the source code for color sets](lua/mellifluous/colors/sets/) and see if `get_colors_*` functions return any extra (optional) colors.
 
 ### Overriding highlights
 The following snippet shows how global (for any color set) highlight overrides can be defined:
@@ -214,8 +214,8 @@ highlighter.set(name, definition_map)
 ```
 
 Parameters:
-- {name} -- Highlight group name in string format
-- {val} -- Highlight definition map in table format, the supported keys can be found in `:h nvim_set_hl`. Keys `fg`, `bg` and `sp` can also be set to any of the available colors (see [available colors](available-colors)).
+- name -- Highlight group name in string format
+- val -- Highlight definition map in table format, the supported keys can be found in `:h nvim_set_hl`. Keys `fg`, `bg` and `sp` can also be set to any of the available colors (see [available colors](#available-colors)).
 
 To get an existing highlight, use this function:
 
@@ -253,10 +253,10 @@ Available colors:
     - `ui_blue` (used to indicate information, new files)
     - `ui_purple` (used to indicate hints, merge)
 
-NOTE: some color sets may have more colors available, see [extra colors](extra-colors) section.
+NOTE: some color sets may have more colors available. See [extra colors](#extra-colors) section.
 
 #### Color functions
-Every color from [available colors](available-colors) has the following meta functions (accessed with `:` operator):
+Every color from [available colors](#available-colors) has the following meta functions (accessed with `:` operator):
 - `lightened(val)` (returns color with `val` added current to lightness)
 - `darkened(val)` (returns color with `val` subtracted from current lightness)
 - `with_lightness(val)` (returns color with specified lightness, where `val` can be from 0 to 100)
