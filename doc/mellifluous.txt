@@ -118,11 +118,12 @@ possible with the same highlight rules as mellifluous.
 These color sets don’t get loaded, unless you specify them in a `color_set`
 option, so there is no performance impact.
 
-Available color sets: - `mellifluous`. Dark and light, original. - `alduin`.
-Dark, link to original <https://github.com/alessandroyorba/alduin>. -
-`mountain`. Dark, link to original
-<https://github.com/mountain-theme/mountain>. - `tender`. Dark, link to
-original <https://github.com/jacoborus/tender.vim>.
+Available color sets:
+
+- `mellifluous`. Dark and light, original.
+- `alduin`. Dark, link to original <https://github.com/alessandroyorba/alduin>.
+- `mountain`. Dark, link to original <https://github.com/mountain-theme/mountain>.
+- `tender`. Dark, link to original <https://github.com/jacoborus/tender.vim>.
 
 
 MELLIFLUOUS COLOR SET CONFIGURATION ~
@@ -252,10 +253,10 @@ This is the signature to set a highlight:
     highlighter.set(name, definition_map)
 <
 
-Parameters: - `name`: highlight group name in string format - `definition_map`:
-highlight definition map in table format, the supported keys can be found in
-|nvim_set_hl|. Keys `fg`, `bg` and `sp` can also be set to any of the available
-colors (see |mellifluous-available-colors|).
+Parameters:
+
+- `name`: highlight group name in string format
+- `definition_map`: highlight definition map in table format, the supported keys can be found in |nvim_set_hl|. Keys `fg`, `bg` and `sp` can also be set to any of the available colors (see |mellifluous-available-colors|).
 
 To get an existing highlight, use this function:
 
@@ -272,17 +273,31 @@ AVAILABLE COLORS ~
 To use one of the available colors from a color set, in highlight definition
 map, set the value of `fg`, `bg` or `sp` key to `colors.available_color`
 
-Available colors: - Syntax element colors. - `main_keywords`: used to indicate
-keywords related to control flow. - `other_keywords` - `types` - `operators` -
-`strings` - `functions` - `constants` - `comments` - `fg`: in code –
-identifiers. - `bg` - Named colors. Used for terminal colors, but most of these
-colors will match some syntax element color. - `red` - `orange` - `green` -
-`blue` - `purple` - UI colors. Same as named colors, but all are of the same
-brightness (lightness). - `ui_red`: used to indicate errors, deletes, bad
-spellings. - `ui_orange`: used to indicate warnings, changes, other (strange)
-spellings. - `ui_green`: used to indicate staged, additions. - `ui_blue`: used
-to indicate information, new files. - `ui_purple`: used to indicate hints,
-merge.
+Available colors:
+
+- Syntax element colors.
+    - `main_keywords`: used to indicate keywords related to control flow.
+    - `other_keywords`
+    - `types`
+    - `operators`
+    - `strings`
+    - `functions`
+    - `constants`
+    - `comments`
+    - `fg`: in code – identifiers.
+    - `bg`
+- Named colors. Used for terminal colors, but most of these colors will match some syntax element color.
+    - `red`
+    - `orange`
+    - `green`
+    - `blue`
+    - `purple`
+- UI colors. Same as named colors, but all are of the same brightness (lightness).
+    - `ui_red`: used to indicate errors, deletes, bad spellings.
+    - `ui_orange`: used to indicate warnings, changes, other (strange) spellings.
+    - `ui_green`: used to indicate staged, additions.
+    - `ui_blue`: used to indicate information, new files.
+    - `ui_purple`: used to indicate hints, merge.
 
 NOTE: some color sets may have more colors available. See
 |mellifluous-extra-colors| section.
@@ -291,14 +306,14 @@ NOTE: some color sets may have more colors available. See
 COLOR FUNCTIONS ~
 
 Every color from |mellifluous-available-colors| has the following meta
-functions (accessed with `:` operator): - `lightened(val)`: returns color with
-`val` added current to lightness. - `darkened(val)`: returns color with `val`
-subtracted from current lightness. - `with_lightness(val)`: returns color with
-specified lightness, where `val` can be from 0 to 100. - `saturated(val)`:
-returns color with `val` added to current saturation. - `desaturated(val)`:
-returns color with `val` subtracted from current saturation. -
-`with_saturation(val)`: returns color with specified saturation, where `val`
-can be from 0 to 100.
+functions (accessed with `:` operator):
+
+- `lightened(val)`: returns color with `val` added current to lightness.
+- `darkened(val)`: returns color with `val` subtracted from current lightness.
+- `with_lightness(val)`: returns color with specified lightness, where `val` can be from 0 to 100.
+- `saturated(val)`: returns color with `val` added to current saturation.
+- `desaturated(val)`: returns color with `val` subtracted from current saturation.
+- `with_saturation(val)`: returns color with specified saturation, where `val` can be from 0 to 100.
 
 To create your own color that has the same functions available, use
 `require('mellifluous.color').new(hex_value)` function.
@@ -309,7 +324,10 @@ To create your own color that has the same functions available, use
 
 Type `:Mellifluous <TAB>` and see the available options.
 
-Options include: - Toggling transparency. - Changing color set.
+Options include:
+
+- Toggling transparency.
+- Changing color set.
 
 
 ==============================================================================
