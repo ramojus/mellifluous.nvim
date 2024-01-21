@@ -214,8 +214,8 @@ highlighter.set(name, definition_map)
 ```
 
 Parameters:
-- name -- Highlight group name in string format
-- val -- Highlight definition map in table format, the supported keys can be found in `:h nvim_set_hl`. Keys `fg`, `bg` and `sp` can also be set to any of the available colors (see [available colors](#available-colors)).
+- `name`: highlight group name in string format
+- `definition_map`: highlight definition map in table format, the supported keys can be found in `:h nvim_set_hl`. Keys `fg`, `bg` and `sp` can also be set to any of the available colors (see [available colors](#available-colors)).
 
 To get an existing highlight, use this function:
 
@@ -229,8 +229,8 @@ This function returns highlight definition map for highlight group with the requ
 To use one of the available colors from a color set, in highlight definition map, set the value of `fg`, `bg` or `sp` key to `colors.available_color`
 
 Available colors:
-- Colors used for syntax elements:
-    - `main_keywords` (used to indicate keywords related to control flow)
+- Syntax element colors.
+    - `main_keywords`: used to indicate keywords related to control flow.
     - `other_keywords`
     - `types`
     - `operators`
@@ -238,31 +238,31 @@ Available colors:
     - `functions`
     - `constants`
     - `comments`
-    - `fg` (in code -- identifiers)
+    - `fg`: in code -- identifiers.
     - `bg`
-- Named colors (used for terminal colors, but most of these colors will match some color that is used for syntax elements):
+- Named colors. Used for terminal colors, but most of these colors will match some syntax element color.
     - `red`
     - `orange`
     - `green`
     - `blue`
     - `purple`
-- UI colors (same as named colors, but all are of the same brightness (lightness)):
-    - `ui_red` (used to indicate errors, deletes, bad spellings)
-    - `ui_orange` (used to indicate warnings, changes, other (strange) spellings)
-    - `ui_green` (used to indicate staged, additions)
-    - `ui_blue` (used to indicate information, new files)
-    - `ui_purple` (used to indicate hints, merge)
+- UI colors. Same as named colors, but all are of the same brightness (lightness).
+    - `ui_red`: used to indicate errors, deletes, bad spellings.
+    - `ui_orange`: used to indicate warnings, changes, other (strange) spellings.
+    - `ui_green`: used to indicate staged, additions.
+    - `ui_blue`: used to indicate information, new files.
+    - `ui_purple`: used to indicate hints, merge.
 
 NOTE: some color sets may have more colors available. See [extra colors](#extra-colors) section.
 
 #### Color functions
 Every color from [available colors](#available-colors) has the following meta functions (accessed with `:` operator):
-- `lightened(val)` (returns color with `val` added current to lightness)
-- `darkened(val)` (returns color with `val` subtracted from current lightness)
-- `with_lightness(val)` (returns color with specified lightness, where `val` can be from 0 to 100)
-- `saturated(val)` (returns color with `val` added to current saturation)
-- `desaturated(val)` (returns color with `val` subtracted from current saturation)
-- `with_saturation(val)` (returns color with specified saturation, where `val` can be from 0 to 100)
+- `lightened(val)`: returns color with `val` added current to lightness.
+- `darkened(val)`: returns color with `val` subtracted from current lightness.
+- `with_lightness(val)`: returns color with specified lightness, where `val` can be from 0 to 100.
+- `saturated(val)`: returns color with `val` added to current saturation.
+- `desaturated(val)`: returns color with `val` subtracted from current saturation.
+- `with_saturation(val)`: returns color with specified saturation, where `val` can be from 0 to 100.
 
 To create your own color that has the same functions available, use `require('mellifluous.color').new(hex_value)` function.
 
