@@ -103,6 +103,7 @@ Non-original color sets are made to match their original version as closely as p
 These color sets don't get loaded, unless you specify them in a `color_set` option, so there is no performance impact.
 
 Available color sets:
+
 - `mellifluous`. Dark and light, original.
 - `alduin`. Dark, [link to original](https://github.com/alessandroyorba/alduin).
 - `mountain`. Dark, [link to original](https://github.com/mountain-theme/mountain).
@@ -214,6 +215,7 @@ highlighter.set(name, definition_map)
 ```
 
 Parameters:
+
 - `name`: highlight group name in string format
 - `definition_map`: highlight definition map in table format, the supported keys can be found in `:h nvim_set_hl`. Keys `fg`, `bg` and `sp` can also be set to any of the available colors (see [available colors](#available-colors)).
 
@@ -229,6 +231,7 @@ This function returns highlight definition map for highlight group with the requ
 To use one of the available colors from a color set, in highlight definition map, set the value of `fg`, `bg` or `sp` key to `colors.available_color`
 
 Available colors:
+
 - Syntax element colors.
     - `main_keywords`: used to indicate keywords related to control flow.
     - `other_keywords`
@@ -257,6 +260,7 @@ NOTE: some color sets may have more colors available. See [extra colors](#extra-
 
 #### Color functions
 Every color from [available colors](#available-colors) has the following meta functions (accessed with `:` operator):
+
 - `lightened(val)`: returns color with `val` added current to lightness.
 - `darkened(val)`: returns color with `val` subtracted from current lightness.
 - `with_lightness(val)`: returns color with specified lightness, where `val` can be from 0 to 100.
@@ -270,6 +274,7 @@ To create your own color that has the same functions available, use `require('me
 Type `:Mellifluous <TAB>` and see the available options.
 
 Options include:
+
 - Toggling transparency.
 - Changing color set.
 
