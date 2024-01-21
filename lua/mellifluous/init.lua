@@ -20,6 +20,7 @@ function M.load()
     local highlighter = require('mellifluous.utils.highlighter')
 
     require('mellifluous.highlights').set(highlighter, colors)
+    require('mellifluous.config').set_highlight_overrides(highlighter, colors)
 
     return highlighter, colors
 end

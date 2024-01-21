@@ -121,7 +121,7 @@ require 'mellifluous'.setup({
 ```
 
 #### Overriding colors of a color set
-The following snipet shows where and which colors can be overridden:
+The following snippet shows where and which colors can be overridden:
 
 ```lua
 require 'mellifluous'.setup({
@@ -152,7 +152,7 @@ require 'mellifluous'.setup({
                 cyan = nil,
             },
             light = { -- light variant of the color set
-                -- same fields as in dark variant
+                -- same keys as in dark variant
             },
         }
     }
@@ -172,6 +172,99 @@ require 'mellifluous'.setup({
     }
 })
 ```
+
+#### Overriding highlights of a color set
+The following snippet shows how highlight overrides can be defined for a specific color set:
+
+```lua
+require 'mellifluous'.setup({
+    <color_set_name> = { -- name any of the defined color sets
+        -- config structure from here is the same as for global highlight overrides
+    }
+})
+```
+
+For further instructions, refer to [overriding highlights](#overriding-highlights) section
+
+##### Extra colors
+In addition to the colors listed in [available colors](#available-colors) section, some color sets may have more colors available (`cyan` and/or `yellow`). To check your color set, refer to [the source code for color sets](lua/mellifluous/colors/sets/) and see if `get_colors_*` functions return any extra (optional) colors.
+
+### Overriding highlights
+The following snippet shows how global (for any color set) highlight overrides can be defined:
+```lua
+require 'mellifluous'.setup({
+    highlight_overrides = {
+        dark = function(highlighter, colors) -- dark variant of the color set
+            -- set highlights here (using highlighter)
+        end,
+        light = function(highlighter, colors) -- light variant of the color set
+            -- set highlights here (using highlighter)
+        end,
+    }
+})
+```
+
+For an example on how to set the highlights, check [the source code for general highlights](lua/mellifluous/highlights/general.lua), where `M.set` function has the same signature as `dark` or `light` functions seen above. A detailed documentation is provided below.
+
+#### Highlighter usage
+This is the signature to set a highlight:
+
+```lua
+highlighter.set(name, definition_map)
+```
+
+Parameters:
+- `name`: highlight group name in string format
+- `definition_map`: highlight definition map in table format, the supported keys can be found in `:h nvim_set_hl`. Keys `fg`, `bg` and `sp` can also be set to any of the available colors (see [available colors](#available-colors)).
+
+To get an existing highlight, use this function:
+
+```lua
+highlighter.get(name)
+```
+
+This function returns highlight definition map for highlight group with the requested name. 
+
+#### Available colors
+To use one of the available colors from a color set, in highlight definition map, set the value of `fg`, `bg` or `sp` key to `colors.available_color`
+
+Available colors:
+- Syntax element colors.
+    - `main_keywords`: used to indicate keywords related to control flow.
+    - `other_keywords`
+    - `types`
+    - `operators`
+    - `strings`
+    - `functions`
+    - `constants`
+    - `comments`
+    - `fg`: in code -- identifiers.
+    - `bg`
+- Named colors. Used for terminal colors, but most of these colors will match some syntax element color.
+    - `red`
+    - `orange`
+    - `green`
+    - `blue`
+    - `purple`
+- UI colors. Same as named colors, but all are of the same brightness (lightness).
+    - `ui_red`: used to indicate errors, deletes, bad spellings.
+    - `ui_orange`: used to indicate warnings, changes, other (strange) spellings.
+    - `ui_green`: used to indicate staged, additions.
+    - `ui_blue`: used to indicate information, new files.
+    - `ui_purple`: used to indicate hints, merge.
+
+NOTE: some color sets may have more colors available. See [extra colors](#extra-colors) section.
+
+#### Color functions
+Every color from [available colors](#available-colors) has the following meta functions (accessed with `:` operator):
+- `lightened(val)`: returns color with `val` added current to lightness.
+- `darkened(val)`: returns color with `val` subtracted from current lightness.
+- `with_lightness(val)`: returns color with specified lightness, where `val` can be from 0 to 100.
+- `saturated(val)`: returns color with `val` added to current saturation.
+- `desaturated(val)`: returns color with `val` subtracted from current saturation.
+- `with_saturation(val)`: returns color with specified saturation, where `val` can be from 0 to 100.
+
+To create your own color that has the same functions available, use `require('mellifluous.color').new(hex_value)` function.
 
 ## CLI options
 Type `:Mellifluous <TAB>` and see the available options.
