@@ -11,14 +11,9 @@ local function get_hex(color)
 end
 
 function M.set(name, attributes)
-    if attributes.style then
-        for style_name, val in pairs(attributes.style) do
-            attributes[style_name] = val
-        end
+    if not attributes.style then
+        attributes.style = {}
     end
-    attributes.style = nil
-    attributes.fg = get_hex(attributes.fg)
-    attributes.bg = get_hex(attributes.bg)
 
     highlights[name] = attributes
 end
@@ -33,6 +28,13 @@ end
 
 function M.apply_all()
     for name, attributes in pairs(highlights) do
+        for style_name, val in pairs(attributes.style) do
+            attributes[style_name] = val
+        end
+        attributes.style = nil
+        attributes.fg = get_hex(attributes.fg)
+        attributes.bg = get_hex(attributes.bg)
+
         vim.api.nvim_set_hl(0, name, attributes)
     end
 end

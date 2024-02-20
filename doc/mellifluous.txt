@@ -69,6 +69,9 @@ parts of the config can be included.
             properties = {},
             types = {},
             operators = {},
+            markup = {
+                headings = { bold = true },
+            },
         },
         transparent_background = {
             enabled = false,
@@ -216,10 +219,9 @@ For further instructions, refer to |mellifluous-overriding-highlights| section
 EXTRA COLORS
 
 In addition to the colors listed in |mellifluous-available-colors| section,
-some color sets may have more colors available (`cyan` and/or `yellow`). To
-check your color set, refer to the source code for color sets
-<lua/mellifluous/colors/sets/> and see if `get_colors_*` functions return any
-extra (optional) colors.
+some color sets may have more colors available (`cyan`). To check your color
+set, refer to the source code for color sets <lua/mellifluous/colors/sets/> and
+see if `get_colors_*` functions return any extra (optional) colors.
 
 
 OVERRIDING HIGHLIGHTS        *mellifluous-configuration-overriding-highlights*
@@ -293,12 +295,14 @@ Available colors:
     - `green`
     - `blue`
     - `purple`
+    - `yellow`
 - UI colors. Same as named colors, but all are of the same brightness (lightness).
     - `ui_red`: used to indicate errors, deletes, bad spellings.
     - `ui_orange`: used to indicate warnings, changes, other (strange) spellings.
     - `ui_green`: used to indicate staged, additions.
     - `ui_blue`: used to indicate information, new files.
     - `ui_purple`: used to indicate hints, merge.
+    - `ui_yellow`
 
 NOTE: some color sets may have more colors available. See
 |mellifluous-extra-colors| section.

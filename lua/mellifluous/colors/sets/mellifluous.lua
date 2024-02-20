@@ -78,6 +78,7 @@ function M.get_colors_dark(bg)
         green = green,   -- staged, additions
         blue = blue,     -- information, new files
         purple = purple, -- hints, merge
+        yellow = yellow,
     }
 end
 
@@ -111,6 +112,7 @@ function M.get_colors_light(bg)
         green = green,   -- staged, additions
         blue = blue,     -- information, new files
         purple = purple, -- hints, merge
+        yellow = yellow,
     }
 end
 

@@ -60,6 +60,9 @@ require 'mellifluous'.setup({
         properties = {},
         types = {},
         operators = {},
+        markup = {
+            headings = { bold = true },
+        },
     },
     transparent_background = {
         enabled = false,
@@ -189,7 +192,7 @@ require 'mellifluous'.setup({
 For further instructions, refer to [overriding highlights](#overriding-highlights) section
 
 ##### Extra colors
-In addition to the colors listed in [available colors](#available-colors) section, some color sets may have more colors available (`cyan` and/or `yellow`). To check your color set, refer to [the source code for color sets](lua/mellifluous/colors/sets/) and see if `get_colors_*` functions return any extra (optional) colors.
+In addition to the colors listed in [available colors](#available-colors) section, some color sets may have more colors available (`cyan`). To check your color set, refer to [the source code for color sets](lua/mellifluous/colors/sets/) and see if `get_colors_*` functions return any extra (optional) colors.
 
 ### Overriding highlights
 The following snippet shows how global (for any color set) highlight overrides can be defined:
@@ -250,12 +253,14 @@ Available colors:
     - `green`
     - `blue`
     - `purple`
+    - `yellow`
 - UI colors. Same as named colors, but all are of the same brightness (lightness).
     - `ui_red`: used to indicate errors, deletes, bad spellings.
     - `ui_orange`: used to indicate warnings, changes, other (strange) spellings.
     - `ui_green`: used to indicate staged, additions.
     - `ui_blue`: used to indicate information, new files.
     - `ui_purple`: used to indicate hints, merge.
+    - `ui_yellow`
 
 NOTE: some color sets may have more colors available. See [extra colors](#extra-colors) section.
 

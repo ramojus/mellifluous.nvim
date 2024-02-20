@@ -94,11 +94,12 @@ function M.set(hl, colors)
     hl.set('@markup.math', { fg = colors.other_keywords })                                    -- Math environments like LaTeX's `$ ... $`
     hl.set('@markup.environment', { fg = colors.other_keywords })                             -- Text environments of markup languages.
     hl.set('@markup.environment.name', { link = '@markup.environment' })                      -- Text/string indicating the type of text environment. Like the name of a `\begin` block in LaTeX.
-    hl.set('@markup.link', { fg = hl.get('@string.special.url').fg })                         -- Footnotes, text references, citations, etc.
-    hl.set('@markup.link.label', { fg = colors.constants })                                   -- Link, reference descriptions
+    hl.set('@markup.link', { fg = colors.constants, style = { underline = true } })           -- Footnotes, text references, citations, etc.
+    hl.set('@markup.link.markdown_inline', { fg = hl.get('@markup.link').fg })                -- Everything in a markdown link that's not a label or url (`[]()`)
+    hl.set('@markup.link.label', { link = '@markup.link' })                                   -- Link, reference descriptions
     hl.set('@markup.link.url', { link = '@string.special.url' })                              -- URIs like hyperlinks or email addresses.
-    hl.set('@markup.raw', { link = 'Character' })                                             -- Literal or verbatim text (e.g., inline code)
-    hl.set('@markup.raw.block', { link = 'Character' })                                       -- Literal or verbatim text as a stand-alone block
+    hl.set('@markup.raw', { fg = colors.fg2 })                                                -- Literal or verbatim text (e.g., inline code)
+    hl.set('@markup.raw.block', { link = '@markup.raw' })                                     -- Literal or verbatim text as a stand-alone block
     hl.set('@markup.list', { link = 'Operator' })                                             -- List markers
     hl.set('@markup.list.unchecked', { link = 'Todo' })                                       -- Unchecked todo-style list markers
     hl.set('@markup.list.checked', { fg = hl.get('@markup.list.unchecked').fg, bg = 'NONE' }) -- Checked todo-style list markers
@@ -108,6 +109,50 @@ function M.set(hl, colors)
     hl.set('@tag', { link = 'Keyword' })                                                      -- Tags like HTML tag names.
     hl.set('@tag.attribute', { link = 'Function', style = {} })                               -- HTML tag attributes.
     hl.set('@tag.delimiter', { link = 'Operator', style = {} })                               -- Tag delimiters like `<` `>` `/`.
+    hl.set('@markup.heading.1.marker', { fg = colors.ui_red, style = {} })
+    hl.set('@markup.heading.2.marker', { fg = colors.ui_orange, style = {} })
+    hl.set('@markup.heading.3.marker', { fg = colors.ui_yellow, style = {} })
+    hl.set('@markup.heading.4.marker', { fg = colors.ui_green, style = {} })
+    hl.set('@markup.heading.5.marker', { fg = colors.ui_blue, style = {} })
+    hl.set('@markup.heading.6.marker', { fg = colors.ui_purple, style = {} })
+    hl.set('@markup.heading.1',
+        {
+            fg = shader.get_higher_contrast(colors.ui_red, 10),
+            bg = colors.bg:with_overlay(colors.ui_red, 16),
+            style = config.styles.markup.headings
+        })
+    hl.set('@markup.heading.2',
+        {
+            fg = shader.get_higher_contrast(colors.ui_orange, 10),
+            bg = colors.bg:with_overlay(colors.ui_orange, 16),
+            style = config.styles.markup.headings
+        })
+    hl.set('@markup.heading.3',
+        {
+            fg = shader.get_higher_contrast(colors.ui_yellow, 10),
+            bg = colors.bg:with_overlay(colors.ui_yellow, 16),
+            style = config.styles.markup.headings
+        })
+    hl.set('@markup.heading.4',
+        {
+            fg = shader.get_higher_contrast(colors.ui_green, 10),
+            bg = colors.bg:with_overlay(colors.ui_green, 16),
+            style = config.styles.markup.headings
+        })
+    hl.set('@markup.heading.5',
+        {
+            fg = shader.get_higher_contrast(colors.ui_blue, 10),
+            bg = colors.bg:with_overlay(colors.ui_blue, 16),
+            style = config.styles.markup.headings
+        })
+    hl.set('@markup.heading.6',
+        {
+            fg = shader.get_higher_contrast(colors.ui_purple, 10),
+            bg = colors.bg:with_overlay(colors.ui_purple, 16),
+            style = config.styles.markup.headings
+        })
+    hl.set('@markup.heading', { link = '@markup.heading.1' })
+    hl.set('@markup.heading.gitcommit', { fg = hl.get('@markup.heading').fg })
 
 
     -- For compatitibilty with older neovim versions (TODO: remove after a few months)
