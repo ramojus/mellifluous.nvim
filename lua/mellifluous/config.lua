@@ -18,6 +18,7 @@ local config = {
         },
         startify = true,
         gitsigns = true,
+        neorg = true,
     },
     dim_inactive = false,
     styles = {
