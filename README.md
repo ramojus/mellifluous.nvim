@@ -25,6 +25,7 @@ A colorscheme for [Neovim](https://github.com/neovim/neovim). Pleasant and produ
 - [Indent Blankline](https://github.com/lukas-reineke/indent-blankline.nvim)
 - [Startify](https://github.com/mhinz/vim-startify)
 - [Gitsigns](https://github.com/lewis6991/gitsigns.nvim)
+- [Neorg](https://github.com/nvim-neorg/neorg)
 
 ## Installation and usage
 Example with [packer.nvim](https://github.com/wbthomason/packer.nvim):
