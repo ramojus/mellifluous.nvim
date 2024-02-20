@@ -35,10 +35,10 @@ function M.get_colors_dark(bg)
         green = green, -- staged, additions
         blue = blue, -- information, new files
         purple = magenta, -- hints, merge
+        yellow = yellow,
 
         -- optional (for better terminal highlights)
         cyan = cyan,
-        yellow = yellow,
     }
 end
 

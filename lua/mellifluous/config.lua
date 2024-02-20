@@ -34,6 +34,9 @@ local config = {
         properties = {},
         types = {},
         operators = {},
+        markup = {
+            headings = { bold = true }
+        }
     },
     transparent_background = {
         enabled = false,

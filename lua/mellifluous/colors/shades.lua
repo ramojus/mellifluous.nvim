@@ -9,6 +9,7 @@ function M.get_recipes()
         ui_green = { target = 'green', action = 'with_li', val = 'ui' },
         ui_blue = { target = 'blue', action = 'with_li', val = 'ui' },
         ui_purple = { target = 'purple', action = 'with_li', val = 'ui' },
+        ui_yellow = { target = 'yellow', action = 'with_li', val = 'ui' },
     }
     local recipes = {}
 
