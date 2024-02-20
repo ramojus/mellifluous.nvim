@@ -69,6 +69,9 @@ parts of the config can be included.
             properties = {},
             types = {},
             operators = {},
+            markup = {
+                headings = { bold = true },
+            },
         },
         transparent_background = {
             enabled = false,
