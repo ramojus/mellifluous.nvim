@@ -6,6 +6,7 @@ function M.get_color_sets_table()
         alduin = 2,
         mountain = 3,
         tender = 4,
+        kanagawa_dragon = 5,
     }
 end
 
