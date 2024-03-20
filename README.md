@@ -113,6 +113,7 @@ Available color sets:
 - `alduin`. Dark, [link to original](https://github.com/alessandroyorba/alduin).
 - `mountain`. Dark, [link to original](https://github.com/mountain-theme/mountain).
 - `tender`. Dark, [link to original](https://github.com/jacoborus/tender.vim).
+- `kanagawa_dragon`. Dark, [link to original](https://github.com/rebelot/kanagawa.nvim).
 
 #### Mellifluous color set configuration
 Default config:
