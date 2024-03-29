@@ -31,7 +31,7 @@ function M.set(hl, colors)
             or (config.is_bg_dark and colors.bg3)
             or colors.dark_bg2,
     })
-    hl.set('NeoTreeIndentMarker', { link = 'IndentBlanklineChar' })
+    hl.set('NeoTreeIndentMarker', { fg = colors.fg5 })
     hl.set('NeoTreeEndOfBuffer', { bg = hl.get('NeoTreeNormal').bg, fg = hl.get('EndOfBuffer').fg })
     hl.set('NeoTreeFolderIcon', { fg = hl.get('Directory').fg })
     hl.set('NeoTreeRootName', { fg = root_fg })
@@ -39,6 +39,8 @@ function M.set(hl, colors)
     hl.set('NeoTreeCursorLine', { link = 'CursorLine' })
     hl.set('NeoTreeCursorLineSign', { bg = hl.get('CursorLine').bg })
     hl.set('NeoTreeSignColumn', { link = 'NeoTreeNormal' })
+    hl.set('NeoTreeFloatTitle', { fg = colors.fg2 })
+    hl.set('NeoTreeTitleBar', { link = 'NeoTreeFloatTitle' })
 end
 
 return M
