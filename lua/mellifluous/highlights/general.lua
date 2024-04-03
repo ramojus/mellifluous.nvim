@@ -41,7 +41,7 @@ function M.set(hl, colors)
             or hl.get('Normal').bg
     })                                                                                        -- Column separating vertically split windows
     hl.set('Folded', { bg = colors.bg3, fg = colors.fg3, style = config.styles.folds or {} }) -- Line used for closed folds
-    hl.set('FoldColumn', { link = 'Normal' })                                                 -- 'foldcolumn'
+    hl.set('FoldColumn', { link = 'LineNr' })                                                 -- 'foldcolumn'
     hl.set('LineNr', {
         fg = colors.fg4,
         bg = (config.transparent_background.enabled and 'NONE')
