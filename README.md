@@ -26,6 +26,7 @@ A colorscheme for [Neovim](https://github.com/neovim/neovim). Pleasant and produ
 - [Startify](https://github.com/mhinz/vim-startify)
 - [Gitsigns](https://github.com/lewis6991/gitsigns.nvim)
 - [Neorg](https://github.com/nvim-neorg/neorg)
+- [Nvim-notify](https://github.com/rcarriga/nvim-notify)
 
 ## Installation and usage
 Example with [packer.nvim](https://github.com/wbthomason/packer.nvim):

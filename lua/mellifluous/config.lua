@@ -19,6 +19,7 @@ local config = {
         startify = true,
         gitsigns = true,
         neorg = true,
+        nvim_notify = true,
     },
     dim_inactive = false,
     styles = {
