@@ -20,6 +20,7 @@ local config = {
         gitsigns = true,
         neorg = true,
         nvim_notify = true,
+        aerial = true,
     },
     dim_inactive = false,
     styles = {
