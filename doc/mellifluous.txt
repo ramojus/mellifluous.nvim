@@ -28,6 +28,7 @@ Table of Contents                              *mellifluous-table-of-contents*
 - Gitsigns <https://github.com/lewis6991/gitsigns.nvim>
 - Neorg <https://github.com/nvim-neorg/neorg>
 - Nvim-notify <https://github.com/rcarriga/nvim-notify>
+- Aerial <https://github.com/stevearc/aerial.nvim>
 
 
 ==============================================================================
