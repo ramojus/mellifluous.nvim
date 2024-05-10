@@ -21,6 +21,7 @@ local config = {
         neorg = true,
         nvim_notify = true,
         aerial = true,
+        neotest = true,
     },
     dim_inactive = false,
     styles = {
