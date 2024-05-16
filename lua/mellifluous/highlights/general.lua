@@ -48,7 +48,7 @@ function M.set(hl, colors)
             or (config.flat_background.line_numbers and hl.get('Normal').bg)
             or colors.dark_bg
     })                                                                  -- Line number for ':number' and ':#' commands, and when 'number' or 'relativenumber' option is set.
-    hl.set('SignColumn', { link = 'LineNr' })                           -- Column where |signs| are displayed
+    hl.set('SignColumn', { link = 'Normal' })                           -- Column where |signs| are displayed
     hl.set('IncSearch', { bg = colors.other_keywords, fg = colors.bg }) -- 'incsearch' highlighting; also used for the text replaced with ':s///c'
     hl.set('Substitute', { link = 'IncSearch' })                        -- |:substitute| replacement text highlighting
     hl.set('CursorLineNr', {
@@ -204,10 +204,10 @@ function M.set(hl, colors)
     -- DiagnosticFloatingWarn     = { } , -- Used to color 'Warn' diagnostic messages in diagnostics float.
     -- DiagnosticFloatingInfo     = { } , -- Used to color 'Info' diagnostic messages in diagnostics float.
     -- DiagnosticFloatingHint     = { } , -- Used to color 'Hint' diagnostic messages in diagnostics float.
-    hl.set('DiagnosticSignError', { fg = hl.get('DiagnosticError').fg, bg = hl.get('LineNr').bg }) -- Used for 'Error' signs in sign column.
-    hl.set('DiagnosticSignWarn', { fg = hl.get('DiagnosticWarn').fg, bg = hl.get('LineNr').bg })   -- Used for 'Warn' signs in sign column.
-    hl.set('DiagnosticSignInfo', { fg = hl.get('DiagnosticInfo').fg, bg = hl.get('LineNr').bg })   -- Used for 'Info' signs in sign column.
-    hl.set('DiagnosticSignHint', { fg = hl.get('DiagnosticHint').fg, bg = hl.get('LineNr').bg })   -- Used for 'Hint' signs in sign column.
+    hl.set('DiagnosticSignError', { fg = hl.get('DiagnosticError').fg, bg = hl.get('SignColumn').bg }) -- Used for 'Error' signs in sign column.
+    hl.set('DiagnosticSignWarn', { fg = hl.get('DiagnosticWarn').fg, bg = hl.get('SignColumn').bg })   -- Used for 'Warn' signs in sign column.
+    hl.set('DiagnosticSignInfo', { fg = hl.get('DiagnosticInfo').fg, bg = hl.get('SignColumn').bg })   -- Used for 'Info' signs in sign column.
+    hl.set('DiagnosticSignHint', { fg = hl.get('DiagnosticHint').fg, bg = hl.get('SignColumn').bg })   -- Used for 'Hint' signs in sign column.
 end
 
 return M
