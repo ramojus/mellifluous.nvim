@@ -23,6 +23,7 @@ local config = {
         aerial = true,
         neotest = true,
         lazy = true,
+        mason = true,
     },
     dim_inactive = false,
     styles = {
