@@ -30,6 +30,9 @@ function M.set(hl, colors)
     hl.set('DiffDelete', { bg = colors.bg:with_overlay(colors.ui_red, 15):saturated(20) })    -- Diff mode: Deleted line |diff.txt|
     hl.set('DiffChange', { bg = colors.bg:with_overlay(colors.ui_orange, 15):saturated(20) }) -- Diff mode: Changed line |diff.txt|
     hl.set('DiffText', { bg = colors.bg:with_overlay(colors.ui_orange, 30):saturated(20) })   -- Diff mode: Changed text within a changed line |diff.txt|
+    hl.set('Added', { fg = colors.ui_green })                                                 -- Added text (doc, git, etc.)
+    hl.set('Removed', { fg = colors.ui_red })                                                 -- Removed text (doc, git, etc.)
+    hl.set('Changed', { fg = colors.ui_orange })                                              -- Changed text (doc, git,, etc.)
     hl.set('EndOfBuffer', { fg = colors.bg })                                                 -- Filler lines (~) after the end of the buffer. By default, this is highlighted like |hl-NonText|.
     hl.set('TermCursor', { link = 'Cursor' })                                                 -- Cursor in a focused terminal
     hl.set('TermCursorNC', { bg = colors.fg5 })                                               -- Cursor in an unfocused terminal
