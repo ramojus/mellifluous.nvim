@@ -199,10 +199,11 @@ function M.set(hl, colors)
         bg = (config.transparent_background.enabled and 'NONE') or
             colors.bg:with_overlay(hl.get('DiagnosticHint').fg, 12)
     })                                                       -- Used for 'Hint' diagnostic virtual text.
-    hl.set('DiagnosticUnderlineError', { underline = true }) -- Used to underline 'Error' diagnostics.
-    hl.set('DiagnosticUnderlineWarn', { underline = true })  -- Used to underline 'Warn' diagnostics.
-    hl.set('DiagnosticUnderlineInfo', { underline = true })  -- Used to underline 'Info' diagnostics.
-    hl.set('DiagnosticUnderlineHint', { underline = true })  -- Used to underline 'Hint' diagnostics.
+    hl.set('DiagnosticUnderlineError', { underline = true, sp = hl.get('DiagnosticError').fg }) -- Used to underline 'Error' diagnostics.
+    hl.set('DiagnosticUnderlineWarn', { underline = true, sp = hl.get('DiagnosticWarn').fg })   -- Used to underline 'Warn' diagnostics.
+    hl.set('DiagnosticUnderlineHint', { underline = true, sp = hl.get('DiagnosticHint').fg })   -- Used to underline 'Hint' diagnostics.
+    hl.set('DiagnosticUnderlineInfo', { underline = true, sp = hl.get('DiagnosticInfo').fg })   -- Used to underline 'Info' diagnostics.
+    hl.set('DiagnosticUnnecessary', { underline = true })                                       -- Used to underline unnecessary or unused code.
     -- DiagnosticFloatingError    = { } , -- Used to color 'Error' diagnostic messages in diagnostics float. See |vim.diagnostic.open_float()|
     -- DiagnosticFloatingWarn     = { } , -- Used to color 'Warn' diagnostic messages in diagnostics float.
     -- DiagnosticFloatingInfo     = { } , -- Used to color 'Info' diagnostic messages in diagnostics float.

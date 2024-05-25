@@ -34,6 +34,7 @@ function M.apply_all()
         attributes.style = nil
         attributes.fg = get_hex(attributes.fg)
         attributes.bg = get_hex(attributes.bg)
+        attributes.sp = get_hex(attributes.sp)
 
         vim.api.nvim_set_hl(0, name, attributes)
     end
