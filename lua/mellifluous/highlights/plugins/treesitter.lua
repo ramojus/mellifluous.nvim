@@ -196,6 +196,10 @@ function M.set(hl, colors)
     hl.set("@include", { link = "@keyword.import" })
     hl.set("@repeat", { link = "@keyword.repeat" })
     hl.set("@debug", { link = "@keyword.debug" })
+
+    -- :TSModuleInfo
+    hl.set('TSModuleInfoGood', { fg = colors.ui_green, bold = true })
+    hl.set('TSModuleInfoBad', { fg = colors.ui_red, bold = true })
 end
 
 return M
