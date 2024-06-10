@@ -21,9 +21,9 @@ function M.get_recipes()
             fg5 = { target = 'fg', action = 'da', val = 54 },
             dark_bg = { target = 'bg', action = 'da', val = 2.5 },
             bg2 = { target = 'bg', action = 'li', val = 4 },
-            bg3 = { target = 'bg', action = 'li', val = 6 },
-            bg4 = { target = 'bg', action = 'li', val = 8 },
-            bg5 = { target = 'bg', action = 'li', val = 10 },
+            bg3 = { target = 'bg', action = 'li', val = 7 },
+            bg4 = { target = 'bg', action = 'li', val = 10 },
+            bg5 = { target = 'bg', action = 'li', val = 13 },
         }
     else
         recipes = {
