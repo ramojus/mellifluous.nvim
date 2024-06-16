@@ -71,8 +71,7 @@ function M.get_colors()
 
     tbl_extend_non_nil(colors, color_overrides)
 
-    local shade_recipes = require'mellifluous.colors.shades'.get_recipes()
-    colors = require 'mellifluous.utils.shader'.add_shades(shade_recipes, colors)
+    colors = require'mellifluous.colors.shades'.extend_with_shades(colors)
 
     return colors
 end

@@ -1,46 +1,48 @@
 local M = {}
 
-function M.get_recipes()
+function M.extend_with_shades(colors)
     local config = require('mellifluous.config').config
 
-    local shared_recipes = {
-        ui_red = { target = 'red', action = 'with_li', val = 'ui' },
-        ui_orange = { target = 'orange', action = 'with_li', val = 'ui' },
-        ui_green = { target = 'green', action = 'with_li', val = 'ui' },
-        ui_blue = { target = 'blue', action = 'with_li', val = 'ui' },
-        ui_purple = { target = 'purple', action = 'with_li', val = 'ui' },
-        ui_yellow = { target = 'yellow', action = 'with_li', val = 'ui' },
+    local shared_shades = {
+        ui_red = colors.red:with_lightness(config.ui_color_base_lightness),
+        ui_orange = colors.orange:with_lightness(config.ui_color_base_lightness),
+        ui_green = colors.green:with_lightness(config.ui_color_base_lightness),
+        ui_blue = colors.blue:with_lightness(config.ui_color_base_lightness),
+        ui_purple = colors.purple:with_lightness(config.ui_color_base_lightness),
+        ui_yellow = colors.yellow:with_lightness(config.ui_color_base_lightness),
     }
-    local recipes = {}
+
+    local shades = {}
+    local fg = colors.shades_fg or colors.fg
 
     if config.is_bg_dark then
-        recipes = {
-            fg2 = { target = 'fg', action = 'da', val = 16 },
-            fg3 = { target = 'fg', action = 'da', val = 32 },
-            fg4 = { target = 'fg', action = 'da', val = 48 },
-            fg5 = { target = 'fg', action = 'da', val = 54 },
-            dark_bg = { target = 'bg', action = 'da', val = 2.5 },
-            bg2 = { target = 'bg', action = 'li', val = 4 },
-            bg3 = { target = 'bg', action = 'li', val = 7 },
-            bg4 = { target = 'bg', action = 'li', val = 10 },
-            bg5 = { target = 'bg', action = 'li', val = 13 },
+        shades = {
+            fg2 = fg:darkened(16),
+            fg3 = fg:darkened(32),
+            fg4 = fg:darkened(48),
+            fg5 = fg:darkened(54),
+            dark_bg = colors.bg:darkened(2.5),
+            bg2 = colors.bg:lightened(4),
+            bg3 = colors.bg:lightened(7),
+            bg4 = colors.bg:lightened(10),
+            bg5 = colors.bg:lightened(13),
         }
     else
-        recipes = {
-            fg2 = { target = 'fg', action = 'li', val = 16 },
-            fg3 = { target = 'fg', action = 'li', val = 32 },
-            fg4 = { target = 'fg', action = 'li', val = 48 },
-            fg5 = { target = 'fg', action = 'li', val = 54 },
-            dark_bg2 = { target = 'bg', action = 'da', val = 8 },
-            dark_bg = { target = 'bg', action = 'da', val = 2.5 },
-            bg2 = { target = 'bg', action = 'li', val = 4 },
-            bg3 = { target = 'bg', action = 'li', val = 6 },
-            bg4 = { target = 'bg', action = 'li', val = 8 },
+        shades = {
+            fg2 = fg:lightened(16),
+            fg3 = fg:lightened(32),
+            fg4 = fg:lightened(48),
+            fg5 = fg:lightened(54),
+            dark_bg2 = colors.bg:darkened(8),
+            dark_bg = colors.bg:darkened(2.5),
+            bg2 = colors.bg:lightened(4),
+            bg3 = colors.bg:lightened(6),
+            bg4 = colors.bg:lightened(8),
         }
     end
 
-    recipes = vim.tbl_extend('force', recipes, shared_recipes)
-    return recipes
+    colors = vim.tbl_extend('force', colors, shared_shades)
+    return vim.tbl_extend('force', colors, shades)
 end
 
 return M

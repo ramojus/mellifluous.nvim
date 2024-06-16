@@ -2,7 +2,6 @@ local M = {}
 
 function M.set(hl, colors)
     local shader = require('mellifluous.utils.shader')
-    local shade_recipes = require('mellifluous.colors.shades').get_recipes()
     local config = require('mellifluous.config').config
 
     hl.set('Normal', {
@@ -58,7 +57,7 @@ function M.set(hl, colors)
         bg = (config.flat_background.cursor_line_number and hl.get('LineNr').bg)
             or (config.flat_background.line_numbers and hl.get('CursorLine').bg)
             or (config.transparent_background.enabled and 'NONE')
-            or shader.get_shade(shade_recipes.dark_bg, hl.get('CursorLine').bg),
+            or shader.replicate_shade(colors.bg, colors.dark_bg, hl.get('CursorLine').bg),
         fg = hl.get('LineNr').fg
     })                                                                   -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
     hl.set('MatchParen', { bg = colors.bg4, fg = colors.main_keywords }) -- Character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|

@@ -1,37 +1,18 @@
 local M = {}
 
-function M.get_shade(recipe, target_color)
-    local config = require('mellifluous.config').config
-    local color
-    if type(target_color) == 'string' then -- hex
-        color = require'mellifluous.color'.new(target_color)
-    else
-        color = target_color
+function M.replicate_shade(from_color, to_color, target)
+    local from_hsl = from_color:get_hsl()
+    local to_hsl = to_color:get_hsl()
+    local color = require('mellifluous.color')
+
+    local target_hsl = target:get_hsl()
+    if target_hsl.h and from_hsl.h and to_hsl.h then
+        target_hsl.h = target_hsl.h + to_hsl.h - from_hsl.h
     end
+    target_hsl.s = target_hsl.s + to_hsl.s - from_hsl.s
+    target_hsl.l = target_hsl.l + to_hsl.l - from_hsl.l
 
-    local val = recipe.val == 'ui' and config.ui_color_base_lightness or recipe.val
-
-    if recipe.action == 'li' then
-        return color:lightened(val)
-    elseif recipe.action == 'da' then
-        return color:darkened(val)
-    elseif recipe.action == 'with_li' then
-        return color:with_lightness(val)
-    else
-        require('mellifluous').return_error("unknwon shade recipe action: " .. recipe.action)
-    end
-end
-
-function M.add_shades(shade_recipes, colors)
-    local fg = colors.shades_fg or colors.fg
-    local shaded_colors = {}
-
-    for shaded_color_name, recipe in pairs(shade_recipes) do
-        local target_color = recipe.target == 'fg' and fg or colors[recipe.target]
-        shaded_colors[shaded_color_name] = M.get_shade(recipe, target_color)
-    end
-
-    return vim.tbl_deep_extend("keep", colors, shaded_colors)
+    return color.new_from_hsl(target_hsl)
 end
 
 function M.get_lower_contrast(color, amount)
