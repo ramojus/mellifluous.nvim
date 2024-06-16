@@ -86,6 +86,10 @@ function color_meta:with_saturation(val)
     return M.new(okhsl_to_hex(okhsl))
 end
 
+function color_meta:get_hsl()
+    return hex_to_okhsl(self.hex)
+end
+
 function M.color_set_to_hsl(colors)
     for name, color in pairs(colors) do
         local okhsl = hex_to_okhsl(color.hex)
