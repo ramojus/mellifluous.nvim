@@ -8,6 +8,8 @@ function M.replicate_shade(from_color, to_color, target)
     local target_hsl = target:get_hsl()
     if target_hsl.h and from_hsl.h and to_hsl.h then
         target_hsl.h = target_hsl.h + to_hsl.h - from_hsl.h
+    elseif from_hsl.h ~= to_hsl.h then
+        require('mellifluous').return_error('this shade changes hue, but at least one of the colors is neutral, without hue')
     end
     target_hsl.s = target_hsl.s + to_hsl.s - from_hsl.s
     target_hsl.l = target_hsl.l + to_hsl.l - from_hsl.l
