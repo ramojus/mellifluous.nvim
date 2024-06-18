@@ -178,6 +178,7 @@ function M.set(hl, colors)
     hl.set('DiagnosticWarn', { fg = colors.ui_orange })        -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
     hl.set('DiagnosticInfo', { fg = colors.ui_blue })          -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
     hl.set('DiagnosticHint', { fg = colors.ui_purple })        -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
+    hl.set('DiagnosticOk', { fg = colors.ui_green })           -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
     hl.set('DiagnosticVirtualTextError', {
         fg = hl.get('DiagnosticError').fg,
         bg = (config.transparent_background.enabled and 'NONE') or
@@ -197,20 +198,23 @@ function M.set(hl, colors)
         fg = hl.get('DiagnosticHint').fg,
         bg = (config.transparent_background.enabled and 'NONE') or
             colors.bg:with_overlay(hl.get('DiagnosticHint').fg, 12)
-    })                                                       -- Used for 'Hint' diagnostic virtual text.
+    }) -- Used for 'Hint' diagnostic virtual text.
+    hl.set('DiagnosticVirtualTextOk', {
+        fg = hl.get('DiagnosticOk').fg,
+        bg = (config.transparent_background.enabled and 'NONE') or
+            colors.bg:with_overlay(hl.get('DiagnosticOk').fg, 12)
+    }) -- Used for 'Ok' diagnostic virtual text.
     hl.set('DiagnosticUnderlineError', { underline = true, sp = hl.get('DiagnosticError').fg }) -- Used to underline 'Error' diagnostics.
     hl.set('DiagnosticUnderlineWarn', { underline = true, sp = hl.get('DiagnosticWarn').fg })   -- Used to underline 'Warn' diagnostics.
-    hl.set('DiagnosticUnderlineHint', { underline = true, sp = hl.get('DiagnosticHint').fg })   -- Used to underline 'Hint' diagnostics.
     hl.set('DiagnosticUnderlineInfo', { underline = true, sp = hl.get('DiagnosticInfo').fg })   -- Used to underline 'Info' diagnostics.
+    hl.set('DiagnosticUnderlineHint', { underline = true, sp = hl.get('DiagnosticHint').fg })   -- Used to underline 'Hint' diagnostics.
+    hl.set('DiagnosticUnderlineOk', { underline = true, sp = hl.get('DiagnosticOk').fg })       -- Used to underline 'Ok' diagnostics.
     hl.set('DiagnosticUnnecessary', { underline = true })                                       -- Used to underline unnecessary or unused code.
-    -- DiagnosticFloatingError    = { } , -- Used to color 'Error' diagnostic messages in diagnostics float. See |vim.diagnostic.open_float()|
-    -- DiagnosticFloatingWarn     = { } , -- Used to color 'Warn' diagnostic messages in diagnostics float.
-    -- DiagnosticFloatingInfo     = { } , -- Used to color 'Info' diagnostic messages in diagnostics float.
-    -- DiagnosticFloatingHint     = { } , -- Used to color 'Hint' diagnostic messages in diagnostics float.
     hl.set('DiagnosticSignError', { fg = hl.get('DiagnosticError').fg, bg = hl.get('LineNr').bg }) -- Used for 'Error' signs in sign column.
     hl.set('DiagnosticSignWarn', { fg = hl.get('DiagnosticWarn').fg, bg = hl.get('LineNr').bg })   -- Used for 'Warn' signs in sign column.
     hl.set('DiagnosticSignInfo', { fg = hl.get('DiagnosticInfo').fg, bg = hl.get('LineNr').bg })   -- Used for 'Info' signs in sign column.
     hl.set('DiagnosticSignHint', { fg = hl.get('DiagnosticHint').fg, bg = hl.get('LineNr').bg })   -- Used for 'Hint' signs in sign column.
+    hl.set('DiagnosticSignOk', { fg = hl.get('DiagnosticOk').fg, bg = hl.get('LineNr').bg })       -- Used for 'Ok' signs in sign column.
 end
 
 return M
