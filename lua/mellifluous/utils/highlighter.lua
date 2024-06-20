@@ -28,7 +28,7 @@ end
 
 function M.apply_all()
     for name, attributes in pairs(highlights) do
-        for style_name, val in pairs(attributes.style) do
+        for style_name, val in pairs(attributes.style or {}) do
             attributes[style_name] = val
         end
         attributes.style = nil
