@@ -173,7 +173,7 @@ function M.set(hl, colors)
     hl.set('LspCodeLens', { bg = colors.bg2 })                 -- Used to color the virtual text of the codelens. See |nvim_buf_set_extmark()|.
     hl.set('LspCodeLensSeparator', { fg = colors.fg5 })        -- Used to color the seperator between two or more code lens.
     hl.set('LspSignatureActiveParameter', { bg = colors.bg4 }) -- Used to highlight the active parameter in the signature help. See |vim.lsp.handlers.signature_help()|.
-    ---
+
     hl.set('DiagnosticError', { fg = colors.ui_red })          -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
     hl.set('DiagnosticWarn', { fg = colors.ui_orange })        -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
     hl.set('DiagnosticInfo', { fg = colors.ui_blue })          -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
