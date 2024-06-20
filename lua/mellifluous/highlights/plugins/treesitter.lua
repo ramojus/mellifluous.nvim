@@ -3,6 +3,7 @@ local M = {}
 function M.set(hl, colors)
     local shader = require('mellifluous.utils.shader')
     local config = require('mellifluous.config').config
+    local groups = require('mellifluous.highlights.custom_groups').get(colors)
 
     -- Identifiers
     hl.set('@variable', { link = 'Identifier' })                                     -- Variable names that don't fit into other categories.
@@ -55,13 +56,13 @@ function M.set(hl, colors)
 
     -- Keywords
     hl.set('@keyword', { link = 'Keyword' })                                                     -- Keywords that don't fit into other categories.
-    hl.set('@keyword.coroutine', { link = 'MellifluousMainKeyword' })                            -- Keywords related to coroutines (e.g. `go` in Go, `async/await` in Python)
-    hl.set('@keyword.function', { link = 'MellifluousMainKeyword' })                             -- Keywords used to define a function: `function` in Lua, `def` and `lambda` in Python.
+    hl.set('@keyword.coroutine', groups.MainKeyword)                                             -- Keywords related to coroutines (e.g. `go` in Go, `async/await` in Python)
+    hl.set('@keyword.function', groups.MainKeyword)                                              -- Keywords used to define a function: `function` in Lua, `def` and `lambda` in Python.
     hl.set('@keyword.operator', { fg = colors.other_keywords, style = config.styles.operators }) -- Unary and binary operators that are English words: `and`, `or` in Python; `sizeof` in C.
     hl.set('@keyword.import', { link = 'Function' })                                             -- File or module inclusion keywords: `#include` in C, `use` or `extern crate` in Rust.
     hl.set('@keyword.storage', { link = 'StorageClass' })                                        -- Keywords that affect how a variable is stored: `static`, `comptime`, `extern`, etc.
     hl.set('@keyword.repeat', { link = 'Repeat' })                                               -- Keywords related to loops: `for`, `while`, etc.
-    hl.set('@keyword.return', { link = 'MellifluousMainKeyword' })                               -- Keywords like `return` and `yield`.
+    hl.set('@keyword.return', groups.MainKeyword)                                                -- Keywords like `return` and `yield`.
     hl.set('@keyword.debug', { link = 'Keyword' })                                               -- Debugging statements.
     hl.set('@keyword.exception', { link = 'Exception' })                                         -- Exception related keywords: `try`, `except`, `finally` in Python.
     hl.set('@keyword.conditional', { link = 'Conditional' })                                     -- Keywords related to conditionals: `if`, `when`, `cond`, etc.

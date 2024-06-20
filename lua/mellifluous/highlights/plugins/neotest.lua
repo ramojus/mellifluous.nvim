@@ -2,11 +2,12 @@ local M = {}
 
 function M.set(hl, colors)
 	local config = require("mellifluous.config").config
+    local groups = require('mellifluous.highlights.custom_groups').get(colors)
 
 	hl.set("NeotestAdapterName", { fg = colors.fg3 })
 	hl.set("NeotestFocused", { fg = hl.get("Normal").fg, bold = true })
 	hl.set("NeotestTarget", { style = { underline = true } })
-	hl.set("NeotestIndent", { fg = colors.fg4 })
+    hl.set("NeotestIndent", groups.IndentLine(colors.bg))
 	hl.set("NeotestExpandMarker", { link = "NeotestIndent" })
 
 	hl.set("NeotestDir", { fg = hl.get("Directory").fg })

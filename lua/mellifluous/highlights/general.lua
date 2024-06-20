@@ -3,6 +3,7 @@ local M = {}
 function M.set(hl, colors)
     local shader = require('mellifluous.utils.shader')
     local config = require('mellifluous.config').config
+    local groups = require('mellifluous.highlights.custom_groups').get(colors)
 
     hl.set('Normal', {
         bg = (config.transparent_background.enabled and 'NONE')
@@ -131,33 +132,32 @@ function M.set(hl, colors)
     hl.set('Float', { link = 'Constant', style = config.styles.numbers or {} })                    --   A floating point constant: 2.3e10
     hl.set('Identifier', { fg = colors.fg, style = config.styles.variables or {} })                -- (*) Any variable name
     hl.set('Function', { fg = colors.functions, style = config.styles.functions or {} })           --   Function name (also: methods for classes)
-    hl.set('Statement', { link = 'Keyword' })                                            -- (*) Any statement
+    hl.set('Statement', { link = 'Keyword' })                                                      -- (*) Any statement
     hl.set('Conditional', { fg = colors.main_keywords, style = config.styles.conditionals or {} }) --   if, then, else, endif, switch, etc.
     hl.set('Repeat', { fg = colors.main_keywords, style = config.styles.loops or {} })             --   for, do, while, etc.
     hl.set('Label', { fg = colors.other_keywords })
     hl.set('Operator', {
         fg = config.is_bg_dark and colors.operators or colors.fg3,
         style = config.styles.operators or {}
-    })                                                                                   --   'sizeof', '+', '*', etc.
-    hl.set('Keyword', { fg = colors.other_keywords, style = config.styles.keywords })    --   any other keyword
-    hl.set('MellifluousMainKeyword', { fg = colors.main_keywords, style = config.styles.keywords }) -- Mainly keywords related to control flow
-    hl.set('Exception', { link = 'MellifluousMainKeyword' })                                        --   try, catch, throw
-    hl.set('PreProc', { fg = colors.functions })                                         -- (*) Generic Preprocessor
-    hl.set('Include', { link = 'PreProc' })                                              --   Preprocessor #include
-    hl.set('Define', { link = 'PreProc' })                                               --   Preprocessor #define
-    hl.set('Macro', { link = 'PreProc' })                                                --   Same as Define
-    hl.set('PreCondit', { link = 'PreProc' })                                            --   Preprocessor #if, #else, #endif, etc.
-    hl.set('Type', { fg = colors.types, style = config.styles.types or {} })             -- (*) int, long, char, etc.
-    hl.set('StorageClass', { link = 'Type' })                                            --   static, register, volatile, etc.
-    hl.set('Structure', { link = 'Type' })                                               --   struct, union, enum, etc.
-    hl.set('Typedef', { link = 'Type' })                                                 --   A typedef
-    hl.set('Special', { fg = colors.other_keywords })                                    -- (*) Any special symbol
-    hl.set('SpecialChar', { link = 'Special' })                                          --   Special character in a constant
-    hl.set('Tag', { link = 'Special' })                                                  --   You can use CTRL-] on this
-    hl.set('Delimiter', { link = 'Operator' })                                           --   Character that needs attention
-    hl.set('SpecialComment', { link = 'Special' })                                       --   Special things inside a comment (e.g. '\n')
-    hl.set('Debug', { link = 'Special' })                                                --   Debugging statements
-    hl.set('Underlined', { underline = true, fg = colors.fg3 })                          -- Text that stands out, HTML links
+    })                                                                                --   'sizeof', '+', '*', etc.
+    hl.set('Keyword', { fg = colors.other_keywords, style = config.styles.keywords }) --   any other keyword
+    hl.set('Exception', groups.MainKeyword)                                           --   try, catch, throw
+    hl.set('PreProc', { fg = colors.functions })                                      -- (*) Generic Preprocessor
+    hl.set('Include', { link = 'PreProc' })                                           --   Preprocessor #include
+    hl.set('Define', { link = 'PreProc' })                                            --   Preprocessor #define
+    hl.set('Macro', { link = 'PreProc' })                                             --   Same as Define
+    hl.set('PreCondit', { link = 'PreProc' })                                         --   Preprocessor #if, #else, #endif, etc.
+    hl.set('Type', { fg = colors.types, style = config.styles.types or {} })          -- (*) int, long, char, etc.
+    hl.set('StorageClass', { link = 'Type' })                                         --   static, register, volatile, etc.
+    hl.set('Structure', { link = 'Type' })                                            --   struct, union, enum, etc.
+    hl.set('Typedef', { link = 'Type' })                                              --   A typedef
+    hl.set('Special', { fg = colors.other_keywords })                                 -- (*) Any special symbol
+    hl.set('SpecialChar', { link = 'Special' })                                       --   Special character in a constant
+    hl.set('Tag', { link = 'Special' })                                               --   You can use CTRL-] on this
+    hl.set('Delimiter', { link = 'Operator' })                                        --   Character that needs attention
+    hl.set('SpecialComment', { link = 'Special' })                                    --   Special things inside a comment (e.g. '\n')
+    hl.set('Debug', { link = 'Special' })                                             --   Debugging statements
+    hl.set('Underlined', { underline = true, fg = colors.fg3 })                       -- Text that stands out, HTML links
     hl.set('Bold', { bold = config.bold })
     hl.set('Italic', { italic = config.italic })
     hl.set('Ignore', { fg = colors.fg5 })                                                      -- Left blank, hidden |hl-Ignore| (NOTE: May be invisible here in template)
