@@ -1,6 +1,8 @@
 local M = {}
 
 function M.set(hl, colors)
+    local groups = require('mellifluous.highlights.custom_groups').get(colors)
+
     hl.set('@lsp.type.comment', {}) -- let treesitter handle those
     hl.set('@lsp.type.enum', { link = 'Type' })
     hl.set('@lsp.type.enumMember', { link = 'Constant' })
@@ -12,7 +14,7 @@ function M.set(hl, colors)
     hl.set('@lsp.type.property', { fg = colors.fg })
     hl.set('@lsp.type.variable', {})
     hl.set('@lsp.typemod.variable.constant', { link = 'Constant' })
-    hl.set('@lsp.typemod.keyword.controlFlow', { fg = colors.main_keywords })
+    hl.set('@lsp.typemod.keyword.controlFlow', groups.MainKeyword)
 end
 
 return M
