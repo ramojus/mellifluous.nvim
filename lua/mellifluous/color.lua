@@ -70,10 +70,6 @@ function color_meta:with_lightness(val)
     return M.new(oklch_to_hex(oklch))
 end
 
-function color_meta:get_hsl()
-    return hex_to_okhsl(self.hex)
-end
-
 function color_meta:saturated(val)
     local okhsl = hex_to_okhsl(self.hex)
     okhsl.s = clip(okhsl.s + val, 0, 100)
