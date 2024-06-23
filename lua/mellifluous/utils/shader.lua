@@ -1,5 +1,14 @@
 local M = {}
 
+local function clip(val, from, to)
+    if val > to then
+        return to
+    elseif val < from then
+        return from
+    end
+    return val
+end
+
 function M.replicate_shade(from_color, to_color, target)
     local from_hsl = from_color:get_hsl()
     local to_hsl = to_color:get_hsl()
@@ -7,12 +16,12 @@ function M.replicate_shade(from_color, to_color, target)
 
     local target_hsl = target:get_hsl()
     if target_hsl.h and from_hsl.h and to_hsl.h then
-        target_hsl.h = target_hsl.h + to_hsl.h - from_hsl.h
+        target_hsl.h = clip(target_hsl.h + to_hsl.h - from_hsl.h, 0, 360)
     elseif from_hsl.h ~= to_hsl.h then
         require('mellifluous').return_error('this shade changes hue, but at least one of the colors is neutral, without hue')
     end
-    target_hsl.s = target_hsl.s + to_hsl.s - from_hsl.s
-    target_hsl.l = target_hsl.l + to_hsl.l - from_hsl.l
+    target_hsl.s = clip(target_hsl.s + to_hsl.s - from_hsl.s, 0, 100)
+    target_hsl.l = clip(target_hsl.l + to_hsl.l - from_hsl.l, 0, 100)
 
     return color.new_from_hsl(target_hsl)
 end
