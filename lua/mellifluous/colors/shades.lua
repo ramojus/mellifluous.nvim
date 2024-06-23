@@ -41,8 +41,8 @@ function M.extend_with_shades(colors)
         }
     end
 
-    colors = vim.tbl_extend('force', colors, shared_shades)
-    return vim.tbl_extend('force', colors, shades)
+    colors = vim.tbl_extend('keep', colors, shared_shades)
+    return vim.tbl_extend('keep', colors, shades)
 end
 
 return M
