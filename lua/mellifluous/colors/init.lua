@@ -16,19 +16,41 @@ local function tbl_extend_non_nil(base_table, overlay_table)
     end
 end
 
-local function get_color_overrides(is_bg_dark, color_set_name)
+local function get_color_overrides_bg_fn()
     local config = require('mellifluous.config').config
-    local color_overrides = vim.tbl_get(config, color_set_name,
-        'color_overrides', is_bg_dark and 'dark' or 'light') or {}
+    local global_color_overrides_bg = vim.tbl_get(config,
+        'color_overrides', config.is_bg_dark and 'dark' or 'light', 'bg')
+    local color_overrides_bg_fn = vim.tbl_get(config, config.color_set,
+        'color_overrides', config.is_bg_dark and 'dark' or 'light', 'bg')
 
-    for key, color in pairs(color_overrides) do
-        if color.hex then -- overrides were already converted to mellifluous.color
-            break
-        end
-        color_overrides[key] = require('mellifluous.color').new(color)
+    if color_overrides_bg_fn == nil then
+        color_overrides_bg_fn = global_color_overrides_bg
     end
 
-    return color_overrides
+    return color_overrides_bg_fn
+end
+
+local function apply_color_overrides(colors)
+    local config = require('mellifluous.config').config
+    local global_color_overrides_fn = vim.tbl_get(config,
+        'color_overrides', config.is_bg_dark and 'dark' or 'light', 'colors')
+    local color_overrides_fn = vim.tbl_get(config, config.color_set,
+        'color_overrides', config.is_bg_dark and 'dark' or 'light', 'colors')
+
+    if global_color_overrides_fn ~= nil then
+        tbl_extend_non_nil(colors, global_color_overrides_fn(colors))
+    end
+    if color_overrides_fn ~= nil then
+        tbl_extend_non_nil(colors, color_overrides_fn(colors))
+    end
+    return colors
+end
+
+local function ensure_correct_color_types(colors)
+    local color_lib = require('mellifluous.color')
+    for key, color in pairs(colors) do
+        colors[key] = color_lib.new(color.hex or color)
+    end
 end
 
 function M.get_is_bg_dark(color_set_name)
@@ -59,19 +81,36 @@ function M.get_colors()
         require('mellifluous').return_error("Color set '" .. config.color_set .. "' not found")
     end
 
-    local color_overrides = get_color_overrides(config.is_bg_dark, config.color_set)
-
     local color_set_functions = require('mellifluous.colors.sets.' .. config.color_set)
-    local colors
+
+    local color_overrides_bg_fn = get_color_overrides_bg_fn()
+
+    local color_set_bg
     if config.is_bg_dark then
-        colors = color_set_functions.get_colors_dark(color_overrides.bg or color_set_functions.get_bg_dark())
+        color_set_bg = color_set_functions.get_bg_dark()
     else
-        colors = color_set_functions.get_colors_light(color_overrides.bg or color_set_functions.get_bg_light())
+        color_set_bg = color_set_functions.get_bg_light()
     end
 
-    tbl_extend_non_nil(colors, color_overrides)
+    local bg = color_set_bg
+    if type(color_overrides_bg_fn) == 'function' then
+        local overriden_bg = color_overrides_bg_fn(color_set_bg)
+        if overriden_bg ~= nil then
+            bg = overriden_bg
+        end
+    end
 
-    colors = require'mellifluous.colors.shades'.extend_with_shades(colors)
+    local colors
+    if config.is_bg_dark then
+        colors = color_set_functions.get_colors_dark(bg)
+    else
+        colors = color_set_functions.get_colors_light(bg)
+    end
+
+    colors = apply_color_overrides(colors)
+    ensure_correct_color_types(colors)
+
+    colors = require('mellifluous.colors.shades').extend_with_shades(colors)
 
     return colors
 end
