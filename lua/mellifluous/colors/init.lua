@@ -1,6 +1,6 @@
 local M = {}
 
-function M.get_color_sets_table()
+function M.get_colorsets_table()
     return {
         mellifluous = 1,
         alduin = 2,
@@ -20,7 +20,7 @@ local function get_color_overrides_bg_fn()
     local config = require('mellifluous.config').config
     local global_color_overrides_bg = vim.tbl_get(config,
         'color_overrides', config.is_bg_dark and 'dark' or 'light', 'bg')
-    local color_overrides_bg_fn = vim.tbl_get(config, config.color_set,
+    local color_overrides_bg_fn = vim.tbl_get(config, config.colorset,
         'color_overrides', config.is_bg_dark and 'dark' or 'light', 'bg')
 
     if color_overrides_bg_fn == nil then
@@ -34,7 +34,7 @@ local function apply_color_overrides(colors)
     local config = require('mellifluous.config').config
     local global_color_overrides_fn = vim.tbl_get(config,
         'color_overrides', config.is_bg_dark and 'dark' or 'light', 'colors')
-    local color_overrides_fn = vim.tbl_get(config, config.color_set,
+    local color_overrides_fn = vim.tbl_get(config, config.colorset,
         'color_overrides', config.is_bg_dark and 'dark' or 'light', 'colors')
 
     if global_color_overrides_fn ~= nil then
@@ -53,12 +53,12 @@ local function ensure_correct_color_types(colors)
     end
 end
 
-function M.get_is_bg_dark(color_set_name)
-    local color_set_functions = require('mellifluous.colors.sets.' .. color_set_name)
-    local is_light_set_available = color_set_functions.get_bg_light ~= nil
-        and color_set_functions.get_colors_light ~= nil
-    local is_dark_set_available = color_set_functions.get_bg_dark ~= nil
-        and color_set_functions.get_colors_dark ~= nil
+function M.get_is_bg_dark(colorset_name)
+    local colorset_functions = require('mellifluous.colors.colorsets.' .. colorset_name)
+    local is_light_set_available = colorset_functions.get_bg_light ~= nil
+        and colorset_functions.get_colors_light ~= nil
+    local is_dark_set_available = colorset_functions.get_bg_dark ~= nil
+        and colorset_functions.get_colors_dark ~= nil
 
     if vim.o.background == 'light' and is_light_set_available then
         return false
@@ -67,34 +67,34 @@ function M.get_is_bg_dark(color_set_name)
     elseif is_light_set_available then
         return false
     else
-        require('mellifluous').return_error("Required color set is either incomplete or missing")
+        require('mellifluous').return_error("Required colorset is either incomplete or missing")
     end
 end
 
-function M.get_ui_color_base_lightness(color_set_name, is_bg_dark)
-    return require('mellifluous.colors.sets.' .. color_set_name).get_ui_color_base_lightness(is_bg_dark)
+function M.get_ui_color_base_lightness(colorset_name, is_bg_dark)
+    return require('mellifluous.colors.colorsets.' .. colorset_name).get_ui_color_base_lightness(is_bg_dark)
 end
 
 function M.get_colors()
     local config = require('mellifluous.config').config
-    if not M.get_color_sets_table()[config.color_set] then
-        require('mellifluous').return_error("Color set '" .. config.color_set .. "' not found")
+    if not M.get_colorsets_table()[config.colorset] then
+        require('mellifluous').return_error("Colorset '" .. config.colorset .. "' not found")
     end
 
-    local color_set_functions = require('mellifluous.colors.sets.' .. config.color_set)
+    local colorset_functions = require('mellifluous.colors.colorsets.' .. config.colorset)
 
     local color_overrides_bg_fn = get_color_overrides_bg_fn()
 
-    local color_set_bg
+    local colorset_bg
     if config.is_bg_dark then
-        color_set_bg = color_set_functions.get_bg_dark()
+        colorset_bg = colorset_functions.get_bg_dark()
     else
-        color_set_bg = color_set_functions.get_bg_light()
+        colorset_bg = colorset_functions.get_bg_light()
     end
 
-    local bg = color_set_bg
+    local bg = colorset_bg
     if type(color_overrides_bg_fn) == 'function' then
-        local overriden_bg = color_overrides_bg_fn(color_set_bg)
+        local overriden_bg = color_overrides_bg_fn(colorset_bg)
         if overriden_bg ~= nil then
             bg = overriden_bg
         end
@@ -102,9 +102,9 @@ function M.get_colors()
 
     local colors
     if config.is_bg_dark then
-        colors = color_set_functions.get_colors_dark(bg)
+        colors = colorset_functions.get_colors_dark(bg)
     else
-        colors = color_set_functions.get_colors_light(bg)
+        colors = colorset_functions.get_colors_light(bg)
     end
 
     colors = apply_color_overrides(colors)

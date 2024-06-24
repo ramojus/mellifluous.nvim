@@ -4,8 +4,8 @@ function M.create()
     local options = {
         toggle_transparency = 100,
     }
-    local color_sets = require('mellifluous.colors').get_color_sets_table()
-    options = vim.tbl_deep_extend('force', options, color_sets)
+    local colorsets = require('mellifluous.colors').get_colorsets_table()
+    options = vim.tbl_deep_extend('force', options, colorsets)
     local config = require('mellifluous.config').config
 
     vim.api.nvim_create_user_command('Mellifluous', function(input)
@@ -15,9 +15,9 @@ function M.create()
                     enabled = not config.transparent_background.enabled
                 }
             })
-        elseif color_sets[input.args] then
+        elseif colorsets[input.args] then
             require('mellifluous').setup({
-                color_set = input.args
+                colorset = input.args
             })
         else
             require('mellifluous').print_error("unrecognised cli argument: '" .. input.args .. "'")

@@ -4,13 +4,13 @@ A colorscheme for [Neovim](https://github.com/neovim/neovim). Pleasant and produ
 ![preview](https://github.com/ramojus/mellifluous.nvim/assets/41536253/a4b01a46-6ec9-408a-9c2f-08995c53155a)
 
 ## Highlighted features
-- [**Multiple color sets**](#color-sets): Each color set presents a unique visual theme while adhering to the same set of productive highlight rules. Every color set [can be customised](#overriding-colors-of-a-color-set).
+- [**Multiple colorsets**](#color-sets): Each colorset presents a unique visual theme while adhering to the same set of productive highlight rules. Every colorset [can be customised](#overriding-colors-of-a-color-set).
 
 - **Layered backgrounds**: Most UI elements have backgrounds with different shades of the background color and have no borders. This allows for easy differentiation between the relative importance of the elements and keeps the colorscheme looking minimal.
 
 - [**Oklab color space**](https://bottosson.github.io/posts/oklab/): To truly achieve perceptually uniform variations of colors, all color modifications are done in this color space; thanks to [mini.colors](https://github.com/echasnovski/mini.colors) project for the code and idea.
 
-- **Small number of colors**: Color sets use a small number of colors to provide distraction-free coding experience.
+- **Small number of colors**: Colorsets use a small number of colors to provide distraction-free coding experience.
 
 - **Stronger highlights on important keywords**: Keywords related to control flow have stronger highlights, making it easier to quickly understand the code.
 
@@ -51,7 +51,7 @@ Here is an example with the default config. This is optional, and only relevant 
 ```lua
 require 'mellifluous'.setup({
     dim_inactive = false,
-    color_set = 'mellifluous',
+    colorset = 'mellifluous',
     styles = { -- see :h attr-list for options. set {} for NONE, { option = true } for option
         comments = { italic = true },
         conditionals = {},
@@ -105,14 +105,14 @@ require 'mellifluous'.setup({
 ```
 
 ### Light theme
-For light theme, set `vim.opt.background` to `'light'`. This will only work on color sets that have light theme.
+For light theme, set `vim.opt.background` to `'light'`. This will only work on colorsets that have light theme.
 
-### Color sets
-Non-original color sets are made to match their original version as closely as possible with the same highlight rules as mellifluous.
+### Colorsets
+Non-original colorsets are made to match their original version as closely as possible with the same highlight rules as mellifluous.
 
-These color sets don't get loaded, unless you specify them in a `color_set` option, so there is no performance impact.
+These colorsets don't get loaded, unless you specify them in a `colorset` option, so there is no performance impact.
 
-Available color sets:
+Available colorsets:
 
 - `mellifluous`. Dark and light, original.
 - `alduin`. Dark, [link to original](https://github.com/alessandroyorba/alduin).
@@ -120,7 +120,7 @@ Available color sets:
 - `tender`. Dark, [link to original](https://github.com/jacoborus/tender.vim).
 - `kanagawa_dragon`. Dark, [link to original](https://github.com/rebelot/kanagawa.nvim).
 
-#### Mellifluous color set configuration
+#### Mellifluous colorset configuration
 Default config:
 
 ```lua
@@ -137,7 +137,7 @@ The following snippet shows where and which colors can be overridden:
 
 ```lua
 require 'mellifluous'.setup({
-    <color_set_name> = { -- name any of the defined color sets
+    <colorset_name> = { -- name any of the defined colorsets
         color_overrides = {
             dark = { -- for dark theme
                 bg = nil, -- used for bg shades and may be used for some colorset colors
@@ -156,7 +156,7 @@ require 'mellifluous'.setup({
 })
 ```
 
-To override colors for all colorsets, omit `<color_set_name>` table.
+To override colors for all colorsets, omit `<colorset_name>` table.
 
 NOTE: parameter `colors` will have all of the colors set by the colorset, but it will not have shades.
 
@@ -212,10 +212,10 @@ require 'mellifluous'.setup({
     -- highlight overrides for specific colorset
     <colorset_name> = {
         highlight_overrides = {
-            dark = function(highlighter, colors) -- dark variant of the color set
+            dark = function(highlighter, colors) -- dark variant of the colorset
                 -- set highlights here (using highlighter)
             end,
-            light = function(highlighter, colors) -- light variant of the color set
+            light = function(highlighter, colors) -- light variant of the colorset
                 -- set highlights here (using highlighter)
             end,
         }
@@ -308,7 +308,7 @@ Type `:Mellifluous <TAB>` and see the available options.
 Options include:
 
 - Toggling transparency.
-- Changing color set.
+- Changing colorset.
 
 ## TODO
 - [ ] Support more plugins (contributions are welcome).

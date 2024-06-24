@@ -7,7 +7,7 @@ Table of Contents                              *mellifluous-table-of-contents*
 2. Installation and usage                 |mellifluous-installation-and-usage|
 3. Configuration                                   |mellifluous-configuration|
   - Light theme                        |mellifluous-configuration-light-theme|
-  - Color sets                          |mellifluous-configuration-color-sets|
+  - Colorsets                          |mellifluous-configuration-color-sets|
   - Color overrides                |mellifluous-configuration-color-overrides|
   - Highlight overrides        |mellifluous-configuration-highlight-overrides|
   - Available colors              |mellifluous-configuration-available-colors|
@@ -62,7 +62,7 @@ parts of the config can be included.
 >lua
     require 'mellifluous'.setup({
         dim_inactive = false,
-        color_set = 'mellifluous',
+        colorset = 'mellifluous',
         styles = { -- see :h attr-list for options. set {} for NONE, { option = true } for option
             comments = { italic = true },
             conditionals = {},
@@ -119,18 +119,18 @@ parts of the config can be included.
 LIGHT THEME                            *mellifluous-configuration-light-theme*
 
 For light theme, set `vim.opt.background` to `'light'`. This will only work on
-color sets that have light theme.
+colorsets that have light theme.
 
 
 COLOR SETS                              *mellifluous-configuration-color-sets*
 
-Non-original color sets are made to match their original version as closely as
+Non-original colorsets are made to match their original version as closely as
 possible with the same highlight rules as mellifluous.
 
-These color sets don’t get loaded, unless you specify them in a `color_set`
+These colorsets don’t get loaded, unless you specify them in a `colorset`
 option, so there is no performance impact.
 
-Available color sets:
+Available colorsets:
 
 - `mellifluous`. Dark and light, original.
 - `alduin`. Dark, link to original <https://github.com/alessandroyorba/alduin>.
@@ -159,7 +159,7 @@ The following snippet shows where and which colors can be overridden:
 
 >lua
     require 'mellifluous'.setup({
-        <color_set_name> = { -- name any of the defined color sets
+        <colorset_name> = { -- name any of the defined colorsets
             color_overrides = {
                 dark = { -- for dark theme
                     bg = nil, -- used for bg shades and may be used for some colorset colors
@@ -178,7 +178,7 @@ The following snippet shows where and which colors can be overridden:
     })
 <
 
-To override colors for all colorsets, omit `<color_set_name>` table.
+To override colors for all colorsets, omit `<colorset_name>` table.
 
 NOTE: parameter `colors` will have all of the colors set by the colorset, but
 it will not have shades.
@@ -238,10 +238,10 @@ The following snippet shows how highlight overrides can be defined:
         -- highlight overrides for specific colorset
         <colorset_name> = {
             highlight_overrides = {
-                dark = function(highlighter, colors) -- dark variant of the color set
+                dark = function(highlighter, colors) -- dark variant of the colorset
                     -- set highlights here (using highlighter)
                 end,
-                light = function(highlighter, colors) -- light variant of the color set
+                light = function(highlighter, colors) -- light variant of the colorset
                     -- set highlights here (using highlighter)
                 end,
             }
@@ -351,7 +351,7 @@ Type `:Mellifluous <TAB>` and see the available options.
 Options include:
 
 - Toggling transparency.
-- Changing color set.
+- Changing colorset.
 
 
 ==============================================================================

@@ -90,7 +90,7 @@ function color_meta:get_hsl()
     return hex_to_okhsl(self.hex)
 end
 
-function M.color_set_to_hsl(colors)
+function M.colorset_to_hsl(colors)
     for name, color in pairs(colors) do
         local okhsl = hex_to_okhsl(color.hex)
         okhsl.h = okhsl.h or 0
