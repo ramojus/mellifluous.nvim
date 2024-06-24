@@ -23,9 +23,9 @@ function M.extend_with_shades(colors)
             fg5 = fg:darkened(54),
             dark_bg = colors.bg:darkened(2.5),
             bg2 = colors.bg:lightened(4),
-            bg3 = colors.bg:lightened(7),
-            bg4 = colors.bg:lightened(10),
-            bg5 = colors.bg:lightened(13),
+            bg3 = colors.bg:lightened(6),
+            bg4 = colors.bg:lightened(8),
+            bg5 = colors.bg:lightened(10),
         }
     else
         shades = {
