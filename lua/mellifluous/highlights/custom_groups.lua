@@ -11,9 +11,6 @@ function M.get(colors)
         MainKeyword = { fg = colors.main_keywords, style = config.styles.keywords },
 
         IndentLine = function(bg)
-            return { fg = shader.replicate_shade(colors.bg, colors.fg4, bg) }
-        end,
-        IndentLineActive = function(bg)
             return { fg = shader.replicate_shade(colors.bg, colors.fg5, bg) }
         end,
         IndentLineInactive = function(bg)
