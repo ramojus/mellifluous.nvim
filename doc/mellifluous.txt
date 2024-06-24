@@ -7,7 +7,7 @@ Table of Contents                              *mellifluous-table-of-contents*
 2. Installation and usage                 |mellifluous-installation-and-usage|
 3. Configuration                                   |mellifluous-configuration|
   - Light theme                        |mellifluous-configuration-light-theme|
-  - Colorsets                          |mellifluous-configuration-color-sets|
+  - Colorsets                            |mellifluous-configuration-colorsets|
   - Color overrides                |mellifluous-configuration-color-overrides|
   - Highlight overrides        |mellifluous-configuration-highlight-overrides|
   - Available colors              |mellifluous-configuration-available-colors|
@@ -122,7 +122,7 @@ For light theme, set `vim.opt.background` to `'light'`. This will only work on
 colorsets that have light theme.
 
 
-COLOR SETS                              *mellifluous-configuration-color-sets*
+COLORSETS                                *mellifluous-configuration-colorsets*
 
 Non-original colorsets are made to match their original version as closely as
 possible with the same highlight rules as mellifluous.
@@ -139,7 +139,7 @@ Available colorsets:
 - `kanagawa_dragon`. Dark, link to original <https://github.com/rebelot/kanagawa.nvim>.
 
 
-MELLIFLUOUS COLOR SET CONFIGURATION ~
+MELLIFLUOUS COLORSET CONFIGURATION ~
 
 Default config:
 
