@@ -1,7 +1,7 @@
 local M = {}
 
 local config = {
-    color_set = 'mellifluous',
+    colorset = 'mellifluous',
     plugins = {
         cmp = true,
         indent_blankline = true,
@@ -74,29 +74,29 @@ local function disable_disabled()
     end
 end
 
-local are_color_set_defaults_merged = false
+local are_colorset_defaults_merged = false
 
-local function merge_color_set_defaults()
-    if are_color_set_defaults_merged then
+local function merge_colorset_defaults()
+    if are_colorset_defaults_merged then
         return
     end
-    are_color_set_defaults_merged = true
+    are_colorset_defaults_merged = true
 
-    local color_set = require('mellifluous.colors.sets.' .. config.color_set)
+    local colorset = require('mellifluous.colors.colorsets.' .. config.colorset)
 
-    if not color_set.get_config then
+    if not colorset.get_config then
         return
     end
 
-    config[config.color_set] = vim.tbl_deep_extend('force', config[config.color_set] or {}, color_set.get_config())
+    config[config.colorset] = vim.tbl_deep_extend('force', config[config.colorset] or {}, colorset.get_config())
 end
 
-local function process_color_set()
-    config.is_bg_dark = require('mellifluous.colors').get_is_bg_dark(config.color_set)
+local function process_colorset()
+    config.is_bg_dark = require('mellifluous.colors').get_is_bg_dark(config.colorset)
     config.ui_color_base_lightness =
-        require('mellifluous.colors').get_ui_color_base_lightness(config.color_set, config.is_bg_dark)
+        require('mellifluous.colors').get_ui_color_base_lightness(config.colorset, config.is_bg_dark)
 
-    merge_color_set_defaults()
+    merge_colorset_defaults()
 end
 
 -- https://www.lua.org/pil/13.4.5.html
@@ -113,12 +113,12 @@ local function read_only(table)
 end
 
 function M.setup(user_config)
-    merge_color_set_defaults()
+    merge_colorset_defaults()
     config = vim.tbl_deep_extend('force', config, user_config or {})
 end
 
 function M.prepare()
-    process_color_set()
+    process_colorset()
     disable_disabled()
 
     M.config = read_only(config)
@@ -132,9 +132,9 @@ function M.set_highlight_overrides(highlighter, colors)
         global_highlight_overrides(highlighter, colors)
     end
 
-    local color_set_highlight_overrides = vim.tbl_get(M.config, M.config.color_set, 'highlight_overrides', background) or nil
-    if color_set_highlight_overrides then
-        color_set_highlight_overrides(highlighter, colors)
+    local colorset_highlight_overrides = vim.tbl_get(M.config, M.config.colorset, 'highlight_overrides', background) or nil
+    if colorset_highlight_overrides then
+        colorset_highlight_overrides(highlighter, colors)
     end
 end
 
