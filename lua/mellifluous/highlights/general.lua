@@ -50,7 +50,9 @@ function M.set(hl, colors)
         ).bg) or colors.dark_bg,
     }) -- Line number for ':number' and ':#' commands, and when 'number' or 'relativenumber' option is set.
     hl.set("SignColumn", { link = "LineNr" }) -- Column where |signs| are displayed
-    hl.set("IncSearch", { bg = colors.other_keywords, fg = colors.bg }) -- 'incsearch' highlighting; also used for the text replaced with ':s///c'
+    hl.set("Search", { bg = colors.bg:with_overlay(colors.ui_yellow, 25) }) -- Last search pattern highlighting (see 'hlsearch'). Also used for similar items that need to stand out.
+    hl.set("IncSearch", { bg = colors.ui_yellow, fg = colors.bg }) -- 'incsearch' highlighting; also used for the text replaced with ':s///c'
+    hl.set("CurSearch", { link = "Search" }) -- Search pattern under the cursor
     hl.set("Substitute", { link = "IncSearch" }) -- |:substitute| replacement text highlighting
     hl.set("CursorLineNr", {
         bg = (config.flat_background.cursor_line_number and hl.get("LineNr").bg)
@@ -86,7 +88,6 @@ function M.set(hl, colors)
     hl.set("PmenuThumb", { bg = colors.fg5 }) -- Popup menu: Thumb of the scrollbar.
     hl.set("Question", { fg = colors.other_keywords }) -- |hit-enter| prompt and yes/no questions
     hl.set("QuickFixLine", { link = "Normal" }) -- Current |quickfix| item in the quickfix window. Combined with |hl-CursorLine| when the cursor is there.
-    hl.set("Search", { bg = colors.bg4, fg = colors.fg }) -- Last search pattern highlighting (see 'hlsearch'). Also used for similar items that need to stand out.
     hl.set("SpecialKey", { fg = colors.other_keywords }) -- Unprintable characters: text displayed differently from what it really is. But not 'listchars' whitespace. |hl-Whitespace|
     hl.set("SpellBad", { fg = colors.red }) -- Word that is not recognized by the spellchecker. |spell| Combined with the highlighting used otherwise.
     hl.set("SpellCap", { fg = colors.orange }) -- Word that should start with a capital. |spell| Combined with the highlighting used otherwise.
