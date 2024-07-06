@@ -5,7 +5,6 @@
 -- then slightly refactored and restyled to fit project coding style.
 -- Parts of code unrelated to conversion of colors were removed.
 
-
 local M = {}
 
 local tau = 2 * math.pi

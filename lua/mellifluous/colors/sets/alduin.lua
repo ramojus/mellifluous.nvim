@@ -1,24 +1,24 @@
 local M = {}
-local color = require('mellifluous.color')
+local color = require("mellifluous.color")
 
 function M.get_bg_dark()
-    return color.new('#1c1c1c')
+    return color.new("#1c1c1c")
 end
 
 function M.get_colors_dark(bg)
-    local fg = color.new('#dfdfaf')
+    local fg = color.new("#dfdfaf")
 
-    local orange = color.new('#af875f')
-    local soft_orange = color.new('#dfaf87')
-    local dark_orange = color.new('#af5f00')
-    local soft_red = color.new('#af8787')
-    local red = color.new('#af5f5f')
-    local dark_red = color.new('#875f5f')
-    local cyan = color.new('#87afaf')
-    local grey = color.new('#878787')
-    local green = color.new('#87875f')
-    local soft_yellow = color.new('#dfdfaf')
-    local strings = color.new('#ffdf87')
+    local orange = color.new("#af875f")
+    local soft_orange = color.new("#dfaf87")
+    local dark_orange = color.new("#af5f00")
+    local soft_red = color.new("#af8787")
+    local red = color.new("#af5f5f")
+    local dark_red = color.new("#875f5f")
+    local cyan = color.new("#87afaf")
+    local grey = color.new("#878787")
+    local green = color.new("#87875f")
+    local soft_yellow = color.new("#dfdfaf")
+    local strings = color.new("#ffdf87")
 
     return {
         main_keywords = red,
@@ -51,4 +51,3 @@ function M.get_ui_color_base_lightness()
 end
 
 return M
-

@@ -1,7 +1,7 @@
 local M = {}
 
 local config = {
-    color_set = 'mellifluous',
+    color_set = "mellifluous",
     plugins = {
         cmp = true,
         indent_blankline = true,
@@ -41,8 +41,8 @@ local config = {
         types = {},
         operators = {},
         markup = {
-            headings = { bold = true }
-        }
+            headings = { bold = true },
+        },
     },
     transparent_background = {
         enabled = false,
@@ -62,7 +62,7 @@ local config = {
 
 local function disable_disabled()
     for _, v in pairs(config) do
-        if type(v) ~= 'table' or v.enabled == nil or v.enabled then
+        if type(v) ~= "table" or v.enabled == nil or v.enabled then
             goto continue
         end
 
@@ -82,19 +82,19 @@ local function merge_color_set_defaults()
     end
     are_color_set_defaults_merged = true
 
-    local color_set = require('mellifluous.colors.sets.' .. config.color_set)
+    local color_set = require("mellifluous.colors.sets." .. config.color_set)
 
     if not color_set.get_config then
         return
     end
 
-    config[config.color_set] = vim.tbl_deep_extend('force', config[config.color_set] or {}, color_set.get_config())
+    config[config.color_set] = vim.tbl_deep_extend("force", config[config.color_set] or {}, color_set.get_config())
 end
 
 local function process_color_set()
-    config.is_bg_dark = require('mellifluous.colors').get_is_bg_dark(config.color_set)
+    config.is_bg_dark = require("mellifluous.colors").get_is_bg_dark(config.color_set)
     config.ui_color_base_lightness =
-        require('mellifluous.colors').get_ui_color_base_lightness(config.color_set, config.is_bg_dark)
+        require("mellifluous.colors").get_ui_color_base_lightness(config.color_set, config.is_bg_dark)
 
     merge_color_set_defaults()
 end
@@ -105,7 +105,7 @@ local function read_only(table)
     local metatable = {
         __index = table,
         __newindex = function()
-            require('mellifluous').return_error('Attempt to update readonly config')
+            require("mellifluous").return_error("Attempt to update readonly config")
         end,
     }
     setmetatable(proxy, metatable)
@@ -114,7 +114,7 @@ end
 
 function M.setup(user_config)
     merge_color_set_defaults()
-    config = vim.tbl_deep_extend('force', config, user_config or {})
+    config = vim.tbl_deep_extend("force", config, user_config or {})
 end
 
 function M.prepare()
@@ -125,14 +125,15 @@ function M.prepare()
 end
 
 function M.set_highlight_overrides(highlighter, colors)
-    local background = config.is_bg_dark and 'dark' or 'light'
+    local background = config.is_bg_dark and "dark" or "light"
 
-    local global_highlight_overrides = vim.tbl_get(M.config, 'highlight_overrides', background) or nil
+    local global_highlight_overrides = vim.tbl_get(M.config, "highlight_overrides", background) or nil
     if global_highlight_overrides then
         global_highlight_overrides(highlighter, colors)
     end
 
-    local color_set_highlight_overrides = vim.tbl_get(M.config, M.config.color_set, 'highlight_overrides', background) or nil
+    local color_set_highlight_overrides = vim.tbl_get(M.config, M.config.color_set, "highlight_overrides", background)
+        or nil
     if color_set_highlight_overrides then
         color_set_highlight_overrides(highlighter, colors)
     end
