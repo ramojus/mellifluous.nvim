@@ -1,10 +1,10 @@
 local M = {}
-local color = require('mellifluous.color')
+local color = require("mellifluous.color")
 
-local colorset_name = 'mellifluous'
+local colorset_name = "mellifluous"
 
 local function get_is_neutral(mellifluous_config)
-    local config = require('mellifluous.config').config
+    local config = require("mellifluous.config").config
     -- for compatibility with configs from before colorset specific config was supported
     if config.neutral ~= nil then
         return config.neutral
@@ -13,14 +13,14 @@ local function get_is_neutral(mellifluous_config)
 end
 
 function M.get_bg_dark()
-    local config = require('mellifluous.config').config
+    local config = require("mellifluous.config").config
     local mellifluous_config = config[colorset_name]
     local is_neutral = get_is_neutral(mellifluous_config)
 
     local brightness = 11.5
-    if mellifluous_config.bg_contrast == 'hard' then
+    if mellifluous_config.bg_contrast == "hard" then
         brightness = brightness - 2
-    elseif mellifluous_config.bg_contrast == 'soft' then
+    elseif mellifluous_config.bg_contrast == "soft" then
         brightness = brightness + 2
     end
 
@@ -31,14 +31,14 @@ function M.get_bg_dark()
 end
 
 function M.get_bg_light()
-    local config = require('mellifluous.config').config
+    local config = require("mellifluous.config").config
     local mellifluous_config = config[colorset_name]
     local is_neutral = get_is_neutral(mellifluous_config)
 
     local brightness = 91.5
-    if mellifluous_config.bg_contrast == 'hard' then
+    if mellifluous_config.bg_contrast == "hard" then
         brightness = brightness + 2
-    elseif mellifluous_config.bg_contrast == 'soft' then
+    elseif mellifluous_config.bg_contrast == "soft" then
         brightness = brightness - 2
     end
 
@@ -73,10 +73,10 @@ function M.get_colors_dark(bg)
         comments = dark_green,
         fg = fg,
         bg = bg,
-        red = red,       -- errors, deletes, bad spellings
+        red = red, -- errors, deletes, bad spellings
         orange = orange, -- warnings, changes, other (strange) spellings
-        green = green,   -- staged, additions
-        blue = blue,     -- information, new files
+        green = green, -- staged, additions
+        blue = blue, -- information, new files
         purple = purple, -- hints, merge
         yellow = yellow,
     }
@@ -107,10 +107,10 @@ function M.get_colors_light(bg)
         comments = dark_green,
         fg = fg,
         bg = bg,
-        red = red,       -- errors, deletes, bad spellings
+        red = red, -- errors, deletes, bad spellings
         orange = orange, -- warnings, changes, other (strange) spellings
-        green = green,   -- staged, additions
-        blue = blue,     -- information, new files
+        green = green, -- staged, additions
+        blue = blue, -- information, new files
         purple = purple, -- hints, merge
         yellow = yellow,
     }
@@ -122,8 +122,8 @@ end
 
 function M.get_config()
     return {
-        neutral = true,        -- set this to false and bg_contrast to 'medium' for original mellifluous (then it was called mellifluous theme)
-        bg_contrast = 'medium' -- options: 'soft', 'medium', 'hard'
+        neutral = true, -- set this to false and bg_contrast to 'medium' for original mellifluous (then it was called mellifluous theme)
+        bg_contrast = "medium", -- options: 'soft', 'medium', 'hard'
     }
 end
 

@@ -1,7 +1,7 @@
 local M = {}
 
 function M.extend_with_shades(colors)
-    local config = require('mellifluous.config').config
+    local config = require("mellifluous.config").config
 
     local shared_shades = {
         ui_red = colors.red:with_lightness(config.ui_color_base_lightness),
@@ -41,8 +41,8 @@ function M.extend_with_shades(colors)
         }
     end
 
-    colors = vim.tbl_extend('keep', colors, shared_shades)
-    return vim.tbl_extend('keep', colors, shades)
+    colors = vim.tbl_extend("keep", colors, shared_shades)
+    return vim.tbl_extend("keep", colors, shades)
 end
 
 return M

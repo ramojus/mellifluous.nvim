@@ -1,7 +1,6 @@
-
 local M = {}
 
-local oklab_utils = require('mellifluous.utils.oklab')
+local oklab_utils = require("mellifluous.utils.oklab")
 
 local function hex_to_oklch(hex)
     local rgb = oklab_utils.hex2rgb(hex)

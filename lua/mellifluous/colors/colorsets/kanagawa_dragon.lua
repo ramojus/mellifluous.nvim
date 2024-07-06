@@ -1,8 +1,8 @@
 local M = {}
-local color = require('mellifluous.color')
+local color = require("mellifluous.color")
 
 function M.get_bg_dark()
-    return color.new('#181616')
+    return color.new("#181616")
 end
 
 function M.get_colors_dark(bg)
@@ -68,4 +68,3 @@ function M.get_ui_color_base_lightness()
 end
 
 return M
-

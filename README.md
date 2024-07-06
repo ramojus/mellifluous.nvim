@@ -36,11 +36,11 @@ A colorscheme for [Neovim](https://github.com/neovim/neovim). Pleasant and produ
 Example with [packer.nvim](https://github.com/wbthomason/packer.nvim):
 ```lua
 use({
-    'ramojus/mellifluous.nvim',
+    "ramojus/mellifluous.nvim",
     -- version = "v0.*", -- uncomment for stable config (some features might be missed if/when v1 comes out)
     config = function()
-        require'mellifluous'.setup({}) -- optional, see configuration section.
-        vim.cmd('colorscheme mellifluous')
+        require("mellifluous").setup({}) -- optional, see configuration section.
+        vim.cmd("colorscheme mellifluous")
     end,
 })
 ```
@@ -49,9 +49,9 @@ use({
 Here is an example with the default config. This is optional, and only relevant parts of the config can be included.
 
 ```lua
-require 'mellifluous'.setup({
+require("mellifluous").setup({
     dim_inactive = false,
-    colorset = 'mellifluous',
+    colorset = "mellifluous",
     styles = { -- see :h attr-list for options. set {} for NONE, { option = true } for option
         comments = { italic = true },
         conditionals = {},
@@ -105,7 +105,7 @@ require 'mellifluous'.setup({
 ```
 
 ### Light theme
-For light theme, set `vim.opt.background` to `'light'`. This will only work on colorsets that have light theme.
+For light theme, set `vim.opt.background` to `"light"`. This will only work on colorsets that have light theme.
 
 ### Colorsets
 Non-original colorsets are made to match their original version as closely as possible with the same highlight rules as mellifluous.
@@ -124,11 +124,11 @@ Available colorsets:
 Default config:
 
 ```lua
-require 'mellifluous'.setup({
+require("mellifluous").setup({
     mellifluous = {
-        neutral = true, -- set this to false and bg_contrast to 'medium' for original mellifluous (then it was called meliora theme)
-        bg_contrast = 'medium' -- options: 'soft', 'medium', 'hard'
-    }
+        neutral = true, -- set this to false and bg_contrast to "medium" for original mellifluous (then it was called meliora theme)
+        bg_contrast = "medium", -- options: "soft", "medium", "hard"
+    },
 })
 ```
 
@@ -136,7 +136,7 @@ require 'mellifluous'.setup({
 The following snippet shows where and which colors can be overridden:
 
 ```lua
-require 'mellifluous'.setup({
+require("mellifluous").setup({
     <colorset_name> = { -- name any of the defined colorsets
         color_overrides = {
             dark = { -- for dark theme
@@ -151,8 +151,8 @@ require 'mellifluous'.setup({
             light = { -- for light theme
                 -- same keys as in dark variant
             },
-        }
-    }
+        },
+    },
 })
 ```
 
@@ -163,7 +163,7 @@ NOTE: parameter `colors` will have all of the colors set by the colorset, but it
 Example:
 
 ```lua
-require 'mellifluous'.setup({
+require("mellifluous").setup({
     -- invert bg shades for all colorsets
     color_overrides = {
         dark = {
@@ -186,20 +186,20 @@ require 'mellifluous'.setup({
                 end,
                 colors = function(colors)
                     return {
-                        main_keywords = '#e0e066',
+                        main_keywords = "#e0e066",
                         operators = colors.functions:desaturated(10),
                     }
                 end,
-            }
-        }
-    }
+            },
+        },
+    },
 })
 ```
 
 ### Highlight overrides
 The following snippet shows how highlight overrides can be defined:
 ```lua
-require 'mellifluous'.setup({
+require("mellifluous").setup({
     -- highlight overrides for all colorsets
     highlight_overrides = {
         dark = function(highlighter, colors) -- dark theme
@@ -208,7 +208,7 @@ require 'mellifluous'.setup({
         light = function(highlighter, colors) -- light theme
             -- set highlights here (using highlighter)
         end,
-    }
+    },
     -- highlight overrides for specific colorset
     <colorset_name> = {
         highlight_overrides = {
@@ -218,8 +218,8 @@ require 'mellifluous'.setup({
             light = function(highlighter, colors) -- light variant of the colorset
                 -- set highlights here (using highlighter)
             end,
-        }
-    }
+        },
+    },
 })
 ```
 
@@ -300,7 +300,7 @@ Every color from [available colors](#available-colors) has the following meta fu
 - `desaturated(val)`: returns color with `val` subtracted from current saturation.
 - `with_saturation(val)`: returns color with specified saturation, where `val` can be from 0 to 100.
 
-To create your own color that has the same functions available, use `require('mellifluous.color').new(hex_value)` function.
+To create your own color that has the same functions available, use `require("mellifluous.color").new(hex_value)` function.
 
 ## CLI options
 Type `:Mellifluous <TAB>` and see the available options.
