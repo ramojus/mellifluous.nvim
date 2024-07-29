@@ -3,11 +3,13 @@ local M = {}
 function M.set(hl, colors)
     local config = require("mellifluous.config").config
     local groups = require("mellifluous.highlights.custom_groups").get(colors)
-    local bg = hl.get("NormalFloat").bg
+
+    local f_bg = hl.get("NormalFloat").bg
+    local bg_active = (type(f_bg) == "string" and f_bg == "NONE") and colors.bg3 or f_bg
 
     hl.set("LazyNormal", { bg = colors.bg2 })
     hl.set("LazyButton", groups.MenuButton)
-    hl.set("LazyButtonActive", groups.MenuButtonSelected(bg))
+    hl.set("LazyButtonActive", groups.MenuButtonSelected(bg_active))
     hl.set("LazyH1", { link = "LazyButtonActive" })
 
     hl.set("LazyProgressTodo", { fg = config.is_bg_dark and colors.fg5 or colors.dark_bg })
