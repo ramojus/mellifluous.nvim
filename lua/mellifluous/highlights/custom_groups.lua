@@ -1,8 +1,14 @@
 local M = {}
 
+local function fallback_if_none(color, fallback_color)
+    if type(color) == "string" and color == "NONE" then
+        return fallback_color
+    end
+    return color
+end
+
 -- Any shared highlight groups that cannot be found in general highlights or
 -- treesitter highlights are created here.
-
 function M.get(colors)
     local config = require("mellifluous.config").config
     local shader = require("mellifluous.utils.shader")
@@ -11,9 +17,11 @@ function M.get(colors)
         MainKeyword = { fg = colors.main_keywords, style = config.styles.keywords },
 
         IndentLine = function(bg)
+            bg = fallback_if_none(bg, colors.bg)
             return { fg = shader.replicate_shade(colors.bg, colors.fg5, bg) }
         end,
         IndentLineInactive = function(bg)
+            bg = fallback_if_none(bg, colors.bg)
             return {
                 fg = config.is_bg_dark and shader.replicate_shade(colors.bg, colors.bg4, bg)
                     or shader.replicate_shade(colors.bg, colors.dark_bg2, bg),
@@ -22,6 +30,7 @@ function M.get(colors)
 
         MenuButton = { fg = colors.ui_blue },
         MenuButtonSelected = function(bg)
+            bg = fallback_if_none(bg, colors.bg)
             local applied_bg = config.is_bg_dark and shader.replicate_shade(colors.bg, colors.bg4, bg)
                 or shader.replicate_shade(colors.bg, colors.dark_bg2, bg)
             return {
