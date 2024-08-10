@@ -140,11 +140,12 @@ require("mellifluous").setup({
     <colorset_name> = { -- name any of the defined colorsets
         color_overrides = {
             dark = { -- for dark theme
-                bg = nil, -- used for bg shades and may be used for some colorset colors
+                bg = function(bg) -- bg is used for bg shades and may be used for some colorset colors
+                    return <new bg>
+                end,
                 colors = function(colors)
                     return {
-                        -- return overridden colors here
-                        -- check available colors section for colors that can be used and overriden.
+                        <new colors> -- check "Available colors" section for colors that can be used and overriden.
                     }
                 end,
             },

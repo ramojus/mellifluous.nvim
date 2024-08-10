@@ -18,13 +18,13 @@ end
 
 local function get_color_overrides_bg_fn()
     local config = require("mellifluous.config").config
-    local global_color_overrides_bg =
+    local global_color_overrides_bg_fn =
         vim.tbl_get(config, "color_overrides", config.is_bg_dark and "dark" or "light", "bg")
     local color_overrides_bg_fn =
         vim.tbl_get(config, config.colorset, "color_overrides", config.is_bg_dark and "dark" or "light", "bg")
 
     if color_overrides_bg_fn == nil then
-        color_overrides_bg_fn = global_color_overrides_bg
+        color_overrides_bg_fn = global_color_overrides_bg_fn
     end
 
     return color_overrides_bg_fn
@@ -91,7 +91,12 @@ function M.get_colors()
     end
 
     local bg = colorset_bg
-    if type(color_overrides_bg_fn) == "function" then
+
+    if color_overrides_bg_fn then
+        if type(color_overrides_bg_fn) ~= "function" then
+            require("mellifluous").return_error("color_overrides.bg should be a function. It takes bg as an argument and returns the new bg.")
+        end
+
         local overriden_bg = color_overrides_bg_fn(colorset_bg)
         if overriden_bg ~= nil then
             bg = overriden_bg
