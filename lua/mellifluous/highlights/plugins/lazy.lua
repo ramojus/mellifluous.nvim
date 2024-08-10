@@ -5,7 +5,7 @@ function M.set(hl, colors)
     local groups = require("mellifluous.highlights.custom_groups").get(colors)
     local bg = hl.get("NormalFloat").bg
 
-    hl.set("LazyNormal", { bg = colors.bg2 })
+    hl.set("LazyNormal", { bg = bg })
     hl.set("LazyButton", groups.MenuButton)
     hl.set("LazyButtonActive", groups.MenuButtonSelected(bg))
     hl.set("LazyH1", { link = "LazyButtonActive" })
