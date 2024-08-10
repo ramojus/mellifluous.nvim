@@ -112,6 +112,13 @@ function M.get_colors()
 
     colors = apply_color_overrides(colors)
     ensure_correct_color_types(colors)
+    if
+        config.transparent_background
+        and config.transparent_background.lightness
+        and type(config.transparent_background.lightness) == "function"
+    then
+        colors.bg = colors.bg:with_lightness(config.transparent_background.lightness(colors.bg))
+    end
 
     colors = require("mellifluous.colors.shades").extend_with_shades(colors)
 

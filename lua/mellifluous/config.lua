@@ -45,6 +45,25 @@ local function get_default_config()
         },
         transparent_background = {
             enabled = false,
+            lightness = function(bg) -- used for bg shades
+                -- This method tries to keep brighter colorsets bright and
+                -- dimmer colorsets dim and still lighten the shades up so that
+                -- the colorsets have more chance to look good with transparent
+                -- background on brighter wallpapers.
+                local old_lightness = bg:get_hsl().l
+                local threshold = 20
+                local baseline = 10
+                if old_lightness < threshold then
+                    -- We will assume that the dimmest of transparent
+                    -- background over users wallpaper is at least of baseline
+                    -- lightness. Presuming old range is [0, threshold], let's
+                    -- position the lightness relatively in a new range of
+                    -- [baseline, threshold].
+                    local position = old_lightness / threshold
+                    local new_lightness = baseline + ((threshold - baseline) * position)
+                    return new_lightness
+                end
+            end,
             floating_windows = true,
             telescope = true,
             file_tree = true,
