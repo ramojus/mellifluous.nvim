@@ -78,14 +78,7 @@ local function disable_disabled()
     end
 end
 
-local are_color_set_defaults_merged = false
-
 local function merge_color_set_defaults(color_set)
-    if are_color_set_defaults_merged then
-        return
-    end
-    are_color_set_defaults_merged = true
-
     local color_set_module = require("mellifluous.colors.sets." .. color_set)
 
     if not color_set_module.get_config then
