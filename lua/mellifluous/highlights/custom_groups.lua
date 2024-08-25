@@ -14,7 +14,7 @@ function M.get(colors)
     local shader = require("mellifluous.utils.shader")
 
     return {
-        MainKeyword = { fg = colors.main_keywords, style = config.styles.keywords },
+        MainKeyword = { fg = colors.main_keywords, style = config.styles.main_keywords or {} },
 
         IndentLine = function(bg)
             bg = fallback_if_none(bg, colors.bg)

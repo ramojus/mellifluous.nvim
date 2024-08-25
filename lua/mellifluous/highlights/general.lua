@@ -121,23 +121,23 @@ function M.set(hl, colors)
     --
     -- Uncomment and edit if you want more specific syntax highlighting.
     hl.set("Comment", { fg = colors.comments, style = config.styles.comments or {} }) -- Any comment
-    hl.set("Constant", { fg = colors.constants }) -- (*) Any constant
+    hl.set("Constant", { fg = colors.constants, style = config.styles.constants or {} } ) -- (*) Any constant
     hl.set("String", { fg = colors.strings, style = config.styles.strings or {} }) --   A string constant: 'this is a string'
     hl.set("Character", { fg = hl.get("String").fg }) --   A character constant: 'c', '\n'
-    hl.set("Number", { link = "Constant", style = config.styles.numbers or {} }) --   A number constant: 234, 0xff
-    hl.set("Boolean", { link = "Constant", style = config.styles.booleans or {} }) --   A boolean constant: TRUE, false
-    hl.set("Float", { link = "Constant", style = config.styles.numbers or {} }) --   A floating point constant: 2.3e10
-    hl.set("Identifier", { fg = colors.fg, style = config.styles.variables or {} }) -- (*) Any variable name
+    hl.set("Number", { link = "Constant" }) --   A number constant: 234, 0xff
+    hl.set("Boolean", { link = "Constant" }) --   A boolean constant: TRUE, false
+    hl.set("Float", { link = "Constant" }) --   A floating point constant: 2.3e10
+    hl.set("Identifier", { fg = colors.fg }) -- (*) Any variable name
     hl.set("Function", { fg = colors.functions, style = config.styles.functions or {} }) --   Function name (also: methods for classes)
     hl.set("Statement", { link = "Keyword" }) -- (*) Any statement
-    hl.set("Conditional", { fg = colors.main_keywords, style = config.styles.conditionals or {} }) --   if, then, else, endif, switch, etc.
-    hl.set("Repeat", { fg = colors.main_keywords, style = config.styles.loops or {} }) --   for, do, while, etc.
+    hl.set("Conditional", groups.MainKeyword) --   if, then, else, endif, switch, etc.
+    hl.set("Repeat", groups.MainKeyword) --   for, do, while, etc.
     hl.set("Label", { fg = colors.other_keywords })
     hl.set("Operator", {
         fg = config.is_bg_dark and colors.operators or colors.fg3,
         style = config.styles.operators or {},
     }) --   'sizeof', '+', '*', etc.
-    hl.set("Keyword", { fg = colors.other_keywords, style = config.styles.keywords }) --   any other keyword
+    hl.set("Keyword", { fg = colors.other_keywords, style = config.styles.other_keywords }) --   any other keyword
     hl.set("Exception", groups.MainKeyword) --   try, catch, throw
     hl.set("PreProc", { fg = colors.functions }) -- (*) Generic Preprocessor
     hl.set("Include", { link = "PreProc" }) --   Preprocessor #include
