@@ -10,7 +10,7 @@ function M.set(hl, colors)
     hl.set("@variable.builtin", { fg = colors.other_keywords }) -- Variable names defined by the language: `this` or `self` in Javascript.
     hl.set("@variable.parameter", { fg = colors.fg }) -- Parameters of a function.
     hl.set("@variable.parameter.reference", { link = "@variable.parameter" }) -- References to parameters of a function.
-    hl.set("@variable.member", { fg = colors.fg, style = config.styles.properties }) -- Object and struct fields.
+    hl.set("@variable.member", { fg = colors.fg }) -- Object and struct fields.
     hl.set("@constant", { link = "Constant" }) -- Constants identifiers. These might not be semantically constant. E.g. uppercase variables in Python.
     hl.set("@constant.builtin", { link = "Constant" }) -- Built-in constant values: `nil` in Lua.
     hl.set("@constant.macro", { link = "Constant" }) -- Constants defined by macros: `NULL` in C.
