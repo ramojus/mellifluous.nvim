@@ -17,6 +17,8 @@ function M.replicate_shade(from_color, to_color, target)
     local target_hsl = target:get_hsl()
     if target_hsl.h and from_hsl.h and to_hsl.h then
         target_hsl.h = clip(target_hsl.h + to_hsl.h - from_hsl.h, 0, 360)
+    elseif to_hsl.h == nil then
+        target_hsl.h = nil
     elseif from_hsl.h ~= to_hsl.h then
         require("mellifluous").return_error(
             "this shade changes hue, but at least one of the colors is neutral, without hue"
