@@ -146,8 +146,7 @@ Default config:
 >lua
     require("mellifluous").setup({
         mellifluous = {
-            neutral = true, -- set this to false and bg_contrast to "medium" for original mellifluous (then it was called meliora theme)
-            bg_contrast = "medium", -- options: "soft", "medium", "hard"
+            neutral = true, -- set this to false for original mellifluous (when it was called meliora theme)
         },
     })
 <
