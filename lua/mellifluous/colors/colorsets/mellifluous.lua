@@ -8,10 +8,10 @@ function M.get_bg_dark()
     local mellifluous_config = config[colorset_name]
     local brightness = 11.5
 
-    if mellifluous_config.neutral then
-        return color.new_from_hsl({ h = 0, s = 0, l = brightness })
+    if mellifluous_config.neutral == false then
+        return color.new_from_hsl({ h = 24, s = 10, l = brightness })
     end
-    return color.new_from_hsl({ h = 24, s = 10, l = brightness })
+    return color.new_from_hsl({ h = 0, s = 0, l = brightness })
 end
 
 function M.get_bg_light()
@@ -19,10 +19,10 @@ function M.get_bg_light()
     local mellifluous_config = config[colorset_name]
     local brightness = 91.5
 
-    if mellifluous_config.neutral then
-        return color.new_from_hsl({ h = 0, s = 0, l = brightness })
+    if mellifluous_config.neutral == false then
+        return color.new_from_hsl({ h = 24, s = 10, l = brightness })
     end
-    return color.new_from_hsl({ h = 24, s = 10, l = brightness })
+    return color.new_from_hsl({ h = 0, s = 0, l = brightness })
 end
 
 function M.get_colors_dark(bg)
