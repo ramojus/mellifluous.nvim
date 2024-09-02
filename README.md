@@ -31,6 +31,7 @@ A colorscheme for [Neovim](https://github.com/neovim/neovim). Pleasant and produ
 - [Neotest](https://github.com/nvim-neotest/neotest)
 - [Lazy](https://github.com/folke/lazy.nvim)
 - [Mason](https://github.com/williamboman/mason.nvim)
+- [Oil](https://github.com/stevearc/oil.nvim)
 
 ## Installation and usage
 Example with [packer.nvim](https://github.com/wbthomason/packer.nvim):

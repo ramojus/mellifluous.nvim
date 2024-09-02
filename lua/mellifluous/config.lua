@@ -27,6 +27,7 @@ local function get_default_config()
             neotest = true,
             lazy = true,
             mason = true,
+            oil = true,
         },
         dim_inactive = false,
         styles = {
