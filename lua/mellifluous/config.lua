@@ -27,6 +27,7 @@ local function get_default_config()
             neotest = true,
             lazy = true,
             mason = true,
+            nvim_dap_ui = true,
         },
         dim_inactive = false,
         styles = {

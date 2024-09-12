@@ -1,9 +1,12 @@
 <!-- panvimdoc-ignore-start -->
+
 # Mellifluous
+
 A colorscheme for [Neovim](https://github.com/neovim/neovim). Pleasant and productive, with stronger highlights on important keywords.
 ![preview](https://github.com/ramojus/mellifluous.nvim/assets/41536253/a4b01a46-6ec9-408a-9c2f-08995c53155a)
 
 ## Highlighted features
+
 - [**Multiple color sets**](#color-sets): Each color set presents a unique visual theme while adhering to the same set of productive highlight rules. Every color set [can be customised](#overriding-colors-of-a-color-set).
 
 - **Layered backgrounds**: Most UI elements have backgrounds with different shades of the background color and have no borders. This allows for easy differentiation between the relative importance of the elements and keeps the colorscheme looking minimal.
@@ -15,7 +18,9 @@ A colorscheme for [Neovim](https://github.com/neovim/neovim). Pleasant and produ
 - **Stronger highlights on important keywords**: Keywords related to control flow have stronger highlights, making it easier to quickly understand the code.
 
 <!-- panvimdoc-ignore-end -->
+
 ## Styled plugins
+
 - [Treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
 - [Native LSP](https://github.com/neovim/nvim-lspconfig)
 - [Telescope](https://github.com/nvim-telescope/telescope.nvim)
@@ -31,9 +36,12 @@ A colorscheme for [Neovim](https://github.com/neovim/neovim). Pleasant and produ
 - [Neotest](https://github.com/nvim-neotest/neotest)
 - [Lazy](https://github.com/folke/lazy.nvim)
 - [Mason](https://github.com/williamboman/mason.nvim)
+- [Nvim-dap-ui](https://github.com/rcarriga/nvim-dap-ui)
 
 ## Installation and usage
+
 Example with [packer.nvim](https://github.com/wbthomason/packer.nvim):
+
 ```lua
 use({
     "ramojus/mellifluous.nvim",
@@ -46,6 +54,7 @@ use({
 ```
 
 ## Configuration
+
 Here is an example with the default config. This is optional, and only relevant parts of the config can be included.
 
 ```lua
@@ -105,9 +114,11 @@ require("mellifluous").setup({
 ```
 
 ### Setting light theme
+
 Set `vim.opt.background` to `"light"`. This will only work on color sets that have light theme.
 
 ### Color sets
+
 Non-original color sets are made to match their original version as closely as possible with the same highlight rules as mellifluous.
 
 These color sets don't get loaded, unless you specify them in a `color_set` option, so there is no performance impact.
@@ -121,6 +132,7 @@ Available color sets:
 - `kanagawa_dragon`. Dark, [link to original](https://github.com/rebelot/kanagawa.nvim).
 
 #### Mellifluous color set configuration
+
 Default config:
 
 ```lua
@@ -133,6 +145,7 @@ require("mellifluous").setup({
 ```
 
 #### Overriding colors of a color set
+
 The following snippet shows where and which colors can be overridden:
 
 ```lua
@@ -186,6 +199,7 @@ require("mellifluous").setup({
 ```
 
 #### Overriding highlights of a color set
+
 The following snippet shows how highlight overrides can be defined for a specific color set:
 
 ```lua
@@ -199,10 +213,13 @@ require("mellifluous").setup({
 For further instructions, refer to [overriding highlights](#overriding-highlights) section
 
 ##### Extra colors
+
 In addition to the colors listed in [available colors](#available-colors) section, some color sets may have more colors available (`cyan`). To check your color set, refer to [the source code for color sets](lua/mellifluous/colors/sets/) and see if `get_colors_*` functions return any extra (optional) colors.
 
 ### Overriding highlights
+
 The following snippet shows how global (for any color set) highlight overrides can be defined:
+
 ```lua
 require("mellifluous").setup({
     highlight_overrides = {
@@ -219,6 +236,7 @@ require("mellifluous").setup({
 For an example on how to set the highlights, check [the source code for general highlights](lua/mellifluous/highlights/general.lua), where `M.set` function has the same signature as `dark` or `light` functions seen above. A detailed documentation is provided below.
 
 #### Highlighter usage
+
 This is the signature to set a highlight:
 
 ```lua
@@ -236,42 +254,44 @@ To get an existing highlight, use this function:
 highlighter.get(name)
 ```
 
-This function returns highlight definition map for highlight group with the requested name. 
+This function returns highlight definition map for highlight group with the requested name.
 
 #### Available colors
+
 To use one of the available colors from a color set, in highlight definition map, set the value of `fg`, `bg` or `sp` key to `colors.available_color`
 
 Available colors:
 
 - Syntax element colors.
-    - `main_keywords`: used to indicate keywords related to control flow.
-    - `other_keywords`
-    - `types`
-    - `operators`
-    - `strings`
-    - `functions`
-    - `constants`
-    - `comments`
-    - `fg`: in code -- identifiers.
-    - `bg`
+  - `main_keywords`: used to indicate keywords related to control flow.
+  - `other_keywords`
+  - `types`
+  - `operators`
+  - `strings`
+  - `functions`
+  - `constants`
+  - `comments`
+  - `fg`: in code -- identifiers.
+  - `bg`
 - Named colors. Used for terminal colors, but most of these colors will match some syntax element color.
-    - `red`
-    - `orange`
-    - `green`
-    - `blue`
-    - `purple`
-    - `yellow`
+  - `red`
+  - `orange`
+  - `green`
+  - `blue`
+  - `purple`
+  - `yellow`
 - UI colors. Same as named colors, but all are of the same brightness (lightness).
-    - `ui_red`: used to indicate errors, deletes, bad spellings.
-    - `ui_orange`: used to indicate warnings, changes, other (strange) spellings.
-    - `ui_green`: used to indicate staged, additions.
-    - `ui_blue`: used to indicate information, new files.
-    - `ui_purple`: used to indicate hints, merge.
-    - `ui_yellow`
+  - `ui_red`: used to indicate errors, deletes, bad spellings.
+  - `ui_orange`: used to indicate warnings, changes, other (strange) spellings.
+  - `ui_green`: used to indicate staged, additions.
+  - `ui_blue`: used to indicate information, new files.
+  - `ui_purple`: used to indicate hints, merge.
+  - `ui_yellow`
 
 NOTE: some color sets may have more colors available. See [extra colors](#extra-colors) section.
 
 #### Color functions
+
 Every color from [available colors](#available-colors) has the following meta functions (accessed with `:` operator):
 
 - `lightened(val)`: returns color with `val` added current to lightness.
@@ -284,6 +304,7 @@ Every color from [available colors](#available-colors) has the following meta fu
 To create your own color that has the same functions available, use `require("mellifluous.color").new(hex_value)` function.
 
 ## CLI options
+
 Type `:Mellifluous <TAB>` and see the available options.
 
 Options include:
@@ -292,18 +313,24 @@ Options include:
 - Changing color set.
 
 ## TODO
+
 - [ ] Support more plugins (contributions are welcome).
 
 ## Ports
+
 - [Helix (with slightly outdated color palette)](https://github.com/helix-editor/helix/wiki/Themes#meliora)
 
 ## Inspiration
+
 - [Mountain and Mountaineer](https://github.com/mountain-theme/mountain)
 - [Alduin](https://github.com/alessandroyorba/alduin)
 - [Melange](https://github.com/savq/melange)
 - [Sema](https://github.com/arzg/sema)
 
 <!-- panvimdoc-ignore-start -->
+
 ## License
+
 [MIT](./LICENSE)
+
 <!-- panvimdoc-ignore-end -->
