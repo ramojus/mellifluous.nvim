@@ -6,9 +6,11 @@ Table of Contents                              *mellifluous-table-of-contents*
 1. Styled plugins                                 |mellifluous-styled-plugins|
 2. Installation and usage                 |mellifluous-installation-and-usage|
 3. Configuration                                   |mellifluous-configuration|
-  - Setting light theme        |mellifluous-configuration-setting-light-theme|
-  - Color sets                          |mellifluous-configuration-color-sets|
-  - Overriding highlights    |mellifluous-configuration-overriding-highlights|
+  - Light theme                        |mellifluous-configuration-light-theme|
+  - Colorsets                            |mellifluous-configuration-colorsets|
+  - Color overrides                |mellifluous-configuration-color-overrides|
+  - Highlight overrides        |mellifluous-configuration-highlight-overrides|
+  - Available colors              |mellifluous-configuration-available-colors|
 4. CLI options                                       |mellifluous-cli-options|
 5. TODO                                                     |mellifluous-todo|
 6. Ports                                                   |mellifluous-ports|
@@ -60,24 +62,20 @@ parts of the config can be included.
 >lua
     require("mellifluous").setup({
         dim_inactive = false,
-        color_set = "mellifluous",
+        colorset = "mellifluous",
         styles = { -- see :h attr-list for options. set {} for NONE, { option = true } for option
-            comments = { italic = true },
-            conditionals = {},
-            folds = {},
-            loops = {},
-            functions = {},
-            keywords = {},
-            strings = {},
-            variables = {},
-            numbers = {},
-            booleans = {},
-            properties = {},
+            main_keywords = {},
+            other_keywords = {},
             types = {},
             operators = {},
+            strings = {},
+            functions = {},
+            constants = {},
+            comments = { italic = true },
             markup = {
                 headings = { bold = true },
             },
+            folds = {},
         },
         transparent_background = {
             enabled = false,
@@ -114,21 +112,21 @@ parts of the config can be included.
 <
 
 
-SETTING LIGHT THEME            *mellifluous-configuration-setting-light-theme*
+LIGHT THEME                            *mellifluous-configuration-light-theme*
 
-Set `vim.opt.background` to `"light"`. This will only work on color sets that
-have light theme.
+For light theme, set `vim.opt.background` to `"light"`. This will only work on
+colorsets that have light theme.
 
 
-COLOR SETS                              *mellifluous-configuration-color-sets*
+COLORSETS                                *mellifluous-configuration-colorsets*
 
-Non-original color sets are made to match their original version as closely as
+Non-original colorsets are made to match their original version as closely as
 possible with the same highlight rules as mellifluous.
 
-These color sets don’t get loaded, unless you specify them in a `color_set`
+These colorsets don’t get loaded, unless you specify them in a `colorset`
 option, so there is no performance impact.
 
-Available color sets:
+Available colorsets:
 
 - `mellifluous`. Dark and light, original.
 - `alduin`. Dark, link to original <https://github.com/alessandroyorba/alduin>.
@@ -137,53 +135,38 @@ Available color sets:
 - `kanagawa_dragon`. Dark, link to original <https://github.com/rebelot/kanagawa.nvim>.
 
 
-MELLIFLUOUS COLOR SET CONFIGURATION ~
+MELLIFLUOUS COLORSET CONFIGURATION ~
 
 Default config:
 
 >lua
     require("mellifluous").setup({
         mellifluous = {
-            neutral = true, -- set this to false and bg_contrast to "medium" for original mellifluous (then it was called meliora theme)
-            bg_contrast = "medium", -- options: "soft", "medium", "hard"
+            neutral = true, -- set this to false for original mellifluous (when it was called meliora theme)
         },
     })
 <
 
 
-OVERRIDING COLORS OF A COLOR SET ~
+COLOR OVERRIDES                    *mellifluous-configuration-color-overrides*
 
 The following snippet shows where and which colors can be overridden:
 
 >lua
     require("mellifluous").setup({
-        <color_set_name> = { -- name any of the defined color sets
+        <colorset_name> = { -- name any of the defined colorsets
             color_overrides = {
-                dark = { -- dark variant of the color set
-                    bg = nil, -- used for shades, on some color sets fg will be derived from this
-                    fg = nil, -- used for shades if shades_fg is undefined
-                    shades_fg = nil, -- used for shades (dimmed foregrounds)
-    
-                    main_keywords = nil,
-                    other_keywords = nil,
-                    types = nil,
-                    operators = nil,
-                    strings = nil,
-                    functions = nil,
-                    constants = nil,
-                    comments = nil,
-    
-                    red = nil, -- errors, deletes, bad spellings
-                    orange = nil, -- warnings, changes, unusual spellings
-                    green = nil, -- staged, additions
-                    blue = nil, -- information, new files
-                    purple = nil, -- hints, merge
-    
-                    -- for better terminal highlights
-                    yellow = nil,
-                    cyan = nil,
+                dark = { -- for dark theme
+                    bg = function(bg) -- bg is used for bg shades and may be used for some colorset colors
+                        return <new bg>
+                    end,
+                    colors = function(colors)
+                        return {
+                            <new colors> -- check "Available colors" section for colors that can be used and overriden.
+                        }
+                    end,
                 },
-                light = { -- light variant of the color set
+                light = { -- for light theme
                     -- same keys as in dark variant
                 },
             },
@@ -191,15 +174,41 @@ The following snippet shows where and which colors can be overridden:
     })
 <
 
-For example, to override a color for the main keywords group in the dark
-version of the mellifluous color set, one could do the following:
+To override colors for all colorsets, omit `<colorset_name>` table.
+
+NOTE: parameter `colors` will have all of the colors set by the colorset, but
+it will not have shades.
+
+Example:
 
 >lua
     require("mellifluous").setup({
+        -- invert bg shades for all colorsets
+        color_overrides = {
+            dark = {
+                colors = function(colors)
+                    return {
+                        bg2 = colors.bg:darkened(2),
+                        bg3 = colors.bg:darkened(4),
+                        bg4 = colors.bg:darkened(6),
+                        bg5 = colors.bg:darkened(8),
+                    }
+                end,
+            }
+        },
+        -- modify some colors for mellifluous colorset
         mellifluous = {
             color_overrides = {
                 dark = {
-                    main_keywords = "#e0e066",
+                    bg = function(bg)
+                        return bg:lightened(2)
+                    end,
+                    colors = function(colors)
+                        return {
+                            main_keywords = "#e0e066",
+                            operators = colors.functions:desaturated(10),
+                        }
+                    end,
                 },
             },
         },
@@ -207,44 +216,31 @@ version of the mellifluous color set, one could do the following:
 <
 
 
-OVERRIDING HIGHLIGHTS OF A COLOR SET ~
+HIGHLIGHT OVERRIDES            *mellifluous-configuration-highlight-overrides*
 
-The following snippet shows how highlight overrides can be defined for a
-specific color set:
-
->lua
-    require("mellifluous").setup({
-        <color_set_name> = { -- name any of the defined color sets
-            -- config structure from here is the same as for global highlight overrides
-        },
-    })
-<
-
-For further instructions, refer to |mellifluous-overriding-highlights| section
-
-
-EXTRA COLORS
-
-In addition to the colors listed in |mellifluous-available-colors| section,
-some color sets may have more colors available (`cyan`). To check your color
-set, refer to the source code for color sets <lua/mellifluous/colors/sets/> and
-see if `get_colors_*` functions return any extra (optional) colors.
-
-
-OVERRIDING HIGHLIGHTS        *mellifluous-configuration-overriding-highlights*
-
-The following snippet shows how global (for any color set) highlight overrides
-can be defined:
+The following snippet shows how highlight overrides can be defined:
 
 >lua
     require("mellifluous").setup({
+        -- highlight overrides for all colorsets
         highlight_overrides = {
-            dark = function(highlighter, colors) -- dark variant of the color set
+            dark = function(highlighter, colors) -- dark theme
                 -- set highlights here (using highlighter)
             end,
-            light = function(highlighter, colors) -- light variant of the color set
+            light = function(highlighter, colors) -- light theme
                 -- set highlights here (using highlighter)
             end,
+        },
+        -- highlight overrides for specific colorset
+        <colorset_name> = {
+            highlight_overrides = {
+                dark = function(highlighter, colors) -- dark variant of the colorset
+                    -- set highlights here (using highlighter)
+                end,
+                light = function(highlighter, colors) -- light variant of the colorset
+                    -- set highlights here (using highlighter)
+                end,
+            },
         },
     })
 <
@@ -278,14 +274,14 @@ This function returns highlight definition map for highlight group with the
 requested name.
 
 
-AVAILABLE COLORS ~
+AVAILABLE COLORS                  *mellifluous-configuration-available-colors*
 
-To use one of the available colors from a color set, in highlight definition
-map, set the value of `fg`, `bg` or `sp` key to `colors.available_color`
+Named colors are used several times in configuration (as parameter `colors` of
+some function). This section lists and explains those colors.
 
 Available colors:
 
-- Syntax element colors.
+- Syntax element colors
     - `main_keywords`: used to indicate keywords related to control flow.
     - `other_keywords`
     - `types`
@@ -296,23 +292,35 @@ Available colors:
     - `comments`
     - `fg`: in code – identifiers.
     - `bg`
-- Named colors. Used for terminal colors, but most of these colors will match some syntax element color.
+- Named colors: used for terminal colors, but most of these colors will match some syntax element color.
     - `red`
     - `orange`
     - `green`
     - `blue`
     - `purple`
     - `yellow`
-- UI colors. Same as named colors, but all are of the same brightness (lightness).
-    - `ui_red`: used to indicate errors, deletes, bad spellings.
-    - `ui_orange`: used to indicate warnings, changes, other (strange) spellings.
-    - `ui_green`: used to indicate staged, additions.
-    - `ui_blue`: used to indicate information, new files.
-    - `ui_purple`: used to indicate hints, merge.
-    - `ui_yellow`
+- Shades: colors that are derived from colors defined in the colorset (those listed above).
+    - UI colors: same as named colors, but all are of the same brightness (lightness).
+        - `ui_red`: used to indicate errors, deletes, bad spellings.
+        - `ui_orange`: used to indicate warnings, changes, other (strange) spellings.
+        - `ui_green`: used to indicate staged, additions.
+        - `ui_blue`: used to indicate information, new files.
+        - `ui_purple`: used to indicate hints, merge.
+        - `ui_yellow`
+    - Shades of fg and bg colors. These colors might be used for more than explained below.
+        - `fg2`: used for statusline, normal text in plugins that open in split windows.
+        - `fg3`: used for folded text.
+        - `fg4`: used for line numbers.
+        - `fg5`: used for active indent line, "hidden" text.
+        - `dark_bg`: used for background in plugins that open in split windows.
+        - `bg2`: used for cursorline/column, some floating windows.
+        - `bg3`: used for folded text background, floating windows, showing LSP references.
+        - `bg4`: used for visual mode, completion menu, statusline, fg of inactive indent line.
+        - `bg5` (only for dark background): indicates a more prominent selection than visual, might be deprecated in the future.
+        - `dark_bg2`(only for light background): used as a replacement for bg5 and also for visual mode
 
-NOTE: some color sets may have more colors available. See
-|mellifluous-extra-colors| section.
+Some colorsets may have more colors available. To check that, refer to the
+source of the colorset <lua/mellifluous/colors/colorsets/>.
 
 
 COLOR FUNCTIONS ~
@@ -339,7 +347,7 @@ Type `:Mellifluous <TAB>` and see the available options.
 Options include:
 
 - Toggling transparency.
-- Changing color set.
+- Changing colorset.
 
 
 ==============================================================================

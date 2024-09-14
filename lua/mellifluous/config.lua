@@ -4,7 +4,7 @@ local saved_user_config = {}
 
 local function get_default_config()
     return {
-        color_set = "mellifluous",
+        colorset = "mellifluous",
         plugins = {
             cmp = true,
             indent_blankline = true,
@@ -30,22 +30,18 @@ local function get_default_config()
         },
         dim_inactive = false,
         styles = {
-            comments = { italic = true },
-            conditionals = {},
-            folds = {},
-            loops = {},
-            functions = {},
-            keywords = {},
-            strings = {},
-            variables = {},
-            numbers = {},
-            booleans = {},
-            properties = {},
+            main_keywords = {},
+            other_keywords = {},
             types = {},
             operators = {},
+            strings = {},
+            functions = {},
+            constants = {},
+            comments = { italic = true },
             markup = {
                 headings = { bold = true },
             },
+            folds = {},
         },
         transparent_background = {
             enabled = false,
@@ -78,20 +74,20 @@ local function disable_disabled()
     end
 end
 
-local function merge_color_set_defaults(color_set)
-    local color_set_module = require("mellifluous.colors.sets." .. color_set)
+local function merge_colorset_defaults(colorset)
+    local colorset_module = require("mellifluous.colors.colorsets." .. colorset)
 
-    if not color_set_module.get_config then
+    if not colorset_module.get_config then
         return
     end
 
-    config[color_set] = vim.tbl_deep_extend("force", config[color_set] or {}, color_set_module.get_config())
+    config[colorset] = vim.tbl_deep_extend("force", config[colorset] or {}, colorset_module.get_config())
 end
 
-local function process_color_set()
-    config.is_bg_dark = require("mellifluous.colors").get_is_bg_dark(config.color_set)
+local function process_colorset()
+    config.is_bg_dark = require("mellifluous.colors").get_is_bg_dark(config.colorset)
     config.ui_color_base_lightness =
-        require("mellifluous.colors").get_ui_color_base_lightness(config.color_set, config.is_bg_dark)
+        require("mellifluous.colors").get_ui_color_base_lightness(config.colorset, config.is_bg_dark)
 end
 
 -- https://www.lua.org/pil/13.4.5.html
@@ -113,10 +109,10 @@ end
 
 function M.prepare()
     config = get_default_config()
-    merge_color_set_defaults(vim.tbl_get(saved_user_config, "color_set") or config.color_set)
+    merge_colorset_defaults(vim.tbl_get(saved_user_config, "colorset") or config.colorset)
     config = vim.tbl_deep_extend("force", config, saved_user_config or {})
 
-    process_color_set()
+    process_colorset()
     disable_disabled()
 
     M.config = read_only(config)
@@ -130,10 +126,10 @@ function M.set_highlight_overrides(highlighter, colors)
         global_highlight_overrides(highlighter, colors)
     end
 
-    local color_set_highlight_overrides = vim.tbl_get(M.config, M.config.color_set, "highlight_overrides", background)
+    local colorset_highlight_overrides = vim.tbl_get(M.config, M.config.colorset, "highlight_overrides", background)
         or nil
-    if color_set_highlight_overrides then
-        color_set_highlight_overrides(highlighter, colors)
+    if colorset_highlight_overrides then
+        colorset_highlight_overrides(highlighter, colors)
     end
 end
 

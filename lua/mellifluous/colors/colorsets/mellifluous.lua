@@ -1,51 +1,28 @@
 local M = {}
 local color = require("mellifluous.color")
 
-local color_set_name = "mellifluous"
-
-local function get_is_neutral(mellifluous_config)
-    local config = require("mellifluous.config").config
-    -- for compatibility with configs from before color set specific config was supported
-    if config.neutral ~= nil then
-        return config.neutral
-    end
-    return mellifluous_config.neutral
-end
+local colorset_name = "mellifluous"
 
 function M.get_bg_dark()
     local config = require("mellifluous.config").config
-    local mellifluous_config = config[color_set_name]
-    local is_neutral = get_is_neutral(mellifluous_config)
-
+    local mellifluous_config = config[colorset_name]
     local brightness = 11.5
-    if mellifluous_config.bg_contrast == "hard" then
-        brightness = brightness - 2
-    elseif mellifluous_config.bg_contrast == "soft" then
-        brightness = brightness + 2
-    end
 
-    if is_neutral then
-        return color.new_from_hsl({ h = 0, s = 0, l = brightness })
+    if mellifluous_config.neutral == false then
+        return color.new_from_hsl({ h = 24, s = 10, l = brightness })
     end
-    return color.new_from_hsl({ h = 24, s = 10, l = brightness })
+    return color.new_from_hsl({ h = 0, s = 0, l = brightness })
 end
 
 function M.get_bg_light()
     local config = require("mellifluous.config").config
-    local mellifluous_config = config[color_set_name]
-    local is_neutral = get_is_neutral(mellifluous_config)
-
+    local mellifluous_config = config[colorset_name]
     local brightness = 91.5
-    if mellifluous_config.bg_contrast == "hard" then
-        brightness = brightness + 2
-    elseif mellifluous_config.bg_contrast == "soft" then
-        brightness = brightness - 2
-    end
 
-    if is_neutral then
-        return color.new_from_hsl({ h = 0, s = 0, l = brightness })
+    if mellifluous_config.neutral == false then
+        return color.new_from_hsl({ h = 24, s = 10, l = brightness })
     end
-    return color.new_from_hsl({ h = 24, s = 10, l = brightness })
+    return color.new_from_hsl({ h = 0, s = 0, l = brightness })
 end
 
 function M.get_colors_dark(bg)
@@ -122,8 +99,7 @@ end
 
 function M.get_config()
     return {
-        neutral = true, -- set this to false and bg_contrast to 'medium' for original mellifluous (then it was called mellifluous theme)
-        bg_contrast = "medium", -- options: 'soft', 'medium', 'hard'
+        neutral = true,
     }
 end
 
