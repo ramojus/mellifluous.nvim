@@ -24,6 +24,7 @@ function M.create()
             return
         end
 
+        require("mellifluous.utils.highlighter").clear_highlights()
         vim.cmd("colorscheme mellifluous")
     end, {
         nargs = 1,

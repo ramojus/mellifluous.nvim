@@ -40,4 +40,8 @@ function M.apply_all()
     end
 end
 
+function M.clear_highlights()
+    highlights = {}
+end
+
 return M
