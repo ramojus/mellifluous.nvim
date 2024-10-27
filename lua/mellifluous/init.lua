@@ -19,6 +19,7 @@ function M.load()
     local colors = require("mellifluous.colors").get_colors()
     local highlighter = require("mellifluous.utils.highlighter")
 
+    require("mellifluous.utils.shader").set_background_color(colors.bg)
     require("mellifluous.highlights").set(highlighter, colors)
     require("mellifluous.config").set_highlight_overrides(highlighter, colors)
 
