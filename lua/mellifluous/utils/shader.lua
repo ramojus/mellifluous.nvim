@@ -1,5 +1,7 @@
 local M = {}
 
+local bg_color
+
 local function clip(val, from, to)
     if val > to then
         return to
@@ -10,6 +12,11 @@ local function clip(val, from, to)
 end
 
 function M.replicate_shade(from_color, to_color, target)
+    -- assume bg_color for any transparent colors
+    from_color = from_color ~= "NONE" and from_color or bg_color
+    to_color = to_color ~= "NONE" and to_color or bg_color
+    target = target ~= "NONE" and target or bg_color
+
     local from_hsl = from_color:get_hsl()
     local to_hsl = to_color:get_hsl()
     local color = require("mellifluous.color")
@@ -50,6 +57,10 @@ function M.get_higher_contrast(color, amount)
         return color:lightened(amount)
     end
     return color:darkened(amount)
+end
+
+function M.set_background_color(new_bg_color)
+    bg_color = new_bg_color
 end
 
 return M
