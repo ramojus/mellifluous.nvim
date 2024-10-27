@@ -82,8 +82,8 @@ function M.set(hl, colors)
     })
     hl.set("FloatTitle", { bg = hl.get("NormalFloat").bg, fg = colors.comments })
     hl.set("FloatShadow", { bg = colors.dark_bg })
-    hl.set("Pmenu", { bg = colors.bg4, fg = config.is_bg_dark and colors.fg3 or colors.fg4 }) -- Popup menu: Normal item.
-    hl.set("PmenuSel", { bg = config.is_bg_dark and colors.fg5 or colors.dark_bg }) -- Popup menu: Selected item.
+    hl.set("Pmenu", { bg = colors.bg3, fg = config.is_bg_dark and colors.fg3 or colors.fg4 }) -- Popup menu: Normal item.
+    hl.set("PmenuSel", { bg = groups.MenuButtonSelected(colors.bg3).bg }) -- Popup menu: Selected item.
     hl.set("PmenuSbar", { bg = colors.bg3 }) -- Popup menu: Scrollbar.
     hl.set("PmenuThumb", { bg = colors.fg5 }) -- Popup menu: Thumb of the scrollbar.
     hl.set("Question", { fg = colors.other_keywords }) -- |hit-enter| prompt and yes/no questions
