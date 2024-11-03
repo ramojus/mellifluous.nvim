@@ -2,83 +2,6 @@ local M = {}
 local config = {}
 local saved_user_config = {}
 
-local function get_default_config()
-    return {
-        colorset = "mellifluous",
-        plugins = {
-            cmp = true,
-            indent_blankline = true,
-            nvim_tree = {
-                enabled = true,
-                show_root = false,
-            },
-            neo_tree = {
-                enabled = true,
-            },
-            telescope = {
-                enabled = true,
-                nvchad_like = true,
-            },
-            startify = true,
-            gitsigns = true,
-            neorg = true,
-            nvim_notify = true,
-            aerial = true,
-            neotest = true,
-            lazy = true,
-            mason = true,
-        },
-        dim_inactive = false,
-        styles = {
-            main_keywords = {},
-            other_keywords = {},
-            types = {},
-            operators = {},
-            strings = {},
-            functions = {},
-            constants = {},
-            comments = { italic = true },
-            markup = {
-                headings = { bold = true },
-            },
-            folds = {},
-        },
-        transparent_background = {
-            enabled = false,
-            lightness = function(bg) -- used for bg shades
-                -- This method tries to keep brighter colorsets bright and
-                -- dimmer colorsets dim and still lighten the shades up so that
-                -- the colorsets have more chance to look good with transparent
-                -- background on brighter wallpapers.
-                local old_lightness = bg:get_hsl().l
-                local threshold = 20
-                local baseline = 10
-                if old_lightness < threshold then
-                    -- We will assume that the dimmest of transparent
-                    -- background over users wallpaper is at least of baseline
-                    -- lightness. Presuming old range is [0, threshold], let's
-                    -- position the lightness relatively in a new range of
-                    -- [baseline, threshold].
-                    local position = old_lightness / threshold
-                    local new_lightness = baseline + ((threshold - baseline) * position)
-                    return new_lightness
-                end
-            end,
-            floating_windows = true,
-            telescope = true,
-            file_tree = true,
-            cursor_line = true,
-            status_line = false,
-        },
-        flat_background = {
-            line_numbers = false,
-            floating_windows = false,
-            file_tree = false,
-            cursor_line_number = false,
-        },
-    }
-end
-
 local function disable_disabled()
     for _, v in pairs(config) do
         if type(v) ~= "table" or v.enabled == nil or v.enabled then
@@ -127,7 +50,8 @@ function M.setup(user_config)
 end
 
 function M.prepare()
-    config = get_default_config()
+    package.loaded["mellifluous.default_config"] = nil -- unload in case of colorscheme reload
+    config = require("mellifluous.default_config") -- config is returned by reference
     merge_colorset_defaults(vim.tbl_get(saved_user_config, "colorset") or config.colorset)
     config = vim.tbl_deep_extend("force", config, saved_user_config or {})
 
