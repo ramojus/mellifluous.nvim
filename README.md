@@ -8,7 +8,7 @@ A colorscheme for [Neovim](https://github.com/neovim/neovim). Pleasant and produ
 ![preview](https://github.com/ramojus/mellifluous.nvim/assets/41536253/a4b01a46-6ec9-408a-9c2f-08995c53155a)
 
 ## Highlighted features
-- [**Multiple colorsets**](#color-sets): Each colorset presents a unique visual theme while adhering to the same set of productive highlight rules. Every colorset [can be customised](#overriding-colors-of-a-color-set).
+- [**Multiple colorsets**](#colorsets): Each colorset presents a unique visual theme while adhering to the same set of productive highlight rules. Every colorset [can be customised](#color-overrides).
 
 - **Layered backgrounds**: Most UI elements have backgrounds with different shades of the background color and have no borders. This allows for easy differentiation between the relative importance of the elements and keeps the colorscheme looking minimal.
 
