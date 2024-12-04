@@ -2,6 +2,7 @@ return {
     colorset = "mellifluous",
     plugins = {
         cmp = true,
+        blink_cmp = true,
         indent_blankline = true,
         nvim_tree = {
             enabled = true,
