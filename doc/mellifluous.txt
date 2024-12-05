@@ -25,6 +25,7 @@ Table of Contents                              *mellifluous-table-of-contents*
 - NvimTree <https://github.com/kyazdani42/nvim-tree.lua>
 - Neo-Tree <https://github.com/nvim-neo-tree/neo-tree.nvim>
 - Nvim-cmp <https://github.com/hrsh7th/nvim-cmp>
+- Blink.cmp <https://github.com/Saghen/blink.cmp>
 - Indent Blankline <https://github.com/lukas-reineke/indent-blankline.nvim>
 - Startify <https://github.com/mhinz/vim-startify>
 - Gitsigns <https://github.com/lewis6991/gitsigns.nvim>
