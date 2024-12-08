@@ -23,6 +23,7 @@ A colorscheme for [Neovim](https://github.com/neovim/neovim). Pleasant and produ
 - [Treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
 - [Native LSP](https://github.com/neovim/nvim-lspconfig)
 - [Telescope](https://github.com/nvim-telescope/telescope.nvim)
+- [Fzf-lua](https://github.com/ibhagwan/fzf-lua)
 - [NvimTree](https://github.com/kyazdani42/nvim-tree.lua)
 - [Neo-Tree](https://github.com/nvim-neo-tree/neo-tree.nvim)
 - [Nvim-cmp](https://github.com/hrsh7th/nvim-cmp)

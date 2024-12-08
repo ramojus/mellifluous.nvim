@@ -1,28 +1,29 @@
 return {
     colorset = "mellifluous",
     plugins = {
-        cmp = true,
+        aerial = true,
         blink_cmp = true,
+        cmp = true,
+        fzf = true,
+        gitsigns = true,
         indent_blankline = true,
+        lazy = true,
+        mason = true,
+        neo_tree = {
+            enabled = true,
+        },
+        neorg = true,
+        neotest = true,
+        nvim_notify = true,
         nvim_tree = {
             enabled = true,
             show_root = false,
         },
-        neo_tree = {
-            enabled = true,
-        },
+        startify = true,
         telescope = {
             enabled = true,
             nvchad_like = true,
         },
-        startify = true,
-        gitsigns = true,
-        neorg = true,
-        nvim_notify = true,
-        aerial = true,
-        neotest = true,
-        lazy = true,
-        mason = true,
     },
     dim_inactive = false,
     styles = { -- see :h attr-list for options. set {} for NONE, { option = true } for option
