@@ -1,13 +1,11 @@
 local M = {}
 
 function M.set(hl, colors)
-    local normal = hl.get("Normal")
-
     hl.set("FzfLuaNormal", { bg = colors.dark_bg, fg = colors.fg3 })
     hl.set("FzfLuaBorder", { bg = colors.dark_bg, fg = colors.dark_bg })
-    hl.set("FzfLuaTitle", { fg = normal.fg })
-    hl.set("FzfLuaPreviewNormal", { bg = normal.bg, fg = normal.fg })
-    hl.set("FzfLuaPreviewBorder", { bg = normal.bg, fg = normal.bg })
+    hl.set("FzfLuaTitle", { fg = hl.get("Normal").fg })
+    hl.set("FzfLuaPreviewNormal", { bg = hl.get("Normal").bg, fg = hl.get("Normal").fg })
+    hl.set("FzfLuaPreviewBorder", { bg = hl.get("Normal").bg, fg = hl.get("Normal").bg })
     hl.set("FzfLuaPreviewTitle", { link = "FzfLuaTitle" })
     hl.set("FzfLuaCursorLine", { bg = colors.bg2, fg = colors.fg2 })
     hl.set("FzfLuaScrollBorderFull", { fg = colors.bg4 })
