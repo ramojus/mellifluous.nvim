@@ -1,6 +1,8 @@
 local M = {}
 
 function M.set(hl, colors)
+    local groups = require("mellifluous.highlights.custom_groups").get(colors)
+
     local normal = hl.get("Normal")
 
     hl.set("FzfLuaNormal", { bg = colors.dark_bg, fg = colors.fg3 })
@@ -31,7 +33,11 @@ function M.set(hl, colors)
     hl.set("FzfLuaFzfSeparator", { fg = colors.dark_bg })
     hl.set("FzfLuaFzfGutter", { bg = colors.dark_bg })
     hl.set("FzfLuaFzfPointer", { fg = colors.fg4, style = { bold = false, nocombine = true } })
-    hl.set("FzfLuaFzfCursorLine", { fg = colors.fg, bg = colors.bg4, style = { bold = false, nocombine = true } })
+    hl.set("FzfLuaFzfCursorLine", {
+        bg = groups.MenuButtonSelected(colors.dark_bg).bg,
+        fg = colors.fg3,
+        style = { bold = false, nocombine = true }
+    })
     hl.set("FzfLuaFzfMarker", { fg = colors.ui_orange })
     hl.set("FzfLuaFzfPrompt", { fg = colors.fg4 })
     hl.set("FzfLuaFzfQuery", { fg = colors.fg })
