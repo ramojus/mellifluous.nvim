@@ -45,6 +45,11 @@ function M.get(colors)
                 bg = bg,
             }
         end,
+
+        Backdrop = {
+            bg = config.is_bg_dark and "#000000"
+                or require("mellifluous.color").new_from_hsl({ h = nil, s = 0, l = 70 }),
+        },
     }
 end
 

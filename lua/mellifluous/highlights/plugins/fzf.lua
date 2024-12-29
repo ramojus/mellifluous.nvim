@@ -2,15 +2,28 @@ local M = {}
 
 function M.set(hl, colors)
     local groups = require("mellifluous.highlights.custom_groups").get(colors)
+    local config = require("mellifluous.config").config
 
-    local normal = hl.get("Normal")
+    local preview_normal = hl.get("Normal")
+    local search_normal = { bg = colors.dark_bg, fg = colors.fg3 }
+    local preview_border
+    local search_border
+    if config.transparent_background.floating_windows or config.flat_background.floating_windows then
+        search_normal.bg = hl.get("Normal").bg
+        preview_normal.bg = hl.get("Normal").bg
+        search_border = { bg = search_normal.bg, fg = hl.get("FloatBorder").fg }
+        preview_border = { bg = preview_normal.bg, fg = hl.get("FloatBorder").fg }
+    else
+        search_border = { bg = search_normal.bg, fg = search_normal.bg }
+        preview_border = { bg = preview_normal.bg, fg = preview_normal.bg }
+    end
 
-    hl.set("FzfLuaNormal", { bg = colors.dark_bg, fg = colors.fg3 })
-    hl.set("FzfLuaBorder", { bg = colors.dark_bg, fg = colors.dark_bg })
-    hl.set("FzfLuaTitle", { bg = colors.dark_bg, fg = normal.fg, style = { bold = true } })
-    hl.set("FzfLuaPreviewNormal", { bg = normal.bg, fg = normal.fg })
-    hl.set("FzfLuaPreviewBorder", { bg = normal.bg, fg = normal.bg })
-    hl.set("FzfLuaPreviewTitle", { bg = normal.bg, fg = normal.fg, style = { bold = true } })
+    hl.set("FzfLuaNormal", search_normal)
+    hl.set("FzfLuaBorder", search_border)
+    hl.set("FzfLuaTitle", { bg = search_normal.bg, fg = hl.get("Normal").fg, style = { bold = true } })
+    hl.set("FzfLuaPreviewNormal", { bg = preview_normal.bg, fg = preview_normal.fg })
+    hl.set("FzfLuaPreviewBorder", preview_border)
+    hl.set("FzfLuaPreviewTitle", { bg = preview_normal.bg, fg = preview_normal.fg, style = { bold = true } })
     hl.set("FzfLuaCursorLineNr", { fg = colors.fg4 })
     hl.set("FzfLuaScrollBorderFull", { fg = colors.bg4 })
     hl.set("FzfLuaScrollBorderEmpty", { fg = colors.bg })
@@ -30,17 +43,18 @@ function M.set(hl, colors)
     hl.set("FzfLuaFzfHeader", { fg = colors.fg4 })
     hl.set("FzfLuaFzfMatch", { fg = colors.fg })
     hl.set("FzfLuaFzfScrollbar", { fg = colors.fg4 })
-    hl.set("FzfLuaFzfSeparator", { fg = colors.dark_bg })
-    hl.set("FzfLuaFzfGutter", { bg = colors.dark_bg })
+    hl.set("FzfLuaFzfSeparator", { fg = search_normal.bg })
+    hl.set("FzfLuaFzfGutter", { bg = search_normal.bg })
     hl.set("FzfLuaFzfPointer", { fg = colors.fg4, style = { bold = false, nocombine = true } })
     hl.set("FzfLuaFzfCursorLine", {
-        bg = groups.MenuButtonSelected(colors.dark_bg).bg,
-        fg = colors.fg3,
-        style = { bold = false, nocombine = true }
+        bg = groups.MenuButtonSelected(search_normal.bg).bg,
+        fg = search_normal.fg,
+        style = { bold = false, nocombine = true },
     })
     hl.set("FzfLuaFzfMarker", { fg = colors.ui_orange })
     hl.set("FzfLuaFzfPrompt", { fg = colors.fg4 })
     hl.set("FzfLuaFzfQuery", { fg = colors.fg })
+    hl.set("FzfLuaBackdrop", groups.Backdrop)
 end
 
 return M
