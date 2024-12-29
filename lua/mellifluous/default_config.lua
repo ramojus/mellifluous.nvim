@@ -60,6 +60,7 @@ return {
                 local new_lightness = baseline + ((threshold - baseline) * position)
                 return new_lightness
             end
+            return old_lightness
         end,
         floating_windows = true,
         telescope = true,
