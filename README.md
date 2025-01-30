@@ -272,7 +272,8 @@ Options include:
 - [ ] Support more plugins (contributions are welcome).
 
 ## Ports
-- [Helix (with slightly outdated color palette)](https://github.com/helix-editor/helix/wiki/Themes#meliora)
+- [Helix](https://github.com/helix-editor/helix/wiki/Themes#meliora) (with slightly outdated color palette)
+- [iTerm2](https://github.com/mbadolato/iTerm2-Color-Schemes) (plus additional terminal emulator ports, courtesy of iTerm2-Color-Schemes)
 
 ## Inspiration
 - [Mountain and Mountaineer](https://github.com/mountain-theme/mountain)
