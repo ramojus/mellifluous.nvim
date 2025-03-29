@@ -110,8 +110,8 @@ function M.set(hl, colors)
     hl.set("Whitespace", { fg = colors.fg5 }) -- 'nbsp', 'space', 'tab' and 'trail' in 'listchars'
     hl.set("WinSeparator", { link = "VertSplit" }) -- Separator between window splits. Inherts from |hl-VertSplit| by default, which it will replace eventually.
     hl.set("WildMenu", { link = "PmenuSel" }) -- Current match in 'wildmenu' completion
-    hl.set("WinBar", { link = "TabLine" }) -- Winbar line, current
-    hl.set("WinBarNC", { link = "TabLine" }) -- Winbar line, not current
+    hl.set("WinBar", { link = "StatusLine" }) -- Winbar line, current
+    hl.set("WinBarNC", { link = "StatusLineNC" }) -- Winbar line, not current
 
     -- Common vim syntax groups used for all kinds of code and markup.
     -- Commented-out groups should chain up to their preferred (*) group
