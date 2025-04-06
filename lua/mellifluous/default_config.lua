@@ -4,6 +4,7 @@ return {
         aerial = true,
         blink_cmp = true,
         cmp = true,
+        dap_ui = true,
         fzf = true,
         gitsigns = true,
         indent_blankline = true,
