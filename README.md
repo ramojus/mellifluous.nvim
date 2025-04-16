@@ -37,7 +37,7 @@ A colorscheme for [Neovim](https://github.com/neovim/neovim). Pleasant and produ
 - [Neotest](https://github.com/nvim-neotest/neotest)
 - [Lazy](https://github.com/folke/lazy.nvim)
 - [Mason](https://github.com/williamboman/mason.nvim)
-- [Nvim-DAP-UI](https://github.com/rcarriga/nvim-dap-ui) (control panel only)
+- [Nvim-DAP-UI](https://github.com/rcarriga/nvim-dap-ui)
 
 ## Installation and usage
 Example with [packer.nvim](https://github.com/wbthomason/packer.nvim):
