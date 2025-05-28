@@ -3,7 +3,7 @@ local M = {}
 function M.set(hl, colors)
     local groups = require("mellifluous.highlights.custom_groups").get(colors)
 
-    hl.set("@lsp.type.comment", {}) -- let treesitter handle those
+    hl.set("@lsp.type.comment", { link = "Comment" })
     hl.set("@lsp.type.enum", { link = "Type" })
     hl.set("@lsp.type.enumMember", { link = "Constant" })
     hl.set("@lsp.type.escapeSequence", { fg = colors.fg3 })
