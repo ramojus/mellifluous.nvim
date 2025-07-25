@@ -1,8 +1,4 @@
 <!-- panvimdoc-ignore-start -->
-
-> [!IMPORTANT]
-> v1 was just released. To transfer your config to v1, use [Migration guidelines](https://github.com/ramojus/mellifluous.nvim/wiki/Migration-from-v0-to-v1-guidelines), or, if you don't want to switch now, lock the version of this plugin to v0 (or pin to commit ba89cdf).
-
 # Mellifluous
 A colorscheme for [Neovim](https://github.com/neovim/neovim). Pleasant and productive, with stronger highlights on important keywords.
 ![preview](https://github.com/ramojus/mellifluous.nvim/assets/41536253/a4b01a46-6ec9-408a-9c2f-08995c53155a)
