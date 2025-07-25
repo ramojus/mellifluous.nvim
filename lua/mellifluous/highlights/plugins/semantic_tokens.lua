@@ -13,6 +13,7 @@ function M.set(hl, colors)
     hl.set("@lsp.type.parameter", {})
     hl.set("@lsp.type.property", { fg = colors.fg })
     hl.set("@lsp.type.variable", {})
+    hl.set("@lsp.type.macro", { link = "Macro" })
     hl.set("@lsp.typemod.variable.constant", { link = "Constant" })
     hl.set("@lsp.typemod.keyword.controlFlow", groups.MainKeyword)
 end
