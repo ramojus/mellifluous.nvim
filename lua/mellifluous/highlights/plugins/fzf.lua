@@ -53,6 +53,7 @@ function M.set(hl, colors)
     })
     hl.set("FzfLuaFzfMarker", { fg = colors.ui_orange })
     hl.set("FzfLuaFzfPrompt", { fg = colors.fg4 })
+    hl.set("FzfLuaLivePrompt", { fg = colors.red })
     hl.set("FzfLuaFzfQuery", { fg = colors.fg })
     hl.set("FzfLuaBackdrop", groups.Backdrop)
 end
