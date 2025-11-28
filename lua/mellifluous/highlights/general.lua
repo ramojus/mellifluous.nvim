@@ -34,6 +34,7 @@ function M.set(hl, colors)
     hl.set("EndOfBuffer", { fg = colors.bg }) -- Filler lines (~) after the end of the buffer. By default, this is highlighted like |hl-NonText|.
     hl.set("TermCursor", { link = "Cursor" }) -- Cursor in a focused terminal
     hl.set("TermCursorNC", { bg = colors.fg5 }) -- Cursor in an unfocused terminal
+    hl.set("OkMsg", { fg = colors.green }) -- Success messages
     hl.set("ErrorMsg", { fg = colors.red }) -- Error messages on the command line
     hl.set("VertSplit", {
         fg = colors.fg5,
