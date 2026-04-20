@@ -20,6 +20,7 @@ return {
             enabled = true,
             show_root = false,
         },
+        snacks = true,
         startify = true,
         telescope = {
             enabled = true,
