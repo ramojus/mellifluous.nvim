@@ -147,7 +147,10 @@ function M.set(hl, colors)
         style = config.styles.markup.headings,
     })
     hl.set("@markup.heading", { link = "@markup.heading.1" })
-    hl.set("@markup.heading.gitcommit", { link = "@string" })
+    hl.set("@markup.heading.gitcommit", {
+        fg = hl.get("@string").fg,
+        style = config.styles.markup.headings,
+    })
     hl.set("@markup.heading.1.vimdoc", { fg = hl.get("@markup.heading").fg })
     hl.set("@markup.heading.2.vimdoc", { fg = hl.get("@markup.heading").fg })
     hl.set("@markup.heading.3.vimdoc", { fg = hl.get("@markup.heading").fg })
