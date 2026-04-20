@@ -1,4 +1,5 @@
 *mellifluous.txt*                          Pleasant and productive colorscheme
+                                 For NVIM v0.8.0    Last change: 2026 April 20
 
 ==============================================================================
 Table of Contents                              *mellifluous-table-of-contents*
